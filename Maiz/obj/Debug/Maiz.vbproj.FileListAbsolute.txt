@@ -99,10 +99,6 @@ C:\Users\MSISTEMAS\Desktop\Desarrollo\MaizIServer12\Maiz\obj\Debug\Maiz.exe
 C:\Users\MSISTEMAS\Desktop\Desarrollo\MaizIServer12\Maiz\obj\Debug\Maiz.xml
 C:\Users\MSISTEMAS\Desktop\Desarrollo\MaizIServer12\Maiz\obj\Debug\Maiz.pdb
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.exe.config
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.vbproj.ResolveComReference.cache
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.exe
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.xml
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.pdb
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.exe.manifest
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.application
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.exe
@@ -127,6 +123,7 @@ C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDe
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.vbprojResolveAssemblyReference.cache
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.vbproj.ResolveComReference.cache
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Acceso.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Acercade.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Almacenes.resources
@@ -188,3 +185,6 @@ C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Veri
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.vbproj.GenerateResource.Cache
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.exe.manifest
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.application
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.exe
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.xml
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.pdb
