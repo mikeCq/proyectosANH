@@ -513,6 +513,7 @@ Public Class liquidacionCalculosProd
         End If
     End Sub
     Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
+
         _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
         _tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
         ReporteLiquidacionesXprod.ShowDialog()
