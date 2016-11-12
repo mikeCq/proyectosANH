@@ -9,7 +9,7 @@ Public Class Empresas
         RbEmpresa.Checked = True
         llenarCombos()
         limpiarcampos()
-        'TPRepresentante.Parent = Nothing
+        'TPRepresentante.Parent = Nothing1111
 
     End Sub
     Private Sub limpiarcampos()
