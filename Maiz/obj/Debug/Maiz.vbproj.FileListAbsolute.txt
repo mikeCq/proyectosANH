@@ -93,3 +93,8 @@ C:\Users\Oscar Merino\Desktop\Repo_Maiz\proyectosANH\Maiz\obj\Debug\Maiz.vbproj.
 C:\Users\Oscar Merino\Desktop\Repo_Maiz\proyectosANH\Maiz\obj\Debug\Maiz.exe
 C:\Users\Oscar Merino\Desktop\Repo_Maiz\proyectosANH\Maiz\obj\Debug\Maiz.xml
 C:\Users\Oscar Merino\Desktop\Repo_Maiz\proyectosANH\Maiz\obj\Debug\Maiz.pdb
+C:\Users\MSISTEMAS\Desktop\Desarrollo\MaizIServer12\Maiz\bin\Debug\Maiz.exe.config
+C:\Users\MSISTEMAS\Desktop\Desarrollo\MaizIServer12\Maiz\obj\Debug\Maiz.vbproj.ResolveComReference.cache
+C:\Users\MSISTEMAS\Desktop\Desarrollo\MaizIServer12\Maiz\obj\Debug\Maiz.exe
+C:\Users\MSISTEMAS\Desktop\Desarrollo\MaizIServer12\Maiz\obj\Debug\Maiz.xml
+C:\Users\MSISTEMAS\Desktop\Desarrollo\MaizIServer12\Maiz\obj\Debug\Maiz.pdb

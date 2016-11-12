@@ -8,8 +8,9 @@ Module conexion
 
     Sub abrir()
         Try
-            cnn = New SqlConnection("Data Source=MSISTEMAS;Initial Catalog=MAIZ;Persist Security Info=True;User ID=sa;Password=Usuario01") '*****  CONEXION MSISTEMAS
+            'cnn = New SqlConnection("Data Source=MSISTEMAS;Initial Catalog=MAIZ;Persist Security Info=True;User ID=sa;Password=Usuario01") '*****  CONEXION MSISTEMAS
             'cnn = New SqlConnection("Data Source=SERVIDOR;Initial Catalog=TRIGO_1;User ID=UserTrigo;Password=usuario1") '***** conexion CONEXCION SERVIDOR
+            cnn = New SqlConnection("Data Source=SERVER2008\SERVER12;Initial Catalog=MAIZ;Persist Security Info=True;User ID=sa;Password=Usuario01") '***** CONEXION A SERVIDOR PRINCIPAL 
             cnn.Open()
         Catch ex As Exception
             MsgBox("No se pudo conectar" + ex.ToString)
