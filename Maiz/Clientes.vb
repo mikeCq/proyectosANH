@@ -9,6 +9,7 @@ Public Class Clientes
         llenarCombos()
         DesbloquearCampos()
         limpiarcampos()
+        'este es un comentario de prueba
     End Sub
     Private Sub RBTipoPersona() Handles RbMoral.CheckedChanged, RbFisica.CheckedChanged
         If RbFisica.Checked = True Then
