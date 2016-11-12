@@ -661,7 +661,7 @@ Public Class liquidacionCalculosProd
     End Sub
 
     Private Sub ContratoOLibre()
-        If RbSi.Checked = True And RbContrato.Checked = True Or RbSi.Checked = True And RbLibre.Checked = True Then
+        If RbSi.Checked = True And RbContrato.Checked = True Or RbSi.Checked = True And RbLibre.Checked = True Then 'prueba
             If RbContrato.Checked = False And RbLibre.Checked = True Then
                 TxTipoCambio.Enabled = False
                 TxTipoCambio.Text = ""
