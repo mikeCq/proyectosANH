@@ -8,7 +8,7 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="file://192.168.10.29/Scanner/Miguel/MaizInstalador/Maiz.application" />
+    <deploymentProvider codebase="file://servidor/Scanner/Miguel/MAIZ%20A%20SERVER12/Maiz.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
@@ -21,7 +21,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bKTm804geLHRRfr9mVl71fwqhULAgdkTwf2HswczhP8=</dsig:DigestValue>
+        <dsig:DigestValue>cXJ4CzLmGr0xiOwNI8daNDTJ/G6RGUU0Vx80DLbu6xE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
