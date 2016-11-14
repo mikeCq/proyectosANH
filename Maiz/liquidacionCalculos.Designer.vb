@@ -262,7 +262,7 @@ Partial Class liquidacionCalculosProd
         Me.TpBoletasXliquidar.Controls.Add(Me.DgEntradasLiq)
         Me.TpBoletasXliquidar.Location = New System.Drawing.Point(4, 22)
         Me.TpBoletasXliquidar.Name = "TpBoletasXliquidar"
-        Me.TpBoletasXliquidar.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TpBoletasXliquidar.Padding = New System.Windows.Forms.Padding(3)
         Me.TpBoletasXliquidar.Size = New System.Drawing.Size(1329, 524)
         Me.TpBoletasXliquidar.TabIndex = 0
         Me.TpBoletasXliquidar.Text = "Boletas por Liquidar"
@@ -302,9 +302,8 @@ Partial Class liquidacionCalculosProd
         'NuPrecioToneladaMxn
         '
         Me.NuPrecioToneladaMxn.DecimalPlaces = 4
-        Me.NuPrecioToneladaMxn.Enabled = False
         Me.NuPrecioToneladaMxn.Location = New System.Drawing.Point(325, 84)
-        Me.NuPrecioToneladaMxn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.NuPrecioToneladaMxn.Margin = New System.Windows.Forms.Padding(2)
         Me.NuPrecioToneladaMxn.Maximum = New Decimal(New Integer() {1569325055, 23283064, 0, 0})
         Me.NuPrecioToneladaMxn.Name = "NuPrecioToneladaMxn"
         Me.NuPrecioToneladaMxn.Size = New System.Drawing.Size(113, 20)
@@ -726,8 +725,8 @@ Partial Class liquidacionCalculosProd
         Me.TpBoletasLiquidadas.Controls.Add(Me.DgLiquidacionesXBoleta)
         Me.TpBoletasLiquidadas.Location = New System.Drawing.Point(4, 22)
         Me.TpBoletasLiquidadas.Name = "TpBoletasLiquidadas"
-        Me.TpBoletasLiquidadas.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.TpBoletasLiquidadas.Size = New System.Drawing.Size(1305, 524)
+        Me.TpBoletasLiquidadas.Padding = New System.Windows.Forms.Padding(3)
+        Me.TpBoletasLiquidadas.Size = New System.Drawing.Size(1329, 524)
         Me.TpBoletasLiquidadas.TabIndex = 1
         Me.TpBoletasLiquidadas.Text = "Boletas Liquidadas"
         Me.TpBoletasLiquidadas.UseVisualStyleBackColor = True

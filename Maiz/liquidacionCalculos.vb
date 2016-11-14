@@ -115,7 +115,7 @@ Public Class liquidacionCalculosProd
         TxProductor.Text = ""
         TxIDcontratoC.Text = ""
         TxTipoCambio.Text = ""
-        TxPrecioXtonMn.Text = ""
+        NuPrecioToneladaMxn.Value = 0
         TxImporte.Text = ""
         'TxFolioContrato.Text = ""
         'TxMetodoPago.Text = ""
@@ -306,7 +306,7 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXBoleta.Columns("deduccion").DefaultCellStyle.Format = "###,##0.00"
         DgLiquidacionesXBoleta.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
     End Sub
-    Private Sub txtPassword_PreviewKeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown, TxPrecioXtonMn.PreviewKeyDown
+    Private Sub txtPassword_PreviewKeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown, TxPrecioXtonMn.PreviewKeyDown, NuPrecioToneladaMxn.Enter
         Dim tipoCambio As Double = 0
         Dim kilosAton As Double = 0
         Dim precioContrato As Double = 0
