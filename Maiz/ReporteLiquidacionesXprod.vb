@@ -9,6 +9,6 @@ Public Class ReporteLiquidacionesXprod
         RptLiquidacionProd.SetParameterValue("@tipoContrato", liquidacionCalculosProd.tipoContrato)
         RptLiquidacionProd.SetParameterValue("@idliquidacionTotal", liquidacionCalculosProd.codigoLiquidacionTP)
         CrLiquidacionProd.ReportSource = RptLiquidacionProd
-        'comentario de prueba
+
     End Sub
 End Class
