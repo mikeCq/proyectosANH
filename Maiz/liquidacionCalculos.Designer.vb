@@ -113,7 +113,6 @@ Partial Class liquidacionCalculosProd
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxIDcontratoC = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
         CType(Me.NuLibre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuContrato, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TbLiquidacionXProd.SuspendLayout()
@@ -131,7 +130,6 @@ Partial Class liquidacionCalculosProd
         CType(Me.DgLiquidacionesXTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgLiquidacionesXBoleta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtGuardar
@@ -1095,19 +1093,11 @@ Partial Class liquidacionCalculosProd
         Me.Label16.TabIndex = 41
         Me.Label16.Text = "ID Contrato :"
         '
-        'NumericUpDown3
-        '
-        Me.NumericUpDown3.Location = New System.Drawing.Point(903, 102)
-        Me.NumericUpDown3.Name = "NumericUpDown3"
-        Me.NumericUpDown3.Size = New System.Drawing.Size(120, 20)
-        Me.NumericUpDown3.TabIndex = 42
-        '
         'liquidacionCalculosProd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1353, 699)
-        Me.Controls.Add(Me.NumericUpDown3)
         Me.Controls.Add(Me.TbLiquidacionXProd)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.TxIDcontratoC)
@@ -1147,7 +1137,6 @@ Partial Class liquidacionCalculosProd
         CType(Me.DgLiquidacionesXTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgLiquidacionesXBoleta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1230,5 +1219,4 @@ Partial Class liquidacionCalculosProd
     Friend WithEvents TxImporte As TextBox
     Friend WithEvents TxPrecioXtonMn As TextBox
     Friend WithEvents NumericUpDown2 As NumericUpDown
-    Friend WithEvents NumericUpDown3 As NumericUpDown
 End Class
