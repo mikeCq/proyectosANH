@@ -714,6 +714,7 @@ Public Class liquidacionCalculosProd
         End If
     End Sub
     Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown
+        Dim variable As Decimal
         If e.KeyCode = Keys.Enter Then
             If NuTotalLiquidar.Value > 0 Then
                 If RbContrato.Checked = True And RbLibre.Checked = False Then
@@ -724,11 +725,14 @@ Public Class liquidacionCalculosProd
                     precioContrato = NuPrecioContrato.Value
                     kilosAton = NuTotalLiquidar.Value / 1000
                     TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
-                    TxImporte.Text = TxPrecioXtonMn.Text * kilosAton
-                    TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+                    variable = TxPrecioXtonMn.Text
+                    TxImporte.Text = Format(CType(variable, Decimal), "###0.###0")
+                    TxImporte.Text = TxImporte.Text * kilosAton
                 End If
             End If
         End If
+        TxPrecioXtonMn.Text = FormatNumber(Val(TxImporte.Text), 2)
+        TxImporte.Text = FormatNumber(Val(variable), 2)
     End Sub
     Private Sub BtSalir_Click(sender As Object, e As EventArgs) Handles BtSalir.Click
         DgEntradasLiq.Columns.Clear()
