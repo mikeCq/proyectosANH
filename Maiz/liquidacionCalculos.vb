@@ -503,7 +503,14 @@ Public Class liquidacionCalculosProd
     Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
         _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
         _tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
-        ReporteLiquidacionesXprod.ShowDialog()
+        Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
+        If opc = DialogResult.Yes Then
+            ReporteLiquidacionesXprod.ShowDialog()
+            ReporteResumenBoletasLiquidadas.ShowDialog()
+        Else
+            ReporteLiquidacionesXprod.ShowDialog()
+        End If
+
     End Sub
     Private Sub BtAgregar(sender As Object, e As EventArgs) Handles BtAgregarSeleccion.Click
         DgSeleccionLiquidaciones.Columns.Clear()
@@ -689,12 +696,8 @@ Public Class liquidacionCalculosProd
             End If
         End If
     End Sub
-    Private Sub BtSalir_Click(sender As Object, e As EventArgs) Handles BtSalir.Click
-        DgEntradasLiq.Columns.Clear()
-        DgEntradasLiq.DataSource = Nothing
-        Close()
-    End Sub
-   Private Sub TxPrecioXtonMn_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxPrecioXtonMn.PreviewKeyDown
+
+    Private Sub TxPrecioXtonMn_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxPrecioXtonMn.PreviewKeyDown
         Dim tipoCambio As Double = 0
         Dim kilosAton As Double = 0
         Dim precioContrato As Double = 0
@@ -710,20 +713,26 @@ Public Class liquidacionCalculosProd
             End If
         End If
     End Sub
-
     Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown
-        If NuTotalLiquidar.Value > 0 Then
-            If RbContrato.Checked = True And RbLibre.Checked = False Then
-                Dim tipoCambio As Double = 0
-                Dim kilosAton As Double = 0
-                Dim precioContrato As Double = 0
-                tipoCambio = CDbl(TxTipoCambio.Text)
-                precioContrato = NuPrecioContrato.Value
-                kilosAton = NuTotalLiquidar.Value / 1000
-                TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
-                TxImporte.Text = TxPrecioXtonMn.Text * kilosAton
-                TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+        If e.KeyCode = Keys.Enter Then
+            If NuTotalLiquidar.Value > 0 Then
+                If RbContrato.Checked = True And RbLibre.Checked = False Then
+                    Dim tipoCambio As Double = 0
+                    Dim kilosAton As Double = 0
+                    Dim precioContrato As Double = 0
+                    tipoCambio = CDbl(TxTipoCambio.Text)
+                    precioContrato = NuPrecioContrato.Value
+                    kilosAton = NuTotalLiquidar.Value / 1000
+                    TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
+                    TxImporte.Text = TxPrecioXtonMn.Text * kilosAton
+                    TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+                End If
             End If
         End If
+    End Sub
+    Private Sub BtSalir_Click(sender As Object, e As EventArgs) Handles BtSalir.Click
+        DgEntradasLiq.Columns.Clear()
+        DgEntradasLiq.DataSource = Nothing
+        Close()
     End Sub
 End Class
