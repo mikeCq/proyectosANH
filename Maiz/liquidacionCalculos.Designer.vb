@@ -48,7 +48,6 @@ Partial Class liquidacionCalculosProd
         Me.TbLiquidacionXProd = New System.Windows.Forms.TabControl()
         Me.TpBoletasXliquidar = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.NuPrecioToneladaMxn = New System.Windows.Forms.NumericUpDown()
         Me.RbLibre = New System.Windows.Forms.RadioButton()
         Me.RbContrato = New System.Windows.Forms.RadioButton()
         Me.Label29 = New System.Windows.Forms.Label()
@@ -82,6 +81,7 @@ Partial Class liquidacionCalculosProd
         Me.DgSeleccionLiquidaciones = New System.Windows.Forms.DataGridView()
         Me.DgEntradasLiq = New System.Windows.Forms.DataGridView()
         Me.TpBoletasLiquidadas = New System.Windows.Forms.TabPage()
+        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
         Me.RbNoLiquidado = New System.Windows.Forms.RadioButton()
         Me.RbSiLiquidado = New System.Windows.Forms.RadioButton()
         Me.NuTotalLiquidado = New System.Windows.Forms.NumericUpDown()
@@ -113,23 +113,25 @@ Partial Class liquidacionCalculosProd
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxIDcontratoC = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
+        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
         CType(Me.NuLibre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuContrato, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TbLiquidacionXProd.SuspendLayout()
         Me.TpBoletasXliquidar.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.NuPrecioToneladaMxn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuPrecioContrato, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuTotalLiquidar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuTonSeleccion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgSeleccionLiquidaciones, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgEntradasLiq, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TpBoletasLiquidadas.SuspendLayout()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuTotalLiquidado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuPrecioContratoLiquidado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgLiquidacionesXTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgLiquidacionesXBoleta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtGuardar
@@ -270,7 +272,6 @@ Partial Class liquidacionCalculosProd
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.NuPrecioToneladaMxn)
         Me.GroupBox1.Controls.Add(Me.RbLibre)
         Me.GroupBox1.Controls.Add(Me.RbContrato)
         Me.GroupBox1.Controls.Add(Me.Label29)
@@ -298,17 +299,6 @@ Partial Class liquidacionCalculosProd
         Me.GroupBox1.Size = New System.Drawing.Size(1292, 141)
         Me.GroupBox1.TabIndex = 12
         Me.GroupBox1.TabStop = False
-        '
-        'NuPrecioToneladaMxn
-        '
-        Me.NuPrecioToneladaMxn.DecimalPlaces = 4
-        Me.NuPrecioToneladaMxn.Location = New System.Drawing.Point(325, 84)
-        Me.NuPrecioToneladaMxn.Margin = New System.Windows.Forms.Padding(2)
-        Me.NuPrecioToneladaMxn.Maximum = New Decimal(New Integer() {1569325055, 23283064, 0, 0})
-        Me.NuPrecioToneladaMxn.Name = "NuPrecioToneladaMxn"
-        Me.NuPrecioToneladaMxn.Size = New System.Drawing.Size(113, 20)
-        Me.NuPrecioToneladaMxn.TabIndex = 72
-        Me.NuPrecioToneladaMxn.ThousandsSeparator = True
         '
         'RbLibre
         '
@@ -697,6 +687,7 @@ Partial Class liquidacionCalculosProd
         '
         'TpBoletasLiquidadas
         '
+        Me.TpBoletasLiquidadas.Controls.Add(Me.NumericUpDown2)
         Me.TpBoletasLiquidadas.Controls.Add(Me.RbNoLiquidado)
         Me.TpBoletasLiquidadas.Controls.Add(Me.RbSiLiquidado)
         Me.TpBoletasLiquidadas.Controls.Add(Me.NuTotalLiquidado)
@@ -730,6 +721,13 @@ Partial Class liquidacionCalculosProd
         Me.TpBoletasLiquidadas.TabIndex = 1
         Me.TpBoletasLiquidadas.Text = "Boletas Liquidadas"
         Me.TpBoletasLiquidadas.UseVisualStyleBackColor = True
+        '
+        'NumericUpDown2
+        '
+        Me.NumericUpDown2.Location = New System.Drawing.Point(562, 30)
+        Me.NumericUpDown2.Name = "NumericUpDown2"
+        Me.NumericUpDown2.Size = New System.Drawing.Size(120, 20)
+        Me.NumericUpDown2.TabIndex = 71
         '
         'RbNoLiquidado
         '
@@ -1097,11 +1095,19 @@ Partial Class liquidacionCalculosProd
         Me.Label16.TabIndex = 41
         Me.Label16.Text = "ID Contrato :"
         '
+        'NumericUpDown3
+        '
+        Me.NumericUpDown3.Location = New System.Drawing.Point(903, 102)
+        Me.NumericUpDown3.Name = "NumericUpDown3"
+        Me.NumericUpDown3.Size = New System.Drawing.Size(120, 20)
+        Me.NumericUpDown3.TabIndex = 42
+        '
         'liquidacionCalculosProd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1353, 699)
+        Me.Controls.Add(Me.NumericUpDown3)
         Me.Controls.Add(Me.TbLiquidacionXProd)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.TxIDcontratoC)
@@ -1128,7 +1134,6 @@ Partial Class liquidacionCalculosProd
         Me.TpBoletasXliquidar.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.NuPrecioToneladaMxn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NuPrecioContrato, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NuTotalLiquidar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NuTonSeleccion, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1136,11 +1141,13 @@ Partial Class liquidacionCalculosProd
         CType(Me.DgEntradasLiq, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TpBoletasLiquidadas.ResumeLayout(False)
         Me.TpBoletasLiquidadas.PerformLayout()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NuTotalLiquidado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NuPrecioContratoLiquidado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgLiquidacionesXTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgLiquidacionesXBoleta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1221,6 +1228,7 @@ Partial Class liquidacionCalculosProd
     Friend WithEvents TxFolioContrato As TextBox
     Friend WithEvents TxTipoCambio As TextBox
     Friend WithEvents TxImporte As TextBox
-    Friend WithEvents NuPrecioToneladaMxn As NumericUpDown
     Friend WithEvents TxPrecioXtonMn As TextBox
+    Friend WithEvents NumericUpDown2 As NumericUpDown
+    Friend WithEvents NumericUpDown3 As NumericUpDown
 End Class

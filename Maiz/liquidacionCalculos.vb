@@ -115,12 +115,8 @@ Public Class liquidacionCalculosProd
         TxProductor.Text = ""
         TxIDcontratoC.Text = ""
         TxTipoCambio.Text = ""
-        NuPrecioToneladaMxn.Value = 0
+        TxPrecioXtonMn.Text = 0
         TxImporte.Text = ""
-        'TxFolioContrato.Text = ""
-        'TxMetodoPago.Text = ""
-        'TxBanco.Text = ""
-        'TxUltimosDigitos.Text = ""
         CbMoneda.SelectedIndex = -1
         CbMoneda.Text = ""
         CbComprador.SelectedIndex = -1
@@ -306,37 +302,29 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXBoleta.Columns("deduccion").DefaultCellStyle.Format = "###,##0.00"
         DgLiquidacionesXBoleta.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
     End Sub
-    Private Sub txtPassword_PreviewKeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown, TxPrecioXtonMn.PreviewKeyDown, NuPrecioToneladaMxn.Enter
-        Dim tipoCambio As Double = 0
-        Dim kilosAton As Double = 0
-        Dim precioContrato As Double = 0
-        If e.KeyCode = Keys.Enter Then
-            If NuTotalLiquidar.Value > 0 Then
-
-                If RbContrato.Checked = False And RbLibre.Checked = True Then
-
-                    kilosAton = NuTotalLiquidar.Value / 1000
-                    TxImporte.Text = CDbl(TxPrecioXtonMn.Text) * kilosAton
-                    NuPrecioContrato.Value = CDbl(TxPrecioXtonMn.Text)
-                    TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
-                    TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
-
-                ElseIf RbContrato.Checked = True And RbLibre.Checked = False Then
-
-                    tipoCambio = CDbl(TxTipoCambio.Text)
-                    precioContrato = NuPrecioContrato.Value
-                    kilosAton = NuTotalLiquidar.Value / 1000
-                    NuPrecioToneladaMxn.Value = tipoCambio * NuPrecioContrato.Value
-                    TxImporte.Text = NuPrecioToneladaMxn.Value * kilosAton
-
-                    'TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
-                    TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
-
-                End If
-
-            End If
-        End If
-
+    Private Sub NuPrecioToneladaMxn_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs)  '', TxPrecioXtonMn.PreviewKeyDown
+        'Dim tipoCambio As Double = 0
+        'Dim kilosAton As Double = 0
+        'Dim precioContrato As Double = 0
+        'If e.KeyCode = Keys.Enter Then
+        '    If NuTotalLiquidar.Value > 0 Then
+        '        If RbContrato.Checked = False And RbLibre.Checked = True Then
+        '            kilosAton = NuTotalLiquidar.Value / 1000
+        '            TxImporte.Text = CDbl(TxPrecioXtonMn.Text) * kilosAton
+        '            NuPrecioContrato.Value = CDbl(TxPrecioXtonMn.Text)
+        '            TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
+        '            TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+        '        ElseIf RbContrato.Checked = True And RbLibre.Checked = False Then
+        '            tipoCambio = CDbl(TxTipoCambio.Text)
+        '            precioContrato = NuPrecioContrato.Value
+        '            kilosAton = NuTotalLiquidar.Value / 1000
+        '            NuPrecioToneladaMxn.Value = tipoCambio * NuPrecioContrato.Value
+        '            TxImporte.Text = NuPrecioToneladaMxn.Value * kilosAton
+        '            'TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
+        '            TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+        '        End If
+        '    End If
+        'End If
     End Sub
     Private Sub TxBuscar_Click(sender As Object, e As EventArgs) Handles BtBuscar.Click
         PrecioContrato = 0
@@ -483,7 +471,7 @@ Public Class liquidacionCalculosProd
 
             Dim TipoCambio, precioXTonMn, ImporteMn As Double
             TipoCambio = CDbl(IIf(TxTipoCambio.Text = "", 0, TxTipoCambio.Text))
-            precioXTonMn = NuPrecioToneladaMxn.Value
+            precioXTonMn = TxPrecioXtonMn.Text
             ImporteMn = CDbl(TxImporte.Text)
 
             cmd4.CommandType = CommandType.StoredProcedure
@@ -622,18 +610,17 @@ Public Class liquidacionCalculosProd
 
         End If
     End Sub
-    Private Sub ContratoOlibre(sender As Object, e As EventArgs) Handles RbContrato.CheckedChanged ', RbLibre.CheckedChanged
-        'If RbSi.Checked = True And RbContrato.Checked = True Or RbSi.Checked = True And RbLibre.Checked = True Then
-        If RbContrato.Checked = False And RbLibre.Checked = True Then
+    Private Sub ContratoOlibre(sender As Object, e As EventArgs) Handles RbContrato.CheckedChanged ', RbLibre.CheckedChanged        
+        If RbLibre.Checked = True Then
             TxTipoCambio.Enabled = False
             TxTipoCambio.Text = ""
             NuPrecioContrato.Value = 0
             TxPrecioXtonMn.Enabled = True
             TxPrecioXtonMn.Text = ""
             CbMoneda.Enabled = True
-            CbMoneda.SelectedValue = -1
+            CbMoneda.SelectedValue = 2
             TxImporte.Text = ""
-        ElseIf RbContrato.Checked = True And RbLibre.Checked = False Then
+        Else
             TxPrecioXtonMn.Enabled = False
             TxPrecioXtonMn.Text = ""
             TxTipoCambio.Enabled = True
@@ -643,19 +630,15 @@ Public Class liquidacionCalculosProd
             CbMoneda.Enabled = False
             NuPrecioContrato.Enabled = False
         End If
-        'ElseIf RbSi.Checked = False And RbLibre.Checked = True Then
-        '    MessageBox.Show("El Productor no tiene contrato libre", "Aviso")
-        '    RbContrato.Checked = False
-        '    RbLibre.Checked = False
-        'End If
     End Sub
     Private Sub CbMoneda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbMoneda.SelectionChangeCommitted
         If CbMoneda.SelectedValue = 1 Then
+            NuPrecioContrato.Value = PrecioContrato
             TxTipoCambio.Enabled = True
-            NuPrecioToneladaMxn.Enabled = False
+            TxPrecioXtonMn.Enabled = False
         ElseIf CbMoneda.SelectedValue = 2 Then
             TxTipoCambio.Enabled = False
-            NuPrecioToneladaMxn.Enabled = True
+            TxPrecioXtonMn.Enabled = True
         End If
     End Sub
 
@@ -711,5 +694,36 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.DataSource = Nothing
         Close()
     End Sub
+   Private Sub TxPrecioXtonMn_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxPrecioXtonMn.PreviewKeyDown
+        Dim tipoCambio As Double = 0
+        Dim kilosAton As Double = 0
+        Dim precioContrato As Double = 0
+        If e.KeyCode = Keys.Enter Then
+            If NuTotalLiquidar.Value > 0 Then
+                If RbContrato.Checked = False And RbLibre.Checked = True Then
+                    kilosAton = NuTotalLiquidar.Value / 1000
+                    TxImporte.Text = CDbl(TxPrecioXtonMn.Text) * kilosAton
+                    NuPrecioContrato.Value = CDbl(TxPrecioXtonMn.Text)
+                    TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
+                    TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+                End If
+            End If
+        End If
+    End Sub
 
+    Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown
+        If NuTotalLiquidar.Value > 0 Then
+            If RbContrato.Checked = True And RbLibre.Checked = False Then
+                Dim tipoCambio As Double = 0
+                Dim kilosAton As Double = 0
+                Dim precioContrato As Double = 0
+                tipoCambio = CDbl(TxTipoCambio.Text)
+                precioContrato = NuPrecioContrato.Value
+                kilosAton = NuTotalLiquidar.Value / 1000
+                TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
+                TxImporte.Text = TxPrecioXtonMn.Text * kilosAton
+                TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+            End If
+        End If
+    End Sub
 End Class
