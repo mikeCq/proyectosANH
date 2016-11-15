@@ -49,7 +49,7 @@ Partial Class ReporteResumenBoletasLiquidadas
         Me.ClientSize = New System.Drawing.Size(921, 622)
         Me.Controls.Add(Me.CrResumenBoletas)
         Me.Name = "ReporteResumenBoletasLiquidadas"
-        Me.Text = "ReporteResumenBoletasLiquidadas"
+        Me.Text = "Resumen de Boletas Liquidadas"
         Me.ResumeLayout(False)
 
     End Sub
