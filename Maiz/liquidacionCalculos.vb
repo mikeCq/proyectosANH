@@ -401,7 +401,7 @@ Public Class liquidacionCalculosProd
     End Sub
     Private Sub BtGuardar_Click(sender As Object, e As EventArgs) Handles BtGuardar.Click
         If DgEntradasLiq.RowCount = 0 Then
-            MessageBox.Show("No hay datos para seleccionar.")
+            MessageBox.Show("No hay datos para guardar.")
         ElseIf NuTonSeleccion.Value = NuTotalLiquidar.Value Then
             IdLiquidacionTotal = ""
             Dim Contador As Integer
