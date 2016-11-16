@@ -117,6 +117,9 @@ Public Class liquidacionCalculosProd
         TxTipoCambio.Text = ""
         TxPrecioXtonMn.Text = 0
         TxImporte.Text = ""
+        TxPrecioXtonLiquidado.Text = ""
+        TxImporteLiquidado.Text = ""
+        TxTipoCambioLiquidado.Text = ""
         CbMoneda.SelectedIndex = -1
         CbMoneda.Text = ""
         CbComprador.SelectedIndex = -1
@@ -501,16 +504,25 @@ Public Class liquidacionCalculosProd
         End If
     End Sub
     Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
-        _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
-        _tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
-        Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
-        If opc = DialogResult.Yes Then
-            ReporteLiquidacionesXprod.ShowDialog()
-            ReporteResumenBoletasLiquidadas.ShowDialog()
-        Else
-            ReporteLiquidacionesXprod.ShowDialog()
+        If TpBoletasXliquidar.Focus = True Then
+            If DgEntradasLiq.RowCount = 0 Then
+                MessageBox.Show("No hay datos para imprimir.")
+            End If
+        ElseIf TpBoletasLiquidadas.Focus = True Then
+            If DgLiquidacionesXBoleta.RowCount = 0 Then
+                MessageBox.Show("No hay datos para imprimir.")
+            Else
+                _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
+                _tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
+                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
+                If opc = DialogResult.Yes Then
+                    ReporteLiquidacionesXprod.ShowDialog()
+                    ReporteResumenBoletasLiquidadas.ShowDialog()
+                Else
+                    ReporteLiquidacionesXprod.ShowDialog()
+                End If
+            End If
         End If
-
     End Sub
     Private Sub BtAgregar(sender As Object, e As EventArgs) Handles BtAgregarSeleccion.Click
         DgSeleccionLiquidaciones.Columns.Clear()
