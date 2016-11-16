@@ -726,13 +726,24 @@ Public Class liquidacionCalculosProd
                     kilosAton = NuTotalLiquidar.Value / 1000
                     TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
                     variable = TxPrecioXtonMn.Text
-                    TxImporte.Text = Format(CType(variable, Decimal), "###0.###0")
-                    TxImporte.Text = TxImporte.Text * kilosAton
+                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.###0")
+                    TxImporte.Text = TxPrecioXtonMn.Text * kilosAton
+                ElseIf CbMoneda.SelectedValue = 1 Then
+                    Dim tipoCambio As Double = 0
+                    Dim kilosAton As Double = 0
+                    Dim precioContrato As Double = 0
+                    tipoCambio = CDbl(TxTipoCambio.Text)
+                    precioContrato = NuPrecioContrato.Value
+                    kilosAton = NuTotalLiquidar.Value / 1000
+                    TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
+                    variable = TxPrecioXtonMn.Text
+                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.###0")
+                    TxImporte.Text = TxPrecioXtonMn.Text * kilosAton
                 End If
             End If
         End If
-        TxPrecioXtonMn.Text = FormatNumber(Val(TxImporte.Text), 2)
-        TxImporte.Text = FormatNumber(Val(variable), 2)
+        TxPrecioXtonMn.Text = FormatNumber(Val(variable), 2)
+        TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
     End Sub
     Private Sub BtSalir_Click(sender As Object, e As EventArgs) Handles BtSalir.Click
         DgEntradasLiq.Columns.Clear()

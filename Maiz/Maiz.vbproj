@@ -27,7 +27,7 @@
     <PublisherName>Sistema De Control De Maiz</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>128</ApplicationRevision>
+    <ApplicationRevision>130</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -405,6 +405,12 @@
     <Compile Include="ReporteProductores.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteResumenBoletasLiquidadas.Designer.vb">
+      <DependentUpon>ReporteResumenBoletasLiquidadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteResumenBoletasLiquidadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReportesCompras.Designer.vb">
       <DependentUpon>ReportesCompras.vb</DependentUpon>
     </Compile>
@@ -701,6 +707,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteProductores.resx">
       <DependentUpon>ReporteProductores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteResumenBoletasLiquidadas.resx">
+      <DependentUpon>ReporteResumenBoletasLiquidadas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportesCompras.resx">
       <DependentUpon>ReportesCompras.vb</DependentUpon>
