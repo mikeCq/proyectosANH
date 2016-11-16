@@ -154,42 +154,42 @@ Public Class liquidacionCalculosProd
         colIdProductor.Visible = False
         DgSeleccionLiquidaciones.Columns.Insert(2, colIdProductor)
 
-        Dim colNomProductor As New DataGridViewTextBoxColumn
-        colNomProductor.Name = "nombreProductor"
-        colNomProductor.HeaderText = "Productor"
-        colNomProductor.Width = 240
-        DgSeleccionLiquidaciones.Columns.Insert(3, colNomProductor)
+        'Dim colNomProductor As New DataGridViewTextBoxColumn
+        'colNomProductor.Name = "nombreProductor"
+        'colNomProductor.HeaderText = "Productor"
+        'colNomProductor.Width = 240
+        'DgSeleccionLiquidaciones.Columns.Insert(3, colNomProductor)
 
         Dim colidfecha As New DataGridViewTextBoxColumn
         colidfecha.HeaderText = "Fecha"
         colidfecha.Width = 70
         colidfecha.Name = "Fecha_Pesaje"
         colidfecha.Visible = False
-        DgSeleccionLiquidaciones.Columns.Insert(4, colidfecha)
+        DgSeleccionLiquidaciones.Columns.Insert(3, colidfecha)
 
         Dim ColGrano As New DataGridViewTextBoxColumn()
         ColGrano.HeaderText = "Grano"
         ColGrano.Width = 75
         ColGrano.Name = "grupoGrano"
-        DgSeleccionLiquidaciones.Columns.Insert(5, ColGrano)
+        DgSeleccionLiquidaciones.Columns.Insert(4, ColGrano)
 
         Dim Colneto As New DataGridViewTextBoxColumn()
         Colneto.HeaderText = "Neto"
         Colneto.Width = 65
         Colneto.Name = "Neto"
-        DgSeleccionLiquidaciones.Columns.Insert(6, Colneto)
+        DgSeleccionLiquidaciones.Columns.Insert(5, Colneto)
 
         Dim Coldeducciones As New DataGridViewTextBoxColumn()
         Coldeducciones.HeaderText = "Deducciones"
         Coldeducciones.Width = 60
         Coldeducciones.Name = "Deducciones"
-        DgSeleccionLiquidaciones.Columns.Insert(7, Coldeducciones)
+        DgSeleccionLiquidaciones.Columns.Insert(6, Coldeducciones)
 
         Dim Coltotal As New DataGridViewTextBoxColumn()
         Coltotal.HeaderText = "Total"
         Coltotal.Width = 70
         Coltotal.Name = "Total"
-        DgSeleccionLiquidaciones.Columns.Insert(8, Coltotal)
+        DgSeleccionLiquidaciones.Columns.Insert(7, Coltotal)
 
         DgSeleccionLiquidaciones.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
         DgSeleccionLiquidaciones.Columns("Deducciones").DefaultCellStyle.Format = "###,##0.00"
@@ -206,7 +206,7 @@ Public Class liquidacionCalculosProd
 
             Dim checkBoxColumn As New DataGridViewCheckBoxColumn()
             checkBoxColumn.HeaderText = ""
-            checkBoxColumn.Width = 25
+            checkBoxColumn.Width = 40
             checkBoxColumn.Name = "ChCol"
             DgEntradasLiq.Columns.Insert(13, checkBoxColumn)
 
@@ -220,10 +220,10 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.Columns("Tara").Visible = False
         DgEntradasLiq.Columns("conductorCam").Visible = False
         DgEntradasLiq.Columns("placasConductor").Visible = False
+        DgEntradasLiq.Columns("nombreProductor").Visible = False
 
         DgEntradasLiq.Columns("numeroBoleta").ReadOnly = True
         DgEntradasLiq.Columns("Id_cliente").ReadOnly = True
-        DgEntradasLiq.Columns("nombreProductor").ReadOnly = True
         DgEntradasLiq.Columns("Fecha_Pesaje").ReadOnly = True
         DgEntradasLiq.Columns("grupoGrano").ReadOnly = True
         DgEntradasLiq.Columns("Bruto").ReadOnly = True
@@ -235,7 +235,6 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.Columns("Total").ReadOnly = False
 
         DgEntradasLiq.Columns("numeroBoleta").HeaderText = "Boleta"
-        DgEntradasLiq.Columns("nombreProductor").HeaderText = "Productor"
         DgEntradasLiq.Columns("Fecha_Pesaje").HeaderText = "Fecha"
         DgEntradasLiq.Columns("grupoGrano").HeaderText = "Grano"
         DgEntradasLiq.Columns("Bruto").HeaderText = "Bruto"
@@ -246,17 +245,16 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.Columns("Deducciones").HeaderText = "Total Deducciones"
         DgEntradasLiq.Columns("Total").HeaderText = "Total"
 
-        DgEntradasLiq.Columns("numeroBoleta").Width = 50
-        DgEntradasLiq.Columns("nombreProductor").Width = 240
-        DgEntradasLiq.Columns("Fecha_Pesaje").Width = 70
-        DgEntradasLiq.Columns("grupoGrano").Width = 75
-        DgEntradasLiq.Columns("Bruto").Width = 65
-        DgEntradasLiq.Columns("Tara").Width = 65
-        DgEntradasLiq.Columns("Neto").Width = 65
-        DgEntradasLiq.Columns("conductorCam").Width = 80
-        DgEntradasLiq.Columns("placasConductor").Width = 60
-        DgEntradasLiq.Columns("Deducciones").Width = 60
-        DgEntradasLiq.Columns("Total").Width = 70
+        DgEntradasLiq.Columns("numeroBoleta").Width = 100
+        DgEntradasLiq.Columns("Fecha_Pesaje").Width = 100
+        DgEntradasLiq.Columns("grupoGrano").Width = 100
+        DgEntradasLiq.Columns("Bruto").Width = 100
+        DgEntradasLiq.Columns("Tara").Width = 100
+        DgEntradasLiq.Columns("Neto").Width = 100
+        DgEntradasLiq.Columns("conductorCam").Width = 110
+        DgEntradasLiq.Columns("placasConductor").Width = 90
+        DgEntradasLiq.Columns("Deducciones").Width = 100
+        DgEntradasLiq.Columns("Total").Width = 110
 
         DgEntradasLiq.Columns("Neto").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         DgEntradasLiq.Columns("Deducciones").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
@@ -274,8 +272,8 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXTotal.Columns("idLiquidacionT").Visible = False
         DgLiquidacionesXTotal.Columns("idcontrato").Visible = False
         DgLiquidacionesXTotal.Columns("idproductor").Visible = False
+        DgLiquidacionesXTotal.Columns("nombreProductor").Visible = False
 
-        DgLiquidacionesXTotal.Columns("nombreProductor").HeaderText = "Productor"
         DgLiquidacionesXTotal.Columns("grupoGrano").HeaderText = "Tipo Maiz"
         DgLiquidacionesXTotal.Columns("fechaliquidacion").HeaderText = "Fecha de Liquidacion"
         DgLiquidacionesXTotal.Columns("totalliquidacionContrato").HeaderText = "Total liquidado (Ton)"
@@ -304,30 +302,6 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXBoleta.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
         DgLiquidacionesXBoleta.Columns("deduccion").DefaultCellStyle.Format = "###,##0.00"
         DgLiquidacionesXBoleta.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
-    End Sub
-    Private Sub NuPrecioToneladaMxn_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs)  '', TxPrecioXtonMn.PreviewKeyDown
-        'Dim tipoCambio As Double = 0
-        'Dim kilosAton As Double = 0
-        'Dim precioContrato As Double = 0
-        'If e.KeyCode = Keys.Enter Then
-        '    If NuTotalLiquidar.Value > 0 Then
-        '        If RbContrato.Checked = False And RbLibre.Checked = True Then
-        '            kilosAton = NuTotalLiquidar.Value / 1000
-        '            TxImporte.Text = CDbl(TxPrecioXtonMn.Text) * kilosAton
-        '            NuPrecioContrato.Value = CDbl(TxPrecioXtonMn.Text)
-        '            TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
-        '            TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
-        '        ElseIf RbContrato.Checked = True And RbLibre.Checked = False Then
-        '            tipoCambio = CDbl(TxTipoCambio.Text)
-        '            precioContrato = NuPrecioContrato.Value
-        '            kilosAton = NuTotalLiquidar.Value / 1000
-        '            NuPrecioToneladaMxn.Value = tipoCambio * NuPrecioContrato.Value
-        '            TxImporte.Text = NuPrecioToneladaMxn.Value * kilosAton
-        '            'TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
-        '            TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
-        '        End If
-        '    End If
-        'End If
     End Sub
     Private Sub TxBuscar_Click(sender As Object, e As EventArgs) Handles BtBuscar.Click
         PrecioContrato = 0
@@ -382,8 +356,12 @@ Public Class liquidacionCalculosProd
 
             Dim da3 As New SqlClient.SqlDataAdapter(cmd3)
             Dim dt3 As New DataSet()
-
             da3.Fill(dt3)
+            If dt3.Tables(0).Rows.Count <> 0 Then
+                TbNombreProductor.Text = dt3.Tables(0).Rows(0)("nombreProductor").ToString()
+            Else
+                TbNombreProductor.Text = dt.Tables(0).Rows(0)("nombreProductor").ToString()
+            End If
             DgLiquidacionesXTotal.DataSource = dt3.Tables(0).DefaultView
             propiedadesDgLiquidacionTotal()
             If RbNo.Checked = True Then
@@ -397,6 +375,7 @@ Public Class liquidacionCalculosProd
                 RbLibre.Enabled = True
             End If
             ContratoOLibre()
+            VerificarSiSePuedeLiquidar()
         End If
     End Sub
     Private Sub BtGuardar_Click(sender As Object, e As EventArgs) Handles BtGuardar.Click
@@ -436,7 +415,6 @@ Public Class liquidacionCalculosProd
 
                     cmd2.Parameters.AddWithValue("@idinventario", DgEntradasLiq.Rows(Contador).Cells("IdInventario").Value.ToString)
                     cmd2.Parameters.AddWithValue("@TotalXliquidar", (CDbl(DgEntradasLiq.Rows(Contador).Cells("Total").Value)) / 1000)
-
                     cmd2.ExecuteNonQuery()
                 End If
             Next Contador
@@ -525,6 +503,9 @@ Public Class liquidacionCalculosProd
         End If
     End Sub
     Private Sub BtAgregar(sender As Object, e As EventArgs) Handles BtAgregarSeleccion.Click
+        Agregar()
+    End Sub
+    Private Sub Agregar()
         DgSeleccionLiquidaciones.Columns.Clear()
         DgSeleccionLiquidaciones.DataSource = Nothing
         propiedadesDataProdSelec()
@@ -533,7 +514,7 @@ Public Class liquidacionCalculosProd
         For Contador = 0 To DgEntradasLiq.RowCount - 1
             If DgEntradasLiq.Rows(Contador).Cells("ChCol").Value = True Then
 
-                DgSeleccionLiquidaciones.Rows.Add(DgEntradasLiq.Rows(Contador).Cells("IdInventario").Value.ToString(), DgEntradasLiq.Rows(Contador).Cells("numeroBoleta").Value, DgEntradasLiq.Rows(Contador).Cells("Id_cliente").Value.ToString(), DgEntradasLiq.Rows(Contador).Cells("nombreProductor").Value.ToString(), DgEntradasLiq.Rows(Contador).Cells("Fecha_Pesaje").Value, DgEntradasLiq.Rows(Contador).Cells("grupoGrano").Value.ToString(), DgEntradasLiq.Rows(Contador).Cells("Neto").Value, DgEntradasLiq.Rows(Contador).Cells("Deducciones").Value, DgEntradasLiq.Rows(Contador).Cells("Total").Value)
+                DgSeleccionLiquidaciones.Rows.Add(DgEntradasLiq.Rows(Contador).Cells("IdInventario").Value.ToString(), DgEntradasLiq.Rows(Contador).Cells("numeroBoleta").Value, DgEntradasLiq.Rows(Contador).Cells("Id_cliente").Value.ToString(), DgEntradasLiq.Rows(Contador).Cells("Fecha_Pesaje").Value, DgEntradasLiq.Rows(Contador).Cells("grupoGrano").Value.ToString(), DgEntradasLiq.Rows(Contador).Cells("Neto").Value, DgEntradasLiq.Rows(Contador).Cells("Deducciones").Value, DgEntradasLiq.Rows(Contador).Cells("Total").Value)
 
             End If
         Next Contador
@@ -546,7 +527,6 @@ Public Class liquidacionCalculosProd
         Next Contador
         NuTotalLiquidar.Value = PuestosAcumulados
         PuestosAcumulados = 0
-
     End Sub
     Private Function verificarAgregado(ByVal idcliente As String) As Boolean
         Dim resultado As Boolean = False
@@ -570,9 +550,11 @@ Public Class liquidacionCalculosProd
         Next Contador
 
         DgEntradasLiq_CellMouseUp()
-
     End Sub
     Private Sub DgEntradasLiq_CellMouseUp()
+        ContarChecksMarcados()
+    End Sub
+    Private Sub ContarChecksMarcados()
         Dim PuestosAcumulados As Double
 
         For Each row As DataGridViewRow In DgEntradasLiq.Rows
@@ -581,7 +563,6 @@ Public Class liquidacionCalculosProd
                 PuestosAcumulados = PuestosAcumulados + row.Cells("Total").Value.ToString()
             End If
         Next row
-
         NuTonSeleccion.Value = PuestosAcumulados
         PuestosAcumulados = 0
     End Sub
@@ -761,5 +742,33 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.Columns.Clear()
         DgEntradasLiq.DataSource = Nothing
         Close()
+    End Sub
+    Private Sub VerificarSiSePuedeLiquidar()
+        Dim SumaTotal As Double
+        Dim Diferencia As Double
+        If DgLiquidacionesXTotal.Rows().Count = 0 Then
+            For Contador = 0 To DgEntradasLiq.RowCount - 1
+                DgEntradasLiq.Rows(Contador).Cells("ChCol").Value = True
+                SumaTotal = SumaTotal + DgEntradasLiq.Rows(Contador).Cells("Total").Value.ToString()
+                If SumaTotal >= NuContrato.Value Then
+                    SumaTotal = SumaTotal - NuContrato.Value
+                    'MessageBox.Show("El Productor ha completado su contrato", "Aviso")
+                    Dim opc = MessageBox.Show("El Productor ha completado su contrato, ¿Desea liquidar el total del contrato?", "Aviso", MessageBoxButtons.YesNo)
+                    If opc = DialogResult.Yes Then
+                        Diferencia = DgEntradasLiq.Rows(Contador).Cells("Total").Value.ToString() - SumaTotal
+                        DgEntradasLiq.Rows(Contador).Cells("Total").Value = Diferencia
+                        DgEntradasLiq.Rows(Contador).Cells("ChCol").Value = True
+                        Agregar()
+                    Else
+                        For Contador1 = 0 To DgEntradasLiq.RowCount - 1
+                            DgEntradasLiq.Rows(Contador1).Cells("ChCol").Value = False
+                        Next
+
+                    End If
+                    Exit For
+                    End If
+            Next Contador
+            ContarChecksMarcados()
+        End If
     End Sub
 End Class
