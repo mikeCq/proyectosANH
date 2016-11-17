@@ -207,6 +207,7 @@ Public Class ContratosCompras
                     cmd.Parameters.AddWithValue("@Empresa", TxEmpresa.Text)
                     cmd.Parameters.AddWithValue("@apoderado", TxApoderado.Text)
                     cmd.Parameters.AddWithValue("@acopio", TxAcopio.Text)
+                    cmd.Parameters.AddWithValue("@estatusContrato", 0)
 
                     TxFolioContrato.Text = cmd.Parameters("@idcontratocompra").Value.ToString()
 
@@ -225,7 +226,6 @@ Public Class ContratosCompras
         End If
     End Sub
     Private Sub insertaLotesSeleccionados()
-
         For Each row As DataGridViewRow In DgSeleccionLotes.Rows
             Dim isSelected As Boolean = Convert.ToBoolean(row.Cells("ChCol").Value)
             If isSelected = True Then
