@@ -79,6 +79,7 @@ Partial Class Maiz
         Me.SbNombreUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbIdUsuario = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.EntradasGlobalesPorProductorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -285,7 +286,7 @@ Partial Class Maiz
         '
         'ReportesToolStripMenuItem
         '
-        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductoresToolStripMenuItem, Me.ContratosToolStripMenuItem, Me.LotesToolStripMenuItem, Me.ToolStripSeparator2, Me.EntradasToolStripMenuItem, Me.SalidasToolStripMenuItem, Me.EmbarquesToolStripMenuItem, Me.EmbarquesPorClienteToolStripMenuItem, Me.ToolStripSeparator3, Me.LiquidacionesCalculosToolStripMenuItem, Me.VentasToolStripMenuItem1, Me.ComprasToolStripMenuItem1})
+        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductoresToolStripMenuItem, Me.ContratosToolStripMenuItem, Me.LotesToolStripMenuItem, Me.ToolStripSeparator2, Me.EntradasToolStripMenuItem, Me.EntradasGlobalesPorProductorToolStripMenuItem, Me.SalidasToolStripMenuItem, Me.EmbarquesToolStripMenuItem, Me.EmbarquesPorClienteToolStripMenuItem, Me.ToolStripSeparator3, Me.LiquidacionesCalculosToolStripMenuItem, Me.VentasToolStripMenuItem1, Me.ComprasToolStripMenuItem1})
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
         Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
@@ -293,71 +294,71 @@ Partial Class Maiz
         'ProductoresToolStripMenuItem
         '
         Me.ProductoresToolStripMenuItem.Name = "ProductoresToolStripMenuItem"
-        Me.ProductoresToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.ProductoresToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ProductoresToolStripMenuItem.Text = "Productores"
         '
         'ContratosToolStripMenuItem
         '
         Me.ContratosToolStripMenuItem.Name = "ContratosToolStripMenuItem"
-        Me.ContratosToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.ContratosToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ContratosToolStripMenuItem.Text = "Contratos"
         '
         'LotesToolStripMenuItem
         '
         Me.LotesToolStripMenuItem.Name = "LotesToolStripMenuItem"
-        Me.LotesToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.LotesToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.LotesToolStripMenuItem.Text = "Lotes"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(228, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(262, 6)
         '
         'EntradasToolStripMenuItem
         '
         Me.EntradasToolStripMenuItem.Name = "EntradasToolStripMenuItem"
-        Me.EntradasToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.EntradasToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.EntradasToolStripMenuItem.Text = "Entradas"
         '
         'SalidasToolStripMenuItem
         '
         Me.SalidasToolStripMenuItem.Name = "SalidasToolStripMenuItem"
-        Me.SalidasToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.SalidasToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.SalidasToolStripMenuItem.Text = "Salidas"
         '
         'EmbarquesToolStripMenuItem
         '
         Me.EmbarquesToolStripMenuItem.Name = "EmbarquesToolStripMenuItem"
-        Me.EmbarquesToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.EmbarquesToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.EmbarquesToolStripMenuItem.Text = "Embarques por Comprador"
         '
         'EmbarquesPorClienteToolStripMenuItem
         '
         Me.EmbarquesPorClienteToolStripMenuItem.Name = "EmbarquesPorClienteToolStripMenuItem"
-        Me.EmbarquesPorClienteToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.EmbarquesPorClienteToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.EmbarquesPorClienteToolStripMenuItem.Text = "Embarques por Productor"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(228, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(262, 6)
         '
         'LiquidacionesCalculosToolStripMenuItem
         '
         Me.LiquidacionesCalculosToolStripMenuItem.Name = "LiquidacionesCalculosToolStripMenuItem"
-        Me.LiquidacionesCalculosToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.LiquidacionesCalculosToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.LiquidacionesCalculosToolStripMenuItem.Text = "Liquidaciones - Calculos"
         '
         'VentasToolStripMenuItem1
         '
         Me.VentasToolStripMenuItem1.Name = "VentasToolStripMenuItem1"
-        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(231, 22)
+        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.VentasToolStripMenuItem1.Text = "Ventas"
         '
         'ComprasToolStripMenuItem1
         '
         Me.ComprasToolStripMenuItem1.Name = "ComprasToolStripMenuItem1"
-        Me.ComprasToolStripMenuItem1.Size = New System.Drawing.Size(231, 22)
+        Me.ComprasToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.ComprasToolStripMenuItem1.Text = "Compras"
         '
         'UtileriasToolStripMenuItem
@@ -447,6 +448,12 @@ Partial Class Maiz
         Me.SbIdUsuario.Text = "idUsuario"
         Me.SbIdUsuario.Visible = False
         '
+        'EntradasGlobalesPorProductorToolStripMenuItem
+        '
+        Me.EntradasGlobalesPorProductorToolStripMenuItem.Name = "EntradasGlobalesPorProductorToolStripMenuItem"
+        Me.EntradasGlobalesPorProductorToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.EntradasGlobalesPorProductorToolStripMenuItem.Text = "Entradas Globales por Productor"
+        '
         'Maiz
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -532,4 +539,5 @@ Partial Class Maiz
     Friend WithEvents AutorizacionDiariaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SbIdUsuario As ToolStripStatusLabel
     Friend WithEvents CalculoDeLiquidaciónPorCompradorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EntradasGlobalesPorProductorToolStripMenuItem As ToolStripMenuItem
 End Class
