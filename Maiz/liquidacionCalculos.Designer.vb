@@ -81,8 +81,8 @@ Partial Class liquidacionCalculosProd
         Me.DgSeleccionLiquidaciones = New System.Windows.Forms.DataGridView()
         Me.DgEntradasLiq = New System.Windows.Forms.DataGridView()
         Me.TpBoletasLiquidadas = New System.Windows.Forms.TabPage()
-        Me.RbNoLiquidado = New System.Windows.Forms.RadioButton()
-        Me.RbSiLiquidado = New System.Windows.Forms.RadioButton()
+        Me.RbLibreLiquidado = New System.Windows.Forms.RadioButton()
+        Me.RbContratoLiquidado = New System.Windows.Forms.RadioButton()
         Me.NuTotalLiquidado = New System.Windows.Forms.NumericUpDown()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
@@ -687,8 +687,8 @@ Partial Class liquidacionCalculosProd
         '
         'TpBoletasLiquidadas
         '
-        Me.TpBoletasLiquidadas.Controls.Add(Me.RbNoLiquidado)
-        Me.TpBoletasLiquidadas.Controls.Add(Me.RbSiLiquidado)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.RbLibreLiquidado)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.RbContratoLiquidado)
         Me.TpBoletasLiquidadas.Controls.Add(Me.NuTotalLiquidado)
         Me.TpBoletasLiquidadas.Controls.Add(Me.Label27)
         Me.TpBoletasLiquidadas.Controls.Add(Me.Label28)
@@ -721,29 +721,29 @@ Partial Class liquidacionCalculosProd
         Me.TpBoletasLiquidadas.Text = "Boletas Liquidadas"
         Me.TpBoletasLiquidadas.UseVisualStyleBackColor = True
         '
-        'RbNoLiquidado
+        'RbLibreLiquidado
         '
-        Me.RbNoLiquidado.AutoSize = True
-        Me.RbNoLiquidado.Enabled = False
-        Me.RbNoLiquidado.Location = New System.Drawing.Point(205, 7)
-        Me.RbNoLiquidado.Name = "RbNoLiquidado"
-        Me.RbNoLiquidado.Size = New System.Drawing.Size(41, 17)
-        Me.RbNoLiquidado.TabIndex = 68
-        Me.RbNoLiquidado.TabStop = True
-        Me.RbNoLiquidado.Text = "NO"
-        Me.RbNoLiquidado.UseVisualStyleBackColor = True
+        Me.RbLibreLiquidado.AutoSize = True
+        Me.RbLibreLiquidado.Enabled = False
+        Me.RbLibreLiquidado.Location = New System.Drawing.Point(164, 7)
+        Me.RbLibreLiquidado.Name = "RbLibreLiquidado"
+        Me.RbLibreLiquidado.Size = New System.Drawing.Size(48, 17)
+        Me.RbLibreLiquidado.TabIndex = 68
+        Me.RbLibreLiquidado.TabStop = True
+        Me.RbLibreLiquidado.Text = "Libre"
+        Me.RbLibreLiquidado.UseVisualStyleBackColor = True
         '
-        'RbSiLiquidado
+        'RbContratoLiquidado
         '
-        Me.RbSiLiquidado.AutoSize = True
-        Me.RbSiLiquidado.Enabled = False
-        Me.RbSiLiquidado.Location = New System.Drawing.Point(164, 7)
-        Me.RbSiLiquidado.Name = "RbSiLiquidado"
-        Me.RbSiLiquidado.Size = New System.Drawing.Size(35, 17)
-        Me.RbSiLiquidado.TabIndex = 67
-        Me.RbSiLiquidado.TabStop = True
-        Me.RbSiLiquidado.Text = "SI"
-        Me.RbSiLiquidado.UseVisualStyleBackColor = True
+        Me.RbContratoLiquidado.AutoSize = True
+        Me.RbContratoLiquidado.Enabled = False
+        Me.RbContratoLiquidado.Location = New System.Drawing.Point(93, 7)
+        Me.RbContratoLiquidado.Name = "RbContratoLiquidado"
+        Me.RbContratoLiquidado.Size = New System.Drawing.Size(65, 17)
+        Me.RbContratoLiquidado.TabIndex = 67
+        Me.RbContratoLiquidado.TabStop = True
+        Me.RbContratoLiquidado.Text = "Contrato"
+        Me.RbContratoLiquidado.UseVisualStyleBackColor = True
         '
         'NuTotalLiquidado
         '
@@ -776,9 +776,9 @@ Partial Class liquidacionCalculosProd
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.Location = New System.Drawing.Point(3, 7)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(155, 15)
+        Me.Label28.Size = New System.Drawing.Size(84, 15)
         Me.Label28.TabIndex = 66
-        Me.Label28.Text = "Cuenta con Contrato Libre :"
+        Me.Label28.Text = "Liquidación a:"
         '
         'CbCompradorLiquidado
         '
@@ -1202,8 +1202,8 @@ Partial Class liquidacionCalculosProd
     Friend WithEvents TxTipoCambioLiquidado As TextBox
     Friend WithEvents TxImporteLiquidado As TextBox
     Friend WithEvents TxPrecioXtonLiquidado As TextBox
-    Friend WithEvents RbNoLiquidado As RadioButton
-    Friend WithEvents RbSiLiquidado As RadioButton
+    Friend WithEvents RbLibreLiquidado As RadioButton
+    Friend WithEvents RbContratoLiquidado As RadioButton
     Friend WithEvents NuTotalLiquidado As NumericUpDown
     Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label

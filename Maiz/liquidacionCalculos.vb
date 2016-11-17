@@ -362,18 +362,33 @@ Public Class liquidacionCalculosProd
             Else
                 TbNombreProductor.Text = dt.Tables(0).Rows(0)("nombreProductor").ToString()
             End If
+            If dt3.Tables(0).Rows(0)("EstatusContrato") = 1 Then
+                If RbNo.Checked = True Then
+                    RbContrato.Checked = True
+                    RbContrato.Enabled = True
+                    RbLibre.Checked = False
+                    RbLibre.Enabled = True
+                Else
+                    RbContrato.Enabled = False
+                    RbLibre.Enabled = True
+                    RbContrato.Checked = False
+                    RbLibre.Checked = True
+                End If
+            Else
+                If RbSi.Checked = True Then
+                    RbContrato.Enabled = True
+                    RbLibre.Enabled = True
+                    RbContrato.Checked = True
+                    RbLibre.Checked = False
+                Else
+                    RbContrato.Enabled = True
+                    RbLibre.Enabled = False
+                    RbContrato.Checked = True
+                    RbLibre.Checked = False
+                End If
+            End If
             DgLiquidacionesXTotal.DataSource = dt3.Tables(0).DefaultView
             propiedadesDgLiquidacionTotal()
-            If RbNo.Checked = True Then
-                RbContrato.Checked = True
-                RbLibre.Checked = False
-                RbLibre.Enabled = False
-            ElseIf RbSi.Checked = True Then
-                RbContrato.Checked = True
-                RbLibre.Checked = True
-                RbContrato.Enabled = True
-                RbLibre.Enabled = True
-            End If
             ContratoOLibre()
             VerificarSiSePuedeLiquidar()
         End If
@@ -485,13 +500,23 @@ Public Class liquidacionCalculosProd
         If TpBoletasXliquidar.Focus = True Then
             If DgEntradasLiq.RowCount = 0 Then
                 MessageBox.Show("No hay datos para imprimir.")
+            Else
+                _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
+                _tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
+                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
+                If opc = DialogResult.Yes Then
+                    ReporteLiquidacionesXprod.ShowDialog()
+                    ReporteResumenBoletasLiquidadas.ShowDialog()
+                Else
+                    ReporteLiquidacionesXprod.ShowDialog()
+                End If
             End If
         ElseIf TpBoletasLiquidadas.Focus = True Then
             If DgLiquidacionesXBoleta.RowCount = 0 Then
                 MessageBox.Show("No hay datos para imprimir.")
             Else
                 _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
-                _tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
+                _tipoContrato = IIf(RbContratoLiquidado.Checked = True, 0, 1)
                 Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
                 If opc = DialogResult.Yes Then
                     ReporteLiquidacionesXprod.ShowDialog()
@@ -595,7 +620,13 @@ Public Class liquidacionCalculosProd
 
             da4.Fill(dt4)
             Dim row As DataRow = dt4.Rows(0)
-
+            '---------------------------------
+            If row("IdTipoLiquidacion") = 0 Then
+                RbContratoLiquidado.Checked = True
+            Else
+                RbLibreLiquidado.Checked = True
+            End If
+            '-----------------------------------------------
             TxTipoCambioLiquidado.Text = row("tipodecambio")
             NuPrecioContratoLiquidado.Value = row("preciocontrato")
             NuTotalLiquidado.Value = row("totalContratoTon")
@@ -607,7 +638,6 @@ Public Class liquidacionCalculosProd
             TxMetodoPagoLiquidado.Text = CStr(row("metodopago"))
             TxBancoLiquidado.Text = CStr(row("banco"))
             TxUltimosDigitosLiquidado.Text = CStr(row("ultimosdigitos"))
-
         End If
     End Sub
     Private Sub ContratoOlibre(sender As Object, e As EventArgs) Handles RbContrato.CheckedChanged ', RbLibre.CheckedChanged        
@@ -639,6 +669,7 @@ Public Class liquidacionCalculosProd
         ElseIf CbMoneda.SelectedValue = 2 Then
             TxTipoCambio.Enabled = False
             TxPrecioXtonMn.Enabled = True
+            NuPrecioContrato.Value = 0.00
         End If
     End Sub
 
@@ -766,7 +797,7 @@ Public Class liquidacionCalculosProd
 
                     End If
                     Exit For
-                    End If
+                End If
             Next Contador
             ContarChecksMarcados()
         End If
