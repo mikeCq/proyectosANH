@@ -307,15 +307,15 @@ Public Class liquidacionCalculosProd
         PrecioContrato = 0
         Moneda = -1
         Dim BuscarEntradaLiq As New BuscarEntradaLiq
-        DgLiquidacionesXBoleta.Columns.Clear()
-        DgLiquidacionesXBoleta.DataSource = Nothing
-        DgSeleccionLiquidaciones.Columns.Clear()
-        DgSeleccionLiquidaciones.DataSource = Nothing
         BuscarEntradaLiq.ShowDialog()
-        DgEntradasLiq.Columns.Clear()
-        DgEntradasLiq.DataSource = Nothing
         Dim codigoproductor As Object = BuscarEntradaLiq.CodigoProductor
         If BuscarEntradaLiq.CodigoProductor <> Nothing Then
+            DgLiquidacionesXBoleta.Columns.Clear()
+            DgLiquidacionesXBoleta.DataSource = Nothing
+            DgSeleccionLiquidaciones.Columns.Clear()
+            DgSeleccionLiquidaciones.DataSource = Nothing
+            DgEntradasLiq.Columns.Clear()
+            DgEntradasLiq.DataSource = Nothing
             Dim cmd As New SqlCommand("sp_llenarDgEntradasliq", cnn)
 
             cmd.CommandType = CommandType.StoredProcedure
@@ -357,12 +357,19 @@ Public Class liquidacionCalculosProd
             Dim da3 As New SqlClient.SqlDataAdapter(cmd3)
             Dim dt3 As New DataSet()
             da3.Fill(dt3)
+            Dim BanderaContrato As Integer
+            If (dt3.Tables(0).Rows.Count = 0) Then
+
+                BanderaContrato = 0
+            Else
+                BanderaContrato = dt3.Tables(0).Rows(0)("EstatusContrato")
+            End If
             If dt3.Tables(0).Rows.Count <> 0 Then
                 TbNombreProductor.Text = dt3.Tables(0).Rows(0)("nombreProductor").ToString()
             Else
                 TbNombreProductor.Text = dt.Tables(0).Rows(0)("nombreProductor").ToString()
             End If
-            If dt3.Tables(0).Rows(0)("EstatusContrato") = 1 Then
+            If BanderaContrato = 1 Then
                 If RbNo.Checked = True Then
                     RbContrato.Checked = True
                     RbContrato.Enabled = True
@@ -491,11 +498,15 @@ Public Class liquidacionCalculosProd
             cmd4.Parameters.AddWithValue("@importeLetra", UCase(letras(TxImporte.Text)))
             cmd4.Parameters.AddWithValue("@idcomprador", CbComprador.SelectedValue)
             cmd4.Parameters.AddWithValue("@tipoContrato", IIf(RbContrato.Checked = True, 0, 1))
+            cmd4.Parameters.AddWithValue("@estatusContrato", estatusContrato(0))
             cmd4.ExecuteNonQuery()
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
     End Sub
+    Private Function estatusContrato(ByVal status As Integer) As Integer
+
+    End Function
     Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
         If TpBoletasXliquidar.Focus = True Then
             If DgEntradasLiq.RowCount = 0 Then
@@ -776,18 +787,19 @@ Public Class liquidacionCalculosProd
     End Sub
     Private Sub VerificarSiSePuedeLiquidar()
         Dim SumaTotal As Double
+        Dim resultadoDiferencia As Double
         Dim Diferencia As Double
         If DgLiquidacionesXTotal.Rows().Count = 0 Then
             For Contador = 0 To DgEntradasLiq.RowCount - 1
                 DgEntradasLiq.Rows(Contador).Cells("ChCol").Value = True
                 SumaTotal = SumaTotal + DgEntradasLiq.Rows(Contador).Cells("Total").Value.ToString()
                 If SumaTotal >= NuContrato.Value Then
-                    SumaTotal = SumaTotal - NuContrato.Value
+                    Diferencia = SumaTotal - NuContrato.Value
                     'MessageBox.Show("El Productor ha completado su contrato", "Aviso")
                     Dim opc = MessageBox.Show("El Productor ha completado su contrato, ¿Desea liquidar el total del contrato?", "Aviso", MessageBoxButtons.YesNo)
                     If opc = DialogResult.Yes Then
-                        Diferencia = DgEntradasLiq.Rows(Contador).Cells("Total").Value.ToString() - SumaTotal
-                        DgEntradasLiq.Rows(Contador).Cells("Total").Value = Diferencia
+                        resultadoDiferencia = DgEntradasLiq.Rows(Contador).Cells("Total").Value.ToString() - Diferencia
+                        DgEntradasLiq.Rows(Contador).Cells("Total").Value = resultadoDiferencia
                         DgEntradasLiq.Rows(Contador).Cells("ChCol").Value = True
                         Agregar()
                     Else
@@ -799,6 +811,11 @@ Public Class liquidacionCalculosProd
                     Exit For
                 End If
             Next Contador
+            If SumaTotal < NuContrato.Value Then
+                For Contador1 = 0 To DgEntradasLiq.RowCount - 1
+                    DgEntradasLiq.Rows(Contador1).Cells("ChCol").Value = False
+                Next
+            End If
             ContarChecksMarcados()
         End If
     End Sub

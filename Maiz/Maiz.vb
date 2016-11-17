@@ -129,7 +129,7 @@ Public Class Maiz
         ReporteVentas.ShowDialog()
     End Sub
     Private Sub ComprasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ComprasToolStripMenuItem1.Click
-        ReportesCompras.ShowDialog()
+        ReporteCompras.ShowDialog()
     End Sub
     Private Sub ComprasDeTrigoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprasDeTrigoToolStripMenuItem.Click
         compradoresMaiz.ShowDialog()
@@ -161,7 +161,7 @@ Public Class Maiz
             e.Cancel = True
         End If
     End Sub
-    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click, MyBase.FormClosing
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         SqlConnection.ClearAllPools()
         Me.Close()
     End Sub

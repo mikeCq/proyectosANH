@@ -27,7 +27,7 @@
     <PublisherName>Sistema De Control De Maiz</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>130</ApplicationRevision>
+    <ApplicationRevision>135</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -375,6 +375,12 @@
     <Compile Include="ReporteBoletasSalidas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteCompras.Designer.vb">
+      <DependentUpon>ReporteCompras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteCompras.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReporteContratos.Designer.vb">
       <DependentUpon>ReporteContratos.vb</DependentUpon>
     </Compile>
@@ -385,6 +391,12 @@
       <DependentUpon>ReporteEmbarquesXcliente.vb</DependentUpon>
     </Compile>
     <Compile Include="ReporteEmbarquesXcliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteEntradasGlobalXprod.Designer.vb">
+      <DependentUpon>ReporteEntradasGlobalXprod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteEntradasGlobalXprod.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReporteLiquidacionesXprod.Designer.vb">
@@ -471,6 +483,12 @@
       <DependentUpon>ReporteEmbarquesXcomprador.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RPT\ReporteEntradaGlobalXprod.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteEntradaGlobalXprod.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RPT\ReporteEntradas.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -511,6 +529,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteSalidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\RptComprasXproductor.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptComprasXproductor.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SeleccionCentroAcopio.Designer.vb">
@@ -693,11 +717,17 @@
     <EmbeddedResource Include="ReporteBoletasSalidas.resx">
       <DependentUpon>ReporteBoletasSalidas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCompras.resx">
+      <DependentUpon>ReporteCompras.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReporteContratos.resx">
       <DependentUpon>ReporteContratos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteEmbarquesXcliente.resx">
       <DependentUpon>ReporteEmbarquesXcliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteEntradasGlobalXprod.resx">
+      <DependentUpon>ReporteEntradasGlobalXprod.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteLiquidacionesXprod.resx">
       <DependentUpon>ReporteLiquidacionesXprod.vb</DependentUpon>
@@ -746,6 +776,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteEmbarquesXcomprador.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RPT\ReporteEntradaGlobalXprod.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteEntradaGlobalXprod.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RPT\ReporteEntradas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteEntradas.vb</LastGenOutput>
@@ -773,6 +807,10 @@
     <EmbeddedResource Include="RPT\ReporteSalidas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteSalidas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RptComprasXproductor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptComprasXproductor.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionCentroAcopio.resx">
       <DependentUpon>SeleccionCentroAcopio.vb</DependentUpon>
