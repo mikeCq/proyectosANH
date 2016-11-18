@@ -540,10 +540,15 @@ Public Class liquidacionCalculosProd
         RbContratoLiquidado.Checked = False
         RbLibreLiquidado.Checked = False
         TxTipoCambioLiquidado.Text = ""
+        TxTipoCambio.Text = ""
         NuPrecioContratoLiquidado.Value = 0.00
+        NuPrecioContrato.Value = 0.00
         TxPrecioXtonLiquidado.Text = ""
+        TxPrecioXtonMn.Text = ""
         TxImporteLiquidado.Text = ""
+        TxImporte.Text = ""
         CbCompradorLiquidado.SelectedValue = -1
+        CbComprador.SelectedValue = -1
         TxContratoLiquidado.Text = ""
         TxMetodoPagoLiquidado.Text = ""
         TxBancoLiquidado.Text = ""
