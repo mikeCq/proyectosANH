@@ -553,7 +553,7 @@ Public Class liquidacionCalculosProd
 
     Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
         If TpBoletasXliquidar.Focus = True Then
-            If DgEntradasLiq.RowCount = 0 Then
+            If DgSeleccionLiquidaciones.RowCount = 0 Then
                 MessageBox.Show("No hay datos para imprimir.")
             Else
                 _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
