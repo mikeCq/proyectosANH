@@ -465,20 +465,6 @@ Public Class liquidacionCalculosProd
             DgEntradasLiq.DataSource = dt1.Tables(0).DefaultView
             propiedadesDataEntLiq()
 
-
-            'DgLiquidacionesXBoleta.Columns.Clear()
-            'DgLiquidacionesXBoleta.DataSource = Nothing
-
-            'Dim cmd As New SqlCommand("sp_llenarLiquidacionesXproductor", cnn)
-
-            'cmd.CommandType = CommandType.StoredProcedure
-            'cmd.Parameters.AddWithValue("@idProductor", TxProductor.Text)
-            'Dim da As New SqlClient.SqlDataAdapter(cmd)
-            'Dim dt As New DataSet()
-            'da.Fill(dt)
-
-            'DgLiquidacionesXBoleta.DataSource = dt.Tables(0).DefaultView
-
             Dim cmd4 As New SqlCommand("sp_InsLiquidacionTotXprod", cnn)
 
             Dim TipoCambio, precioXTonMn, ImporteMn As Double
@@ -526,13 +512,10 @@ Public Class liquidacionCalculosProd
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
-
+        CbMonedaVerificar()
+        LimpiarGuardar()
     End Sub
     Private Sub EstatusContrato()
-        'Dim cmd As New SqlCommand("sp_ActEstatusContrato", cnn)
-        'cmd.CommandType = CommandType.StoredProcedure
-        'cmd.Parameters.Add(New SqlClient.SqlParameter("@contrato", TxFolioContrato.Text))
-        'cmd.Parameters.Add(New SqlClient.SqlParameter("@sumapagado", NuTotalLiquidar.Value))
         Dim IdEstatusContrato As Integer
         Dim cmd As New SqlCommand("sp_ActEstatusContrato", cnn)
         cmd.CommandType = CommandType.StoredProcedure
@@ -548,6 +531,22 @@ Public Class liquidacionCalculosProd
         Else
             TxEstatusContrato.Text = "INCOMPLETO"
         End If
+    End Sub
+    Private Sub LimpiarGuardar()
+        NuTonSeleccion.Value = 0.00
+        NuTotalLiquidar.Value = 0.00
+        CbComprador.SelectedValue = -1
+        RbContratoLiquidado.Checked = False
+        RbLibreLiquidado.Checked = False
+        TxTipoCambioLiquidado.Text = ""
+        NuPrecioContratoLiquidado.Value = 0.00
+        TxPrecioXtonLiquidado.Text = ""
+        TxImporteLiquidado.Text = ""
+        CbCompradorLiquidado.SelectedValue = -1
+        TxContratoLiquidado.Text = ""
+        TxMetodoPagoLiquidado.Text = ""
+        TxBancoLiquidado.Text = ""
+        TxUltimosDigitosLiquidado.Text = ""
     End Sub
 
     Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
@@ -716,6 +715,9 @@ Public Class liquidacionCalculosProd
         End If
     End Sub
     Private Sub CbMoneda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbMoneda.SelectionChangeCommitted
+        CbMonedaVerificar()
+    End Sub
+    Private Sub CbMonedaVerificar()
         If CbMoneda.SelectedValue = 1 Then
             NuPrecioContrato.Value = PrecioContrato
             TxTipoCambio.Enabled = True
