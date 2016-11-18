@@ -522,7 +522,7 @@ Public Class liquidacionCalculosProd
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.Clear()
         cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstatusContrato", 0))
-        cmd.Parameters.Add(New SqlClient.SqlParameter("@contrato", TxIDcontratoC.Text))
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@contrato", IdLiquidacionTotal))
         cmd.Parameters.Add(New SqlClient.SqlParameter("@sumapagado", NuTotalLiquidar.Value))
         cmd.Parameters("@IdEstatusContrato").Direction = ParameterDirection.InputOutput
         cmd.ExecuteNonQuery()
