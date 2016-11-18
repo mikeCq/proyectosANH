@@ -32,6 +32,8 @@ Public Class ReporteCompras
         CbProductor.SelectedIndex = -1
         DTInicio.Value = "01/01/1900"
         DTFinal.Value = "01/01/1900"
+        CbTipoContrato.Text = ""
+        CbTipoContrato.SelectedIndex = -1
     End Sub
     Private Sub generaReporte(sender As Object, e As EventArgs) Handles BtGenerarReporte.Click
         Try
@@ -39,6 +41,7 @@ Public Class ReporteCompras
             If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
                 RptReporteCompras.SetDatabaseLogon("sa", "Usuario01", "SERVER2008\SERVER12", "MAIZ")
                 RptReporteCompras.SetParameterValue("@idproductor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
+                RptReporteCompras.SetParameterValue("@tipoContrato", IIf(CbTipoContrato.Text = Nothing, "", CbTipoContrato.Text))
                 RptReporteCompras.SetParameterValue("@fechaini", DTInicio.Value)
                 RptReporteCompras.SetParameterValue("@fechafin", DTFinal.Value)
                 CrComprasXproductor.ReportSource = RptReporteCompras
@@ -57,6 +60,7 @@ Public Class ReporteCompras
                 If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
                     RptReporteCompras.SetDatabaseLogon("sa", "Usuario01", "SERVER2008\SERVER12", "MAIZ")
                     RptReporteCompras.SetParameterValue("@idproductor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
+                    RptReporteCompras.SetParameterValue("@tipoContrato", IIf(CbTipoContrato.Text = Nothing, "", CbTipoContrato.Text))
                     RptReporteCompras.SetParameterValue("@fechaini", DTInicio.Value)
                     RptReporteCompras.SetParameterValue("@fechafin", DTFinal.Value)
                     CrComprasXproductor.ReportSource = RptReporteCompras

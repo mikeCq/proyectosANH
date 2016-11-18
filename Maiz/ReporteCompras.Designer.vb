@@ -32,6 +32,7 @@ Partial Class ReporteCompras
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Txpro = New System.Windows.Forms.Label()
         Me.BtGenerarReporte = New System.Windows.Forms.Button()
+        Me.CbTipoContrato = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'Splitter1
@@ -79,7 +80,7 @@ Partial Class ReporteCompras
         'DTFinal
         '
         Me.DTFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTFinal.Location = New System.Drawing.Point(197, 94)
+        Me.DTFinal.Location = New System.Drawing.Point(197, 131)
         Me.DTFinal.Name = "DTFinal"
         Me.DTFinal.Size = New System.Drawing.Size(97, 20)
         Me.DTFinal.TabIndex = 27
@@ -88,7 +89,7 @@ Partial Class ReporteCompras
         'DTInicio
         '
         Me.DTInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTInicio.Location = New System.Drawing.Point(73, 94)
+        Me.DTInicio.Location = New System.Drawing.Point(73, 131)
         Me.DTInicio.Name = "DTInicio"
         Me.DTInicio.Size = New System.Drawing.Size(97, 20)
         Me.DTInicio.TabIndex = 25
@@ -97,7 +98,7 @@ Partial Class ReporteCompras
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(176, 100)
+        Me.Label3.Location = New System.Drawing.Point(176, 137)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(15, 13)
         Me.Label3.TabIndex = 30
@@ -106,11 +107,11 @@ Partial Class ReporteCompras
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(11, 100)
+        Me.Label2.Location = New System.Drawing.Point(12, 104)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 13)
+        Me.Label2.Size = New System.Drawing.Size(53, 13)
         Me.Label2.TabIndex = 31
-        Me.Label2.Text = "Buscar del"
+        Me.Label2.Text = "Contrato :"
         '
         'Txpro
         '
@@ -131,11 +132,21 @@ Partial Class ReporteCompras
         Me.BtGenerarReporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtGenerarReporte.UseVisualStyleBackColor = True
         '
+        'CbTipoContrato
+        '
+        Me.CbTipoContrato.FormattingEnabled = True
+        Me.CbTipoContrato.Items.AddRange(New Object() {"02AXCPV1608066", "LIBRE"})
+        Me.CbTipoContrato.Location = New System.Drawing.Point(73, 101)
+        Me.CbTipoContrato.Name = "CbTipoContrato"
+        Me.CbTipoContrato.Size = New System.Drawing.Size(184, 21)
+        Me.CbTipoContrato.TabIndex = 33
+        '
         'ReporteCompras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1179, 701)
+        Me.Controls.Add(Me.CbTipoContrato)
         Me.Controls.Add(Me.CbProductor)
         Me.Controls.Add(Me.Btlimpiar)
         Me.Controls.Add(Me.DTFinal)
@@ -165,4 +176,5 @@ Partial Class ReporteCompras
     Friend WithEvents Label2 As Label
     Friend WithEvents Txpro As Label
     Friend WithEvents BtGenerarReporte As Button
+    Friend WithEvents CbTipoContrato As ComboBox
 End Class

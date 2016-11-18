@@ -6,7 +6,6 @@ Public Class ReporteLiquidacionesXprod
         Dim codigo As String = liquidacionCalculosProd.codigoLiquidacionTP
         RptLiquidacionProd.SetDatabaseLogon("sa", "Usuario01", "SERVER2008\SERVER12", "MAIZ")
         RptLiquidacionProd.SetParameterValue("@idliquidaciontprincipal", liquidacionCalculosProd.codigoLiquidacionTP)
-        RptLiquidacionProd.SetParameterValue("@tipoContrato", liquidacionCalculosProd.tipoContrato)
         CrLiquidacionProd.ReportSource = RptLiquidacionProd
 
     End Sub

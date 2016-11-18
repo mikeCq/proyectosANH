@@ -124,8 +124,22 @@ Public Class liquidacionCalculosProd
         CbMoneda.Text = ""
         CbComprador.SelectedIndex = -1
         CbComprador.Text = ""
+        TxNombreProductor.Text = ""
+        TxEstatusContrato.Text = ""
+        NuPrecioContratoLiquidado.Value = 0
+        CbMonedaLiquidado.SelectedIndex = -1
+        CbMonedaLiquidado.Text = ""
+        CbCompradorLiquidado.SelectedIndex = -1
+        CbCompradorLiquidado.Text = ""
+        TxContratoLiquidado.Text = ""
+        TxMetodoPagoLiquidado.Text = ""
+        TxBancoLiquidado.Text = ""
+        TxUltimosDigitosLiquidado.Text = ""
+        NuTotalLiquidado.Value = 0
         RbNo.Checked = False
         RbSi.Checked = False
+        RbContratoLiquidado.Checked = False
+        RbLibreLiquidado.Checked = False
         DgEntradasLiq.Columns.Clear()
         DgEntradasLiq.DataSource = Nothing
         DgSeleccionLiquidaciones.Columns.Clear()
@@ -153,12 +167,6 @@ Public Class liquidacionCalculosProd
         colIdProductor.Name = "IdProductor"
         colIdProductor.Visible = False
         DgSeleccionLiquidaciones.Columns.Insert(2, colIdProductor)
-
-        'Dim colNomProductor As New DataGridViewTextBoxColumn
-        'colNomProductor.Name = "nombreProductor"
-        'colNomProductor.HeaderText = "Productor"
-        'colNomProductor.Width = 240
-        'DgSeleccionLiquidaciones.Columns.Insert(3, colNomProductor)
 
         Dim colidfecha As New DataGridViewTextBoxColumn
         colidfecha.HeaderText = "Fecha"
@@ -342,6 +350,7 @@ Public Class liquidacionCalculosProd
             PrecioContrato = CDbl(dt2.Tables(0).Rows(0)("precioXtonelada").ToString())
             NuContrato.Value = CDbl(dt2.Tables(0).Rows(0)("toneladascompras").ToString())
             NuLibre.Value = CDbl(dt2.Tables(0).Rows(0)("toneladaslibresentradas").ToString())
+            TxEstatusContrato.Text = IIf(dt2.Tables(0).Rows(0)("IdEstatusContrato").ToString() = 0, "INCOMPLETO", "COMPLETO")
             Moneda = dt2.Tables(0).Rows(0)("moneda").ToString()
             If dt2.Tables(0).Rows(0)("AceptaContratoLibre").ToString() = 1 Then
                 RbSi.Checked = True
@@ -362,12 +371,12 @@ Public Class liquidacionCalculosProd
 
                 BanderaContrato = 0
             Else
-                BanderaContrato = dt3.Tables(0).Rows(0)("EstatusContrato")
+                BanderaContrato = dt2.Tables(0).Rows(0)("IdEstatusContrato")
             End If
             If dt3.Tables(0).Rows.Count <> 0 Then
-                TbNombreProductor.Text = dt3.Tables(0).Rows(0)("nombreProductor").ToString()
+                TxNombreProductor.Text = dt3.Tables(0).Rows(0)("nombreProductor").ToString()
             Else
-                TbNombreProductor.Text = dt.Tables(0).Rows(0)("nombreProductor").ToString()
+                TxNombreProductor.Text = dt.Tables(0).Rows(0)("nombreProductor").ToString()
             End If
             If BanderaContrato = 1 Then
                 If RbNo.Checked = True Then
@@ -417,7 +426,7 @@ Public Class liquidacionCalculosProd
                 cmd1.Parameters.AddWithValue("@idInventario", DgSeleccionLiquidaciones.Rows(Contador).Cells("IdInventario").Value.ToString)
                 cmd1.Parameters.AddWithValue("@numeroBoleta", DgSeleccionLiquidaciones.Rows(Contador).Cells("numeroBoleta").Value)
                 cmd1.Parameters.AddWithValue("@idProductor", DgSeleccionLiquidaciones.Rows(Contador).Cells("IdProductor").Value.ToString())
-                cmd1.Parameters.AddWithValue("@nombreProductor", DgSeleccionLiquidaciones.Rows(Contador).Cells("nombreProductor").Value.ToString())
+                cmd1.Parameters.AddWithValue("@nombreProductor", TxNombreProductor.Text)
                 cmd1.Parameters.AddWithValue("@grupoGrano", DgSeleccionLiquidaciones.Rows(Contador).Cells("grupoGrano").Value.ToString())
                 cmd1.Parameters.AddWithValue("@Neto", (CDbl(DgSeleccionLiquidaciones.Rows(Contador).Cells("Neto").Value)) / 1000)
                 cmd1.Parameters.AddWithValue("@deduccion", (CDbl(DgSeleccionLiquidaciones.Rows(Contador).Cells("Deducciones").Value)) / 1000)
@@ -491,22 +500,56 @@ Public Class liquidacionCalculosProd
             cmd4.Parameters.AddWithValue("@moneda", CbMoneda.SelectedValue)
             cmd4.Parameters.AddWithValue("@precioXtonMxn", precioXTonMn)
             cmd4.Parameters.AddWithValue("@importeTotal", ImporteMn)
-            cmd4.Parameters.AddWithValue("@contrato", IIf(TxFolioContrato.Text <> "", TxFolioContrato.Text, ""))
+            cmd4.Parameters.AddWithValue("@contrato", IIf(RbContrato.Checked = True, TxFolioContrato.Text, "LIBRE"))
             cmd4.Parameters.AddWithValue("@metodoPago", TxMetodoPago.Text)
             cmd4.Parameters.AddWithValue("@banco", TxBanco.Text)
             cmd4.Parameters.AddWithValue("@ultimosDigitos", TxUltimosDigitos.Text)
             cmd4.Parameters.AddWithValue("@importeLetra", UCase(letras(TxImporte.Text)))
             cmd4.Parameters.AddWithValue("@idcomprador", CbComprador.SelectedValue)
             cmd4.Parameters.AddWithValue("@tipoContrato", IIf(RbContrato.Checked = True, 0, 1))
-            cmd4.Parameters.AddWithValue("@estatusContrato", estatusContrato(0))
+
             cmd4.ExecuteNonQuery()
+            EstatusContrato()
+
+
+            Dim cmd5 As New SqlCommand("sp_llenaDgLiquidacionTotal", cnn)
+
+            cmd5.CommandType = CommandType.StoredProcedure
+            cmd5.Parameters.Add(New SqlClient.SqlParameter("@idproductor", TxProductor.Text))
+
+            Dim da5 As New SqlClient.SqlDataAdapter(cmd5)
+            Dim dt5 As New DataSet()
+            da5.Fill(dt5)
+
+            DgLiquidacionesXTotal.DataSource = dt5.Tables(0).DefaultView
+            propiedadesDgLiquidacionTotal()
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
-    End Sub
-    Private Function estatusContrato(ByVal status As Integer) As Integer
 
-    End Function
+    End Sub
+    Private Sub EstatusContrato()
+        'Dim cmd As New SqlCommand("sp_ActEstatusContrato", cnn)
+        'cmd.CommandType = CommandType.StoredProcedure
+        'cmd.Parameters.Add(New SqlClient.SqlParameter("@contrato", TxFolioContrato.Text))
+        'cmd.Parameters.Add(New SqlClient.SqlParameter("@sumapagado", NuTotalLiquidar.Value))
+        Dim IdEstatusContrato As Integer
+        Dim cmd As New SqlCommand("sp_ActEstatusContrato", cnn)
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Clear()
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstatusContrato", 0))
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@contrato", TxIDcontratoC.Text))
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@sumapagado", NuTotalLiquidar.Value))
+        cmd.Parameters("@IdEstatusContrato").Direction = ParameterDirection.InputOutput
+        cmd.ExecuteNonQuery()
+        IdEstatusContrato = cmd.Parameters("@IdEstatusContrato").Value
+        If IdEstatusContrato = 1 Then
+            TxEstatusContrato.Text = "COMPLETO"
+        Else
+            TxEstatusContrato.Text = "INCOMPLETO"
+        End If
+    End Sub
+
     Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
         If TpBoletasXliquidar.Focus = True Then
             If DgEntradasLiq.RowCount = 0 Then
