@@ -493,6 +493,7 @@ Public Class liquidacionCalculosProd
             cmd4.Parameters.AddWithValue("@importeLetra", UCase(letras(TxImporte.Text)))
             cmd4.Parameters.AddWithValue("@idcomprador", CbComprador.SelectedValue)
             cmd4.Parameters.AddWithValue("@tipoContrato", IIf(RbContrato.Checked = True, 0, 1))
+            cmd4.Parameters.AddWithValue("@idTipoLiquidacion", IIf(RbContrato.Checked = True, 0, 1))
 
             cmd4.ExecuteNonQuery()
             EstatusContrato()
