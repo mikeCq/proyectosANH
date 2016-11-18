@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class ReporteVentaXcomprador
+Public Class RptVentaXcomprador
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class ReporteVentaXcomprador
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "ReporteVentaXcomprador.rpt"
+            Return "RptVentaXcomprador.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class ReporteVentaXcomprador
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "Maiz.ReporteVentaXcomprador.rpt"
+            Return "Maiz.RptVentaXcomprador.rpt"
         End Get
         Set
             'Do nothing
@@ -110,7 +110,7 @@ Public Class ReporteVentaXcomprador
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedReporteVentaXcomprador
+Public Class CachedRptVentaXcomprador
     Inherits Component
     Implements ICachedReport
     
@@ -152,7 +152,7 @@ Public Class CachedReporteVentaXcomprador
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As ReporteVentaXcomprador = New ReporteVentaXcomprador()
+        Dim rpt As RptVentaXcomprador = New RptVentaXcomprador()
         rpt.Site = Me.Site
         Return rpt
     End Function

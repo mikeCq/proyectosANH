@@ -665,164 +665,41 @@ Module conexion
         End Try
         Return resultado
     End Function
-    ''######################################### COMPRUEBA LAS TONELADAS QUE ENTRARON Y SI FALTA O YA LLENO CONTRATO #####################################################
-    'Function compruebaToneladasContrato(ByVal compruebaToneladas As String, ByVal idcliente As String) As String
-    '    Dim tonEnt, tonCon, tonRes As Double
-    '    Dim resultado As String = ""
-    '    Try
-    '        consulta = New SqlCommand("select toneladasCompras from contratosCompras where id_cliente ='" & idcliente & "'", cnn)
-    '        respuesta = consulta.ExecuteReader
-    '        If respuesta.Read Then
-    '            If respuesta.Item("id_contratoc") Is DBNull.Value Then
-    '                resultado = "CCO" & Format(1, "0000#")
-    '            Else
-    '                resultado = "CCO" & (Format(respuesta.Item("id_contratoc") + 1, "0000#"))
-    '            End If
-    '        End If
-    '        respuesta.Close()
-    '    Catch ex As Exception
-    '        MsgBox(ex.ToString)
-    '    End Try
-    '    Return resultado
-    'End Function
-    '##########################################  #####################################################################
-    'Function Letras(ByVal numero As String) As String
-    '    Dim palabras, entero, dec, flag As String
-    '    Dim num, x, y As Integer
-    '    flag = "N"
-    '    If Mid(numero, 1, 1) = "-" Then
-    '        numero = Mid(numero, 2, numero.ToString.Length - 1).ToString
-    '        palabras = "menos "
-    '    End If
-
-    '    For x = 1 To numero.ToString.Length
-    '        If Mid(numero, 1, 1) = "0" Then
-    '            numero = Trim(Mid(numero, 2, numero.ToString.Length).ToString)
-    '            If Trim(numero.ToString.Length) = 0 Then palabras = ""
-    '        Else
-    '            Exit For
-    '        End If
-    '    Next
-    '    For y = 1 To Len(numero)
-    '        If Mid(numero, y, 1) = "." Then
-    '            flag = "S"
-    '        Else
-    '            If flag = "N" Then
-    '                entero = entero + Mid(numero, y, 1)
-    '            Else
-    '                dec = dec + Mid(numero, y, 1)
-    '            End If
-    '        End If
-    '    Next y
-    '    If Len(dec) = 1 Then dec = dec & "0"
-    '    flag = "N"
-    '    If Val(numero) <= 999999999 Then
-    '        For y = Len(entero) To 1 Step -1
-    '            num = Len(entero) - (y - 1)
-    '            Select Case y
-    '                Case 3, 6, 9
-    '                    Select Case Mid(entero, num, 1)
-    '                        Case "1"
-    '                            If Mid(entero, num + 1, 1) = "0" And Mid(entero, num + 2, 1) = "0" Then
-    '                                palabras = palabras & "cien "
-    '                            Else
-    '                                palabras = palabras & "ciento "
-    '                            End If
-    '                        '*hasta el 9
-    '                        Case "9"
-    '                            palabras = palabras & "novecientos "
-    '                    End Select
-    '                Case 2, 5, 8
-    '                    Select Case Mid(entero, num, 1)
-    '                        Case "1"
-    '                            If Mid(entero, num + 1, 1) = "0" Then
-    '                                flag = "S"
-    '                                palabras = palabras & "diez "
-    '                            End If
-    '                            If Mid(entero, num + 1, 1) = "1" Then
-    '                                flag = "S"
-    '                                palabras = palabras & "once "
-    '                            End If
-
-    '                            If Mid(entero, num + 1, 1) > "5" Then
-    '                                flag = "N"
-    '                                palabras = palabras & "dieci"
-    '                            End If
-    '                        Case "2"
-    '                            If Mid(entero, num + 1, 1) = "0" Then
-    '                                palabras = palabras & "veinte "
-    '                                flag = "S"
-    '                            Else
-    '                                palabras = palabras & "veinti"
-    '                                flag = "N"
-    '                            End If
-
-    '                        Case "9"
-    '                            If Mid(entero, num + 1, 1) = "0" Then
-    '                                palabras = palabras & "noventa "
-    '                                flag = "S"
-    '                            Else
-    '                                palabras = palabras & "noventa y "
-    '                                flag = "N"
-    '                            End If
-    '                    End Select
-    '                Case 1, 4, 7
-    '                    Select Case Mid(entero, num, 1)
-    '                        Case "1"
-    '                            If flag = "N" Then
-    '                                If y = 1 Then
-    '                                    palabras = palabras & "uno "
-    '                                Else
-    '                                    palabras = palabras & "un "
-    '                                End If
-    '                            End If
-    '                        Case "2"
-    '                            If flag = "N" Then palabras = palabras & "DOS "
-    '                        Case "3"
-    '                            If flag = "N" Then palabras = palabras & "TRES "
-    '                        Case "4"
-    '                            If flag = "N" Then palabras = palabras & "CUATRO "
-    '                        Case "5"
-    '                            If flag = "N" Then palabras = palabras & "CINCO "
-    '                        Case "6"
-    '                            If flag = "N" Then palabras = palabras & "SEIS "
-    '                        Case "7"
-    '                            If flag = "N" Then palabras = palabras & "SIETE "
-    '                        Case "8"
-    '                            If flag = "N" Then palabras = palabras & "OCHO "
-    '                        Case "9"
-    '                            If flag = "N" Then palabras = palabras & "NUEVE "
-    '                    End Select
-    '            End Select
-    '            If y = 4 Then
-    '                If Mid(entero, 6, 1) <> "0" Or Mid(entero, 5, 1) <> "0" Or Mid(entero, 4, 1) <> "0" Or
-    '                (Mid(entero, 6, 1) = "0" And Mid(entero, 5, 1) = "0" And Mid(entero, 4, 1) = "0" And
-    '                Len(entero) <= 6) Then palabras = palabras & "MIL "
-    '            End If
-    '            If y = 7 Then
-    '                If Len(entero) = 7 And Mid(entero, 1, 1) = "1" Then
-    '                    palabras = palabras & "MILLON "
-    '                Else
-    '                    palabras = palabras & "MILLONES "
-    '                End If
-    '            End If
-    '        Next y
-    '        If dec <> "" Then
-    '            If palabras = "" Then
-    '                Letras = "CERO PESOS 00/100 M.N."
-    '            Else
-    '            End If
-    '            Dim AuxDec As String
-    '            If dec.Length > 2 Then
-    '                AuxDec = Mid(dec, 2, 1)
-    '                Letras = palabras & " PESOS " & AuxDec & "/100 M.N."
-    '            Else
-    '                Letras = palabras & " PESOS " & dec & "/100 M.N."
-    '            End If
-    '        Else
-    '        End If
-    '    End If
-    '    Return Letras
-    'End Function
+    Function generaCodigoVentaResumen(ByVal codigoLiquidacion As String) As String
+        Dim resultado As String = ""
+        Try
+            consulta = New SqlCommand("select max(substring(IdVentaComprador,4,7)) as IdVentaComprador from VentaComprador", cnn)
+            respuesta = consulta.ExecuteReader
+            If respuesta.Read Then
+                If respuesta.Item("IdVentaComprador") Is DBNull.Value Then
+                    resultado = "LVP" & Format(1, "000000#")
+                Else
+                    resultado = "LVP" & (Format(respuesta.Item("IdVentaComprador") + 1, "000000#"))
+                End If
+            End If
+            respuesta.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return resultado
+    End Function
+    Function generaCodigoLiquidacionVenta(ByVal codigoLiquidacion As String) As String
+        Dim resultado As String = ""
+        Try
+            consulta = New SqlCommand("select max(substring(IdVentaTotalComprador,4,7)) as IdVentaTotalComprador from VentaTotalComprador", cnn)
+            respuesta = consulta.ExecuteReader
+            If respuesta.Read Then
+                If respuesta.Item("IdVentaTotalComprador") Is DBNull.Value Then
+                    resultado = "LVT" & Format(1, "000000#")
+                Else
+                    resultado = "LVT" & (Format(respuesta.Item("IdVentaTotalComprador") + 1, "000000#"))
+                End If
+            End If
+            respuesta.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return resultado
+    End Function
 End Module
 

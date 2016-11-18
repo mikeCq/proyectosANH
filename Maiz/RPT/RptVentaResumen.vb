@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class ReporteVentaResumen
+Public Class RptVentaResumen
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class ReporteVentaResumen
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "ReporteVentaResumen.rpt"
+            Return "RptVentaResumen.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class ReporteVentaResumen
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "Maiz.ReporteVentaResumen.rpt"
+            Return "Maiz.RptVentaResumen.rpt"
         End Get
         Set
             'Do nothing
@@ -102,7 +102,7 @@ Public Class ReporteVentaResumen
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedReporteVentaResumen
+Public Class CachedRptVentaResumen
     Inherits Component
     Implements ICachedReport
     
@@ -144,7 +144,7 @@ Public Class CachedReporteVentaResumen
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As ReporteVentaResumen = New ReporteVentaResumen()
+        Dim rpt As RptVentaResumen = New RptVentaResumen()
         rpt.Site = Me.Site
         Return rpt
     End Function
