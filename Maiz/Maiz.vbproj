@@ -537,6 +537,18 @@
       <DependentUpon>RptComprasXproductor.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RPT\RptVentaResumen.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptVentaResumen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\RptVentaXcomprador.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptVentaXcomprador.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SeleccionCentroAcopio.Designer.vb">
       <DependentUpon>SeleccionCentroAcopio.vb</DependentUpon>
     </Compile>
@@ -811,6 +823,14 @@
     <EmbeddedResource Include="RPT\RptComprasXproductor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptComprasXproductor.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RptVentaResumen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptVentaResumen.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RptVentaXcomprador.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptVentaXcomprador.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionCentroAcopio.resx">
       <DependentUpon>SeleccionCentroAcopio.vb</DependentUpon>

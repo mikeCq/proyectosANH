@@ -5,33 +5,11 @@ Public Class LiquidacionXcomprador
     End Sub
 
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BTNNuevo.Click
-        TBTipoDeCambio.Text = ""
-        NUDPrecioContrato.Value = 0.00
-        CBTipoMoneda.SelectedValue = -1
-        TBPrecioPorTonelada.Text = ""
-        TBImporte.Text = ""
-        NUDToneladasSeleccionadas.Value = 0.00
-        NUDTotalLiquidar.Value = 0.00
-        CBComprador.SelectedValue = -1
-        TBContrato.Text = ""
-        CBTipoMoneda.SelectedIndex = -1
-        '---PESTAÑA DE LIQUIDACION-------------------
-        TBTipoDeCambioBL.Text = ""
-        NUDPrecioContratoBL.Value = 0.00
-        NUDTotalLiquidadoBL.Value = 0.00
-        CBTipoMonedaBL.SelectedIndex = -1
-        TBPrecioPorToneladaBL.Text = ""
-        TBImporteBL.Text = ""
-        CBCompradorBL.SelectedValue = -1
-        TBContratoBL.Text = ""
-        TBMetodoPagoBL.Text = ""
-        TBBancoBL.Text = ""
-        TBUltimosDigitosBL.Text = ""
-        RBTNContratoBL.Checked = False
-        RBTNLibreBL.Checked = False
+        Limpiar()
     End Sub
 
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BTNSalir.Click
+        Limpiar()
         Me.Close()
     End Sub
 
@@ -85,5 +63,31 @@ Public Class LiquidacionXcomprador
         CBCompradorBL.DisplayMember = "Nombre_Comprador"
         CBCompradorBL.ValueMember = "Id_Comprador"
         CBCompradorBL.SelectedIndex = -1
+    End Sub
+    Private Sub Limpiar()
+        TBTipoDeCambio.Text = ""
+        NUDPrecioContrato.Value = 0.00
+        CBTipoMoneda.SelectedValue = -1
+        TBPrecioPorTonelada.Text = ""
+        TBImporte.Text = ""
+        NUDToneladasSeleccionadas.Value = 0.00
+        NUDTotalLiquidar.Value = 0.00
+        CBComprador.SelectedValue = -1
+        TBContrato.Text = ""
+        CBTipoMoneda.SelectedIndex = -1
+        '---PESTAÑA DE LIQUIDACION-------------------
+        TBTipoDeCambioBL.Text = ""
+        NUDPrecioContratoBL.Value = 0.00
+        NUDTotalLiquidadoBL.Value = 0.00
+        CBTipoMonedaBL.SelectedIndex = -1
+        TBPrecioPorToneladaBL.Text = ""
+        TBImporteBL.Text = ""
+        CBCompradorBL.SelectedValue = -1
+        TBContratoBL.Text = ""
+        TBMetodoPagoBL.Text = ""
+        TBBancoBL.Text = ""
+        TBUltimosDigitosBL.Text = ""
+        RBTNContratoBL.Checked = False
+        RBTNLibreBL.Checked = False
     End Sub
 End Class
