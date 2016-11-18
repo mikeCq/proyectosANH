@@ -547,6 +547,7 @@ Public Class liquidacionCalculosProd
         TxMetodoPagoLiquidado.Text = ""
         TxBancoLiquidado.Text = ""
         TxUltimosDigitosLiquidado.Text = ""
+
     End Sub
 
     Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
