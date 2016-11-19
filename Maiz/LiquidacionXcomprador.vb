@@ -5,26 +5,13 @@ Public Class LiquidacionXcomprador
         LlenarDGVsalidas()
         PropiedadesDGVSalidas()
     End Sub
-    Private Sub LlenarDGVsalidas()
-        Dim cmd As New SqlCommand("sp_llenarDgvSalidas", cnn)
-
-        cmd.CommandType = CommandType.StoredProcedure
-
-        Dim da As New SqlClient.SqlDataAdapter(cmd)
-        Dim dt As New DataSet()
-        da.Fill(dt)
-
-        DGVSalidas.DataSource = dt.Tables(0).DefaultView
-    End Sub
     Private Sub PropiedadesDGVSalidas()
         If DGVSalidas.Columns("ChCol") Is Nothing Then
-
             Dim checkBoxColumn As New DataGridViewCheckBoxColumn()
             checkBoxColumn.HeaderText = ""
             checkBoxColumn.Width = 40
             checkBoxColumn.Name = "ChCol"
             DGVSalidas.Columns.Insert(11, checkBoxColumn)
-
         End If
         DGVSalidas.Columns("id_salida").Visible = False
         DGVSalidas.Columns("id_empresa").Visible = False
@@ -43,6 +30,63 @@ Public Class LiquidacionXcomprador
         DGVSalidas.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
         DGVSalidas.Columns("Deducciones").DefaultCellStyle.Format = "###,##0.00"
         DGVSalidas.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
+    End Sub
+    Private Sub PropiedadesDGVSalidasSeleccionadas()
+        Dim DGVTBCIdSalida As New DataGridViewTextBoxColumn
+        DGVTBCIdSalida.Name = "id_salida"
+        DGVTBCIdSalida.Visible = False
+        DGVSalidasSeleccionadas.Columns.Insert(0, DGVTBCIdSalida)
+
+        Dim DGVTBCIdBoleta As New DataGridViewTextBoxColumn
+        DGVTBCIdBoleta.Name = "numeroBoleta"
+        DGVTBCIdBoleta.HeaderText = "Boleta"
+        DGVTBCIdBoleta.Width = 50
+        DGVSalidasSeleccionadas.Columns.Insert(1, DGVTBCIdBoleta)
+
+        Dim DGVTBCIdEmpresa As New DataGridViewTextBoxColumn
+        DGVTBCIdEmpresa.Name = "id_empresa"
+        DGVTBCIdEmpresa.Visible = False
+        DGVSalidasSeleccionadas.Columns.Insert(2, DGVTBCIdEmpresa)
+
+        Dim DGVTBCFecha As New DataGridViewTextBoxColumn
+        DGVTBCFecha.HeaderText = "Fecha"
+        DGVTBCFecha.Width = 70
+        DGVTBCFecha.Name = "Fecha_Pesaje"
+        DGVTBCFecha.Visible = False
+        DGVSalidasSeleccionadas.Columns.Insert(3, DGVTBCFecha)
+
+        Dim DGVTBCGrano As New DataGridViewTextBoxColumn()
+        DGVTBCGrano.HeaderText = "Grano"
+        DGVTBCGrano.Width = 75
+        DGVTBCGrano.Name = "grupoGrano"
+        DGVSalidasSeleccionadas.Columns.Insert(4, DGVTBCGrano)
+
+        Dim DGVTBCNeto As New DataGridViewTextBoxColumn()
+        DGVTBCNeto.HeaderText = "Neto"
+        DGVTBCNeto.Width = 65
+        DGVTBCNeto.Name = "Neto"
+        DGVSalidasSeleccionadas.Columns.Insert(5, DGVTBCNeto)
+
+        Dim DGVTBCDeducciones As New DataGridViewTextBoxColumn()
+        DGVTBCDeducciones.HeaderText = "Deducciones"
+        DGVTBCDeducciones.Width = 60
+        DGVTBCDeducciones.Name = "Deducciones"
+        DGVSalidasSeleccionadas.Columns.Insert(6, DGVTBCDeducciones)
+
+        Dim DGVTBCTotal As New DataGridViewTextBoxColumn()
+        DGVTBCTotal.HeaderText = "Total"
+        DGVTBCTotal.Width = 70
+        DGVTBCTotal.Name = "Total"
+        DGVSalidasSeleccionadas.Columns.Insert(7, DGVTBCTotal)
+
+        DGVSalidasSeleccionadas.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
+        DGVSalidasSeleccionadas.Columns("Deducciones").DefaultCellStyle.Format = "###,##0.00"
+        DGVSalidasSeleccionadas.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
+
+        DGVSalidasSeleccionadas.Columns("Neto").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        DGVSalidasSeleccionadas.Columns("Deducciones").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        DGVSalidasSeleccionadas.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
     End Sub
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BTNNuevo.Click
         Limpiar()
@@ -65,7 +109,7 @@ Public Class LiquidacionXcomprador
 
     End Sub
     Private Sub BTNAgregar_Click(sender As Object, e As EventArgs) Handles BTNAgregar.Click
-
+        Agregar()
     End Sub
     '--------------METODOS---------------------------------------------------------------------------------------------------------------------------------------------------------
     Private Sub LlenarComboBox()
@@ -132,5 +176,30 @@ Public Class LiquidacionXcomprador
         RBTNLibreBL.Checked = False
         CBTipoMoneda.Items.Clear()
         CBTipoMonedaBL.Items.Clear()
+    End Sub
+    Private Sub LlenarDGVsalidas()
+        Dim cmd As New SqlCommand("sp_llenarDgvSalidas", cnn)
+        cmd.CommandType = CommandType.StoredProcedure
+        Dim da As New SqlClient.SqlDataAdapter(cmd)
+        Dim dt As New DataSet()
+        da.Fill(dt)
+        DGVSalidas.DataSource = dt.Tables(0).DefaultView
+    End Sub
+    Private Sub Agregar()
+        DGVSalidasSeleccionadas.Columns.Clear()
+        DGVSalidasSeleccionadas.DataSource = Nothing
+        PropiedadesDGVSalidasSeleccionadas()
+        Dim Contador As Integer
+        For Contador = 0 To DGVSalidas.RowCount - 1
+            If DGVSalidas.Rows(Contador).Cells("ChCol").Value = True Then
+                DGVSalidasSeleccionadas.Rows.Add(DGVSalidas.Rows(Contador).Cells("id_salida").Value.ToString(), DGVSalidas.Rows(Contador).Cells("numeroBoleta").Value, DGVSalidas.Rows(Contador).Cells("id_Empresa").Value.ToString(), DGVSalidas.Rows(Contador).Cells("Fecha_Pesaje").Value, DGVSalidas.Rows(Contador).Cells("grupoGrano").Value.ToString(), DGVSalidas.Rows(Contador).Cells("Neto").Value, DGVSalidas.Rows(Contador).Cells("Deducciones").Value, DGVSalidas.Rows(Contador).Cells("Total").Value)
+            End If
+        Next Contador
+        Dim PuestosAcumulados As Double
+        For Contador = 0 To DGVSalidasSeleccionadas.RowCount - 1
+            PuestosAcumulados = PuestosAcumulados + DGVSalidasSeleccionadas.Rows(Contador).Cells("Total").Value
+        Next Contador
+        NUDTotalLiquidar.Value = PuestosAcumulados
+        PuestosAcumulados = 0
     End Sub
 End Class
