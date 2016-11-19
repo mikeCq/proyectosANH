@@ -2,8 +2,48 @@
 Public Class LiquidacionXcomprador
     Private Sub LiquidacionXcomprador_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LlenarComboBox()
+        LlenarDGVsalidas()
+        PropiedadesDGVSalidas()
     End Sub
+    Private Sub LlenarDGVsalidas()
+        Dim cmd As New SqlCommand("sp_llenarDgvSalidas", cnn)
 
+        cmd.CommandType = CommandType.StoredProcedure
+
+        Dim da As New SqlClient.SqlDataAdapter(cmd)
+        Dim dt As New DataSet()
+        da.Fill(dt)
+
+        DGVSalidas.DataSource = dt.Tables(0).DefaultView
+    End Sub
+    Private Sub PropiedadesDGVSalidas()
+        If DGVSalidas.Columns("ChCol") Is Nothing Then
+
+            Dim checkBoxColumn As New DataGridViewCheckBoxColumn()
+            checkBoxColumn.HeaderText = ""
+            checkBoxColumn.Width = 40
+            checkBoxColumn.Name = "ChCol"
+            DGVSalidas.Columns.Insert(11, checkBoxColumn)
+
+        End If
+        DGVSalidas.Columns("id_salida").Visible = False
+        DGVSalidas.Columns("id_empresa").Visible = False
+        DGVSalidas.Columns("razonsocial").Visible = False
+        DGVSalidas.Columns("bruto").Visible = False
+        DGVSalidas.Columns("Tara").Visible = False
+
+        DGVSalidas.Columns("Total").ReadOnly = False
+
+        DGVSalidas.Columns("Neto").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        DGVSalidas.Columns("Deducciones").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        DGVSalidas.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+
+        DGVSalidas.Columns("Bruto").DefaultCellStyle.Format = "###,##0.00"
+        DGVSalidas.Columns("Tara").DefaultCellStyle.Format = "###,##0.00"
+        DGVSalidas.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
+        DGVSalidas.Columns("Deducciones").DefaultCellStyle.Format = "###,##0.00"
+        DGVSalidas.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
+    End Sub
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BTNNuevo.Click
         Limpiar()
     End Sub
