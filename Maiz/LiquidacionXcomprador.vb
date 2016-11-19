@@ -8,7 +8,7 @@ Public Class LiquidacionXcomprador
         Limpiar()
     End Sub
 
-    Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BTNSalir.Click
+    Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BTNSalir.Click, Me.FormClosed
         Limpiar()
         Me.Close()
     End Sub
@@ -31,6 +31,7 @@ Public Class LiquidacionXcomprador
     Private Sub LlenarComboBox()
         Dim da As SqlDataAdapter
         Dim ds As DataSet
+
         '------LLENAR CBTIPOMONEDA--------
         CBTipoMoneda.SelectedIndex = -1
         CBTipoMoneda.Items.Add("DLS")
@@ -89,5 +90,7 @@ Public Class LiquidacionXcomprador
         TBUltimosDigitosBL.Text = ""
         RBTNContratoBL.Checked = False
         RBTNLibreBL.Checked = False
+        CBTipoMoneda.Items.Clear()
+        CBTipoMonedaBL.Items.Clear()
     End Sub
 End Class
