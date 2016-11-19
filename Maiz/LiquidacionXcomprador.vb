@@ -126,7 +126,7 @@ Public Class LiquidacionXcomprador
         CBTipoMonedaBL.Items.Add("MXN")
         '------LLENAR CBCOMPRADOR--------
         Dim CmdCBComprador As SqlCommand
-        CmdCBComprador = New SqlCommand("sp_cbCompradoresContrato")
+        CmdCBComprador = New SqlCommand("sp_cbContratoLiquidacionesVenta")
         CmdCBComprador.CommandType = CommandType.StoredProcedure
         CmdCBComprador.Connection = cnn
         da = New SqlDataAdapter(CmdCBComprador)
@@ -138,7 +138,7 @@ Public Class LiquidacionXcomprador
         CBComprador.SelectedIndex = -1
         '------LLENAR CBCOMPRADORBL--------
         Dim CmdCBCompradorLB As SqlCommand
-        CmdCBCompradorLB = New SqlCommand("sp_cbCompradoresContrato")
+        CmdCBCompradorLB = New SqlCommand("sp_cbContratoLiquidacionesVenta")
         CmdCBCompradorLB.CommandType = CommandType.StoredProcedure
         CmdCBCompradorLB.Connection = cnn
         da = New SqlDataAdapter(CmdCBCompradorLB)
@@ -200,6 +200,31 @@ Public Class LiquidacionXcomprador
             PuestosAcumulados = PuestosAcumulados + DGVSalidasSeleccionadas.Rows(Contador).Cells("Total").Value
         Next Contador
         NUDTotalLiquidar.Value = PuestosAcumulados
+        PuestosAcumulados = 0
+    End Sub
+    Private Sub DGVSalidas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVSalidas.CellContentClick
+        Dim Contador As Integer
+        For Contador = 0 To DGVSalidas.RowCount - 1
+            If DGVSalidas.Rows(Contador).Selected Then
+                If DGVSalidas.Rows(Contador).Cells("ChCol").Value = False Then
+                    DGVSalidas.Rows(Contador).Cells("ChCol").Value = True
+                ElseIf DGVSalidas.Rows(Contador).Cells("ChCol").Value = True Then
+                    DGVSalidas.Rows(Contador).Cells("ChCol").Value = False
+                End If
+            End If
+        Next Contador
+        ContarChecksMarcados()
+    End Sub
+
+    Private Sub ContarChecksMarcados()
+        Dim PuestosAcumulados As Double
+        For Each row As DataGridViewRow In DGVSalidas.Rows
+            Dim isSelected As Boolean = Convert.ToBoolean(row.Cells("ChCol").Value)
+            If isSelected = True Then
+                PuestosAcumulados = PuestosAcumulados + row.Cells("Total").Value.ToString()
+            End If
+        Next row
+        NUDToneladasSeleccionadas.Value = PuestosAcumulados
         PuestosAcumulados = 0
     End Sub
 End Class
