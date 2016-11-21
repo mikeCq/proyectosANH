@@ -244,105 +244,104 @@ Public Class LiquidacionXcomprador
         ElseIf NUDToneladasSeleccionadas.Value = NUDTotalLiquidar.Value Then
             IdLiquidacionTotal = ""
             Dim Contador As Integer
-            IdLiquidacionTotal = generaCodigoLiquidacionT(IdLiquidacionTotal)
-            For Contador = 0 To DgSeleccionLiquidaciones.RowCount - 1
+            IdLiquidacionTotal = generaCodigoVentaResumen(IdLiquidacionTotal)
+            For Contador = 0 To DGVSalidas.RowCount - 1
                 Dim CodigoLiquidacion As String = ""
-                Dim cmd1 As New SqlCommand("sp_InsLiquidacionXproductor", cnn)
+                Dim cmd1 As New SqlCommand("", cnn)
                 cmd1.CommandType = CommandType.StoredProcedure
-
                 cmd1.Parameters.Clear()
-                cmd1.Parameters.AddWithValue("@idLiquidacionP", generaCodigoLiquidacionP(CodigoLiquidacion))
-                cmd1.Parameters.AddWithValue("@idInventario", DgSeleccionLiquidaciones.Rows(Contador).Cells("IdInventario").Value.ToString)
-                cmd1.Parameters.AddWithValue("@numeroBoleta", DgSeleccionLiquidaciones.Rows(Contador).Cells("numeroBoleta").Value)
-                cmd1.Parameters.AddWithValue("@idProductor", DgSeleccionLiquidaciones.Rows(Contador).Cells("IdProductor").Value.ToString())
-                cmd1.Parameters.AddWithValue("@nombreProductor", TxNombreProductor.Text)
-                cmd1.Parameters.AddWithValue("@grupoGrano", DgSeleccionLiquidaciones.Rows(Contador).Cells("grupoGrano").Value.ToString())
-                cmd1.Parameters.AddWithValue("@Neto", (CDbl(DgSeleccionLiquidaciones.Rows(Contador).Cells("Neto").Value)) / 1000)
-                cmd1.Parameters.AddWithValue("@deduccion", (CDbl(DgSeleccionLiquidaciones.Rows(Contador).Cells("Deducciones").Value)) / 1000)
-                cmd1.Parameters.AddWithValue("@Total", (CDbl(DgSeleccionLiquidaciones.Rows(Contador).Cells("Total").Value)) / 1000)
+                cmd1.Parameters.AddWithValue("@idLiquidacionP", generaCodigoVentaResumen(CodigoLiquidacion))
+                cmd1.Parameters.AddWithValue("@idSalida", DGVSalidasSeleccionadas.Rows(Contador).Cells("IdSalida").Value.ToString)
+                cmd1.Parameters.AddWithValue("@numeroBoleta", DGVSalidasSeleccionadas.Rows(Contador).Cells("numeroBoleta").Value)
+                cmd1.Parameters.AddWithValue("@idProductor", DGVSalidasSeleccionadas.Rows(Contador).Cells("IdProductor").Value.ToString())
+                cmd1.Parameters.AddWithValue("@IdComprador", TBIdComprador.Text)
+                cmd1.Parameters.AddWithValue("@grupoGrano", DGVSalidasSeleccionadas.Rows(Contador).Cells("grupoGrano").Value.ToString())
+                cmd1.Parameters.AddWithValue("@Neto", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Neto").Value)) / 1000)
+                cmd1.Parameters.AddWithValue("@deduccion", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Deducciones").Value)) / 1000)
+                cmd1.Parameters.AddWithValue("@Total", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Total").Value)) / 1000)
                 cmd1.Parameters.AddWithValue("@idLiquidacionT", IdLiquidacionTotal)
 
                 cmd1.ExecuteNonQuery()
 
             Next Contador
-            DgSeleccionLiquidaciones.Columns.Clear()
+            DGVSalidasSeleccionadas.Columns.Clear()
 
-            For Contador = 0 To DgEntradasLiq.RowCount - 1
-                If DgEntradasLiq.Rows(Contador).Cells("ChCol").Value = True Then
+            For Contador = 0 To DGVSalidas.RowCount - 1
+                If DGVSalidas.Rows(Contador).Cells("ChCol").Value = True Then
                     Dim cmd2 As New SqlCommand("sp_ActTotalXliquidarProductor", cnn)
 
                     cmd2.CommandType = CommandType.StoredProcedure
 
-                    cmd2.Parameters.AddWithValue("@idinventario", DgEntradasLiq.Rows(Contador).Cells("IdInventario").Value.ToString)
-                    cmd2.Parameters.AddWithValue("@TotalXliquidar", (CDbl(DgEntradasLiq.Rows(Contador).Cells("Total").Value)) / 1000)
+                    cmd2.Parameters.AddWithValue("@idSalida", DGVSalidas.Rows(Contador).Cells("IdSalida").Value.ToString)
+                    cmd2.Parameters.AddWithValue("@Total", (CDbl(DGVSalidas.Rows(Contador).Cells("Total").Value)) / 1000)
                     cmd2.ExecuteNonQuery()
                 End If
             Next Contador
 
-            DgEntradasLiq.Columns.Clear()
-            DgEntradasLiq.DataSource = Nothing
+            DGVSalidas.Columns.Clear()
+            DGVSalidas.DataSource = Nothing
 
             Dim cmd3 As New SqlCommand("sp_llenarDgEntradasliq", cnn)
 
             cmd3.CommandType = CommandType.StoredProcedure
-            cmd3.Parameters.Add(New SqlClient.SqlParameter("@productor", TxProductor.Text))
+            cmd3.Parameters.Add(New SqlClient.SqlParameter("@IdComprador", TBIdComprador.Text))
 
             Dim da1 As New SqlClient.SqlDataAdapter(cmd3)
             Dim dt1 As New DataSet()
             da1.Fill(dt1)
 
-            DgEntradasLiq.DataSource = dt1.Tables(0).DefaultView
-            propiedadesDataEntLiq()
+            DGVSalidas.DataSource = dt1.Tables(0).DefaultView
+            '--propiedadesDataEntLiq()
 
             Dim cmd4 As New SqlCommand("sp_InsLiquidacionTotXprod", cnn)
 
             Dim TipoCambio, precioXTonMn, ImporteMn As Double
-            TipoCambio = CDbl(IIf(TxTipoCambio.Text = "", 0, TxTipoCambio.Text))
-            precioXTonMn = TxPrecioXtonMn.Text
-            ImporteMn = CDbl(TxImporte.Text)
+            TipoCambio = CDbl(IIf(TBTipoDeCambio.Text = "", 0, TBTipoDeCambio.Text))
+            precioXTonMn = TBPrecioPorTonelada.Text
+            ImporteMn = CDbl(TBImporte.Text)
 
             cmd4.CommandType = CommandType.StoredProcedure
 
             cmd4.Parameters.AddWithValue("@idLiquidacionT", IdLiquidacionTotal)
-            cmd4.Parameters.AddWithValue("@idcontrato", TxIDcontratoC.Text)
-            cmd4.Parameters.AddWithValue("@idproductor", TxProductor.Text)
+            cmd4.Parameters.AddWithValue("@idcontrato", TBIdContrato.Text)
+            cmd4.Parameters.AddWithValue("@idComprador", TBIdComprador.Text)
             cmd4.Parameters.AddWithValue("@grupoGrano", "AMARILLO")
             cmd4.Parameters.AddWithValue("@fechaliquidacion", Now)
-            cmd4.Parameters.AddWithValue("@totalliquidacionContrato", (NuTotalLiquidar.Value / 1000))
-            cmd4.Parameters.AddWithValue("@totalliquidacionLibre", (NuTotalLiquidar.Value / 1000))
+            cmd4.Parameters.AddWithValue("@totalliquidacionContrato", (NUDTotalLiquidar.Value / 1000))
+            cmd4.Parameters.AddWithValue("@totalliquidacionLibre", (NUDTotalLiquidar.Value / 1000))
             cmd4.Parameters.AddWithValue("@tipodecambio", TipoCambio)
-            cmd4.Parameters.AddWithValue("@precioContrato", NuPrecioContrato.Value)
-            cmd4.Parameters.AddWithValue("@moneda", CbMoneda.SelectedValue)
+            cmd4.Parameters.AddWithValue("@precioContrato", NUDPrecioContrato.Value)
+            cmd4.Parameters.AddWithValue("@moneda", CBTipoMoneda.SelectedValue)
             cmd4.Parameters.AddWithValue("@precioXtonMxn", precioXTonMn)
             cmd4.Parameters.AddWithValue("@importeTotal", ImporteMn)
-            cmd4.Parameters.AddWithValue("@contrato", IIf(RbContrato.Checked = True, TxFolioContrato.Text, "LIBRE"))
-            cmd4.Parameters.AddWithValue("@metodoPago", TxMetodoPago.Text)
-            cmd4.Parameters.AddWithValue("@banco", TxBanco.Text)
-            cmd4.Parameters.AddWithValue("@ultimosDigitos", TxUltimosDigitos.Text)
-            cmd4.Parameters.AddWithValue("@importeLetra", UCase(letras(TxImporte.Text)))
+            cmd4.Parameters.AddWithValue("@contrato", IIf(RBTNContrato.Checked = True, TBContrato.Text, "LIBRE"))
+            cmd4.Parameters.AddWithValue("@metodoPago", TBMetodoPago.Text)
+            cmd4.Parameters.AddWithValue("@banco", TBBanco.Text)
+            cmd4.Parameters.AddWithValue("@ultimosDigitos", TBUltimosDigitos.Text)
+            cmd4.Parameters.AddWithValue("@importeLetra", UCase(letras(TBImporte.Text)))
             cmd4.Parameters.AddWithValue("@idcomprador", CBComprador.SelectedValue)
-            cmd4.Parameters.AddWithValue("@tipoContrato", IIf(RbContrato.Checked = True, 0, 1))
-            cmd4.Parameters.AddWithValue("@idTipoLiquidacion", IIf(RbContrato.Checked = True, 0, 1))
+            cmd4.Parameters.AddWithValue("@tipoContrato", IIf(RBTNContrato.Checked = True, 0, 1))
+            cmd4.Parameters.AddWithValue("@idTipoLiquidacion", IIf(RBTNContrato.Checked = True, 0, 1))
 
             cmd4.ExecuteNonQuery()
-            EstatusContrato()
+            '--EstatusContrato()
 
 
             Dim cmd5 As New SqlCommand("sp_llenaDgLiquidacionTotal", cnn)
 
             cmd5.CommandType = CommandType.StoredProcedure
-            cmd5.Parameters.Add(New SqlClient.SqlParameter("@idproductor", TxProductor.Text))
+            cmd5.Parameters.Add(New SqlClient.SqlParameter("@idcomprador", TBIdComprador.Text))
 
             Dim da5 As New SqlClient.SqlDataAdapter(cmd5)
             Dim dt5 As New DataSet()
             da5.Fill(dt5)
 
-            DgLiquidacionesXTotal.DataSource = dt5.Tables(0).DefaultView
-            propiedadesDgLiquidacionTotal()
+            DGVTotalLiquidado.DataSource = dt5.Tables(0).DefaultView
+            '--propiedadesDgLiquidacionTotal()
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
-        CbMonedaVerificar()
-        LimpiarGuardar()
+        '--CbMonedaVerificar()
+        '--LimpiarGuardar()
     End Sub
 End Class
