@@ -17,9 +17,6 @@ Public Class BuscarEntradaLiq
         DgEntLiq.Columns("nombreProductor").HeaderText = "Productor"
         'DgEntradasLiq.Columns("nombreProductor").Width = 40
 
-        DgEntLiq.Columns("nombreProductor").HeaderText = "Productor"
-        'DgEntradasLiq.Columns("nombreProductor").Width = 120
-
         DgEntLiq.Columns("Domicilio").HeaderText = "Domicilio"
         'DgEntradasLiq.Columns("Domicilio").Width = 60
 
