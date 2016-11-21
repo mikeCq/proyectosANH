@@ -341,7 +341,7 @@ Public Class LiquidacionXcomprador
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
-        '--CbMonedaVerificar()
+        '-___-CbMonedaVerificar()
         '--LimpiarGuardar()
     End Sub
 End Class
