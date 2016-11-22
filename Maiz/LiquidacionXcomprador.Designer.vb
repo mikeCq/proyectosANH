@@ -23,25 +23,21 @@ Partial Class LiquidacionXcomprador
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LiquidacionXcomprador))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TbLiquidacionXProd = New System.Windows.Forms.TabControl()
         Me.TpBoletasXliquidar = New System.Windows.Forms.TabPage()
         Me.BTNAgregar = New System.Windows.Forms.Button()
-        Me.RBTNLibre = New System.Windows.Forms.RadioButton()
-        Me.RBTNContrato = New System.Windows.Forms.RadioButton()
-        Me.LBLiquidacionBandera = New System.Windows.Forms.Label()
-        Me.CBComprador = New System.Windows.Forms.ComboBox()
         Me.CBTipoMoneda = New System.Windows.Forms.ComboBox()
         Me.LBUltimosDigitos = New System.Windows.Forms.Label()
         Me.LBBanco = New System.Windows.Forms.Label()
@@ -54,7 +50,6 @@ Partial Class LiquidacionXcomprador
         Me.LBContrato = New System.Windows.Forms.Label()
         Me.LBImporte = New System.Windows.Forms.Label()
         Me.LBPrecioPorTonelada = New System.Windows.Forms.Label()
-        Me.LBComprador = New System.Windows.Forms.Label()
         Me.LBTipoDeCambio = New System.Windows.Forms.Label()
         Me.TBContrato = New System.Windows.Forms.TextBox()
         Me.TBTipoDeCambio = New System.Windows.Forms.TextBox()
@@ -66,7 +61,6 @@ Partial Class LiquidacionXcomprador
         Me.LBTotalLiquidar = New System.Windows.Forms.Label()
         Me.NUDToneladasSeleccionadas = New System.Windows.Forms.NumericUpDown()
         Me.LBBoletasSeleccionadas = New System.Windows.Forms.Label()
-        Me.LBContratoLibreBandera = New System.Windows.Forms.Label()
         Me.DGVSalidasSeleccionadas = New System.Windows.Forms.DataGridView()
         Me.DGVSalidas = New System.Windows.Forms.DataGridView()
         Me.LBLiquidacionBL = New System.Windows.Forms.TabPage()
@@ -105,13 +99,15 @@ Partial Class LiquidacionXcomprador
         Me.LBNombreComprador = New System.Windows.Forms.Label()
         Me.TBNombreComprador = New System.Windows.Forms.TextBox()
         Me.LBToneladasContrato = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.LBToneladasRestantes = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.LBEmpresa = New System.Windows.Forms.Label()
         Me.CBEmpresa = New System.Windows.Forms.ComboBox()
         Me.LBIdContrato = New System.Windows.Forms.Label()
         Me.TBIdContrato = New System.Windows.Forms.TextBox()
+        Me.NUDToneladasContrato = New System.Windows.Forms.NumericUpDown()
+        Me.NUDToneladasRestantes = New System.Windows.Forms.NumericUpDown()
+        Me.TbEstatusContrato = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.TbLiquidacionXProd.SuspendLayout()
         Me.TpBoletasXliquidar.SuspendLayout()
         CType(Me.NUDPrecioContrato, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,6 +120,8 @@ Partial Class LiquidacionXcomprador
         CType(Me.NUDPrecioContratoBL, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVTotalLiquidadoDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVTotalLiquidado, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUDToneladasContrato, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUDToneladasRestantes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TbLiquidacionXProd
@@ -139,10 +137,6 @@ Partial Class LiquidacionXcomprador
         'TpBoletasXliquidar
         '
         Me.TpBoletasXliquidar.Controls.Add(Me.BTNAgregar)
-        Me.TpBoletasXliquidar.Controls.Add(Me.RBTNLibre)
-        Me.TpBoletasXliquidar.Controls.Add(Me.RBTNContrato)
-        Me.TpBoletasXliquidar.Controls.Add(Me.LBLiquidacionBandera)
-        Me.TpBoletasXliquidar.Controls.Add(Me.CBComprador)
         Me.TpBoletasXliquidar.Controls.Add(Me.CBTipoMoneda)
         Me.TpBoletasXliquidar.Controls.Add(Me.LBUltimosDigitos)
         Me.TpBoletasXliquidar.Controls.Add(Me.LBBanco)
@@ -155,7 +149,6 @@ Partial Class LiquidacionXcomprador
         Me.TpBoletasXliquidar.Controls.Add(Me.LBContrato)
         Me.TpBoletasXliquidar.Controls.Add(Me.LBImporte)
         Me.TpBoletasXliquidar.Controls.Add(Me.LBPrecioPorTonelada)
-        Me.TpBoletasXliquidar.Controls.Add(Me.LBComprador)
         Me.TpBoletasXliquidar.Controls.Add(Me.LBTipoDeCambio)
         Me.TpBoletasXliquidar.Controls.Add(Me.TBContrato)
         Me.TpBoletasXliquidar.Controls.Add(Me.TBTipoDeCambio)
@@ -167,7 +160,6 @@ Partial Class LiquidacionXcomprador
         Me.TpBoletasXliquidar.Controls.Add(Me.LBTotalLiquidar)
         Me.TpBoletasXliquidar.Controls.Add(Me.NUDToneladasSeleccionadas)
         Me.TpBoletasXliquidar.Controls.Add(Me.LBBoletasSeleccionadas)
-        Me.TpBoletasXliquidar.Controls.Add(Me.LBContratoLibreBandera)
         Me.TpBoletasXliquidar.Controls.Add(Me.DGVSalidasSeleccionadas)
         Me.TpBoletasXliquidar.Controls.Add(Me.DGVSalidas)
         Me.TpBoletasXliquidar.Location = New System.Drawing.Point(4, 22)
@@ -188,46 +180,6 @@ Partial Class LiquidacionXcomprador
         Me.BTNAgregar.Size = New System.Drawing.Size(30, 30)
         Me.BTNAgregar.TabIndex = 88
         Me.BTNAgregar.UseVisualStyleBackColor = False
-        '
-        'RBTNLibre
-        '
-        Me.RBTNLibre.AutoSize = True
-        Me.RBTNLibre.Location = New System.Drawing.Point(261, 441)
-        Me.RBTNLibre.Name = "RBTNLibre"
-        Me.RBTNLibre.Size = New System.Drawing.Size(48, 17)
-        Me.RBTNLibre.TabIndex = 87
-        Me.RBTNLibre.Text = "Libre"
-        Me.RBTNLibre.UseVisualStyleBackColor = True
-        '
-        'RBTNContrato
-        '
-        Me.RBTNContrato.AutoSize = True
-        Me.RBTNContrato.Checked = True
-        Me.RBTNContrato.Location = New System.Drawing.Point(178, 441)
-        Me.RBTNContrato.Name = "RBTNContrato"
-        Me.RBTNContrato.Size = New System.Drawing.Size(65, 17)
-        Me.RBTNContrato.TabIndex = 86
-        Me.RBTNContrato.TabStop = True
-        Me.RBTNContrato.Text = "Contrato"
-        Me.RBTNContrato.UseVisualStyleBackColor = True
-        '
-        'LBLiquidacionBandera
-        '
-        Me.LBLiquidacionBandera.AutoSize = True
-        Me.LBLiquidacionBandera.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLiquidacionBandera.Location = New System.Drawing.Point(85, 441)
-        Me.LBLiquidacionBandera.Name = "LBLiquidacionBandera"
-        Me.LBLiquidacionBandera.Size = New System.Drawing.Size(71, 15)
-        Me.LBLiquidacionBandera.TabIndex = 85
-        Me.LBLiquidacionBandera.Text = "Liquidacion"
-        '
-        'CBComprador
-        '
-        Me.CBComprador.FormattingEnabled = True
-        Me.CBComprador.Location = New System.Drawing.Point(869, 438)
-        Me.CBComprador.Name = "CBComprador"
-        Me.CBComprador.Size = New System.Drawing.Size(430, 21)
-        Me.CBComprador.TabIndex = 84
         '
         'CBTipoMoneda
         '
@@ -350,15 +302,6 @@ Partial Class LiquidacionXcomprador
         Me.LBPrecioPorTonelada.TabIndex = 80
         Me.LBPrecioPorTonelada.Text = "Precio por Tonelada"
         '
-        'LBComprador
-        '
-        Me.LBComprador.AutoSize = True
-        Me.LBComprador.Location = New System.Drawing.Point(719, 441)
-        Me.LBComprador.Name = "LBComprador"
-        Me.LBComprador.Size = New System.Drawing.Size(138, 13)
-        Me.LBComprador.TabIndex = 67
-        Me.LBComprador.Text = "Agricultura por contrato con"
-        '
         'LBTipoDeCambio
         '
         Me.LBTipoDeCambio.AutoSize = True
@@ -412,24 +355,24 @@ Partial Class LiquidacionXcomprador
         '
         Me.RBTNNo.AutoSize = True
         Me.RBTNNo.Enabled = False
-        Me.RBTNNo.Location = New System.Drawing.Point(205, 7)
+        Me.RBTNNo.Location = New System.Drawing.Point(88, 7)
         Me.RBTNNo.Name = "RBTNNo"
-        Me.RBTNNo.Size = New System.Drawing.Size(41, 17)
+        Me.RBTNNo.Size = New System.Drawing.Size(48, 17)
         Me.RBTNNo.TabIndex = 48
         Me.RBTNNo.TabStop = True
-        Me.RBTNNo.Text = "NO"
+        Me.RBTNNo.Text = "Libre"
         Me.RBTNNo.UseVisualStyleBackColor = True
         '
         'RBTNSi
         '
         Me.RBTNSi.AutoSize = True
         Me.RBTNSi.Enabled = False
-        Me.RBTNSi.Location = New System.Drawing.Point(164, 7)
+        Me.RBTNSi.Location = New System.Drawing.Point(6, 7)
         Me.RBTNSi.Name = "RBTNSi"
-        Me.RBTNSi.Size = New System.Drawing.Size(35, 17)
+        Me.RBTNSi.Size = New System.Drawing.Size(65, 17)
         Me.RBTNSi.TabIndex = 49
         Me.RBTNSi.TabStop = True
-        Me.RBTNSi.Text = "SI"
+        Me.RBTNSi.Text = "Contrato"
         Me.RBTNSi.UseVisualStyleBackColor = True
         '
         'NUDTotalLiquidar
@@ -482,16 +425,6 @@ Partial Class LiquidacionXcomprador
         Me.LBBoletasSeleccionadas.Text = "Boletas Seleccionadas (Kg) :"
         Me.LBBoletasSeleccionadas.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
-        'LBContratoLibreBandera
-        '
-        Me.LBContratoLibreBandera.AutoSize = True
-        Me.LBContratoLibreBandera.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBContratoLibreBandera.Location = New System.Drawing.Point(3, 7)
-        Me.LBContratoLibreBandera.Name = "LBContratoLibreBandera"
-        Me.LBContratoLibreBandera.Size = New System.Drawing.Size(149, 15)
-        Me.LBContratoLibreBandera.TabIndex = 45
-        Me.LBContratoLibreBandera.Text = "Cuenta con Contrato Libre"
-        '
         'DGVSalidasSeleccionadas
         '
         Me.DGVSalidasSeleccionadas.AllowUserToAddRows = False
@@ -499,31 +432,31 @@ Partial Class LiquidacionXcomprador
         Me.DGVSalidasSeleccionadas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVSalidasSeleccionadas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
         Me.DGVSalidasSeleccionadas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVSalidasSeleccionadas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVSalidasSeleccionadas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle25
         Me.DGVSalidasSeleccionadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVSalidasSeleccionadas.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.DGVSalidasSeleccionadas.Location = New System.Drawing.Point(726, 30)
         Me.DGVSalidasSeleccionadas.MultiSelect = False
         Me.DGVSalidasSeleccionadas.Name = "DGVSalidasSeleccionadas"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVSalidasSeleccionadas.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVSalidasSeleccionadas.RowHeadersDefaultCellStyle = DataGridViewCellStyle26
         Me.DGVSalidasSeleccionadas.RowHeadersVisible = False
         Me.DGVSalidasSeleccionadas.RowHeadersWidth = 40
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVSalidasSeleccionadas.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVSalidasSeleccionadas.RowsDefaultCellStyle = DataGridViewCellStyle27
         Me.DGVSalidasSeleccionadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVSalidasSeleccionadas.Size = New System.Drawing.Size(632, 402)
         Me.DGVSalidasSeleccionadas.TabIndex = 40
@@ -535,30 +468,30 @@ Partial Class LiquidacionXcomprador
         Me.DGVSalidas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVSalidas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
         Me.DGVSalidas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVSalidas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVSalidas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle28
         Me.DGVSalidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVSalidas.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.DGVSalidas.Location = New System.Drawing.Point(6, 30)
         Me.DGVSalidas.Name = "DGVSalidas"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVSalidas.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVSalidas.RowHeadersDefaultCellStyle = DataGridViewCellStyle29
         Me.DGVSalidas.RowHeadersVisible = False
         Me.DGVSalidas.RowHeadersWidth = 40
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVSalidas.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVSalidas.RowsDefaultCellStyle = DataGridViewCellStyle30
         Me.DGVSalidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVSalidas.Size = New System.Drawing.Size(678, 402)
         Me.DGVSalidas.TabIndex = 41
@@ -848,30 +781,30 @@ Partial Class LiquidacionXcomprador
         Me.DGVTotalLiquidadoDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVTotalLiquidadoDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
         Me.DGVTotalLiquidadoDetalle.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVTotalLiquidadoDetalle.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVTotalLiquidadoDetalle.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle31
         Me.DGVTotalLiquidadoDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVTotalLiquidadoDetalle.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.DGVTotalLiquidadoDetalle.Location = New System.Drawing.Point(713, 30)
         Me.DGVTotalLiquidadoDetalle.Name = "DGVTotalLiquidadoDetalle"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVTotalLiquidadoDetalle.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVTotalLiquidadoDetalle.RowHeadersDefaultCellStyle = DataGridViewCellStyle32
         Me.DGVTotalLiquidadoDetalle.RowHeadersVisible = False
         Me.DGVTotalLiquidadoDetalle.RowHeadersWidth = 40
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVTotalLiquidadoDetalle.RowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle33.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVTotalLiquidadoDetalle.RowsDefaultCellStyle = DataGridViewCellStyle33
         Me.DGVTotalLiquidadoDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVTotalLiquidadoDetalle.Size = New System.Drawing.Size(645, 400)
         Me.DGVTotalLiquidadoDetalle.TabIndex = 43
@@ -883,30 +816,30 @@ Partial Class LiquidacionXcomprador
         Me.DGVTotalLiquidado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVTotalLiquidado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
         Me.DGVTotalLiquidado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVTotalLiquidado.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle34.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVTotalLiquidado.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle34
         Me.DGVTotalLiquidado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVTotalLiquidado.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.DGVTotalLiquidado.Location = New System.Drawing.Point(6, 30)
         Me.DGVTotalLiquidado.Name = "DGVTotalLiquidado"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVTotalLiquidado.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle35.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVTotalLiquidado.RowHeadersDefaultCellStyle = DataGridViewCellStyle35
         Me.DGVTotalLiquidado.RowHeadersVisible = False
         Me.DGVTotalLiquidado.RowHeadersWidth = 40
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVTotalLiquidado.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle36.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVTotalLiquidado.RowsDefaultCellStyle = DataGridViewCellStyle36
         Me.DGVTotalLiquidado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVTotalLiquidado.Size = New System.Drawing.Size(690, 400)
         Me.DGVTotalLiquidado.TabIndex = 42
@@ -967,6 +900,7 @@ Partial Class LiquidacionXcomprador
         Me.TBIdComprador.Name = "TBIdComprador"
         Me.TBIdComprador.Size = New System.Drawing.Size(100, 20)
         Me.TBIdComprador.TabIndex = 94
+        Me.TBIdComprador.Visible = False
         '
         'LBNombreComprador
         '
@@ -979,6 +913,7 @@ Partial Class LiquidacionXcomprador
         '
         'TBNombreComprador
         '
+        Me.TBNombreComprador.Enabled = False
         Me.TBNombreComprador.Location = New System.Drawing.Point(132, 78)
         Me.TBNombreComprador.Name = "TBNombreComprador"
         Me.TBNombreComprador.Size = New System.Drawing.Size(321, 20)
@@ -993,13 +928,6 @@ Partial Class LiquidacionXcomprador
         Me.LBToneladasContrato.TabIndex = 97
         Me.LBToneladasContrato.Text = "Toneladas del Contrato"
         '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(132, 104)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 98
-        '
         'LBToneladasRestantes
         '
         Me.LBToneladasRestantes.AutoSize = True
@@ -1008,13 +936,6 @@ Partial Class LiquidacionXcomprador
         Me.LBToneladasRestantes.Size = New System.Drawing.Size(108, 13)
         Me.LBToneladasRestantes.TabIndex = 99
         Me.LBToneladasRestantes.Text = "Toneladas Restantes"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(353, 104)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox2.TabIndex = 100
         '
         'LBEmpresa
         '
@@ -1036,34 +957,78 @@ Partial Class LiquidacionXcomprador
         'LBIdContrato
         '
         Me.LBIdContrato.AutoSize = True
-        Me.LBIdContrato.Location = New System.Drawing.Point(12, 57)
+        Me.LBIdContrato.Location = New System.Drawing.Point(689, 81)
         Me.LBIdContrato.Name = "LBIdContrato"
-        Me.LBIdContrato.Size = New System.Drawing.Size(47, 13)
+        Me.LBIdContrato.Size = New System.Drawing.Size(91, 13)
         Me.LBIdContrato.TabIndex = 103
-        Me.LBIdContrato.Text = "Contrato"
+        Me.LBIdContrato.Text = "Estatus Contrato :"
         '
         'TBIdContrato
         '
+        Me.TBIdContrato.Enabled = False
         Me.TBIdContrato.Location = New System.Drawing.Point(132, 52)
         Me.TBIdContrato.Name = "TBIdContrato"
         Me.TBIdContrato.Size = New System.Drawing.Size(100, 20)
         Me.TBIdContrato.TabIndex = 104
+        '
+        'NUDToneladasContrato
+        '
+        Me.NUDToneladasContrato.DecimalPlaces = 3
+        Me.NUDToneladasContrato.Enabled = False
+        Me.NUDToneladasContrato.Location = New System.Drawing.Point(132, 104)
+        Me.NUDToneladasContrato.Maximum = New Decimal(New Integer() {276447231, 23283, 0, 0})
+        Me.NUDToneladasContrato.Name = "NUDToneladasContrato"
+        Me.NUDToneladasContrato.Size = New System.Drawing.Size(101, 20)
+        Me.NUDToneladasContrato.TabIndex = 105
+        Me.NUDToneladasContrato.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.NUDToneladasContrato.ThousandsSeparator = True
+        '
+        'NUDToneladasRestantes
+        '
+        Me.NUDToneladasRestantes.DecimalPlaces = 3
+        Me.NUDToneladasRestantes.Enabled = False
+        Me.NUDToneladasRestantes.Location = New System.Drawing.Point(353, 104)
+        Me.NUDToneladasRestantes.Maximum = New Decimal(New Integer() {276447231, 23283, 0, 0})
+        Me.NUDToneladasRestantes.Name = "NUDToneladasRestantes"
+        Me.NUDToneladasRestantes.Size = New System.Drawing.Size(101, 20)
+        Me.NUDToneladasRestantes.TabIndex = 105
+        Me.NUDToneladasRestantes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.NUDToneladasRestantes.ThousandsSeparator = True
+        '
+        'TbEstatusContrato
+        '
+        Me.TbEstatusContrato.Enabled = False
+        Me.TbEstatusContrato.Location = New System.Drawing.Point(786, 78)
+        Me.TbEstatusContrato.Name = "TbEstatusContrato"
+        Me.TbEstatusContrato.Size = New System.Drawing.Size(100, 20)
+        Me.TbEstatusContrato.TabIndex = 94
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(59, 55)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(67, 13)
+        Me.Label1.TabIndex = 103
+        Me.Label1.Text = "ID Contrato :"
         '
         'LiquidacionXcomprador
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1396, 775)
+        Me.Controls.Add(Me.NUDToneladasRestantes)
+        Me.Controls.Add(Me.NUDToneladasContrato)
         Me.Controls.Add(Me.TBIdContrato)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.LBIdContrato)
         Me.Controls.Add(Me.CBEmpresa)
         Me.Controls.Add(Me.LBEmpresa)
-        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.LBToneladasRestantes)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LBToneladasContrato)
         Me.Controls.Add(Me.TBNombreComprador)
         Me.Controls.Add(Me.LBNombreComprador)
+        Me.Controls.Add(Me.TbEstatusContrato)
         Me.Controls.Add(Me.TBIdComprador)
         Me.Controls.Add(Me.BTNGuardar)
         Me.Controls.Add(Me.TbLiquidacionXProd)
@@ -1087,6 +1052,8 @@ Partial Class LiquidacionXcomprador
         CType(Me.NUDPrecioContratoBL, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVTotalLiquidadoDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVTotalLiquidado, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUDToneladasContrato, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUDToneladasRestantes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1100,12 +1067,10 @@ Partial Class LiquidacionXcomprador
     Friend WithEvents LBTotalLiquidar As Label
     Friend WithEvents NUDToneladasSeleccionadas As NumericUpDown
     Friend WithEvents LBBoletasSeleccionadas As Label
-    Friend WithEvents LBContratoLibreBandera As Label
     Friend WithEvents DGVSalidasSeleccionadas As DataGridView
     Friend WithEvents DGVSalidas As DataGridView
     Friend WithEvents LBLiquidacionBL As TabPage
     Friend WithEvents DGVTotalLiquidado As DataGridView
-    Friend WithEvents CBComprador As ComboBox
     Friend WithEvents CBTipoMoneda As ComboBox
     Friend WithEvents LBUltimosDigitos As Label
     Friend WithEvents LBBanco As Label
@@ -1118,15 +1083,11 @@ Partial Class LiquidacionXcomprador
     Friend WithEvents LBContrato As Label
     Friend WithEvents LBImporte As Label
     Friend WithEvents LBPrecioPorTonelada As Label
-    Friend WithEvents LBComprador As Label
     Friend WithEvents LBTipoDeCambio As Label
     Friend WithEvents TBContrato As TextBox
     Friend WithEvents TBTipoDeCambio As TextBox
     Friend WithEvents TBImporte As TextBox
     Friend WithEvents TBPrecioPorTonelada As TextBox
-    Friend WithEvents RBTNLibre As RadioButton
-    Friend WithEvents RBTNContrato As RadioButton
-    Friend WithEvents LBLiquidacionBandera As Label
     Friend WithEvents DGVTotalLiquidadoDetalle As DataGridView
     Friend WithEvents CBCompradorBL As ComboBox
     Friend WithEvents CBTipoMonedaBL As ComboBox
@@ -1162,11 +1123,13 @@ Partial Class LiquidacionXcomprador
     Friend WithEvents LBNombreComprador As Label
     Friend WithEvents TBNombreComprador As TextBox
     Friend WithEvents LBToneladasContrato As Label
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents LBToneladasRestantes As Label
-    Friend WithEvents TextBox2 As TextBox
     Friend WithEvents LBEmpresa As Label
     Friend WithEvents CBEmpresa As ComboBox
     Friend WithEvents LBIdContrato As Label
     Friend WithEvents TBIdContrato As TextBox
+    Friend WithEvents NUDToneladasContrato As NumericUpDown
+    Friend WithEvents NUDToneladasRestantes As NumericUpDown
+    Friend WithEvents TbEstatusContrato As TextBox
+    Friend WithEvents Label1 As Label
 End Class

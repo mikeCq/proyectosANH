@@ -1,13 +1,13 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data.Sql
 Public Class BuscarCompradorLiquidacionVenta
-    Private _codigoComprador As String
-    Public Property CodigoComprador() As String
+    Private _codigoVenta As String
+    Public Property CodigoVenta() As String
         Get
-            Return _codigoComprador
+            Return _codigoVenta
         End Get
         Set(ByVal value As String)
-            _codigoComprador = value
+            _codigoVenta = value
         End Set
     End Property
     Private Sub BtBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
@@ -50,7 +50,7 @@ Public Class BuscarCompradorLiquidacionVenta
         If DGVCompradores.RowCount = 0 Then
             MessageBox.Show("No hay datos para seleccionar.")
         ElseIf DGVCompradores.CurrentRow IsNot Nothing Then
-            _codigoComprador = CStr(DGVCompradores.CurrentRow.Cells(0).Value)
+            _codigoVenta = CStr(DGVCompradores.CurrentRow.Cells(0).Value)
             Close()
         End If
     End Sub

@@ -57,6 +57,8 @@ Public Class ContratosVentas
                 cmd.Parameters.AddWithValue("@id_temporada", CbTemporada.SelectedValue)
                 cmd.Parameters.AddWithValue("@fechaLiquidacion", DtLiquidacion.Value)
                 cmd.Parameters.AddWithValue("@tipoContrato", IIf(RbMaizContrato.Checked = True, 0, 1))
+                cmd.Parameters.AddWithValue("@EstatusContrato", 0)
+
 
                 TxFolioContrato.Text = cmd.Parameters("@Consecutivo").Value.ToString()
 

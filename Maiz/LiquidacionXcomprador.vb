@@ -106,11 +106,11 @@ Public Class LiquidacionXcomprador
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BTNGuardar.Click
-
+        Guardar()
     End Sub
 
     Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BTNBuscar.Click
-
+        Buscar()
     End Sub
     Private Sub BTNAgregar_Click(sender As Object, e As EventArgs) Handles BTNAgregar.Click
         Agregar()
@@ -129,17 +129,17 @@ Public Class LiquidacionXcomprador
         CBTipoMonedaBL.Items.Add("DLS")
         CBTipoMonedaBL.Items.Add("MXN")
         '------LLENAR CBCOMPRADOR--------
-        Dim CmdCBComprador As SqlCommand
-        CmdCBComprador = New SqlCommand("sp_cbContratoLiquidacionesVenta")
-        CmdCBComprador.CommandType = CommandType.StoredProcedure
-        CmdCBComprador.Connection = cnn
-        da = New SqlDataAdapter(CmdCBComprador)
+        Dim CmdCBEmpresas As SqlCommand
+        CmdCBEmpresas = New SqlCommand("sp_CbEmpresas")
+        CmdCBEmpresas.CommandType = CommandType.StoredProcedure
+        CmdCBEmpresas.Connection = cnn
+        da = New SqlDataAdapter(CmdCBEmpresas)
         ds = New DataSet()
         da.Fill(ds)
-        CBComprador.DataSource = ds.Tables(0)
-        CBComprador.DisplayMember = "Nombre_Comprador"
-        CBComprador.ValueMember = "Id_Comprador"
-        CBComprador.SelectedIndex = -1
+        CBEmpresa.DataSource = ds.Tables(0)
+        CBEmpresa.DisplayMember = "RazonSocial"
+        CBEmpresa.ValueMember = "Id_Empresa"
+        CBEmpresa.SelectedIndex = -1
         '------LLENAR CBCOMPRADORBL--------
         Dim CmdCBCompradorLB As SqlCommand
         CmdCBCompradorLB = New SqlCommand("sp_cbContratoLiquidacionesVenta")
@@ -161,7 +161,7 @@ Public Class LiquidacionXcomprador
         TBImporte.Text = ""
         NUDToneladasSeleccionadas.Value = 0.00
         NUDTotalLiquidar.Value = 0.00
-        CBComprador.SelectedValue = -1
+        'CBComprador.SelectedValue = -1
         CBTipoMoneda.SelectedIndex = -1
         DGVSalidasSeleccionadas.Columns.Clear()
         DGVSalidasSeleccionadas.DataSource = Nothing
@@ -314,14 +314,14 @@ Public Class LiquidacionXcomprador
             cmd4.Parameters.AddWithValue("@moneda", CBTipoMoneda.SelectedValue)
             cmd4.Parameters.AddWithValue("@precioXtonMxn", precioXTonMn)
             cmd4.Parameters.AddWithValue("@importeTotal", ImporteMn)
-            cmd4.Parameters.AddWithValue("@contrato", IIf(RBTNContrato.Checked = True, TBContrato.Text, "LIBRE"))
+            'cmd4.Parameters.AddWithValue("@contrato", IIf(RBTNContrato.Checked = True, TBContrato.Text, "LIBRE"))
             cmd4.Parameters.AddWithValue("@metodoPago", TBMetodoPago.Text)
             cmd4.Parameters.AddWithValue("@banco", TBBanco.Text)
             cmd4.Parameters.AddWithValue("@ultimosDigitos", TBUltimosDigitos.Text)
             cmd4.Parameters.AddWithValue("@importeLetra", UCase(letras(TBImporte.Text)))
-            cmd4.Parameters.AddWithValue("@idcomprador", CBComprador.SelectedValue)
-            cmd4.Parameters.AddWithValue("@tipoContrato", IIf(RBTNContrato.Checked = True, 0, 1))
-            cmd4.Parameters.AddWithValue("@idTipoLiquidacion", IIf(RBTNContrato.Checked = True, 0, 1))
+            'cmd4.Parameters.AddWithValue("@idcomprador", CBComprador.SelectedValue)
+            'cmd4.Parameters.AddWithValue("@tipoContrato", IIf(RBTNContrato.Checked = True, 0, 1))
+            'cmd4.Parameters.AddWithValue("@idTipoLiquidacion", IIf(RBTNContrato.Checked = True, 0, 1))
 
             cmd4.ExecuteNonQuery()
             '--EstatusContrato()
@@ -343,5 +343,52 @@ Public Class LiquidacionXcomprador
         End If
         '-___-CbMonedaVerificar()
         '--LimpiarGuardar()
+    End Sub
+    Private Sub Buscar()
+        Dim BuscarCompradorLiquidacionVenta As New BuscarCompradorLiquidacionVenta
+        BuscarCompradorLiquidacionVenta.ShowDialog()
+        Dim CodigoComprador As Object = BuscarCompradorLiquidacionVenta.CodigoVenta
+        Dim cmd As New SqlCommand("sp_DatosContratoVenta", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@IdContratoVenta", BuscarCompradorLiquidacionVenta.CodigoVenta))
+
+        Dim da As New SqlClient.SqlDataAdapter(cmd)
+        Dim dt As New DataSet()
+        da.Fill(dt)
+
+        TBIdContrato.Text = CStr(dt.Tables(0).Rows(0)("id_contratoV").ToString())
+        TBIdComprador.Text = CStr(dt.Tables(0).Rows(0)("id_comprador").ToString())
+        TBNombreComprador.Text = CStr(dt.Tables(0).Rows(0)("Nombre_Comprador").ToString())
+        NUDToneladasContrato.Value = CDbl(dt.Tables(0).Rows(0)("toneladasVentas").ToString())
+        NUDToneladasRestantes.Value = CDbl(dt.Tables(0).Rows(0)("toneladasrestantes").ToString())
+        PrecioContrato = CDbl(dt.Tables(0).Rows(0)("precioXtonelada").ToString())
+        TbEstatusContrato.Text = IIf(dt.Tables(0).Rows(0)("EstatusContrato").ToString() = 0, "INCOMPLETO", "COMPLETO")
+        Moneda = dt.Tables(0).Rows(0)("moneda").ToString()
+        If dt.Tables(0).Rows(0)("TipoContrato").ToString() = 0 Then
+            RBTNSi.Checked = True
+        Else
+            RBTNNo.Checked = True
+        End If
+    End Sub
+
+    Private Sub TBNombreComprador_TextChanged(sender As Object, e As EventArgs) Handles TBNombreComprador.TextChanged
+
+    End Sub
+
+    Private Sub NUDToneladasContrato_ValueChanged(sender As Object, e As EventArgs) Handles NUDToneladasContrato.ValueChanged
+
+    End Sub
+
+    Private Sub NUDToneladasRestantes_ValueChanged(sender As Object, e As EventArgs) Handles NUDToneladasRestantes.ValueChanged
+
+    End Sub
+
+    Private Sub TbEstatusContrato_TextChanged(sender As Object, e As EventArgs) Handles TbEstatusContrato.TextChanged
+
+    End Sub
+
+    Private Sub TBIdContrato_TextChanged(sender As Object, e As EventArgs) Handles TBIdContrato.TextChanged
+
     End Sub
 End Class
