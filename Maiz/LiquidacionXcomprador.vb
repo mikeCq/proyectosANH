@@ -294,7 +294,7 @@ Public Class LiquidacionXcomprador
             DGVSalidas.DataSource = dt1.Tables(0).DefaultView
             '--propiedadesDataEntLiq()
 
-            Dim cmd4 As New SqlCommand("sp_InsLiquidacionTotXprod", cnn)
+            Dim cmd4 As New SqlCommand("sp_InsertarVentaTotal", cnn)
 
             Dim TipoCambio, precioXTonMn, ImporteMn As Double
             TipoCambio = CDbl(IIf(TBTipoDeCambio.Text = "", 0, TBTipoDeCambio.Text))
@@ -303,26 +303,41 @@ Public Class LiquidacionXcomprador
 
             cmd4.CommandType = CommandType.StoredProcedure
 
-            cmd4.Parameters.AddWithValue("@idLiquidacionT", IdLiquidacionTotal)
-            cmd4.Parameters.AddWithValue("@idcontrato", TBIdContrato.Text)
-            cmd4.Parameters.AddWithValue("@idComprador", TBIdComprador.Text)
-            cmd4.Parameters.AddWithValue("@grupoGrano", "AMARILLO")
-            cmd4.Parameters.AddWithValue("@fechaliquidacion", Now)
-            cmd4.Parameters.AddWithValue("@totalliquidacionContrato", (NUDTotalLiquidar.Value / 1000))
-            cmd4.Parameters.AddWithValue("@totalliquidacionLibre", (NUDTotalLiquidar.Value / 1000))
-            cmd4.Parameters.AddWithValue("@tipodecambio", TipoCambio)
-            cmd4.Parameters.AddWithValue("@precioContrato", NUDPrecioContrato.Value)
-            cmd4.Parameters.AddWithValue("@moneda", CBTipoMoneda.SelectedValue)
-            cmd4.Parameters.AddWithValue("@precioXtonMxn", precioXTonMn)
-            cmd4.Parameters.AddWithValue("@importeTotal", ImporteMn)
-            'cmd4.Parameters.AddWithValue("@contrato", IIf(RBTNContrato.Checked = True, TBContrato.Text, "LIBRE"))
-            cmd4.Parameters.AddWithValue("@metodoPago", TBMetodoPago.Text)
-            cmd4.Parameters.AddWithValue("@banco", TBBanco.Text)
-            cmd4.Parameters.AddWithValue("@ultimosDigitos", TBUltimosDigitos.Text)
-            cmd4.Parameters.AddWithValue("@importeLetra", UCase(letras(TBImporte.Text)))
-            'cmd4.Parameters.AddWithValue("@idcomprador", CBComprador.SelectedValue)
-            'cmd4.Parameters.AddWithValue("@tipoContrato", IIf(RBTNContrato.Checked = True, 0, 1))
-            'cmd4.Parameters.AddWithValue("@idTipoLiquidacion", IIf(RBTNContrato.Checked = True, 0, 1))
+            cmd4.Parameters.AddWithValue("@IdVentaTotalComprador", IdLiquidacionTotal)
+
+            cmd4.Parameters.AddWithValue("@IdContratoVenta", TBIdContrato.Text)
+
+            cmd4.Parameters.AddWithValue("@Idcomprador", TBIdComprador.Text)
+
+            cmd4.Parameters.AddWithValue("@GrupoGrano", "AMARILLO")
+
+            cmd4.Parameters.AddWithValue("@FechaVenta", Now)
+
+            cmd4.Parameters.AddWithValue("@TotalVentaContrato", (NUDTotalLiquidar.Value / 1000))
+
+            cmd4.Parameters.AddWithValue("@TipoDeCambio", TipoCambio)
+
+            cmd4.Parameters.AddWithValue("@PrecioContrato", PrecioContrato)
+
+            cmd4.Parameters.AddWithValue("@Moneda", CBTipoMoneda.SelectedValue)
+
+            cmd4.Parameters.AddWithValue("@PrecioToneladaMxn", TBPrecioPorTonelada.Text)
+
+            cmd4.Parameters.AddWithValue("@ImporteTotal", ImporteMn)
+
+            cmd4.Parameters.AddWithValue("@Contrato", TBContrato.Text)
+
+            cmd4.Parameters.AddWithValue("@MetodoPago", TBMetodoPago.Text)
+
+            cmd4.Parameters.AddWithValue("@Banco", TBBanco.Text)
+
+            cmd4.Parameters.AddWithValue("@UltimosDigitos", TBUltimosDigitos.Text)
+
+            cmd4.Parameters.AddWithValue("@ImporteLetra", UCase(letras(TBImporte.Text)))
+
+            cmd4.Parameters.AddWithValue("@IdEmpresa", CBEmpresa.SelectedValue)
+
+            cmd4.Parameters.AddWithValue("@IdTipoLiquidacion", IIf(RBTNSi.Checked = True, 0, 1))
 
             cmd4.ExecuteNonQuery()
             '--EstatusContrato()
