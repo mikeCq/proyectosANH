@@ -244,22 +244,23 @@ Public Class LiquidacionXcomprador
         ElseIf NUDToneladasSeleccionadas.Value = NUDTotalLiquidar.Value Then
             IdLiquidacionTotal = ""
             Dim Contador As Integer
-            IdLiquidacionTotal = generaCodigoVentaResumen(IdLiquidacionTotal)
-            For Contador = 0 To DGVSalidas.RowCount - 1
+            IdLiquidacionTotal = generaCodigoVenta(IdLiquidacionTotal)
+            For Contador = 0 To DGVSalidasSeleccionadas.RowCount - 1
                 Dim CodigoLiquidacion As String = ""
-                Dim cmd1 As New SqlCommand("", cnn)
+                Dim cmd1 As New SqlCommand("sp_InsertarVentaResumen", cnn)
                 cmd1.CommandType = CommandType.StoredProcedure
                 cmd1.Parameters.Clear()
-                cmd1.Parameters.AddWithValue("@idLiquidacionP", generaCodigoVentaResumen(CodigoLiquidacion))
+                cmd1.Parameters.AddWithValue("@IdVentaComprador", generaCodigoVentaResumen(CodigoLiquidacion))
                 cmd1.Parameters.AddWithValue("@idSalida", DGVSalidasSeleccionadas.Rows(Contador).Cells("IdSalida").Value.ToString)
                 cmd1.Parameters.AddWithValue("@numeroBoleta", DGVSalidasSeleccionadas.Rows(Contador).Cells("numeroBoleta").Value)
-                cmd1.Parameters.AddWithValue("@idProductor", DGVSalidasSeleccionadas.Rows(Contador).Cells("IdProductor").Value.ToString())
-                cmd1.Parameters.AddWithValue("@IdComprador", TBIdComprador.Text)
+                cmd1.Parameters.AddWithValue("@IdComprador", DGVSalidasSeleccionadas.Rows(Contador).Cells("IdComprador").Value.ToString())
+                cmd1.Parameters.AddWithValue("@NombreComprador", TBIdComprador.Text)
                 cmd1.Parameters.AddWithValue("@grupoGrano", DGVSalidasSeleccionadas.Rows(Contador).Cells("grupoGrano").Value.ToString())
                 cmd1.Parameters.AddWithValue("@Neto", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Neto").Value)) / 1000)
                 cmd1.Parameters.AddWithValue("@deduccion", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Deducciones").Value)) / 1000)
                 cmd1.Parameters.AddWithValue("@Total", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Total").Value)) / 1000)
-                cmd1.Parameters.AddWithValue("@idLiquidacionT", IdLiquidacionTotal)
+                cmd1.Parameters.AddWithValue("@moneda", CBTipoMoneda.Text)
+                cmd1.Parameters.AddWithValue("@IdVentaTotalComprador", IdLiquidacionTotal)
 
                 cmd1.ExecuteNonQuery()
 
@@ -268,12 +269,12 @@ Public Class LiquidacionXcomprador
 
             For Contador = 0 To DGVSalidas.RowCount - 1
                 If DGVSalidas.Rows(Contador).Cells("ChCol").Value = True Then
-                    Dim cmd2 As New SqlCommand("sp_ActTotalXliquidarProductor", cnn)
+                    Dim cmd2 As New SqlCommand("sp_ActTotalComprador", cnn)
 
                     cmd2.CommandType = CommandType.StoredProcedure
 
                     cmd2.Parameters.AddWithValue("@idSalida", DGVSalidas.Rows(Contador).Cells("IdSalida").Value.ToString)
-                    cmd2.Parameters.AddWithValue("@Total", (CDbl(DGVSalidas.Rows(Contador).Cells("Total").Value)) / 1000)
+                    cmd2.Parameters.AddWithValue("@TotalXliquidar", (CDbl(DGVSalidas.Rows(Contador).Cells("Total").Value)) / 1000)
                     cmd2.ExecuteNonQuery()
                 End If
             Next Contador
@@ -327,17 +328,8 @@ Public Class LiquidacionXcomprador
             '--EstatusContrato()
 
 
-            Dim cmd5 As New SqlCommand("sp_llenaDgLiquidacionTotal", cnn)
-
-            cmd5.CommandType = CommandType.StoredProcedure
-            cmd5.Parameters.Add(New SqlClient.SqlParameter("@idcomprador", TBIdComprador.Text))
-
-            Dim da5 As New SqlClient.SqlDataAdapter(cmd5)
-            Dim dt5 As New DataSet()
-            da5.Fill(dt5)
-
-            DGVTotalLiquidado.DataSource = dt5.Tables(0).DefaultView
-            '--propiedadesDgLiquidacionTotal()
+            LlenarDGVsalidas()
+            PropiedadesDGVSalidas()
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If

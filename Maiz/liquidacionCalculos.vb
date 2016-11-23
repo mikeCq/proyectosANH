@@ -634,11 +634,9 @@ Public Class liquidacionCalculosProd
             End If
         Next Contador
 
-        DgEntradasLiq_CellMouseUp()
-    End Sub
-    Private Sub DgEntradasLiq_CellMouseUp()
         ContarChecksMarcados()
     End Sub
+
     Private Sub ContarChecksMarcados()
         Dim PuestosAcumulados As Double
 
