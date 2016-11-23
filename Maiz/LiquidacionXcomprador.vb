@@ -282,17 +282,8 @@ Public Class LiquidacionXcomprador
             DGVSalidas.Columns.Clear()
             DGVSalidas.DataSource = Nothing
 
-            Dim cmd3 As New SqlCommand("sp_llenarDgEntradasliq", cnn)
-
-            cmd3.CommandType = CommandType.StoredProcedure
-            cmd3.Parameters.Add(New SqlClient.SqlParameter("@IdComprador", TBIdComprador.Text))
-
-            Dim da1 As New SqlClient.SqlDataAdapter(cmd3)
-            Dim dt1 As New DataSet()
-            da1.Fill(dt1)
-
-            DGVSalidas.DataSource = dt1.Tables(0).DefaultView
-            '--propiedadesDataEntLiq()
+            LlenarDGVsalidas()
+            PropiedadesDGVSalidas()
 
             Dim cmd4 As New SqlCommand("sp_InsertarVentaTotal", cnn)
 
@@ -340,11 +331,9 @@ Public Class LiquidacionXcomprador
             cmd4.Parameters.AddWithValue("@IdTipoLiquidacion", IIf(RBTNSi.Checked = True, 0, 1))
 
             cmd4.ExecuteNonQuery()
-            '--EstatusContrato()
+            EstatusContrato()
 
 
-            LlenarDGVsalidas()
-            PropiedadesDGVSalidas()
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
@@ -377,8 +366,72 @@ Public Class LiquidacionXcomprador
         Else
             RBTNNo.Checked = True
         End If
-    End Sub
 
+
+        Dim cmd3 As New SqlCommand("sp_LlenaDGVTotalLiquidado", cnn)
+
+        cmd3.CommandType = CommandType.StoredProcedure
+        cmd3.Parameters.Add(New SqlClient.SqlParameter("@IdComprador", TBIdComprador.Text))
+
+        Dim da3 As New SqlClient.SqlDataAdapter(cmd3)
+        Dim dt3 As New DataSet()
+        da3.Fill(dt3)
+        Dim BanderaContrato As Integer
+        If (dt3.Tables(0).Rows.Count = 0) Then
+
+            BanderaContrato = 0
+        Else
+            BanderaContrato = dt.Tables(0).Rows(0)("EstatusContrato")
+        End If
+        If dt3.Tables(0).Rows.Count <> 0 Then
+            TBNombreComprador.Text = dt3.Tables(0).Rows(0)("NombreComprador").ToString()
+        Else
+            TBNombreComprador.Text = dt.Tables(0).Rows(0)("NombreComprador").ToString()
+        End If
+        If BanderaContrato = 1 Then
+            '    If RbNo.Checked = True Then
+            '        RbContrato.Checked = True
+            '        RbContrato.Enabled = True
+            '        RbLibre.Checked = False
+            '        RbLibre.Enabled = True
+            '    Else
+            '        RbContrato.Enabled = False
+            '        RbLibre.Enabled = True
+            '        RbContrato.Checked = False
+            '        RbLibre.Checked = True
+            '    End If
+            'Else
+            '    If RbSi.Checked = True Then
+            '        RbContrato.Enabled = True
+            '        RbLibre.Enabled = True
+            '        RbContrato.Checked = True
+            '        RbLibre.Checked = False
+            '    Else
+            '        RbContrato.Enabled = True
+            '        RbLibre.Enabled = False
+            '        RbContrato.Checked = True
+            '        RbLibre.Checked = False
+            '    End If
+        End If
+        DGVTotalLiquidado.DataSource = dt3.Tables(0).DefaultView
+    End Sub
+    Private Sub EstatusContrato()
+        Dim IdEstatusContrato As Integer
+        Dim cmd As New SqlCommand("sp_ActEstatusContratoVenta", cnn)
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Clear()
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstatusContrato", 0))
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@contrato", IdLiquidacionTotal))
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@sumapagado", NUDTotalLiquidar.Value))
+        cmd.Parameters("@IdEstatusContrato").Direction = ParameterDirection.InputOutput
+        cmd.ExecuteNonQuery()
+        IdEstatusContrato = cmd.Parameters("@IdEstatusContrato").Value
+        If IdEstatusContrato = 1 Then
+            TbEstatusContrato.Text = "COMPLETO"
+        Else
+            TbEstatusContrato.Text = "INCOMPLETO"
+        End If
+    End Sub
     Private Sub TBNombreComprador_TextChanged(sender As Object, e As EventArgs) Handles TBNombreComprador.TextChanged
 
     End Sub
@@ -395,7 +448,5 @@ Public Class LiquidacionXcomprador
 
     End Sub
 
-    Private Sub TBIdContrato_TextChanged(sender As Object, e As EventArgs) Handles TBIdContrato.TextChanged
 
-    End Sub
 End Class
