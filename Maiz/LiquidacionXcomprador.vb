@@ -91,6 +91,33 @@ Public Class LiquidacionXcomprador
         DGVSalidasSeleccionadas.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
     End Sub
+    Private Sub PropiedadesDGVTotalLiquidado()
+        DGVTotalLiquidado.Columns("IdVentaTotalComprador").Visible = False
+        DGVTotalLiquidado.Columns("idContratoVenta").Visible = False
+        DGVTotalLiquidado.Columns("IdComprador").Visible = False
+        DGVTotalLiquidado.Columns("GrupoGrano").HeaderText = "Tipo Maiz"
+        DGVTotalLiquidado.Columns("FechaVenta").HeaderText = "Fecha de Liquidacion"
+        DGVTotalLiquidado.Columns("TotalVentaContrato").HeaderText = "Total liquidado (Ton)"
+        DGVTotalLiquidado.Columns("ImporteTotal").HeaderText = "Importe"
+        DGVTotalLiquidado.Columns("Contrato").HeaderText = "Contrato"
+        DGVTotalLiquidado.Columns("NombreComprador").HeaderText = "Comprador"
+        DGVTotalLiquidado.Columns("TotalVentaContrato").DefaultCellStyle.Format = "###,##0.000"
+        DGVTotalLiquidado.Columns("ImporteTotal").DefaultCellStyle.Format = "###,##0.00"
+    End Sub
+    Private Sub PropiedadesDGVTotalLiquidadoDetalle()
+        DGVTotalLiquidadoDetalle.Columns("IdVentaComprador").Visible = False
+        DGVTotalLiquidadoDetalle.Columns("IdSalida").Visible = False
+        DGVTotalLiquidadoDetalle.Columns("IdComprador").Visible = False
+        DGVTotalLiquidadoDetalle.Columns("NombreComprador").Visible = False
+        DGVTotalLiquidadoDetalle.Columns("NumeroBoleta").HeaderText = "No. Boleta"
+        DGVTotalLiquidadoDetalle.Columns("GrupoGrano").HeaderText = "Tipo Maiz"
+        DGVTotalLiquidadoDetalle.Columns("Neto").HeaderText = "Neto"
+        DGVTotalLiquidadoDetalle.Columns("Deduccion").HeaderText = "Deduccion"
+        DGVTotalLiquidadoDetalle.Columns("Total").HeaderText = "Total"
+        DGVTotalLiquidadoDetalle.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
+        DGVTotalLiquidadoDetalle.Columns("Deduccion").DefaultCellStyle.Format = "###,##0.00"
+        DGVTotalLiquidadoDetalle.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
+    End Sub
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BTNNuevo.Click
         Limpiar()
         DesmarcarChecks()
@@ -295,45 +322,35 @@ Public Class LiquidacionXcomprador
             cmd4.CommandType = CommandType.StoredProcedure
 
             cmd4.Parameters.AddWithValue("@IdVentaTotalComprador", IdLiquidacionTotal)
-
             cmd4.Parameters.AddWithValue("@IdContratoVenta", TBIdContrato.Text)
-
             cmd4.Parameters.AddWithValue("@Idcomprador", TBIdComprador.Text)
-
             cmd4.Parameters.AddWithValue("@GrupoGrano", "AMARILLO")
-
             cmd4.Parameters.AddWithValue("@FechaVenta", Now)
-
             cmd4.Parameters.AddWithValue("@TotalVentaContrato", (NUDTotalLiquidar.Value / 1000))
-
             cmd4.Parameters.AddWithValue("@TipoDeCambio", TipoCambio)
-
             cmd4.Parameters.AddWithValue("@PrecioContrato", PrecioContrato)
-
             cmd4.Parameters.AddWithValue("@Moneda", CBTipoMoneda.SelectedValue)
-
             cmd4.Parameters.AddWithValue("@PrecioToneladaMxn", TBPrecioPorTonelada.Text)
-
             cmd4.Parameters.AddWithValue("@ImporteTotal", ImporteMn)
-
             cmd4.Parameters.AddWithValue("@Contrato", TBContrato.Text)
-
             cmd4.Parameters.AddWithValue("@MetodoPago", TBMetodoPago.Text)
-
             cmd4.Parameters.AddWithValue("@Banco", TBBanco.Text)
-
             cmd4.Parameters.AddWithValue("@UltimosDigitos", TBUltimosDigitos.Text)
-
             cmd4.Parameters.AddWithValue("@ImporteLetra", UCase(letras(TBImporte.Text)))
-
             cmd4.Parameters.AddWithValue("@IdEmpresa", CBEmpresa.SelectedValue)
-
             cmd4.Parameters.AddWithValue("@IdTipoLiquidacion", IIf(RBTNSi.Checked = True, 0, 1))
 
             cmd4.ExecuteNonQuery()
             EstatusContrato()
 
-
+            PropiedadesDGVTotalLiquidado()
+            Dim cmd5 As New SqlCommand("sp_LlenarDGVTotalLiquidado", cnn)
+            cmd5.CommandType = CommandType.StoredProcedure
+            cmd5.Parameters.Add(New SqlClient.SqlParameter("@IdComprador", TBIdComprador.Text))
+            Dim da5 As New SqlClient.SqlDataAdapter(cmd5)
+            Dim dt5 As New DataSet()
+            da5.Fill(dt5)
+            DGVTotalLiquidado.DataSource = dt5.Tables(0).DefaultView
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
@@ -447,6 +464,56 @@ Public Class LiquidacionXcomprador
     Private Sub TbEstatusContrato_TextChanged(sender As Object, e As EventArgs) Handles TbEstatusContrato.TextChanged
 
     End Sub
+    Private Sub BoletasLiquidadas(sender As Object, e As EventArgs) Handles DGVTotalLiquidado.DoubleClick
+        DGVTotalLiquidadoDetalle.Columns.Clear()
+        DGVTotalLiquidadoDetalle.DataSource = Nothing
+        If DGVTotalLiquidado.RowCount = 0 Then
+            MessageBox.Show("No hay datos para seleccionar.")
+        ElseIf DGVTotalLiquidado.CurrentRow IsNot Nothing Then
+            Dim cmd3 As New SqlCommand("sp_LlenarDGVTotalLiquidadoDetalle", cnn)
+            cmd3.CommandType = CommandType.StoredProcedure
+            cmd3.Parameters.Add(New SqlClient.SqlParameter("@IdVentaTotalComprador", CStr(DGVTotalLiquidado.CurrentRow.Cells(0).Value)))
+            Dim da3 As New SqlClient.SqlDataAdapter(cmd3)
+            Dim dt3 As New DataSet()
+            da3.Fill(dt3)
+            DGVTotalLiquidadoDetalle.DataSource = dt3.Tables(0).DefaultView
+            PropiedadesDGVTotalLiquidadoDetalle()
 
-
+            Dim Tabla As New DataTable
+            da3.Fill(Tabla)
+            Dim row As DataRow = Tabla.Rows(0)
+            '---------------------------------
+            If row("IdTipoLiquidacion") = 0 Then
+                RBTNContratoBL.Checked = True
+            Else
+                RBTNLibreBL.Checked = True
+            End If
+            '-----------------------------------------------
+            'Dim cmd4 As New SqlCommand("sp_DatosTotalLiquidacion", cnn)
+            'cmd4.CommandType = CommandType.StoredProcedure
+            'cmd4.Parameters.Add(New SqlClient.SqlParameter("@idliquidacionT", CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value)))
+            'Dim da4 As New SqlClient.SqlDataAdapter(cmd4)
+            'Dim dt4 As New DataTable
+            'da4.Fill(dt4)
+            'Dim row As DataRow = dt4.Rows(0)
+            ''---------------------------------
+            'If row("IdTipoLiquidacion") = 0 Then
+            '    RbContratoLiquidado.Checked = True
+            'Else
+            '    RbLibreLiquidado.Checked = True
+            'End If
+            ''-----------------------------------------------
+            TBTipoDeCambioBL.Text = row("TipoDeCambio")
+            NUDPrecioContratoBL.Value = row("PrecioContrato")
+            NUDTotalLiquidadoBL.Value = row("TotalVentaContrato")
+            CBTipoMonedaBL.SelectedValue = row("Moneda")
+            TBPrecioPorToneladaBL.Text = row("PrecioToneladaMxn")
+            TBImporteBL.Text = row("ImporteTotal")
+            CBCompradorBL.SelectedValue = CStr(row("Idcomprador"))
+            TBContratoBL.Text = CStr(row("Contrato"))
+            TBMetodoPagoBL.Text = CStr(row("MetodoPago"))
+            TBBancoBL.Text = CStr(row("Banco"))
+            TBUltimosDigitosBL.Text = CStr(row("UltimosDigitos"))
+        End If
+    End Sub
 End Class
