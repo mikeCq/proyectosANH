@@ -372,7 +372,7 @@ Public Class LiquidacionXcomprador
 
         TBIdContrato.Text = CStr(dt.Tables(0).Rows(0)("id_contratoV").ToString())
         TBIdComprador.Text = CStr(dt.Tables(0).Rows(0)("id_comprador").ToString())
-        TBNombreComprador.Text = CStr(dt.Tables(0).Rows(0)("Nombre_Comprador").ToString())
+        TBNombreComprador.Text = CStr(dt.Tables(0).Rows(0)("NombreComprador").ToString())
         NUDToneladasContrato.Value = CDbl(dt.Tables(0).Rows(0)("toneladasVentas").ToString())
         NUDToneladasRestantes.Value = CDbl(dt.Tables(0).Rows(0)("toneladasrestantes").ToString())
         PrecioContrato = CDbl(dt.Tables(0).Rows(0)("precioXtonelada").ToString())
@@ -514,6 +514,37 @@ Public Class LiquidacionXcomprador
             TBMetodoPagoBL.Text = CStr(row("MetodoPago"))
             TBBancoBL.Text = CStr(row("Banco"))
             TBUltimosDigitosBL.Text = CStr(row("UltimosDigitos"))
+        End If
+    End Sub
+    Private Sub CbMonedaVerificar()
+        If CBTipoMoneda.SelectedItem = "DLS" Then
+            NUDPrecioContrato.Value = PrecioContrato
+            TBTipoDeCambio.Enabled = True
+            TBPrecioPorTonelada.Enabled = False
+        ElseIf CBTipoMoneda.SelectedItem = "MXN" Then
+            TBTipoDeCambio.Enabled = False
+            TBPrecioPorTonelada.Enabled = True
+            NUDPrecioContrato.Value = 0.00
+        End If
+    End Sub
+
+    Private Sub CBTipoMoneda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBTipoMoneda.SelectionChangeCommitted
+        CbMonedaVerificar()
+    End Sub
+    Private Sub TBPrecioPorTonelada_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TBPrecioPorTonelada.PreviewKeyDown
+        Dim tipoCambio As Double = 0
+        Dim kilosAton As Double = 0
+        Dim precioContrato As Double = 0
+        If e.KeyCode = Keys.Enter Then
+            If NUDTotalLiquidar.Value > 0 Then
+                If RBTNSi.Checked = False And RBTNNo.Checked = True Then
+                    kilosAton = NUDTotalLiquidar.Value / 1000
+                    TBImporte.Text = CDbl(TBPrecioPorTonelada.Text) * kilosAton
+                    NUDPrecioContrato.Value = CDbl(TBPrecioPorTonelada.Text)
+                    TBPrecioPorTonelada.Text = FormatNumber(Val(TBPrecioPorTonelada.Text), 2)
+                    TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
+                End If
+            End If
         End If
     End Sub
 End Class
