@@ -386,8 +386,13 @@ Public Class LiquidacionXcomprador
             Else
                 RBTNNo.Checked = True
             End If
-            IIf(Moneda = 1, CBTipoMoneda.Text = "DLS", CBTipoMoneda.Text = "MXN")
-
+            'IIf(Moneda = 1, CBTipoMoneda.SelectedIndex = 0, CBTipoMoneda.SelectedIndex = 1)
+            If Moneda = 1 Then
+                CBTipoMoneda.SelectedIndex = 0
+            Else
+                CBTipoMoneda.SelectedIndex = 1
+            End If
+            CbMonedaVerificar()
             Dim cmd3 As New SqlCommand("sp_LlenaDGVTotalLiquidado", cnn)
 
             cmd3.CommandType = CommandType.StoredProcedure
@@ -521,11 +526,11 @@ Public Class LiquidacionXcomprador
         End If
     End Sub
     Private Sub CbMonedaVerificar()
-        If CBTipoMoneda.SelectedItem = "DLS" Then
+        If CBTipoMoneda.SelectedIndex = 0 Then
             NUDPrecioContrato.Value = PrecioContrato
             TBTipoDeCambio.Enabled = True
             TBPrecioPorTonelada.Enabled = False
-        ElseIf CBTipoMoneda.SelectedItem = "MXN" Then
+        ElseIf CBTipoMoneda.SelectedIndex = 1 Then
             TBTipoDeCambio.Enabled = False
             TBPrecioPorTonelada.Enabled = True
             NUDPrecioContrato.Value = 0.00

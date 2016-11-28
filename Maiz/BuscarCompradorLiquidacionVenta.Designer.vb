@@ -126,6 +126,7 @@ Partial Class BuscarCompradorLiquidacionVenta
         Me.Controls.Add(Me.BtnCancelar)
         Me.Controls.Add(Me.BtnBuscar)
         Me.Name = "BuscarCompradorLiquidacionVenta"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Buscar Compradores"
         CType(Me.DGVCompradores, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
