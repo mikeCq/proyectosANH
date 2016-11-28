@@ -148,11 +148,11 @@ Public Class LiquidacionXcomprador
         Dim ds As DataSet
 
         '------LLENAR CBTIPOMONEDA--------
-        CBTipoMoneda.SelectedIndex = -1
+        CBTipoMoneda.Items.Add("")
         CBTipoMoneda.Items.Add("DLS")
         CBTipoMoneda.Items.Add("MXN")
         '------LLENAR CBTIPOMONEDABL--------
-        CBTipoMonedaBL.SelectedIndex = -1
+        CBTipoMonedaBL.Items.Add("")
         CBTipoMonedaBL.Items.Add("DLS")
         CBTipoMonedaBL.Items.Add("MXN")
         '------LLENAR CBCOMPRADOR--------
@@ -181,22 +181,29 @@ Public Class LiquidacionXcomprador
         CBCompradorBL.SelectedIndex = -1
     End Sub
     Private Sub Limpiar()
+        TBIdContrato.Text = ""
+        TbEstatusContrato.Text = ""
+        TBNombreComprador.Text = ""
+        TBIdContrato.Text = ""
+        NUDToneladasContrato.Value = 0
+        NUDToneladasRestantes.Value = 0
+        CBEmpresa.SelectedIndex = -1
+        Moneda = -1
         TBTipoDeCambio.Text = ""
         NUDPrecioContrato.Value = 0.00
-        CBTipoMoneda.SelectedValue = -1
         TBPrecioPorTonelada.Text = ""
         TBImporte.Text = ""
         NUDToneladasSeleccionadas.Value = 0.00
         NUDTotalLiquidar.Value = 0.00
         'CBComprador.SelectedValue = -1
-        CBTipoMoneda.SelectedIndex = -1
+        CBTipoMoneda.SelectedItem = ""
         DGVSalidasSeleccionadas.Columns.Clear()
         DGVSalidasSeleccionadas.DataSource = Nothing
         '---PESTAÑA DE LIQUIDACION-------------------
         TBTipoDeCambioBL.Text = ""
         NUDPrecioContratoBL.Value = 0.00
         NUDTotalLiquidadoBL.Value = 0.00
-        CBTipoMonedaBL.SelectedIndex = -1
+        CBTipoMonedaBL.SelectedItem = ""
         TBPrecioPorToneladaBL.Text = ""
         TBImporteBL.Text = ""
         CBCompradorBL.SelectedValue = -1
@@ -206,8 +213,8 @@ Public Class LiquidacionXcomprador
         TBUltimosDigitosBL.Text = ""
         RBTNContratoBL.Checked = False
         RBTNLibreBL.Checked = False
-        CBTipoMoneda.Items.Clear()
-        CBTipoMonedaBL.Items.Clear()
+        'CBTipoMoneda.Items.Clear()
+        'CBTipoMonedaBL.Items.Clear()
     End Sub
     Private Sub LlenarDGVsalidas()
         Dim cmd As New SqlCommand("sp_llenarDgvSalidas", cnn)
@@ -359,6 +366,7 @@ Public Class LiquidacionXcomprador
         '--LimpiarGuardar()
     End Sub
     Private Sub Buscar()
+        Moneda = -1
         Dim BuscarCompradorLiquidacionVenta As New BuscarCompradorLiquidacionVenta
         BuscarCompradorLiquidacionVenta.ShowDialog()
         Dim CodigoComprador As Object = BuscarCompradorLiquidacionVenta.CodigoVenta
@@ -386,11 +394,10 @@ Public Class LiquidacionXcomprador
             Else
                 RBTNNo.Checked = True
             End If
-            'IIf(Moneda = 1, CBTipoMoneda.SelectedIndex = 0, CBTipoMoneda.SelectedIndex = 1)
             If Moneda = 1 Then
-                CBTipoMoneda.SelectedIndex = 0
+                CBTipoMoneda.SelectedItem = "DLS"
             Else
-                CBTipoMoneda.SelectedIndex = 1
+                CBTipoMoneda.SelectedItem = "MXN"
             End If
             CbMonedaVerificar()
             Dim cmd3 As New SqlCommand("sp_LlenaDGVTotalLiquidado", cnn)
@@ -526,11 +533,13 @@ Public Class LiquidacionXcomprador
         End If
     End Sub
     Private Sub CbMonedaVerificar()
-        If CBTipoMoneda.SelectedIndex = 0 Then
+        If CBTipoMoneda.SelectedItem = "DLS" Then
+            TBPrecioPorTonelada.Text = ""
             NUDPrecioContrato.Value = PrecioContrato
             TBTipoDeCambio.Enabled = True
             TBPrecioPorTonelada.Enabled = False
-        ElseIf CBTipoMoneda.SelectedIndex = 1 Then
+        ElseIf CBTipoMoneda.SelectedItem = "MXN" Then
+            TBPrecioPorTonelada.Text = PrecioContrato
             TBTipoDeCambio.Enabled = False
             TBPrecioPorTonelada.Enabled = True
             NUDPrecioContrato.Value = 0.00
