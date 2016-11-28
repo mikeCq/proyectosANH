@@ -8,6 +8,24 @@ Public Class LiquidacionXcomprador
         LlenarDGVsalidas()
         PropiedadesDGVSalidas()
     End Sub
+    Private _codigoLiquidacionTP As String
+    Public Property codigoLiquidacionTP() As String
+        Get
+            Return _codigoLiquidacionTP
+        End Get
+        Set(value As String)
+            _codigoLiquidacionTP = value
+        End Set
+    End Property
+    Private _tipoContrato As Integer
+    Public Property tipoContrato() As Integer
+        Get
+            Return _tipoContrato
+        End Get
+        Set(value As Integer)
+            _tipoContrato = value
+        End Set
+    End Property
     Private Sub PropiedadesDGVSalidas()
         If DGVSalidas.Columns("ChCol") Is Nothing Then
             Dim checkBoxColumn As New DataGridViewCheckBoxColumn()
@@ -129,7 +147,35 @@ Public Class LiquidacionXcomprador
     End Sub
 
     Private Sub BtnImprimir_Click(sender As Object, e As EventArgs) Handles BTNImprimir.Click
-
+        If TpBoletasXliquidar.Focus = True Then
+            If DGVSalidasSeleccionadas.RowCount = 0 Then
+                MessageBox.Show("No hay datos para imprimir.")
+            Else
+                _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DGVTotalLiquidado.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
+                '_tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
+                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
+                If opc = DialogResult.Yes Then
+                    ReporteLiquidacionesXprod.ShowDialog()
+                    ReporteResumenBoletasLiquidadas.ShowDialog()
+                Else
+                    ReporteLiquidacionesXprod.ShowDialog()
+                End If
+            End If
+        ElseIf TpBoletasLiquidadas.Focus = True Then
+            If DGVTotalLiquidadoDetalle.RowCount = 0 Then
+                MessageBox.Show("No hay datos para imprimir.")
+            Else
+                _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DGVTotalLiquidado.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
+                '_tipoContrato = IIf(RbContratoLiquidado.Checked = True, 0, 1)
+                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
+                If opc = DialogResult.Yes Then
+                    ReporteLiquidacionesXprod.ShowDialog()
+                    ReporteResumenBoletasLiquidadas.ShowDialog()
+                Else
+                    ReporteLiquidacionesXprod.ShowDialog()
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BTNGuardar.Click

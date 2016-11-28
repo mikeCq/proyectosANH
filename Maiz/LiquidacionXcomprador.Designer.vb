@@ -63,7 +63,7 @@ Partial Class LiquidacionXcomprador
         Me.LBBoletasSeleccionadas = New System.Windows.Forms.Label()
         Me.DGVSalidasSeleccionadas = New System.Windows.Forms.DataGridView()
         Me.DGVSalidas = New System.Windows.Forms.DataGridView()
-        Me.LBLiquidacionBL = New System.Windows.Forms.TabPage()
+        Me.TpBoletasLiquidadas = New System.Windows.Forms.TabPage()
         Me.NUDTotalLiquidadoBL = New System.Windows.Forms.NumericUpDown()
         Me.LBTotalLiquidadoBL = New System.Windows.Forms.Label()
         Me.RBTNLibreBL = New System.Windows.Forms.RadioButton()
@@ -113,7 +113,7 @@ Partial Class LiquidacionXcomprador
         CType(Me.NUDToneladasSeleccionadas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVSalidasSeleccionadas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVSalidas, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LBLiquidacionBL.SuspendLayout()
+        Me.TpBoletasLiquidadas.SuspendLayout()
         CType(Me.NUDTotalLiquidadoBL, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUDPrecioContratoBL, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVTotalLiquidadoDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -125,7 +125,7 @@ Partial Class LiquidacionXcomprador
         'TbLiquidacionXProd
         '
         Me.TbLiquidacionXProd.Controls.Add(Me.TpBoletasXliquidar)
-        Me.TbLiquidacionXProd.Controls.Add(Me.LBLiquidacionBL)
+        Me.TbLiquidacionXProd.Controls.Add(Me.TpBoletasLiquidadas)
         Me.TbLiquidacionXProd.Location = New System.Drawing.Point(12, 154)
         Me.TbLiquidacionXProd.Name = "TbLiquidacionXProd"
         Me.TbLiquidacionXProd.SelectedIndex = 0
@@ -495,39 +495,39 @@ Partial Class LiquidacionXcomprador
         Me.DGVSalidas.Size = New System.Drawing.Size(678, 402)
         Me.DGVSalidas.TabIndex = 41
         '
-        'LBLiquidacionBL
+        'TpBoletasLiquidadas
         '
-        Me.LBLiquidacionBL.Controls.Add(Me.NUDTotalLiquidadoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBTotalLiquidadoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.RBTNLibreBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.RBTNContratoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.Label28)
-        Me.LBLiquidacionBL.Controls.Add(Me.CBTipoMonedaBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBUltimosDigitosBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBBancoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBPrecioContratoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBMetodoPagoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.NUDPrecioContratoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.TBUltimosDigitosBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.TBMetodoPagoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.TBBancoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBContratoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBImporteBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBPrecioPorToneladaBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.LBTipoDeCambioBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.TBContratoBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.TBTipoDeCambioBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.TBImporteBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.TBPrecioPorToneladaBL)
-        Me.LBLiquidacionBL.Controls.Add(Me.DGVTotalLiquidadoDetalle)
-        Me.LBLiquidacionBL.Controls.Add(Me.DGVTotalLiquidado)
-        Me.LBLiquidacionBL.Location = New System.Drawing.Point(4, 22)
-        Me.LBLiquidacionBL.Name = "LBLiquidacionBL"
-        Me.LBLiquidacionBL.Padding = New System.Windows.Forms.Padding(3)
-        Me.LBLiquidacionBL.Size = New System.Drawing.Size(1364, 589)
-        Me.LBLiquidacionBL.TabIndex = 1
-        Me.LBLiquidacionBL.Text = "Boletas Liquidadas"
-        Me.LBLiquidacionBL.UseVisualStyleBackColor = True
+        Me.TpBoletasLiquidadas.Controls.Add(Me.NUDTotalLiquidadoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBTotalLiquidadoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.RBTNLibreBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.RBTNContratoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.Label28)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.CBTipoMonedaBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBUltimosDigitosBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBBancoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBPrecioContratoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBMetodoPagoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.NUDPrecioContratoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.TBUltimosDigitosBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.TBMetodoPagoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.TBBancoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBContratoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBImporteBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBPrecioPorToneladaBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.LBTipoDeCambioBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.TBContratoBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.TBTipoDeCambioBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.TBImporteBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.TBPrecioPorToneladaBL)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.DGVTotalLiquidadoDetalle)
+        Me.TpBoletasLiquidadas.Controls.Add(Me.DGVTotalLiquidado)
+        Me.TpBoletasLiquidadas.Location = New System.Drawing.Point(4, 22)
+        Me.TpBoletasLiquidadas.Name = "TpBoletasLiquidadas"
+        Me.TpBoletasLiquidadas.Padding = New System.Windows.Forms.Padding(3)
+        Me.TpBoletasLiquidadas.Size = New System.Drawing.Size(1364, 589)
+        Me.TpBoletasLiquidadas.TabIndex = 1
+        Me.TpBoletasLiquidadas.Text = "Boletas Liquidadas"
+        Me.TpBoletasLiquidadas.UseVisualStyleBackColor = True
         '
         'NUDTotalLiquidadoBL
         '
@@ -1027,8 +1027,8 @@ Partial Class LiquidacionXcomprador
         CType(Me.NUDToneladasSeleccionadas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVSalidasSeleccionadas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVSalidas, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.LBLiquidacionBL.ResumeLayout(False)
-        Me.LBLiquidacionBL.PerformLayout()
+        Me.TpBoletasLiquidadas.ResumeLayout(False)
+        Me.TpBoletasLiquidadas.PerformLayout()
         CType(Me.NUDTotalLiquidadoBL, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUDPrecioContratoBL, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVTotalLiquidadoDetalle, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1050,7 +1050,7 @@ Partial Class LiquidacionXcomprador
     Friend WithEvents LBBoletasSeleccionadas As Label
     Friend WithEvents DGVSalidasSeleccionadas As DataGridView
     Friend WithEvents DGVSalidas As DataGridView
-    Friend WithEvents LBLiquidacionBL As TabPage
+    Friend WithEvents TpBoletasLiquidadas As TabPage
     Friend WithEvents DGVTotalLiquidado As DataGridView
     Friend WithEvents CBTipoMoneda As ComboBox
     Friend WithEvents LBUltimosDigitos As Label
