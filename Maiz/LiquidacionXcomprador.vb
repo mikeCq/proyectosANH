@@ -271,22 +271,22 @@ Public Class LiquidacionXcomprador
         ElseIf NUDToneladasSeleccionadas.Value = NUDTotalLiquidar.Value Then
             IdLiquidacionTotal = ""
             Dim Contador As Integer
-            IdLiquidacionTotal = generaCodigoVenta(IdLiquidacionTotal)
+            IdLiquidacionTotal = generaCodigoLiquidacionVenta(IdLiquidacionTotal)
             For Contador = 0 To DGVSalidasSeleccionadas.RowCount - 1
                 Dim CodigoLiquidacion As String = ""
                 Dim cmd1 As New SqlCommand("sp_InsertarVentaResumen", cnn)
                 cmd1.CommandType = CommandType.StoredProcedure
                 cmd1.Parameters.Clear()
                 cmd1.Parameters.AddWithValue("@IdVentaComprador", generaCodigoVentaResumen(CodigoLiquidacion))
-                cmd1.Parameters.AddWithValue("@idSalida", DGVSalidasSeleccionadas.Rows(Contador).Cells("IdSalida").Value.ToString)
+                cmd1.Parameters.AddWithValue("@idSalida", DGVSalidasSeleccionadas.Rows(Contador).Cells("Id_Salida").Value.ToString)
                 cmd1.Parameters.AddWithValue("@numeroBoleta", DGVSalidasSeleccionadas.Rows(Contador).Cells("numeroBoleta").Value)
-                cmd1.Parameters.AddWithValue("@IdComprador", DGVSalidasSeleccionadas.Rows(Contador).Cells("IdComprador").Value.ToString())
-                cmd1.Parameters.AddWithValue("@NombreComprador", TBIdComprador.Text)
+                cmd1.Parameters.AddWithValue("@IdComprador", TBIdComprador.Text)
+                cmd1.Parameters.AddWithValue("@NombreComprador", TBNombreComprador.Text)
                 cmd1.Parameters.AddWithValue("@grupoGrano", DGVSalidasSeleccionadas.Rows(Contador).Cells("grupoGrano").Value.ToString())
                 cmd1.Parameters.AddWithValue("@Neto", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Neto").Value)) / 1000)
                 cmd1.Parameters.AddWithValue("@deduccion", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Deducciones").Value)) / 1000)
                 cmd1.Parameters.AddWithValue("@Total", (CDbl(DGVSalidasSeleccionadas.Rows(Contador).Cells("Total").Value)) / 1000)
-                cmd1.Parameters.AddWithValue("@moneda", CBTipoMoneda.Text)
+                cmd1.Parameters.AddWithValue("@moneda", IIf(CBTipoMoneda.Text = "DLS", 1, 2))
                 cmd1.Parameters.AddWithValue("@IdVentaTotalComprador", IdLiquidacionTotal)
 
                 cmd1.ExecuteNonQuery()
@@ -300,7 +300,7 @@ Public Class LiquidacionXcomprador
 
                     cmd2.CommandType = CommandType.StoredProcedure
 
-                    cmd2.Parameters.AddWithValue("@idSalida", DGVSalidas.Rows(Contador).Cells("IdSalida").Value.ToString)
+                    cmd2.Parameters.AddWithValue("@idSalida", DGVSalidas.Rows(Contador).Cells("Id_Salida").Value.ToString)
                     cmd2.Parameters.AddWithValue("@TotalXliquidar", (CDbl(DGVSalidas.Rows(Contador).Cells("Total").Value)) / 1000)
                     cmd2.ExecuteNonQuery()
                 End If
@@ -329,7 +329,7 @@ Public Class LiquidacionXcomprador
             cmd4.Parameters.AddWithValue("@TotalVentaContrato", (NUDTotalLiquidar.Value / 1000))
             cmd4.Parameters.AddWithValue("@TipoDeCambio", TipoCambio)
             cmd4.Parameters.AddWithValue("@PrecioContrato", PrecioContrato)
-            cmd4.Parameters.AddWithValue("@Moneda", CBTipoMoneda.SelectedValue)
+            cmd4.Parameters.AddWithValue("@Moneda", IIf(CBTipoMoneda.Text = "DLS", 1, 2))
             cmd4.Parameters.AddWithValue("@PrecioToneladaMxn", TBPrecioPorTonelada.Text)
             cmd4.Parameters.AddWithValue("@ImporteTotal", ImporteMn)
             cmd4.Parameters.AddWithValue("@Contrato", TBContrato.Text)
@@ -343,7 +343,7 @@ Public Class LiquidacionXcomprador
             cmd4.ExecuteNonQuery()
             EstatusContrato()
 
-            PropiedadesDGVTotalLiquidado()
+
             Dim cmd5 As New SqlCommand("sp_LlenarDGVTotalLiquidado", cnn)
             cmd5.CommandType = CommandType.StoredProcedure
             cmd5.Parameters.Add(New SqlClient.SqlParameter("@IdComprador", TBIdComprador.Text))
@@ -351,6 +351,7 @@ Public Class LiquidacionXcomprador
             Dim dt5 As New DataSet()
             da5.Fill(dt5)
             DGVTotalLiquidado.DataSource = dt5.Tables(0).DefaultView
+            PropiedadesDGVTotalLiquidado()
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
@@ -383,7 +384,7 @@ Public Class LiquidacionXcomprador
         Else
             RBTNNo.Checked = True
         End If
-
+        IIf(Moneda = 1, CBTipoMoneda.Text = "DLS", CBTipoMoneda.Text = "MXN")
 
         Dim cmd3 As New SqlCommand("sp_LlenaDGVTotalLiquidado", cnn)
 
@@ -531,20 +532,29 @@ Public Class LiquidacionXcomprador
     Private Sub CBTipoMoneda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBTipoMoneda.SelectionChangeCommitted
         CbMonedaVerificar()
     End Sub
-    Private Sub TBPrecioPorTonelada_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TBPrecioPorTonelada.PreviewKeyDown
+    Private Sub TBPrecioPorTonelada_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TBTipoDeCambio.PreviewKeyDown, TBPrecioPorTonelada.PreviewKeyDown
         Dim tipoCambio As Double = 0
         Dim kilosAton As Double = 0
         Dim precioContrato As Double = 0
+        Dim variable As Decimal
         If e.KeyCode = Keys.Enter Then
             If NUDTotalLiquidar.Value > 0 Then
-                If RBTNSi.Checked = False And RBTNNo.Checked = True Then
+                If CBTipoMoneda.Text = "MXN" Then
                     kilosAton = NUDTotalLiquidar.Value / 1000
                     TBImporte.Text = CDbl(TBPrecioPorTonelada.Text) * kilosAton
                     NUDPrecioContrato.Value = CDbl(TBPrecioPorTonelada.Text)
                     TBPrecioPorTonelada.Text = FormatNumber(Val(TBPrecioPorTonelada.Text), 2)
                     TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
+                ElseIf CBTipoMoneda.Text = "DLS" Then
+                    tipoCambio = CDbl(TBTipoDeCambio.Text)
+                    precioContrato = NUDPrecioContrato.Value
+                    kilosAton = NUDTotalLiquidar.Value / 1000
+                    TBPrecioPorTonelada.Text = tipoCambio * NUDPrecioContrato.Value
+                    variable = TBPrecioPorTonelada.Text
+                    TBPrecioPorTonelada.Text = Format(CType(variable, Decimal), "###0.###0")
+                    TBImporte.Text = TBPrecioPorTonelada.Text * kilosAton
                 End If
             End If
-        End If
+            End If
     End Sub
 End Class
