@@ -453,6 +453,12 @@
     <Compile Include="ReportesSalidas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteVentaResumen.Designer.vb">
+      <DependentUpon>ReporteVentaResumen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteVentaResumen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReporteVentas.Designer.vb">
       <DependentUpon>ReporteVentas.vb</DependentUpon>
     </Compile>
@@ -773,6 +779,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportesSalidas.resx">
       <DependentUpon>ReportesSalidas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteVentaResumen.resx">
+      <DependentUpon>ReporteVentaResumen.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteVentas.resx">
       <DependentUpon>ReporteVentas.vb</DependentUpon>
