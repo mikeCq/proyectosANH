@@ -362,76 +362,79 @@ Public Class LiquidacionXcomprador
         Dim BuscarCompradorLiquidacionVenta As New BuscarCompradorLiquidacionVenta
         BuscarCompradorLiquidacionVenta.ShowDialog()
         Dim CodigoComprador As Object = BuscarCompradorLiquidacionVenta.CodigoVenta
-        Dim cmd As New SqlCommand("sp_DatosContratoVenta", cnn)
 
-        cmd.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.Add(New SqlClient.SqlParameter("@IdContratoVenta", BuscarCompradorLiquidacionVenta.CodigoVenta))
+        If BuscarCompradorLiquidacionVenta.CodigoVenta <> Nothing Then
+            Dim cmd As New SqlCommand("sp_DatosContratoVenta", cnn)
 
-        Dim da As New SqlClient.SqlDataAdapter(cmd)
-        Dim dt As New DataSet()
-        da.Fill(dt)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdContratoVenta", BuscarCompradorLiquidacionVenta.CodigoVenta))
 
-        TBIdContrato.Text = CStr(dt.Tables(0).Rows(0)("id_contratoV").ToString())
-        TBIdComprador.Text = CStr(dt.Tables(0).Rows(0)("id_comprador").ToString())
-        TBNombreComprador.Text = CStr(dt.Tables(0).Rows(0)("NombreComprador").ToString())
-        NUDToneladasContrato.Value = CDbl(dt.Tables(0).Rows(0)("toneladasVentas").ToString())
-        NUDToneladasRestantes.Value = CDbl(dt.Tables(0).Rows(0)("toneladasrestantes").ToString())
-        PrecioContrato = CDbl(dt.Tables(0).Rows(0)("precioXtonelada").ToString())
-        TbEstatusContrato.Text = IIf(dt.Tables(0).Rows(0)("EstatusContrato").ToString() = 0, "INCOMPLETO", "COMPLETO")
-        Moneda = dt.Tables(0).Rows(0)("moneda").ToString()
-        If dt.Tables(0).Rows(0)("TipoContrato").ToString() = 0 Then
-            RBTNSi.Checked = True
-        Else
-            RBTNNo.Checked = True
+            Dim da As New SqlClient.SqlDataAdapter(cmd)
+            Dim dt As New DataSet()
+            da.Fill(dt)
+
+            TBIdContrato.Text = CStr(dt.Tables(0).Rows(0)("id_contratoV").ToString())
+            TBIdComprador.Text = CStr(dt.Tables(0).Rows(0)("id_comprador").ToString())
+            TBNombreComprador.Text = CStr(dt.Tables(0).Rows(0)("NombreComprador").ToString())
+            NUDToneladasContrato.Value = CDbl(dt.Tables(0).Rows(0)("toneladasVentas").ToString())
+            NUDToneladasRestantes.Value = CDbl(dt.Tables(0).Rows(0)("toneladasrestantes").ToString())
+            PrecioContrato = CDbl(dt.Tables(0).Rows(0)("precioXtonelada").ToString())
+            TbEstatusContrato.Text = IIf(dt.Tables(0).Rows(0)("EstatusContrato").ToString() = 0, "INCOMPLETO", "COMPLETO")
+            Moneda = dt.Tables(0).Rows(0)("moneda").ToString()
+            If dt.Tables(0).Rows(0)("TipoContrato").ToString() = 0 Then
+                RBTNSi.Checked = True
+            Else
+                RBTNNo.Checked = True
+            End If
+            IIf(Moneda = 1, CBTipoMoneda.Text = "DLS", CBTipoMoneda.Text = "MXN")
+
+            Dim cmd3 As New SqlCommand("sp_LlenaDGVTotalLiquidado", cnn)
+
+            cmd3.CommandType = CommandType.StoredProcedure
+            cmd3.Parameters.Add(New SqlClient.SqlParameter("@IdComprador", TBIdComprador.Text))
+
+            Dim da3 As New SqlClient.SqlDataAdapter(cmd3)
+            Dim dt3 As New DataSet()
+            da3.Fill(dt3)
+            Dim BanderaContrato As Integer
+            If (dt3.Tables(0).Rows.Count = 0) Then
+
+                BanderaContrato = 0
+            Else
+                BanderaContrato = dt.Tables(0).Rows(0)("EstatusContrato")
+            End If
+            If dt3.Tables(0).Rows.Count <> 0 Then
+                TBNombreComprador.Text = dt3.Tables(0).Rows(0)("NombreComprador").ToString()
+            Else
+                TBNombreComprador.Text = dt.Tables(0).Rows(0)("NombreComprador").ToString()
+            End If
+            If BanderaContrato = 1 Then
+                '    If RbNo.Checked = True Then
+                '        RbContrato.Checked = True
+                '        RbContrato.Enabled = True
+                '        RbLibre.Checked = False
+                '        RbLibre.Enabled = True
+                '    Else
+                '        RbContrato.Enabled = False
+                '        RbLibre.Enabled = True
+                '        RbContrato.Checked = False
+                '        RbLibre.Checked = True
+                '    End If
+                'Else
+                '    If RbSi.Checked = True Then
+                '        RbContrato.Enabled = True
+                '        RbLibre.Enabled = True
+                '        RbContrato.Checked = True
+                '        RbLibre.Checked = False
+                '    Else
+                '        RbContrato.Enabled = True
+                '        RbLibre.Enabled = False
+                '        RbContrato.Checked = True
+                '        RbLibre.Checked = False
+                '    End If
+            End If
+            DGVTotalLiquidado.DataSource = dt3.Tables(0).DefaultView
         End If
-        IIf(Moneda = 1, CBTipoMoneda.Text = "DLS", CBTipoMoneda.Text = "MXN")
-
-        Dim cmd3 As New SqlCommand("sp_LlenaDGVTotalLiquidado", cnn)
-
-        cmd3.CommandType = CommandType.StoredProcedure
-        cmd3.Parameters.Add(New SqlClient.SqlParameter("@IdComprador", TBIdComprador.Text))
-
-        Dim da3 As New SqlClient.SqlDataAdapter(cmd3)
-        Dim dt3 As New DataSet()
-        da3.Fill(dt3)
-        Dim BanderaContrato As Integer
-        If (dt3.Tables(0).Rows.Count = 0) Then
-
-            BanderaContrato = 0
-        Else
-            BanderaContrato = dt.Tables(0).Rows(0)("EstatusContrato")
-        End If
-        If dt3.Tables(0).Rows.Count <> 0 Then
-            TBNombreComprador.Text = dt3.Tables(0).Rows(0)("NombreComprador").ToString()
-        Else
-            TBNombreComprador.Text = dt.Tables(0).Rows(0)("NombreComprador").ToString()
-        End If
-        If BanderaContrato = 1 Then
-            '    If RbNo.Checked = True Then
-            '        RbContrato.Checked = True
-            '        RbContrato.Enabled = True
-            '        RbLibre.Checked = False
-            '        RbLibre.Enabled = True
-            '    Else
-            '        RbContrato.Enabled = False
-            '        RbLibre.Enabled = True
-            '        RbContrato.Checked = False
-            '        RbLibre.Checked = True
-            '    End If
-            'Else
-            '    If RbSi.Checked = True Then
-            '        RbContrato.Enabled = True
-            '        RbLibre.Enabled = True
-            '        RbContrato.Checked = True
-            '        RbLibre.Checked = False
-            '    Else
-            '        RbContrato.Enabled = True
-            '        RbLibre.Enabled = False
-            '        RbContrato.Checked = True
-            '        RbLibre.Checked = False
-            '    End If
-        End If
-        DGVTotalLiquidado.DataSource = dt3.Tables(0).DefaultView
     End Sub
     Private Sub EstatusContrato()
         Dim IdEstatusContrato As Integer
