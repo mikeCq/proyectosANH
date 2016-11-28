@@ -631,9 +631,9 @@ Public Class ControlEntradas
         DgBoletaIngresada.Columns("Tara").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         DgBoletaIngresada.Columns("Neto").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
-        DgBoletaIngresada.Columns("Bruto").DefaultCellStyle.Format = "###,##0.00"
-        DgBoletaIngresada.Columns("Tara").DefaultCellStyle.Format = "###,##0.00"
-        DgBoletaIngresada.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
+        DgBoletaIngresada.Columns("Bruto").DefaultCellStyle.Format = "#,###,##0.00"
+        DgBoletaIngresada.Columns("Tara").DefaultCellStyle.Format = "#,###,##0.00"
+        DgBoletaIngresada.Columns("Neto").DefaultCellStyle.Format = "#,###,##0.00"
     End Sub
     Private Sub seleccionarAlmacenXacopio() Handles CbAcopio.SelectionChangeCommitted
 
