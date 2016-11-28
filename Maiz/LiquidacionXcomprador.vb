@@ -175,10 +175,6 @@ Public Class LiquidacionXcomprador
         da = New SqlDataAdapter(CmdCBCompradorLB)
         ds = New DataSet()
         da.Fill(ds)
-        CBCompradorBL.DataSource = ds.Tables(0)
-        CBCompradorBL.DisplayMember = "Nombre_Comprador"
-        CBCompradorBL.ValueMember = "Id_Comprador"
-        CBCompradorBL.SelectedIndex = -1
     End Sub
     Private Sub Limpiar()
         TBIdContrato.Text = ""
@@ -206,7 +202,6 @@ Public Class LiquidacionXcomprador
         CBTipoMonedaBL.SelectedItem = ""
         TBPrecioPorToneladaBL.Text = ""
         TBImporteBL.Text = ""
-        CBCompradorBL.SelectedValue = -1
         TBContratoBL.Text = ""
         TBMetodoPagoBL.Text = ""
         TBBancoBL.Text = ""
@@ -525,7 +520,6 @@ Public Class LiquidacionXcomprador
             CBTipoMonedaBL.SelectedValue = row("Moneda")
             TBPrecioPorToneladaBL.Text = row("PrecioToneladaMxn")
             TBImporteBL.Text = row("ImporteTotal")
-            CBCompradorBL.SelectedValue = CStr(row("Idcomprador"))
             TBContratoBL.Text = CStr(row("Contrato"))
             TBMetodoPagoBL.Text = CStr(row("MetodoPago"))
             TBBancoBL.Text = CStr(row("Banco"))
@@ -561,6 +555,7 @@ Public Class LiquidacionXcomprador
                     TBImporte.Text = CDbl(TBPrecioPorTonelada.Text) * kilosAton
                     NUDPrecioContrato.Value = CDbl(TBPrecioPorTonelada.Text)
                     TBPrecioPorTonelada.Text = FormatNumber(Val(TBPrecioPorTonelada.Text), 2)
+                    TBPrecioPorTonelada.Text = Format(CType(variable, Decimal), "###0.###0")
                     TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
                 ElseIf CBTipoMoneda.Text = "DLS" Then
                     tipoCambio = CDbl(TBTipoDeCambio.Text)
@@ -572,6 +567,8 @@ Public Class LiquidacionXcomprador
                     TBImporte.Text = TBPrecioPorTonelada.Text * kilosAton
                 End If
             End If
-            End If
+        End If
+        TBPrecioPorTonelada.Text = FormatNumber(Val(variable), 2)
+        TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
     End Sub
 End Class
