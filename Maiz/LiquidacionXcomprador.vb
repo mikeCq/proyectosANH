@@ -155,10 +155,10 @@ Public Class LiquidacionXcomprador
                 '_tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
                 Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
                 If opc = DialogResult.Yes Then
-                    ReporteLiquidacionesXprod.ShowDialog()
-                    ReporteResumenBoletasLiquidadas.ShowDialog()
+                    ReporteVentas.ShowDialog()
+                    ReporteVentaResumen.ShowDialog()
                 Else
-                    ReporteLiquidacionesXprod.ShowDialog()
+                    ReporteVentas.ShowDialog()
                 End If
             End If
         ElseIf TpBoletasLiquidadas.Focus = True Then
@@ -169,10 +169,10 @@ Public Class LiquidacionXcomprador
                 '_tipoContrato = IIf(RbContratoLiquidado.Checked = True, 0, 1)
                 Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
                 If opc = DialogResult.Yes Then
-                    ReporteLiquidacionesXprod.ShowDialog()
-                    ReporteResumenBoletasLiquidadas.ShowDialog()
+                    ReporteVentas.ShowDialog()
+                    ReporteVentaResumen.ShowDialog()
                 Else
-                    ReporteLiquidacionesXprod.ShowDialog()
+                    ReporteVentas.ShowDialog()
                 End If
             End If
         End If
