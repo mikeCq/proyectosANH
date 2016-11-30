@@ -102,17 +102,9 @@ Public Class RptVentaXcomprador
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_idliquidaciontprincipal() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(0)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Parameter_IdLiquidacionVenta() As CrystalDecisions.[Shared].IParameterField
         Get
-            Return Me.DataDefinition.ParameterFields(1)
+            Return Me.DataDefinition.ParameterFields(0)
         End Get
     End Property
 End Class

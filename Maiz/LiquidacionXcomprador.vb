@@ -8,13 +8,13 @@ Public Class LiquidacionXcomprador
         LlenarDGVsalidas()
         PropiedadesDGVSalidas()
     End Sub
-    Private _codigoLiquidacionTP As String
-    Public Property codigoLiquidacionTP() As String
+    Private _codigoLiquidacionVenta As String
+    Public Property codigoLiquidacionVenta() As String
         Get
-            Return _codigoLiquidacionTP
+            Return _codigoLiquidacionVenta
         End Get
         Set(value As String)
-            _codigoLiquidacionTP = value
+            _codigoLiquidacionVenta = value
         End Set
     End Property
     Private _tipoContrato As Integer
@@ -147,35 +147,7 @@ Public Class LiquidacionXcomprador
     End Sub
 
     Private Sub BtnImprimir_Click(sender As Object, e As EventArgs) Handles BTNImprimir.Click
-        If TpBoletasXliquidar.Focus = True Then
-            If DGVSalidasSeleccionadas.RowCount = 0 Then
-                MessageBox.Show("No hay datos para imprimir.")
-            Else
-                _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DGVTotalLiquidado.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
-                '_tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
-                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
-                If opc = DialogResult.Yes Then
-                    ReporteVentas.ShowDialog()
-                    ReporteVentaResumen.ShowDialog()
-                Else
-                    ReporteVentas.ShowDialog()
-                End If
-            End If
-        ElseIf TpBoletasLiquidadas.Focus = True Then
-            If DGVTotalLiquidadoDetalle.RowCount = 0 Then
-                MessageBox.Show("No hay datos para imprimir.")
-            Else
-                _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DGVTotalLiquidado.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
-                '_tipoContrato = IIf(RbContratoLiquidado.Checked = True, 0, 1)
-                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
-                If opc = DialogResult.Yes Then
-                    ReporteVentas.ShowDialog()
-                    ReporteVentaResumen.ShowDialog()
-                Else
-                    ReporteVentas.ShowDialog()
-                End If
-            End If
-        End If
+        Imprimir()
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BTNGuardar.Click
@@ -407,6 +379,8 @@ Public Class LiquidacionXcomprador
         '--LimpiarGuardar()
     End Sub
     Private Sub Buscar()
+        LimpiarBusqueda()
+        DesmarcarChecks()
         Moneda = -1
         Dim BuscarCompradorLiquidacionVenta As New BuscarCompradorLiquidacionVenta
         BuscarCompradorLiquidacionVenta.ShowDialog()
@@ -487,6 +461,48 @@ Public Class LiquidacionXcomprador
                 '    End If
             End If
             DGVTotalLiquidado.DataSource = dt3.Tables(0).DefaultView
+        End If
+    End Sub
+    Private Sub LimpiarBusqueda()
+        TBTipoDeCambio.Text = ""
+        NUDPrecioContrato.Value = 0.00
+        TBPrecioPorTonelada.Text = ""
+        TBImporte.Text = ""
+        NUDToneladasSeleccionadas.Value = 0.00
+        NUDTotalLiquidar.Value = 0.00
+        CBTipoMoneda.SelectedItem = ""
+        DGVSalidasSeleccionadas.Columns.Clear()
+        DGVSalidasSeleccionadas.DataSource = Nothing
+    End Sub
+    Private Sub Imprimir()
+        If TpBoletasXliquidar.Focus = True Then
+            If DGVSalidasSeleccionadas.RowCount = 0 Then
+                MessageBox.Show("No hay datos para imprimir.")
+            Else
+                _codigoLiquidacionVenta = IIf(IdLiquidacionTotal = Nothing, CStr(DGVTotalLiquidado.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
+                '_tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
+                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
+                If opc = DialogResult.Yes Then
+                    ReporteVentas.ShowDialog()
+                    ReporteVentaResumen.ShowDialog()
+                Else
+                    ReporteVentas.ShowDialog()
+                End If
+            End If
+        ElseIf TpBoletasLiquidadas.Focus = True Then
+            If DGVTotalLiquidadoDetalle.RowCount = 0 Then
+                MessageBox.Show("No hay datos para imprimir.")
+            Else
+                _codigoLiquidacionVenta = IIf(IdLiquidacionTotal = Nothing, CStr(DGVTotalLiquidado.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
+                '_tipoContrato = IIf(RbContratoLiquidado.Checked = True, 0, 1)
+                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
+                If opc = DialogResult.Yes Then
+                    ReporteVentas.ShowDialog()
+                    ReporteVentaResumen.ShowDialog()
+                Else
+                    ReporteVentas.ShowDialog()
+                End If
+            End If
         End If
     End Sub
     Private Sub EstatusContrato()
@@ -601,7 +617,7 @@ Public Class LiquidacionXcomprador
                     TBImporte.Text = CDbl(TBPrecioPorTonelada.Text) * kilosAton
                     NUDPrecioContrato.Value = CDbl(TBPrecioPorTonelada.Text)
                     TBPrecioPorTonelada.Text = FormatNumber(Val(TBPrecioPorTonelada.Text), 2)
-                    TBPrecioPorTonelada.Text = Format(CType(variable, Decimal), "###0.###0")
+                    'TBPrecioPorTonelada.Text = Format(CType(variable, Decimal), "###0.###0")
                     TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
                 ElseIf CBTipoMoneda.Text = "DLS" Then
                     tipoCambio = CDbl(TBTipoDeCambio.Text)
@@ -614,7 +630,8 @@ Public Class LiquidacionXcomprador
                 End If
             End If
         End If
-        TBPrecioPorTonelada.Text = FormatNumber(Val(variable), 2)
-        TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
+        'TBPrecioPorTonelada.Text = FormatNumber(Val(variable), 2)
+        'TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
     End Sub
+
 End Class

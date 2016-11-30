@@ -7,7 +7,6 @@ Public Class ReporteLiquidacionesXprod
         RptLiquidacionProd.SetDatabaseLogon("sa", "Usuario01", "SERVER2008\SERVER12", "MAIZ")
         RptLiquidacionProd.SetParameterValue("@idliquidaciontprincipal", liquidacionCalculosProd.codigoLiquidacionTP)
         CrLiquidacionProd.ReportSource = RptLiquidacionProd
-
     End Sub
 
 End Class
