@@ -209,19 +209,14 @@ Public Class liquidacionCalculosProd
 
     End Sub
     Private Sub propiedadesDataEntLiq()
-
         If DgSeleccionLiquidaciones.Columns("ChCol") Is Nothing Then
-
             Dim checkBoxColumn As New DataGridViewCheckBoxColumn()
             checkBoxColumn.HeaderText = ""
             checkBoxColumn.Width = 40
             checkBoxColumn.Name = "ChCol"
             DgEntradasLiq.Columns.Insert(13, checkBoxColumn)
-
         End If
-
         DgEntradasLiq.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray
-
         DgEntradasLiq.Columns("IdInventario").Visible = False
         DgEntradasLiq.Columns("Id_cliente").Visible = False
         DgEntradasLiq.Columns("Bruto").Visible = False
@@ -229,7 +224,6 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.Columns("conductorCam").Visible = False
         DgEntradasLiq.Columns("placasConductor").Visible = False
         DgEntradasLiq.Columns("nombreProductor").Visible = False
-
         DgEntradasLiq.Columns("numeroBoleta").ReadOnly = True
         DgEntradasLiq.Columns("Id_cliente").ReadOnly = True
         DgEntradasLiq.Columns("Fecha_Pesaje").ReadOnly = True
@@ -241,7 +235,6 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.Columns("placasConductor").ReadOnly = True
         DgEntradasLiq.Columns("Deducciones").ReadOnly = True
         DgEntradasLiq.Columns("Total").ReadOnly = False
-
         DgEntradasLiq.Columns("numeroBoleta").HeaderText = "Boleta"
         DgEntradasLiq.Columns("Fecha_Pesaje").HeaderText = "Fecha"
         DgEntradasLiq.Columns("grupoGrano").HeaderText = "Grano"
@@ -252,7 +245,6 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.Columns("placasConductor").HeaderText = "Placas"
         DgEntradasLiq.Columns("Deducciones").HeaderText = "Total Deducciones"
         DgEntradasLiq.Columns("Total").HeaderText = "Total"
-
         DgEntradasLiq.Columns("numeroBoleta").Width = 100
         DgEntradasLiq.Columns("Fecha_Pesaje").Width = 100
         DgEntradasLiq.Columns("grupoGrano").Width = 100
@@ -263,17 +255,14 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.Columns("placasConductor").Width = 90
         DgEntradasLiq.Columns("Deducciones").Width = 100
         DgEntradasLiq.Columns("Total").Width = 110
-
         DgEntradasLiq.Columns("Neto").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         DgEntradasLiq.Columns("Deducciones").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         DgEntradasLiq.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-
         DgEntradasLiq.Columns("Bruto").DefaultCellStyle.Format = "###,##0.00"
         DgEntradasLiq.Columns("Tara").DefaultCellStyle.Format = "###,##0.00"
         DgEntradasLiq.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
         DgEntradasLiq.Columns("Deducciones").DefaultCellStyle.Format = "###,##0.00"
         DgEntradasLiq.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
-
         DgEntradasLiq.ClearSelection()
     End Sub
     Private Sub propiedadesDgLiquidacionTotal()
@@ -281,32 +270,25 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXTotal.Columns("idcontrato").Visible = False
         DgLiquidacionesXTotal.Columns("idproductor").Visible = False
         DgLiquidacionesXTotal.Columns("nombreProductor").Visible = False
-
         DgLiquidacionesXTotal.Columns("grupoGrano").HeaderText = "Tipo Maiz"
         DgLiquidacionesXTotal.Columns("fechaliquidacion").HeaderText = "Fecha de Liquidacion"
         DgLiquidacionesXTotal.Columns("totalliquidacionContrato").HeaderText = "Total liquidado (Ton)"
         DgLiquidacionesXTotal.Columns("importeTotal").HeaderText = "Importe"
         DgLiquidacionesXTotal.Columns("contrato").HeaderText = "Contrato"
         DgLiquidacionesXTotal.Columns("Nombre_Comprador").HeaderText = "Comprador"
-
         DgLiquidacionesXTotal.Columns("totalliquidacionContrato").DefaultCellStyle.Format = "###,##0.000"
         DgLiquidacionesXTotal.Columns("importeTotal").DefaultCellStyle.Format = "###,##0.00"
-
-
     End Sub
     Private Sub propiedadesDgLiquidacionesXBoleta()
         DgLiquidacionesXBoleta.Columns("idLiquidacionP").Visible = False
         DgLiquidacionesXBoleta.Columns("idInventario").Visible = False
         DgLiquidacionesXBoleta.Columns("idProductor").Visible = False
         DgLiquidacionesXBoleta.Columns("nombreProductor").Visible = False
-
         DgLiquidacionesXBoleta.Columns("numeroBoleta").HeaderText = "No. Boleta"
         DgLiquidacionesXBoleta.Columns("grupoGrano").HeaderText = "Tipo Maiz"
         DgLiquidacionesXBoleta.Columns("Neto").HeaderText = "Neto"
         DgLiquidacionesXBoleta.Columns("deduccion").HeaderText = "Deduccion"
         DgLiquidacionesXBoleta.Columns("Total").HeaderText = "Total"
-
-
         DgLiquidacionesXBoleta.Columns("Neto").DefaultCellStyle.Format = "###,##0.00"
         DgLiquidacionesXBoleta.Columns("deduccion").DefaultCellStyle.Format = "###,##0.00"
         DgLiquidacionesXBoleta.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
@@ -325,25 +307,18 @@ Public Class liquidacionCalculosProd
             DgEntradasLiq.Columns.Clear()
             DgEntradasLiq.DataSource = Nothing
             Dim cmd As New SqlCommand("sp_llenarDgEntradasliq", cnn)
-
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add(New SqlClient.SqlParameter("@productor", BuscarEntradaLiq.CodigoProductor))
-
             Dim da As New SqlClient.SqlDataAdapter(cmd)
             Dim dt As New DataSet()
             da.Fill(dt)
-
             DgEntradasLiq.DataSource = dt.Tables(0).DefaultView
             propiedadesDataEntLiq()
-
             Dim cmd2 As New SqlCommand("Sp_DatosContratoLiquidacion", cnn)
-
             cmd2.CommandType = CommandType.StoredProcedure
             cmd2.Parameters.Add(New SqlClient.SqlParameter("@idcliente", BuscarEntradaLiq.CodigoProductor))
-
             Dim da2 As New SqlClient.SqlDataAdapter(cmd2)
             Dim dt2 As New DataSet()
-
             da2.Fill(dt2)
             TxIDcontratoC.Text = CStr(dt2.Tables(0).Rows(0)("id_contratoC").ToString())
             TxProductor.Text = CStr(dt2.Tables(0).Rows(0)("id_cliente").ToString())
@@ -357,18 +332,14 @@ Public Class liquidacionCalculosProd
             Else
                 RbNo.Checked = True
             End If
-
             Dim cmd3 As New SqlCommand("sp_llenaDgLiquidacionTotal", cnn)
-
             cmd3.CommandType = CommandType.StoredProcedure
             cmd3.Parameters.Add(New SqlClient.SqlParameter("@idproductor", BuscarEntradaLiq.CodigoProductor))
-
             Dim da3 As New SqlClient.SqlDataAdapter(cmd3)
             Dim dt3 As New DataSet()
             da3.Fill(dt3)
             Dim BanderaContrato As Integer
             If (dt3.Tables(0).Rows.Count = 0) Then
-
                 BanderaContrato = 0
             Else
                 BanderaContrato = dt2.Tables(0).Rows(0)("IdEstatusContrato")

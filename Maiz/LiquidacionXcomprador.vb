@@ -111,7 +111,7 @@ Public Class LiquidacionXcomprador
     Private Sub PropiedadesDGVTotalLiquidado()
         DGVTotalLiquidado.Columns("IdVentaTotalComprador").Visible = False
         DGVTotalLiquidado.Columns("idContratoVenta").Visible = False
-        DGVTotalLiquidado.Columns("IdComprador").Visible = False
+        DGVTotalLiquidado.Columns("Id_Comprador").Visible = False
         DGVTotalLiquidado.Columns("GrupoGrano").HeaderText = "Tipo Maiz"
         DGVTotalLiquidado.Columns("GrupoGrano").ReadOnly = True
         DGVTotalLiquidado.Columns("FechaVenta").HeaderText = "Fecha de Liquidacion"
@@ -300,10 +300,14 @@ Public Class LiquidacionXcomprador
         Next Contador
     End Sub
     Private Sub Guardar()
+        Dim resultado As Boolean = False
         If DGVSalidasSeleccionadas.RowCount = 0 Then
             MessageBox.Show("No hay datos para guardar.")
+        ElseIf VerificarVacios(resultado) = True Then
+            MessageBox.Show("Verificar si tiene campos vacios", "Aviso")
         ElseIf NUDToneladasSeleccionadas.Value = NUDTotalLiquidar.Value Then
             IdLiquidacionTotal = ""
+
             Dim Contador As Integer
             IdLiquidacionTotal = generaCodigoLiquidacionVenta(IdLiquidacionTotal)
             For Contador = 0 To DGVSalidasSeleccionadas.RowCount - 1
@@ -375,8 +379,6 @@ Public Class LiquidacionXcomprador
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
-        '-___-CbMonedaVerificar()
-        '--LimpiarGuardar()
     End Sub
     Private Sub Buscar()
         LimpiarBusqueda()
@@ -634,5 +636,18 @@ Public Class LiquidacionXcomprador
         'TBPrecioPorTonelada.Text = FormatNumber(Val(variable), 2)
         'TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
     End Sub
-
+    Private Function VerificarVacios(ByVal valor As String) As Boolean
+        Dim resultado As Boolean = False
+        If CBTipoMoneda.SelectedItem = "DLS" Then
+            If CBEmpresa.SelectedValue = Nothing Or NUDTotalLiquidar.Value = 0 Or TBTipoDeCambio.Text = "" Or TBImporte.Text = "" Then
+                resultado = True
+            End If
+        End If
+        If CBTipoMoneda.SelectedItem = "MXN" Then
+            If CBEmpresa.SelectedValue = Nothing Or NUDTotalLiquidar.Value = 0 Or TBPrecioPorTonelada.Text = "" Or TBImporte.Text = "" Then
+                resultado = True
+            End If
+        End If
+        Return resultado
+    End Function
 End Class
