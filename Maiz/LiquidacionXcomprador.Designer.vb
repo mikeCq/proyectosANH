@@ -590,6 +590,7 @@ Partial Class LiquidacionXcomprador
         '
         'CBTipoMonedaBL
         '
+        Me.CBTipoMonedaBL.Enabled = False
         Me.CBTipoMonedaBL.FormattingEnabled = True
         Me.CBTipoMonedaBL.Location = New System.Drawing.Point(316, 491)
         Me.CBTipoMonedaBL.Name = "CBTipoMonedaBL"

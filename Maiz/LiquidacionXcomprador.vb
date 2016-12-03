@@ -381,14 +381,14 @@ Public Class LiquidacionXcomprador
         End If
     End Sub
     Private Sub Buscar()
-        LimpiarBusqueda()
-        DesmarcarChecks()
         Moneda = -1
         Dim BuscarCompradorLiquidacionVenta As New BuscarCompradorLiquidacionVenta
         BuscarCompradorLiquidacionVenta.ShowDialog()
         Dim CodigoComprador As Object = BuscarCompradorLiquidacionVenta.CodigoVenta
 
         If BuscarCompradorLiquidacionVenta.CodigoVenta <> Nothing Then
+            LimpiarBusqueda()
+            DesmarcarChecks()
             Dim cmd As New SqlCommand("sp_DatosContratoVenta", cnn)
 
             cmd.CommandType = CommandType.StoredProcedure
@@ -525,21 +525,6 @@ Public Class LiquidacionXcomprador
             TbEstatusContrato.Text = "INCOMPLETO"
         End If
     End Sub
-    Private Sub TBNombreComprador_TextChanged(sender As Object, e As EventArgs) Handles TBNombreComprador.TextChanged
-
-    End Sub
-
-    Private Sub NUDToneladasContrato_ValueChanged(sender As Object, e As EventArgs) Handles NUDToneladasContrato.ValueChanged
-
-    End Sub
-
-    Private Sub NUDToneladasRestantes_ValueChanged(sender As Object, e As EventArgs) Handles NUDToneladasRestantes.ValueChanged
-
-    End Sub
-
-    Private Sub TbEstatusContrato_TextChanged(sender As Object, e As EventArgs) Handles TbEstatusContrato.TextChanged
-
-    End Sub
     Private Sub BoletasLiquidadas(sender As Object, e As EventArgs) Handles DGVTotalLiquidado.DoubleClick
         DGVTotalLiquidadoDetalle.Columns.Clear()
         DGVTotalLiquidadoDetalle.DataSource = Nothing
@@ -582,7 +567,7 @@ Public Class LiquidacionXcomprador
             TBTipoDeCambioBL.Text = row("TipoDeCambio")
             NUDPrecioContratoBL.Value = row("PrecioContrato")
             NUDTotalLiquidadoBL.Value = row("TotalVentaContrato")
-            CBTipoMonedaBL.SelectedValue = row("Moneda")
+            CBTipoMonedaBL.SelectedItem = IIf(row("Moneda") = 1, "DLS", "MXN")
             TBPrecioPorToneladaBL.Text = row("PrecioToneladaMxn")
             TBImporteBL.Text = row("ImporteTotal")
             TBContratoBL.Text = CStr(row("Contrato"))
