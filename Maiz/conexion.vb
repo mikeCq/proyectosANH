@@ -701,5 +701,41 @@ Module conexion
         End Try
         Return resultado
     End Function
+    Function generaCodigoAcopio(ByVal idAcopio As String) As String
+        Dim resultado As String = ""
+        Try
+            consulta = New SqlCommand("select max(substring(id_centroAcopio,4,5)) as id_centroAcopio from CentroAcopio", cnn)
+            respuesta = consulta.ExecuteReader
+            If respuesta.Read Then
+                If respuesta.Item("id_centroAcopio") Is DBNull.Value Then
+                    resultado = "ACO" & Format(1, "0000#")
+                Else
+                    resultado = "ACO" & (Format(respuesta.Item("id_centroacopio") + 1, "0000#"))
+                End If
+            End If
+            respuesta.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return resultado
+    End Function
+    Function generaCodigoAlmacen(ByVal idAlmacen As String) As String
+        Dim resultado As String = ""
+        Try
+            consulta = New SqlCommand("select max(substring(id_Almacen,4,5)) as id_Almacen from Almacen", cnn)
+            respuesta = consulta.ExecuteReader
+            If respuesta.Read Then
+                If respuesta.Item("id_Almacen") Is DBNull.Value Then
+                    resultado = "ALM" & Format(1, "0000#")
+                Else
+                    resultado = "ALM" & (Format(respuesta.Item("id_Almacen") + 1, "0000#"))
+                End If
+            End If
+            respuesta.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return resultado
+    End Function
 End Module
 

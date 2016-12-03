@@ -89,7 +89,7 @@ Public Class Almacenes
                     Dim cmd As New SqlCommand("Sp_InsNueAcopio", cnn)
                     cmd.CommandType = CommandType.StoredProcedure
 
-                    cmd.Parameters.AddWithValue("@IdAcopio", TxIdAcopio.Text)
+                    cmd.Parameters.AddWithValue("@IdAcopio", generaCodigoAcopio(TxIdAcopio.Text))
                     cmd.Parameters.AddWithValue("@nomAcopio", TxNombreCentro.Text)
                     cmd.Parameters.AddWithValue("@folioAserca", TxFolioAserca.Text)
                     cmd.Parameters.AddWithValue("@calle", TxCalleCentro.Text)
@@ -102,45 +102,34 @@ Public Class Almacenes
                     Dim SumaCapacidad As Double = 0
                     SumaCapacidad = NuCapacidadCentro.Value + NuCapacidadAlmacen.Value
                     NuCapacidadCentro.Value = SumaCapacidad
-
                     cmd.Parameters.AddWithValue("@CapacidadMax", NuCapacidadCentro.Value)
-
                     cmd.ExecuteNonQuery()
-                    Llenatextid()
-
+                    TxIdAcopio.Text = cmd.Parameters("@IdAcopio").Value.ToString()
 
                     Dim cmd2 As New SqlCommand("Sp_InsNueALm", cnn)
-
                     cmd2.CommandType = CommandType.StoredProcedure
-
-                    cmd2.Parameters.AddWithValue("@Consecutivo", TxIdAlmacen.Text)
+                    cmd2.Parameters.AddWithValue("@Consecutivo", generaCodigoAlmacen(TxIdAlmacen.Text))
                     cmd2.Parameters.AddWithValue("@NomAlm", TxNomAlm.Text)
                     cmd2.Parameters.AddWithValue("@TipoSilo", CbTipoAlmacen.SelectedValue)
                     cmd2.Parameters.AddWithValue("@Capacidad", NuCapacidadAlmacen.Value)
                     cmd2.Parameters.AddWithValue("@idAcopio", TxIdAcopio.Text)
-
                     cmd2.ExecuteNonQuery()
-
-                    Llenatextid()
+                    TxIdAcopio.Text = cmd2.Parameters("@Consecutivo").Value.ToString()
                     CargarData()
                     bloquearCampos()
-
-
                 Else
                     Dim sumacapacidadtotal As Double
                     Dim cmd2 As New SqlCommand("Sp_InsNueALm", cnn)
 
                     cmd2.CommandType = CommandType.StoredProcedure
 
-                    cmd2.Parameters.AddWithValue("@Consecutivo", TxIdAlmacen.Text)
+                    cmd2.Parameters.AddWithValue("@Consecutivo", generaCodigoAlmacen(TxIdAlmacen.Text))
                     cmd2.Parameters.AddWithValue("@NomAlm", TxNomAlm.Text)
                     cmd2.Parameters.AddWithValue("@TipoSilo", CbTipoAlmacen.SelectedValue)
                     cmd2.Parameters.AddWithValue("@Capacidad", NuCapacidadAlmacen.Value)
                     cmd2.Parameters.AddWithValue("@idAcopio", TxIdAcopio.Text)
-
                     cmd2.ExecuteNonQuery()
-                    Llenatextid()
-
+                    TxIdAcopio.Text = cmd2.Parameters("@Consecutivo").Value.ToString()
                     cargarDataAlm()
 
                     sumacapacidadtotal = NuCapacidadCentro.Value + NuCapacidadAlmacen.Value
@@ -161,7 +150,6 @@ Public Class Almacenes
 
         End If
         ControlBotones()
-
     End Sub
     Private Sub Llenatextid()
         If TxIdAcopio.Text = "" Then
