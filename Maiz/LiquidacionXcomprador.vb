@@ -615,6 +615,7 @@ Public Class LiquidacionXcomprador
                     variable = TBPrecioPorTonelada.Text
                     TBPrecioPorTonelada.Text = Format(CType(variable, Decimal), "###0.###0")
                     TBImporte.Text = TBPrecioPorTonelada.Text * kilosAton
+                    TBImporte.Text = FormatNumber(Val(TBImporte.Text), 2)
                 End If
             End If
         End If
