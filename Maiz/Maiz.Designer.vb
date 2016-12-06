@@ -59,6 +59,7 @@ Partial Class Maiz
         Me.LotesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.EntradasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EntradasGlobalesPorProductorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalidasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EmbarquesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EmbarquesPorClienteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -79,7 +80,6 @@ Partial Class Maiz
         Me.SbNombreUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbIdUsuario = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.EntradasGlobalesPorProductorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -92,7 +92,7 @@ Partial Class Maiz
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(7, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1103, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1214, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -320,6 +320,12 @@ Partial Class Maiz
         Me.EntradasToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.EntradasToolStripMenuItem.Text = "Entradas"
         '
+        'EntradasGlobalesPorProductorToolStripMenuItem
+        '
+        Me.EntradasGlobalesPorProductorToolStripMenuItem.Name = "EntradasGlobalesPorProductorToolStripMenuItem"
+        Me.EntradasGlobalesPorProductorToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.EntradasGlobalesPorProductorToolStripMenuItem.Text = "Entradas Globales por Productor"
+        '
         'SalidasToolStripMenuItem
         '
         Me.SalidasToolStripMenuItem.Name = "SalidasToolStripMenuItem"
@@ -409,10 +415,10 @@ Partial Class Maiz
         '
         Me.SsUsuario.BackColor = System.Drawing.Color.Gray
         Me.SsUsuario.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SbTipoUsuario, Me.TsSeparador, Me.SbNombreUsuario, Me.SbUsuario, Me.SbIdUsuario})
-        Me.SsUsuario.Location = New System.Drawing.Point(0, 683)
+        Me.SsUsuario.Location = New System.Drawing.Point(0, 728)
         Me.SsUsuario.Name = "SsUsuario"
         Me.SsUsuario.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.SsUsuario.Size = New System.Drawing.Size(1103, 22)
+        Me.SsUsuario.Size = New System.Drawing.Size(1214, 22)
         Me.SsUsuario.TabIndex = 3
         Me.SsUsuario.Text = " "
         '
@@ -448,12 +454,6 @@ Partial Class Maiz
         Me.SbIdUsuario.Text = "idUsuario"
         Me.SbIdUsuario.Visible = False
         '
-        'EntradasGlobalesPorProductorToolStripMenuItem
-        '
-        Me.EntradasGlobalesPorProductorToolStripMenuItem.Name = "EntradasGlobalesPorProductorToolStripMenuItem"
-        Me.EntradasGlobalesPorProductorToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.EntradasGlobalesPorProductorToolStripMenuItem.Text = "Entradas Globales por Productor"
-        '
         'Maiz
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -461,7 +461,7 @@ Partial Class Maiz
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImage = Global.Maiz.My.Resources.Resources.LogoAnh
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(1103, 705)
+        Me.ClientSize = New System.Drawing.Size(1214, 750)
         Me.Controls.Add(Me.SsUsuario)
         Me.Controls.Add(Me.MenuStrip1)
         Me.DoubleBuffered = True

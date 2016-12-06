@@ -41,7 +41,7 @@ Public Class ReporteEntradasGlobalXprod
 
             Dim RptReporteEntradasGlobalxProd As New ReporteEntradaGlobalXprod
             If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
-                RptReporteEntradasGlobalxProd.SetDatabaseLogon("sa", "Usuario01", "SERVER2008\SERVER12", "MAIZ")
+                RptReporteEntradasGlobalxProd.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
                 RptReporteEntradasGlobalxProd.SetParameterValue("@numboleta", TxNumBoleta.Text)
                 RptReporteEntradasGlobalxProd.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
                 RptReporteEntradasGlobalxProd.SetParameterValue("@fechaini", DTInicio.Value)
@@ -60,7 +60,7 @@ Public Class ReporteEntradasGlobalXprod
             Try
                 Dim RptReporteEntradasGlobalxProd As New ReporteEntradaGlobalXprod
                 If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
-                    RptReporteEntradasGlobalxProd.SetDatabaseLogon("sa", "Usuario01", "SERVER2008\SERVER12", "MAIZ")
+                    RptReporteEntradasGlobalxProd.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
                     RptReporteEntradasGlobalxProd.SetParameterValue("@numboleta", TxNumBoleta.Text)
                     RptReporteEntradasGlobalxProd.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
                     RptReporteEntradasGlobalxProd.SetParameterValue("@fechaini", DTInicio.Value)
