@@ -59,11 +59,13 @@ Public Class ContratosVentas
                 cmd.Parameters.AddWithValue("@tipoContrato", IIf(RbMaizContrato.Checked = True, 0, 1))
                 cmd.Parameters.AddWithValue("@EstatusContrato", 0)
 
+                cmd.Parameters.AddWithValue("@CodigoSiap", TBCodigoSIAP.Text)
+                cmd.Parameters.AddWithValue("@CodigoSap", TBCodigoSAP.Text)
+                cmd.Parameters.AddWithValue("@CodigoAserca", TBCodigoASERCA.Text)
 
                 TxFolioContrato.Text = cmd.Parameters("@Consecutivo").Value.ToString()
 
                 cmd.ExecuteNonQuery()
-
                 CargarData()
                 DataGridPropiedades()
                 'bloquearCampos()

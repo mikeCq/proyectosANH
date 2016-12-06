@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ContratosVentas
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class ContratosVentas
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GbDatoContrato = New System.Windows.Forms.GroupBox()
         Me.CbNombreComprador = New System.Windows.Forms.ComboBox()
@@ -52,6 +52,12 @@ Partial Class ContratosVentas
         Me.BtnModificar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
+        Me.LBCodigoSIAP = New System.Windows.Forms.Label()
+        Me.LBCodigoSAP = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TBCodigoSIAP = New System.Windows.Forms.TextBox()
+        Me.TBCodigoSAP = New System.Windows.Forms.TextBox()
+        Me.TBCodigoASERCA = New System.Windows.Forms.TextBox()
         Me.GbDatoContrato.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -71,7 +77,7 @@ Partial Class ContratosVentas
         Me.GbDatoContrato.Controls.Add(Me.Label1)
         Me.GbDatoContrato.Location = New System.Drawing.Point(15, 90)
         Me.GbDatoContrato.Name = "GbDatoContrato"
-        Me.GbDatoContrato.Size = New System.Drawing.Size(549, 289)
+        Me.GbDatoContrato.Size = New System.Drawing.Size(549, 340)
         Me.GbDatoContrato.TabIndex = 0
         Me.GbDatoContrato.TabStop = False
         Me.GbDatoContrato.Text = "Datos del Contrato"
@@ -86,27 +92,33 @@ Partial Class ContratosVentas
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.RbMaizLibre)
-        Me.GroupBox3.Controls.Add(Me.RbMaizContrato)
+        Me.GroupBox3.Controls.Add(Me.Label11)
+        Me.GroupBox3.Controls.Add(Me.LBCodigoSAP)
+        Me.GroupBox3.Controls.Add(Me.TBCodigoASERCA)
+        Me.GroupBox3.Controls.Add(Me.LBCodigoSIAP)
+        Me.GroupBox3.Controls.Add(Me.TBCodigoSAP)
         Me.GroupBox3.Controls.Add(Me.CbMoneda)
         Me.GroupBox3.Controls.Add(Me.DtLiquidacion)
+        Me.GroupBox3.Controls.Add(Me.RbMaizLibre)
+        Me.GroupBox3.Controls.Add(Me.TBCodigoSIAP)
         Me.GroupBox3.Controls.Add(Me.Label10)
         Me.GroupBox3.Controls.Add(Me.CbTemporada)
+        Me.GroupBox3.Controls.Add(Me.RbMaizContrato)
         Me.GroupBox3.Controls.Add(Me.Label9)
         Me.GroupBox3.Controls.Add(Me.Label8)
         Me.GroupBox3.Controls.Add(Me.TxPrecioXtonelada)
         Me.GroupBox3.Controls.Add(Me.TxToneladas)
         Me.GroupBox3.Controls.Add(Me.Label7)
-        Me.GroupBox3.Location = New System.Drawing.Point(0, 105)
+        Me.GroupBox3.Location = New System.Drawing.Point(0, 113)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(549, 184)
+        Me.GroupBox3.Size = New System.Drawing.Size(549, 227)
         Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         '
         'RbMaizLibre
         '
         Me.RbMaizLibre.AutoSize = True
-        Me.RbMaizLibre.Location = New System.Drawing.Point(349, 146)
+        Me.RbMaizLibre.Location = New System.Drawing.Point(369, 46)
         Me.RbMaizLibre.Name = "RbMaizLibre"
         Me.RbMaizLibre.Size = New System.Drawing.Size(107, 20)
         Me.RbMaizLibre.TabIndex = 7
@@ -117,10 +129,10 @@ Partial Class ContratosVentas
         'RbMaizContrato
         '
         Me.RbMaizContrato.AutoSize = True
-        Me.RbMaizContrato.Location = New System.Drawing.Point(157, 146)
+        Me.RbMaizContrato.Location = New System.Drawing.Point(369, 18)
         Me.RbMaizContrato.Name = "RbMaizContrato"
         Me.RbMaizContrato.Size = New System.Drawing.Size(163, 20)
-        Me.RbMaizContrato.TabIndex = 6
+        Me.RbMaizContrato.TabIndex = 0
         Me.RbMaizContrato.TabStop = True
         Me.RbMaizContrato.Text = "Agricultura por Contrato"
         Me.RbMaizContrato.UseVisualStyleBackColor = True
@@ -128,7 +140,7 @@ Partial Class ContratosVentas
         'CbMoneda
         '
         Me.CbMoneda.FormattingEnabled = True
-        Me.CbMoneda.Location = New System.Drawing.Point(263, 44)
+        Me.CbMoneda.Location = New System.Drawing.Point(286, 46)
         Me.CbMoneda.Name = "CbMoneda"
         Me.CbMoneda.Size = New System.Drawing.Size(62, 24)
         Me.CbMoneda.TabIndex = 3
@@ -156,7 +168,7 @@ Partial Class ContratosVentas
         Me.CbTemporada.FormattingEnabled = True
         Me.CbTemporada.Location = New System.Drawing.Point(157, 74)
         Me.CbTemporada.Name = "CbTemporada"
-        Me.CbTemporada.Size = New System.Drawing.Size(132, 24)
+        Me.CbTemporada.Size = New System.Drawing.Size(123, 24)
         Me.CbTemporada.TabIndex = 4
         '
         'Label9
@@ -181,7 +193,7 @@ Partial Class ContratosVentas
         '
         Me.TxPrecioXtonelada.Location = New System.Drawing.Point(157, 46)
         Me.TxPrecioXtonelada.Name = "TxPrecioXtonelada"
-        Me.TxPrecioXtonelada.Size = New System.Drawing.Size(100, 22)
+        Me.TxPrecioXtonelada.Size = New System.Drawing.Size(123, 22)
         Me.TxPrecioXtonelada.TabIndex = 2
         Me.TxPrecioXtonelada.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -189,7 +201,7 @@ Partial Class ContratosVentas
         '
         Me.TxToneladas.Location = New System.Drawing.Point(157, 18)
         Me.TxToneladas.Name = "TxToneladas"
-        Me.TxToneladas.Size = New System.Drawing.Size(100, 22)
+        Me.TxToneladas.Size = New System.Drawing.Size(123, 22)
         Me.TxToneladas.TabIndex = 1
         Me.TxToneladas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -289,7 +301,7 @@ Partial Class ContratosVentas
         Me.DgContatoVenta.RowHeadersVisible = False
         Me.DgContatoVenta.RowHeadersWidth = 40
         Me.DgContatoVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgContatoVenta.Size = New System.Drawing.Size(632, 262)
+        Me.DgContatoVenta.Size = New System.Drawing.Size(632, 319)
         Me.DgContatoVenta.TabIndex = 26
         '
         'BtnSalir
@@ -376,11 +388,59 @@ Partial Class ContratosVentas
         Me.BtnNuevo.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnNuevo.UseVisualStyleBackColor = True
         '
+        'LBCodigoSIAP
+        '
+        Me.LBCodigoSIAP.AutoSize = True
+        Me.LBCodigoSIAP.Location = New System.Drawing.Point(62, 138)
+        Me.LBCodigoSIAP.Name = "LBCodigoSIAP"
+        Me.LBCodigoSIAP.Size = New System.Drawing.Size(82, 16)
+        Me.LBCodigoSIAP.TabIndex = 22
+        Me.LBCodigoSIAP.Text = "Código SIAP"
+        '
+        'LBCodigoSAP
+        '
+        Me.LBCodigoSAP.AutoSize = True
+        Me.LBCodigoSAP.Location = New System.Drawing.Point(62, 163)
+        Me.LBCodigoSAP.Name = "LBCodigoSAP"
+        Me.LBCodigoSAP.Size = New System.Drawing.Size(79, 16)
+        Me.LBCodigoSAP.TabIndex = 23
+        Me.LBCodigoSAP.Text = "Código SAP"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(30, 191)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(114, 16)
+        Me.Label11.TabIndex = 24
+        Me.Label11.Text = "Contrato ASERCA"
+        '
+        'TBCodigoSIAP
+        '
+        Me.TBCodigoSIAP.Location = New System.Drawing.Point(157, 132)
+        Me.TBCodigoSIAP.Name = "TBCodigoSIAP"
+        Me.TBCodigoSIAP.Size = New System.Drawing.Size(123, 22)
+        Me.TBCodigoSIAP.TabIndex = 24
+        '
+        'TBCodigoSAP
+        '
+        Me.TBCodigoSAP.Location = New System.Drawing.Point(157, 160)
+        Me.TBCodigoSAP.Name = "TBCodigoSAP"
+        Me.TBCodigoSAP.Size = New System.Drawing.Size(123, 22)
+        Me.TBCodigoSAP.TabIndex = 25
+        '
+        'TBCodigoASERCA
+        '
+        Me.TBCodigoASERCA.Location = New System.Drawing.Point(157, 188)
+        Me.TBCodigoASERCA.Name = "TBCodigoASERCA"
+        Me.TBCodigoASERCA.Size = New System.Drawing.Size(277, 22)
+        Me.TBCodigoASERCA.TabIndex = 25
+        '
         'ContratosVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1227, 391)
+        Me.ClientSize = New System.Drawing.Size(1227, 456)
         Me.Controls.Add(Me.GbDatoContrato)
         Me.Controls.Add(Me.BtnSalir)
         Me.Controls.Add(Me.BtnGuardar)
@@ -435,4 +495,10 @@ Partial Class ContratosVentas
     Friend WithEvents CbMoneda As ComboBox
     Friend WithEvents RbMaizLibre As RadioButton
     Friend WithEvents RbMaizContrato As RadioButton
+    Friend WithEvents Label11 As Label
+    Friend WithEvents LBCodigoSAP As Label
+    Friend WithEvents LBCodigoSIAP As Label
+    Friend WithEvents TBCodigoSAP As TextBox
+    Friend WithEvents TBCodigoSIAP As TextBox
+    Friend WithEvents TBCodigoASERCA As TextBox
 End Class
