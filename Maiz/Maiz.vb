@@ -166,4 +166,7 @@ Public Class Maiz
         Me.Close()
     End Sub
 
+    Private Sub EstatusDeContratosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EstatusDeContratosToolStripMenuItem.Click
+        ReporteEstatusContrato.ShowDialog()
+    End Sub
 End Class

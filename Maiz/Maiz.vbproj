@@ -387,6 +387,12 @@
     <Compile Include="ReporteCompras.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteContratoIncompleto.Designer.vb">
+      <DependentUpon>ReporteContratoIncompleto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteContratoIncompleto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReporteContratos.Designer.vb">
       <DependentUpon>ReporteContratos.vb</DependentUpon>
     </Compile>
@@ -547,6 +553,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptComprasXproductor.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\RPTEstatusContrato.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTEstatusContrato.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RPT\RptVentaResumen.vb">
@@ -747,6 +759,9 @@
     <EmbeddedResource Include="ReporteCompras.resx">
       <DependentUpon>ReporteCompras.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteContratoIncompleto.resx">
+      <DependentUpon>ReporteContratoIncompleto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReporteContratos.resx">
       <DependentUpon>ReporteContratos.vb</DependentUpon>
     </EmbeddedResource>
@@ -841,6 +856,10 @@
     <EmbeddedResource Include="RPT\RptComprasXproductor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptComprasXproductor.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RPTEstatusContrato.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPTEstatusContrato.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RPT\RptVentaResumen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
