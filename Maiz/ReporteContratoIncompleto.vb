@@ -45,4 +45,9 @@ Public Class ReporteEstatusContrato
         CREstatusContrato.ReportSource = Nothing
         CREstatusContrato.Refresh()
     End Sub
+
+    Private Sub CREstatusContrato_Load(sender As Object, e As EventArgs) Handles CREstatusContrato.Load
+        CREstatusContrato.ReportSource = Nothing
+        CREstatusContrato.Refresh()
+    End Sub
 End Class
