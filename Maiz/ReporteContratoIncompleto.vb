@@ -26,7 +26,23 @@ Public Class ReporteEstatusContrato
         CBComprador.ValueMember = "Id_Cliente"
         CBComprador.SelectedIndex = -1
 
-        CBEstatusContrato.Items.Add("COMPLETO")
-        CBEstatusContrato.Items.Add("INCOMPLETO")
+        Dim cmdllenaEstatus As SqlCommand
+        cmdllenaEstatus = New SqlCommand("SP_CBESTATUS")
+        cmdllenaEstatus.CommandType = CommandType.StoredProcedure
+        cmdllenaEstatus.Connection = cnn
+        da = New SqlDataAdapter(cmdllenaEstatus)
+        ds = New DataSet()
+        da.Fill(ds)
+        CBEstatusContrato.DataSource = ds.Tables(0)
+        CBEstatusContrato.DisplayMember = "ESTATUS"
+        CBEstatusContrato.ValueMember = "ID"
+        CBEstatusContrato.SelectedIndex = -1
+    End Sub
+
+    Private Sub Btlimpiar_Click(sender As Object, e As EventArgs) Handles Btlimpiar.Click
+        CBComprador.Text = ""
+        CBEstatusContrato.Text = ""
+        CREstatusContrato.ReportSource = Nothing
+        CREstatusContrato.Refresh()
     End Sub
 End Class

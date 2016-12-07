@@ -23,13 +23,13 @@ Partial Class ReporteEstatusContrato
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.CREstatusContrato = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.Btlimpiar = New System.Windows.Forms.Button()
+        Me.BtGenerarReporte = New System.Windows.Forms.Button()
+        Me.CBEstatusContrato = New System.Windows.Forms.ComboBox()
         Me.CBComprador = New System.Windows.Forms.ComboBox()
         Me.Txpro = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.CBEstatusContrato = New System.Windows.Forms.ComboBox()
-        Me.Btlimpiar = New System.Windows.Forms.Button()
-        Me.BtGenerarReporte = New System.Windows.Forms.Button()
+        Me.CREstatusContrato = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -58,22 +58,32 @@ Partial Class ReporteEstatusContrato
         Me.SplitContainer1.SplitterDistance = 326
         Me.SplitContainer1.TabIndex = 0
         '
-        'CREstatusContrato
+        'Btlimpiar
         '
-        Me.CREstatusContrato.ActiveViewIndex = -1
-        Me.CREstatusContrato.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CREstatusContrato.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CREstatusContrato.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CREstatusContrato.Location = New System.Drawing.Point(0, 0)
-        Me.CREstatusContrato.Name = "CREstatusContrato"
-        Me.CREstatusContrato.ShowCloseButton = False
-        Me.CREstatusContrato.ShowGroupTreeButton = False
-        Me.CREstatusContrato.ShowLogo = False
-        Me.CREstatusContrato.ShowParameterPanelButton = False
-        Me.CREstatusContrato.ShowRefreshButton = False
-        Me.CREstatusContrato.Size = New System.Drawing.Size(982, 745)
-        Me.CREstatusContrato.TabIndex = 2
-        Me.CREstatusContrato.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.Btlimpiar.Location = New System.Drawing.Point(10, 98)
+        Me.Btlimpiar.Name = "Btlimpiar"
+        Me.Btlimpiar.Size = New System.Drawing.Size(75, 23)
+        Me.Btlimpiar.TabIndex = 50
+        Me.Btlimpiar.Text = "Limpiar"
+        Me.Btlimpiar.UseVisualStyleBackColor = True
+        '
+        'BtGenerarReporte
+        '
+        Me.BtGenerarReporte.Location = New System.Drawing.Point(91, 98)
+        Me.BtGenerarReporte.Name = "BtGenerarReporte"
+        Me.BtGenerarReporte.Size = New System.Drawing.Size(100, 23)
+        Me.BtGenerarReporte.TabIndex = 49
+        Me.BtGenerarReporte.Text = "Generar Reporte"
+        Me.BtGenerarReporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtGenerarReporte.UseVisualStyleBackColor = True
+        '
+        'CBEstatusContrato
+        '
+        Me.CBEstatusContrato.FormattingEnabled = True
+        Me.CBEstatusContrato.Location = New System.Drawing.Point(115, 52)
+        Me.CBEstatusContrato.Name = "CBEstatusContrato"
+        Me.CBEstatusContrato.Size = New System.Drawing.Size(198, 21)
+        Me.CBEstatusContrato.TabIndex = 17
         '
         'CBComprador
         '
@@ -101,32 +111,22 @@ Partial Class ReporteEstatusContrato
         Me.Label1.TabIndex = 15
         Me.Label1.Text = "Estatus del Contrato"
         '
-        'CBEstatusContrato
+        'CREstatusContrato
         '
-        Me.CBEstatusContrato.FormattingEnabled = True
-        Me.CBEstatusContrato.Location = New System.Drawing.Point(115, 52)
-        Me.CBEstatusContrato.Name = "CBEstatusContrato"
-        Me.CBEstatusContrato.Size = New System.Drawing.Size(45, 21)
-        Me.CBEstatusContrato.TabIndex = 17
-        '
-        'Btlimpiar
-        '
-        Me.Btlimpiar.Location = New System.Drawing.Point(10, 98)
-        Me.Btlimpiar.Name = "Btlimpiar"
-        Me.Btlimpiar.Size = New System.Drawing.Size(75, 23)
-        Me.Btlimpiar.TabIndex = 50
-        Me.Btlimpiar.Text = "Limpiar"
-        Me.Btlimpiar.UseVisualStyleBackColor = True
-        '
-        'BtGenerarReporte
-        '
-        Me.BtGenerarReporte.Location = New System.Drawing.Point(91, 98)
-        Me.BtGenerarReporte.Name = "BtGenerarReporte"
-        Me.BtGenerarReporte.Size = New System.Drawing.Size(100, 23)
-        Me.BtGenerarReporte.TabIndex = 49
-        Me.BtGenerarReporte.Text = "Generar Reporte"
-        Me.BtGenerarReporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.BtGenerarReporte.UseVisualStyleBackColor = True
+        Me.CREstatusContrato.ActiveViewIndex = -1
+        Me.CREstatusContrato.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CREstatusContrato.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CREstatusContrato.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CREstatusContrato.Location = New System.Drawing.Point(0, 0)
+        Me.CREstatusContrato.Name = "CREstatusContrato"
+        Me.CREstatusContrato.ShowCloseButton = False
+        Me.CREstatusContrato.ShowGroupTreeButton = False
+        Me.CREstatusContrato.ShowLogo = False
+        Me.CREstatusContrato.ShowParameterPanelButton = False
+        Me.CREstatusContrato.ShowRefreshButton = False
+        Me.CREstatusContrato.Size = New System.Drawing.Size(982, 745)
+        Me.CREstatusContrato.TabIndex = 2
+        Me.CREstatusContrato.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'ReporteEstatusContrato
         '
