@@ -26,8 +26,6 @@ Partial Class ReporteEstatusContrato
         Me.Btlimpiar = New System.Windows.Forms.Button()
         Me.BtGenerarReporte = New System.Windows.Forms.Button()
         Me.CBEstatusContrato = New System.Windows.Forms.ComboBox()
-        Me.CBComprador = New System.Windows.Forms.ComboBox()
-        Me.Txpro = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CREstatusContrato = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,8 +45,6 @@ Partial Class ReporteEstatusContrato
         Me.SplitContainer1.Panel1.Controls.Add(Me.Btlimpiar)
         Me.SplitContainer1.Panel1.Controls.Add(Me.BtGenerarReporte)
         Me.SplitContainer1.Panel1.Controls.Add(Me.CBEstatusContrato)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.CBComprador)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Txpro)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label1)
         '
         'SplitContainer1.Panel2
@@ -69,7 +65,7 @@ Partial Class ReporteEstatusContrato
         '
         'BtGenerarReporte
         '
-        Me.BtGenerarReporte.Location = New System.Drawing.Point(91, 98)
+        Me.BtGenerarReporte.Location = New System.Drawing.Point(105, 98)
         Me.BtGenerarReporte.Name = "BtGenerarReporte"
         Me.BtGenerarReporte.Size = New System.Drawing.Size(100, 23)
         Me.BtGenerarReporte.TabIndex = 49
@@ -84,23 +80,6 @@ Partial Class ReporteEstatusContrato
         Me.CBEstatusContrato.Name = "CBEstatusContrato"
         Me.CBEstatusContrato.Size = New System.Drawing.Size(198, 21)
         Me.CBEstatusContrato.TabIndex = 17
-        '
-        'CBComprador
-        '
-        Me.CBComprador.FormattingEnabled = True
-        Me.CBComprador.Location = New System.Drawing.Point(115, 17)
-        Me.CBComprador.Name = "CBComprador"
-        Me.CBComprador.Size = New System.Drawing.Size(198, 21)
-        Me.CBComprador.TabIndex = 16
-        '
-        'Txpro
-        '
-        Me.Txpro.AutoSize = True
-        Me.Txpro.Location = New System.Drawing.Point(8, 20)
-        Me.Txpro.Name = "Txpro"
-        Me.Txpro.Size = New System.Drawing.Size(101, 13)
-        Me.Txpro.TabIndex = 14
-        Me.Txpro.Text = "Nombre Comprador:"
         '
         'Label1
         '
@@ -148,8 +127,6 @@ Partial Class ReporteEstatusContrato
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents CREstatusContrato As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents CBEstatusContrato As ComboBox
-    Friend WithEvents CBComprador As ComboBox
-    Friend WithEvents Txpro As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Btlimpiar As Button
     Friend WithEvents BtGenerarReporte As Button
