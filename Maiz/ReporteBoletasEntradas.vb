@@ -14,4 +14,5 @@ Public Class ReporteBoletasEntradas
         CrBoletaEntrada.ReportSource = RptBoletasEntradas
 
     End Sub
+
 End Class
