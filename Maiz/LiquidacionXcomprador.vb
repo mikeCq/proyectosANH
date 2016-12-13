@@ -173,7 +173,15 @@ Public Class LiquidacionXcomprador
         Buscar()
     End Sub
     Private Sub BTNAgregar_Click(sender As Object, e As EventArgs) Handles BTNAgregar.Click
-        Agregar()
+        If NUDToneladasRestantes.Value = 0 Then
+            MsgBox("Su contrato se ha completado", vbOKOnly, "Alerta")
+            NUDToneladasSeleccionadas.Value = 0.00
+            For Contador1 = 0 To DGVSalidas.RowCount - 1
+                DGVSalidas.Rows(Contador1).Cells("ChCol").Value = False
+            Next
+            Exit Sub
+        End If
+        VerificarSiSePuedeLiquidar()
     End Sub
     '--------------METODOS---------------------------------------------------------------------------------------------------------------------------------------------------------
     Private Sub LlenarComboBox()
@@ -357,7 +365,7 @@ Public Class LiquidacionXcomprador
             cmd4.Parameters.AddWithValue("@TipoDeCambio", TipoCambio)
             cmd4.Parameters.AddWithValue("@PrecioContrato", PrecioContrato)
             cmd4.Parameters.AddWithValue("@Moneda", IIf(CBTipoMoneda.Text = "DLS", 1, 2))
-            cmd4.Parameters.AddWithValue("@PrecioToneladaMxn", TBPrecioPorTonelada.Text)
+            cmd4.Parameters.AddWithValue("@PrecioToneladaMxn", CDbl(TBPrecioPorTonelada.Text))
             cmd4.Parameters.AddWithValue("@ImporteTotal", ImporteMn)
             cmd4.Parameters.AddWithValue("@Contrato", TBContrato.Text)
             cmd4.Parameters.AddWithValue("@MetodoPago", TBMetodoPago.Text)
@@ -376,6 +384,9 @@ Public Class LiquidacionXcomprador
             da5.Fill(dt5)
             DGVTotalLiquidado.DataSource = dt5.Tables(0).DefaultView
             PropiedadesDGVTotalLiquidado()
+            LimpiarGuardar()
+            LlenarDGVsalidas()
+            PropiedadesDGVSalidas()
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
@@ -403,6 +414,11 @@ Public Class LiquidacionXcomprador
             TBNombreComprador.Text = CStr(dt.Tables(0).Rows(0)("NombreComprador").ToString())
             NUDToneladasContrato.Value = CDbl(dt.Tables(0).Rows(0)("toneladasVentas").ToString())
             NUDToneladasRestantes.Value = CDbl(dt.Tables(0).Rows(0)("toneladasrestantes").ToString())
+            If NUDToneladasRestantes.Value <= 0 Then
+                BTNGuardar.Enabled = False
+            Else
+                BTNGuardar.Enabled = True
+            End If
             PrecioContrato = CDbl(dt.Tables(0).Rows(0)("precioXtonelada").ToString())
             TbEstatusContrato.Text = IIf(dt.Tables(0).Rows(0)("EstatusContrato").ToString() = 0, "INCOMPLETO", "COMPLETO")
             Moneda = dt.Tables(0).Rows(0)("moneda").ToString()
@@ -438,29 +454,6 @@ Public Class LiquidacionXcomprador
                 TBNombreComprador.Text = dt.Tables(0).Rows(0)("NombreComprador").ToString()
             End If
             If BanderaContrato = 1 Then
-                '    If RbNo.Checked = True Then
-                '        RbContrato.Checked = True
-                '        RbContrato.Enabled = True
-                '        RbLibre.Checked = False
-                '        RbLibre.Enabled = True
-                '    Else
-                '        RbContrato.Enabled = False
-                '        RbLibre.Enabled = True
-                '        RbContrato.Checked = False
-                '        RbLibre.Checked = True
-                '    End If
-                'Else
-                '    If RbSi.Checked = True Then
-                '        RbContrato.Enabled = True
-                '        RbLibre.Enabled = True
-                '        RbContrato.Checked = True
-                '        RbLibre.Checked = False
-                '    Else
-                '        RbContrato.Enabled = True
-                '        RbLibre.Enabled = False
-                '        RbContrato.Checked = True
-                '        RbLibre.Checked = False
-                '    End If
             End If
             DGVTotalLiquidado.DataSource = dt3.Tables(0).DefaultView
             PropiedadesDGVTotalLiquidado()
@@ -567,6 +560,7 @@ Public Class LiquidacionXcomprador
             TBTipoDeCambioBL.Text = row("TipoDeCambio")
             NUDPrecioContratoBL.Value = row("PrecioContrato")
             NUDTotalLiquidadoBL.Value = row("TotalVentaContrato")
+            NUDToneladasRestantes.Value = NUDToneladasContrato.Value - CDbl(row("TotalVentaContrato"))
             CBTipoMonedaBL.SelectedItem = IIf(row("Moneda") = 1, "DLS", "MXN")
             TBPrecioPorToneladaBL.Text = row("PrecioToneladaMxn")
             TBImporteBL.Text = row("ImporteTotal")
@@ -636,4 +630,59 @@ Public Class LiquidacionXcomprador
         End If
         Return resultado
     End Function
+    Private Sub LimpiarGuardar()
+        TBIdContrato.Text = ""
+        TbEstatusContrato.Text = ""
+        TBNombreComprador.Text = ""
+        NUDToneladasContrato.Value = 0.00
+        NUDToneladasRestantes.Value = 0.00
+        TBIdComprador.Text = ""
+        CBEmpresa.SelectedValue = -1
+        NUDToneladasSeleccionadas.Value = 0.00
+        NUDTotalLiquidar.Value = 0.00
+        TBTipoDeCambio.Text = ""
+        NUDPrecioContrato.Value = 0.00
+        TBPrecioPorTonelada.Text = ""
+        TBImporte.Text = ""
+        DGVSalidas.DataSource = Nothing
+        DGVSalidas.Columns.Clear()
+        DGVSalidasSeleccionadas.DataSource = Nothing
+        DGVSalidasSeleccionadas.Columns.Clear()
+        DGVTotalLiquidadoDetalle.Columns.Clear()
+        DGVTotalLiquidadoDetalle.DataSource = Nothing
+    End Sub
+    Private Sub VerificarSiSePuedeLiquidar()
+        Dim SumaTotal As Double
+        Dim resultadoDiferencia As Double
+        Dim Diferencia As Double
+        If DGVTotalLiquidado.Rows().Count <> 0 Then
+            For Contador = 0 To DGVSalidas.RowCount - 1
+                DGVSalidas.Rows(Contador).Cells("ChCol").Value = True
+                SumaTotal = SumaTotal + DGVSalidas.Rows(Contador).Cells("Total").Value.ToString()
+                If SumaTotal >= (NUDToneladasRestantes.Value * 1000) Then
+                    Diferencia = SumaTotal - (NUDToneladasRestantes.Value * 1000)
+                    'MessageBox.Show("El Productor ha completado su contrato", "Aviso")
+                    Dim opc = MessageBox.Show("El comprador ha completado su contrato, ¿Desea liquidar el total del contrato?", "Aviso", MessageBoxButtons.YesNo)
+                    If opc = DialogResult.Yes Then
+                        resultadoDiferencia = DGVSalidas.Rows(Contador).Cells("Total").Value.ToString() - Diferencia
+                        DGVSalidas.Rows(Contador).Cells("Total").Value = resultadoDiferencia
+                        DGVSalidas.Rows(Contador).Cells("ChCol").Value = True
+                        Agregar()
+                    Else
+                        For Contador1 = 0 To DGVSalidas.RowCount - 1
+                            DGVSalidas.Rows(Contador1).Cells("ChCol").Value = False
+                        Next
+
+                    End If
+                    Exit For
+                End If
+            Next Contador
+            If SumaTotal < NUDToneladasRestantes.Value Then
+                For Contador1 = 0 To DGVSalidas.RowCount - 1
+                    DGVSalidas.Rows(Contador1).Cells("ChCol").Value = False
+                Next
+            End If
+            ContarChecksMarcados()
+        End If
+    End Sub
 End Class

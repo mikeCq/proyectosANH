@@ -757,7 +757,6 @@ Partial Class LiquidacionXcomprador
         '
         'DGVTotalLiquidadoDetalle
         '
-        Me.DGVTotalLiquidadoDetalle.AllowUserToAddRows = False
         Me.DGVTotalLiquidadoDetalle.AllowUserToDeleteRows = False
         Me.DGVTotalLiquidadoDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVTotalLiquidadoDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
