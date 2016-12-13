@@ -181,7 +181,6 @@ Public Class LiquidacionXcomprador
             Next
             Exit Sub
         End If
-        VerificarSiSePuedeLiquidar()
     End Sub
     '--------------METODOS---------------------------------------------------------------------------------------------------------------------------------------------------------
     Private Sub LlenarComboBox()
@@ -457,6 +456,8 @@ Public Class LiquidacionXcomprador
             End If
             DGVTotalLiquidado.DataSource = dt3.Tables(0).DefaultView
             PropiedadesDGVTotalLiquidado()
+
+            VerificarSiSePuedeLiquidar()
         End If
     End Sub
     Private Sub LimpiarBusqueda()
@@ -655,7 +656,7 @@ Public Class LiquidacionXcomprador
         Dim SumaTotal As Double
         Dim resultadoDiferencia As Double
         Dim Diferencia As Double
-        If DGVTotalLiquidado.Rows().Count <> 0 Then
+        If DGVTotalLiquidado.Rows().Count = 0 Then
             For Contador = 0 To DGVSalidas.RowCount - 1
                 DGVSalidas.Rows(Contador).Cells("ChCol").Value = True
                 SumaTotal = SumaTotal + DGVSalidas.Rows(Contador).Cells("Total").Value.ToString()
