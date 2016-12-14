@@ -180,8 +180,9 @@ Public Class LiquidacionXcomprador
                 DGVSalidas.Rows(Contador1).Cells("ChCol").Value = False
             Next
             Exit Sub
+        Else
+            Agregar()
         End If
-        VerificarSiSePuedeLiquidar()
     End Sub
     '--------------METODOS---------------------------------------------------------------------------------------------------------------------------------------------------------
     Private Sub LlenarComboBox()
@@ -295,6 +296,9 @@ Public Class LiquidacionXcomprador
             Dim isSelected As Boolean = Convert.ToBoolean(row.Cells("ChCol").Value)
             If isSelected = True Then
                 PuestosAcumulados = PuestosAcumulados + row.Cells("Total").Value.ToString()
+                'If PuestosAcumulados > NUDToneladasRestantes.Value Then
+                '    MsgBox("Se ha excedido la cantidad de toneladas restantes")
+                'End If
             End If
         Next row
         NUDToneladasSeleccionadas.Value = PuestosAcumulados
@@ -457,6 +461,7 @@ Public Class LiquidacionXcomprador
             End If
             DGVTotalLiquidado.DataSource = dt3.Tables(0).DefaultView
             PropiedadesDGVTotalLiquidado()
+            VerificarSiSePuedeLiquidar()
         End If
     End Sub
     Private Sub LimpiarBusqueda()
@@ -655,18 +660,17 @@ Public Class LiquidacionXcomprador
         Dim SumaTotal As Double
         Dim resultadoDiferencia As Double
         Dim Diferencia As Double
-        If DGVTotalLiquidado.Rows().Count <> 0 Then
+        If DGVTotalLiquidado.Rows().Count = 0 Then
             For Contador = 0 To DGVSalidas.RowCount - 1
                 DGVSalidas.Rows(Contador).Cells("ChCol").Value = True
                 SumaTotal = SumaTotal + DGVSalidas.Rows(Contador).Cells("Total").Value.ToString()
                 If SumaTotal >= (NUDToneladasRestantes.Value * 1000) Then
                     Diferencia = SumaTotal - (NUDToneladasRestantes.Value * 1000)
-                    'MessageBox.Show("El Productor ha completado su contrato", "Aviso")
                     Dim opc = MessageBox.Show("El comprador ha completado su contrato, ¿Desea liquidar el total del contrato?", "Aviso", MessageBoxButtons.YesNo)
                     If opc = DialogResult.Yes Then
                         resultadoDiferencia = DGVSalidas.Rows(Contador).Cells("Total").Value.ToString() - Diferencia
                         DGVSalidas.Rows(Contador).Cells("Total").Value = resultadoDiferencia
-                        DGVSalidas.Rows(Contador).Cells("ChCol").Value = True
+                        DGVSalidas.Columns(11).ReadOnly = True
                         Agregar()
                     Else
                         For Contador1 = 0 To DGVSalidas.RowCount - 1
