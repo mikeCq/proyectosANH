@@ -822,6 +822,7 @@ Public Class liquidacionCalculosProd
                         resultadoDiferencia = DgEntradasLiq.Rows(Contador).Cells("Total").Value.ToString() - Diferencia
                         DgEntradasLiq.Rows(Contador).Cells("Total").Value = resultadoDiferencia
                         DgEntradasLiq.Rows(Contador).Cells("ChCol").Value = True
+                        DgEntradasLiq.ReadOnly = True
                         Agregar()
                     Else
                         For Contador1 = 0 To DgEntradasLiq.RowCount - 1
