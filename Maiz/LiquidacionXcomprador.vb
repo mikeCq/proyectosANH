@@ -156,7 +156,7 @@ Public Class LiquidacionXcomprador
         DesmarcarChecks()
     End Sub
 
-    Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BTNSalir.Click, Me.FormClosed
+    Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BTNSalir.Click
         Limpiar()
         Me.Close()
     End Sub
@@ -249,6 +249,9 @@ Public Class LiquidacionXcomprador
         TBUltimosDigitosBL.Text = ""
         RBTNContratoBL.Checked = False
         RBTNLibreBL.Checked = False
+        BTNGuardar.Enabled = True
+        DGVTotalLiquidado.Columns.Clear()
+        DGVTotalLiquidado.DataSource = Nothing
         'CBTipoMoneda.Items.Clear()
         'CBTipoMonedaBL.Items.Clear()
     End Sub
@@ -295,10 +298,12 @@ Public Class LiquidacionXcomprador
         For Each row As DataGridViewRow In DGVSalidas.Rows
             Dim isSelected As Boolean = Convert.ToBoolean(row.Cells("ChCol").Value)
             If isSelected = True Then
-                PuestosAcumulados = PuestosAcumulados + row.Cells("Total").Value.ToString()
-                'If PuestosAcumulados > NUDToneladasRestantes.Value Then
-                '    MsgBox("Se ha excedido la cantidad de toneladas restantes")
-                'End If
+                If PuestosAcumulados <= NUDToneladasRestantes.Value Then
+                    PuestosAcumulados = PuestosAcumulados + row.Cells("Total").Value.ToString()
+                    'If PuestosAcumulados > NUDToneladasRestantes.Value Then
+                    '    MsgBox("Se ha excedido la cantidad de toneladas restantes")
+                    'End If
+                End If
             End If
         Next row
         NUDToneladasSeleccionadas.Value = PuestosAcumulados
@@ -461,10 +466,6 @@ Public Class LiquidacionXcomprador
             End If
             DGVTotalLiquidado.DataSource = dt3.Tables(0).DefaultView
             PropiedadesDGVTotalLiquidado()
-<<<<<<< HEAD
-
-=======
->>>>>>> 1c068404eb294b52d1785b357ca6276ab66d8b51
             VerificarSiSePuedeLiquidar()
         End If
     End Sub
@@ -592,7 +593,6 @@ Public Class LiquidacionXcomprador
             NUDPrecioContrato.Value = 0.00
         End If
     End Sub
-
     Private Sub CBTipoMoneda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBTipoMoneda.SelectionChangeCommitted
         CbMonedaVerificar()
     End Sub
