@@ -23,6 +23,8 @@ Partial Class ReportesEntradas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.LbLote = New System.Windows.Forms.Label()
         Me.CbProductor = New System.Windows.Forms.ComboBox()
         Me.Btlimpiar = New System.Windows.Forms.Button()
         Me.GbFiltros = New System.Windows.Forms.GroupBox()
@@ -51,7 +53,7 @@ Partial Class ReportesEntradas
         Me.Txpro = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtGenerarReporte = New System.Windows.Forms.Button()
-        Me.CRentradas = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.CbLote = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer2.Panel1.SuspendLayout()
         Me.SplitContainer2.Panel2.SuspendLayout()
@@ -67,6 +69,8 @@ Partial Class ReportesEntradas
         '
         'SplitContainer2.Panel1
         '
+        Me.SplitContainer2.Panel1.Controls.Add(Me.ComboBox1)
+        Me.SplitContainer2.Panel1.Controls.Add(Me.LbLote)
         Me.SplitContainer2.Panel1.Controls.Add(Me.CbProductor)
         Me.SplitContainer2.Panel1.Controls.Add(Me.Btlimpiar)
         Me.SplitContainer2.Panel1.Controls.Add(Me.GbFiltros)
@@ -82,15 +86,32 @@ Partial Class ReportesEntradas
         '
         'SplitContainer2.Panel2
         '
-        Me.SplitContainer2.Panel2.Controls.Add(Me.CRentradas)
+        Me.SplitContainer2.Panel2.Controls.Add(Me.CbLote)
         Me.SplitContainer2.Size = New System.Drawing.Size(1527, 863)
         Me.SplitContainer2.SplitterDistance = 404
         Me.SplitContainer2.TabIndex = 1
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(75, 97)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(279, 21)
+        Me.ComboBox1.TabIndex = 14
+        '
+        'LbLote
+        '
+        Me.LbLote.AutoSize = True
+        Me.LbLote.Location = New System.Drawing.Point(16, 105)
+        Me.LbLote.Name = "LbLote"
+        Me.LbLote.Size = New System.Drawing.Size(28, 13)
+        Me.LbLote.TabIndex = 13
+        Me.LbLote.Text = "Lote"
+        '
         'CbProductor
         '
         Me.CbProductor.FormattingEnabled = True
-        Me.CbProductor.Location = New System.Drawing.Point(75, 112)
+        Me.CbProductor.Location = New System.Drawing.Point(75, 65)
         Me.CbProductor.Name = "CbProductor"
         Me.CbProductor.Size = New System.Drawing.Size(279, 21)
         Me.CbProductor.TabIndex = 12
@@ -270,7 +291,7 @@ Partial Class ReportesEntradas
         'DTFinal
         '
         Me.DTFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTFinal.Location = New System.Drawing.Point(202, 149)
+        Me.DTFinal.Location = New System.Drawing.Point(202, 135)
         Me.DTFinal.Name = "DTFinal"
         Me.DTFinal.Size = New System.Drawing.Size(97, 20)
         Me.DTFinal.TabIndex = 3
@@ -279,7 +300,7 @@ Partial Class ReportesEntradas
         'DTInicio
         '
         Me.DTInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTInicio.Location = New System.Drawing.Point(78, 149)
+        Me.DTInicio.Location = New System.Drawing.Point(78, 135)
         Me.DTInicio.Name = "DTInicio"
         Me.DTInicio.Size = New System.Drawing.Size(97, 20)
         Me.DTInicio.TabIndex = 2
@@ -288,7 +309,7 @@ Partial Class ReportesEntradas
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(181, 155)
+        Me.Label3.Location = New System.Drawing.Point(181, 141)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(15, 13)
         Me.Label3.TabIndex = 7
@@ -297,7 +318,7 @@ Partial Class ReportesEntradas
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 155)
+        Me.Label2.Location = New System.Drawing.Point(16, 141)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(57, 13)
         Me.Label2.TabIndex = 7
@@ -305,7 +326,7 @@ Partial Class ReportesEntradas
         '
         'TxNumBoleta
         '
-        Me.TxNumBoleta.Location = New System.Drawing.Point(78, 76)
+        Me.TxNumBoleta.Location = New System.Drawing.Point(78, 29)
         Me.TxNumBoleta.Name = "TxNumBoleta"
         Me.TxNumBoleta.Size = New System.Drawing.Size(75, 20)
         Me.TxNumBoleta.TabIndex = 0
@@ -313,7 +334,7 @@ Partial Class ReportesEntradas
         'Txpro
         '
         Me.Txpro.AutoSize = True
-        Me.Txpro.Location = New System.Drawing.Point(14, 115)
+        Me.Txpro.Location = New System.Drawing.Point(14, 68)
         Me.Txpro.Name = "Txpro"
         Me.Txpro.Size = New System.Drawing.Size(59, 13)
         Me.Txpro.TabIndex = 2
@@ -322,7 +343,7 @@ Partial Class ReportesEntradas
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 79)
+        Me.Label1.Location = New System.Drawing.Point(13, 32)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(60, 13)
         Me.Label1.TabIndex = 2
@@ -338,22 +359,22 @@ Partial Class ReportesEntradas
         Me.BtGenerarReporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtGenerarReporte.UseVisualStyleBackColor = True
         '
-        'CRentradas
+        'CbLote
         '
-        Me.CRentradas.ActiveViewIndex = -1
-        Me.CRentradas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CRentradas.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CRentradas.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CRentradas.Location = New System.Drawing.Point(0, 0)
-        Me.CRentradas.Name = "CRentradas"
-        Me.CRentradas.ShowCloseButton = False
-        Me.CRentradas.ShowGroupTreeButton = False
-        Me.CRentradas.ShowLogo = False
-        Me.CRentradas.ShowParameterPanelButton = False
-        Me.CRentradas.ShowRefreshButton = False
-        Me.CRentradas.Size = New System.Drawing.Size(1119, 863)
-        Me.CRentradas.TabIndex = 0
-        Me.CRentradas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.CbLote.ActiveViewIndex = -1
+        Me.CbLote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CbLote.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CbLote.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CbLote.Location = New System.Drawing.Point(0, 0)
+        Me.CbLote.Name = "CbLote"
+        Me.CbLote.ShowCloseButton = False
+        Me.CbLote.ShowGroupTreeButton = False
+        Me.CbLote.ShowLogo = False
+        Me.CbLote.ShowParameterPanelButton = False
+        Me.CbLote.ShowRefreshButton = False
+        Me.CbLote.Size = New System.Drawing.Size(1119, 863)
+        Me.CbLote.TabIndex = 0
+        Me.CbLote.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'ReportesEntradas
         '
@@ -379,7 +400,7 @@ Partial Class ReportesEntradas
     Friend WithEvents SplitContainer2 As SplitContainer
     Friend WithEvents BtGenerarReporte As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents CRentradas As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents CbLote As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents TxNumBoleta As TextBox
     Friend WithEvents Txpro As Label
     Friend WithEvents Label2 As Label
@@ -406,4 +427,6 @@ Partial Class ReportesEntradas
     Friend WithEvents ChFiltros As CheckBox
     Friend WithEvents Btlimpiar As Button
     Friend WithEvents CbProductor As ComboBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents LbLote As Label
 End Class
