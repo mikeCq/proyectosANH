@@ -93,6 +93,7 @@ Partial Class ReportesEntradas
         '
         'ComboBox1
         '
+        Me.ComboBox1.Enabled = False
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(75, 97)
         Me.ComboBox1.Name = "ComboBox1"
@@ -102,6 +103,7 @@ Partial Class ReportesEntradas
         'LbLote
         '
         Me.LbLote.AutoSize = True
+        Me.LbLote.Enabled = False
         Me.LbLote.Location = New System.Drawing.Point(16, 105)
         Me.LbLote.Name = "LbLote"
         Me.LbLote.Size = New System.Drawing.Size(28, 13)

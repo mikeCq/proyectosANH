@@ -36,19 +36,19 @@ Public Class ReportesEntradas
         DTFinal.Value = "01/01/1900"
     End Sub
     Private Sub generaReporte(sender As Object, e As EventArgs) Handles BtGenerarReporte.Click
-        Dim lote As String = ""
-        If ComboBox1.SelectedValue = Nothing Then
-            lote = " "
-        Else
-            lote = ComboBox1.Text
-        End If
+        'Dim lote As String = ""
+        'If ComboBox1.SelectedValue = Nothing Then
+        '    lote = " "
+        'Else
+        '    lote = ComboBox1.Text
+        'End If
         Try
             Dim RptEntradas As New ReporteEntradas
             If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
                 RptEntradas.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
                 RptEntradas.SetParameterValue("@numboleta", TxNumBoleta.Text)
                 RptEntradas.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
-                RptEntradas.SetParameterValue("@lote", lote)
+                'RptEntradas.SetParameterValue("@lote", lote)
                 RptEntradas.SetParameterValue("@fechaini", DTInicio.Value)
                 RptEntradas.SetParameterValue("@fechafin", DTFinal.Value)
                 CbLote.ReportSource = RptEntradas
