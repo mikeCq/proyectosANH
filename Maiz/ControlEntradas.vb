@@ -310,6 +310,27 @@ Public Class ControlEntradas
 
     End Sub
 
+    Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
+        Dim da As SqlDataAdapter
+        Dim ds As DataSet
+        Dim cmd As New SqlCommand("Sp_LisConCli", cnn)
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add(New SqlClient.SqlParameter("IdCliente", CbNombre.SelectedValue))
+        cmd.Connection = cnn
+
+        da = New SqlDataAdapter(cmd)
+        ds = New DataSet()
+        da.Fill(ds)
+        CbIdContrato.DataSource = ds.Tables(0)
+        'CbIdContrato.DisplayMember = "nombre_almacen"
+        CbIdContrato.ValueMember = "IdContrato"
+        CbAlmacen.SelectedValue = 1
+    End Sub
+
+    Private Sub GbGrupoGrano_Enter(sender As Object, e As EventArgs) Handles GbGrupoGrano.Enter
+
+    End Sub
+
     Private Sub SoloNumerosTxCalidad(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxBruto.KeyPress, TxTara.KeyPress, TxNeto.KeyPress, TxHumedad.KeyPress, TxImpurezas.KeyPress, TxGranoDan.KeyPress, TxGranoQuebrado.KeyPress, TxIdBoleta.KeyPress, TxPesoEsp.KeyPress
         If InStr(1, "0123456789." & Chr(8), e.KeyChar) = 0 Then
             e.Handled = True
@@ -498,6 +519,7 @@ Public Class ControlEntradas
         Dim cmd As New SqlCommand("sp_InsSumaEntradas", cnn)
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.AddWithValue("@idcliente", CbNombre.SelectedValue)
+        cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.Text)
         cmd.Parameters.AddWithValue("@identrada", TxFolio.Text)
         cmd.Parameters.AddWithValue("@toneladasEntradas", valEntCon)
         cmd.Parameters.AddWithValue("@toneladasLibres", valEntLib)
@@ -572,8 +594,8 @@ Public Class ControlEntradas
                     valEntLib = 0
                     compruebaEntradas = "2" 'SE COMPLETO EL CONTRATO
                 ElseIf resTon > 0 Then
-                    valEntLib = resTon
                     valEntCon = (CDbl(TxNeto.Text) / 1000) + row("toneladasentradas") - resTon
+                    valEntLib = resTon
                     compruebaEntradas = "3" 'SE COMPLETO EL CONTRATO CON SOBRANTE PARA LIBRE
                 End If
             End If

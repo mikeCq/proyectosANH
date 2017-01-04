@@ -23,6 +23,8 @@ Partial Class ControlEntradas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GbDatoEntrada = New System.Windows.Forms.GroupBox()
+        Me.CbIdContrato = New System.Windows.Forms.ComboBox()
+        Me.LBContrato = New System.Windows.Forms.Label()
         Me.CbLugarExp = New System.Windows.Forms.ComboBox()
         Me.CbLoteEntrada = New System.Windows.Forms.ComboBox()
         Me.CbNombre = New System.Windows.Forms.ComboBox()
@@ -100,6 +102,8 @@ Partial Class ControlEntradas
         '
         'GbDatoEntrada
         '
+        Me.GbDatoEntrada.Controls.Add(Me.CbIdContrato)
+        Me.GbDatoEntrada.Controls.Add(Me.LBContrato)
         Me.GbDatoEntrada.Controls.Add(Me.CbLugarExp)
         Me.GbDatoEntrada.Controls.Add(Me.CbLoteEntrada)
         Me.GbDatoEntrada.Controls.Add(Me.CbNombre)
@@ -140,6 +144,23 @@ Partial Class ControlEntradas
         Me.GbDatoEntrada.TabStop = False
         Me.GbDatoEntrada.Text = "Datos de la Entrada de Maiz"
         '
+        'CbIdContrato
+        '
+        Me.CbIdContrato.FormattingEnabled = True
+        Me.CbIdContrato.Location = New System.Drawing.Point(149, 85)
+        Me.CbIdContrato.Name = "CbIdContrato"
+        Me.CbIdContrato.Size = New System.Drawing.Size(162, 24)
+        Me.CbIdContrato.TabIndex = 31
+        '
+        'LBContrato
+        '
+        Me.LBContrato.AutoSize = True
+        Me.LBContrato.Location = New System.Drawing.Point(7, 93)
+        Me.LBContrato.Name = "LBContrato"
+        Me.LBContrato.Size = New System.Drawing.Size(57, 16)
+        Me.LBContrato.TabIndex = 30
+        Me.LBContrato.Text = "Contrato"
+        '
         'CbLugarExp
         '
         Me.CbLugarExp.FormattingEnabled = True
@@ -153,9 +174,9 @@ Partial Class ControlEntradas
         Me.CbLoteEntrada.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.CbLoteEntrada.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CbLoteEntrada.FormattingEnabled = True
-        Me.CbLoteEntrada.Location = New System.Drawing.Point(149, 86)
+        Me.CbLoteEntrada.Location = New System.Drawing.Point(454, 86)
         Me.CbLoteEntrada.Name = "CbLoteEntrada"
-        Me.CbLoteEntrada.Size = New System.Drawing.Size(247, 24)
+        Me.CbLoteEntrada.Size = New System.Drawing.Size(172, 24)
         Me.CbLoteEntrada.TabIndex = 2
         '
         'CbNombre
@@ -165,7 +186,7 @@ Partial Class ControlEntradas
         Me.CbNombre.FormattingEnabled = True
         Me.CbNombre.Location = New System.Drawing.Point(149, 56)
         Me.CbNombre.Name = "CbNombre"
-        Me.CbNombre.Size = New System.Drawing.Size(481, 24)
+        Me.CbNombre.Size = New System.Drawing.Size(477, 24)
         Me.CbNombre.TabIndex = 1
         '
         'Label27
@@ -657,7 +678,7 @@ Partial Class ControlEntradas
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(104, 89)
+        Me.Label23.Location = New System.Drawing.Point(409, 89)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(37, 16)
         Me.Label23.TabIndex = 0
@@ -918,4 +939,6 @@ Partial Class ControlEntradas
     Friend WithEvents CbLoteEntrada As ComboBox
     Friend WithEvents Label23 As Label
     Friend WithEvents CbLugarExp As ComboBox
+    Friend WithEvents CbIdContrato As ComboBox
+    Friend WithEvents LBContrato As Label
 End Class
