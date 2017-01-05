@@ -146,6 +146,7 @@ Partial Class ControlEntradas
         '
         'CbIdContrato
         '
+        Me.CbIdContrato.Enabled = False
         Me.CbIdContrato.FormattingEnabled = True
         Me.CbIdContrato.Location = New System.Drawing.Point(149, 85)
         Me.CbIdContrato.Name = "CbIdContrato"
