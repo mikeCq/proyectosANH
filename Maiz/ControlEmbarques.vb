@@ -570,8 +570,6 @@ Public Class ControlEmbarques
 
             End If
 
-
-
         End If
         Return compruebaEntradas
     End Function

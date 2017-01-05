@@ -305,11 +305,6 @@ Public Class ControlEntradas
         TxTotal.Text = Val(TxNeto.Text - TxDeducciones.Text)
         TxTotal.Text = FormatNumber(TxTotal.Text, 2)
     End Sub
-
-    Private Sub BtModificar_Click(sender As Object, e As EventArgs) Handles BtModificar.Click
-
-    End Sub
-
     Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
         Dim da As SqlDataAdapter
         Dim ds As DataSet
@@ -326,11 +321,6 @@ Public Class ControlEntradas
         CbIdContrato.ValueMember = "IdContrato"
         CbAlmacen.SelectedValue = 1
     End Sub
-
-    Private Sub GbGrupoGrano_Enter(sender As Object, e As EventArgs) Handles GbGrupoGrano.Enter
-
-    End Sub
-
     Private Sub SoloNumerosTxCalidad(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxBruto.KeyPress, TxTara.KeyPress, TxNeto.KeyPress, TxHumedad.KeyPress, TxImpurezas.KeyPress, TxGranoDan.KeyPress, TxGranoQuebrado.KeyPress, TxIdBoleta.KeyPress, TxPesoEsp.KeyPress
         If InStr(1, "0123456789." & Chr(8), e.KeyChar) = 0 Then
             e.Handled = True
@@ -439,6 +429,8 @@ Public Class ControlEntradas
                 If Val(TxTara.Text) = 0 Or Val(TxTara.Text) = 0 Or CbAcopio.SelectedValue = "" Or CbAlmacen.SelectedValue = "" Then
 
                     MessageBox.Show("Verifica campos vacios", "Aviso")
+
+                ElseIf val(TxNeto.Text) Then
 
                 Else
                     CompruebaToneladasEntradas(compruebaEntradas)
@@ -571,7 +563,7 @@ Public Class ControlEntradas
                     compruebaEntradas = "5" 'SE COMPLETO EL CONTRATO CON SOBRANTE SIN CONTRATO LIBRE
                 End If
             End If
-        Else
+        ElseIf row("aceptacontratolibre") = 1 Then
             If (row("toneladasentradas") + (CDbl(TxNeto.Text) / 1000)) < row("toneladascompras") Then
                 resTon = row("toneladascompras") - (row("toneladasentradas") + (CDbl(TxNeto.Text) / 1000))
                 If resTon <= 60 Then
@@ -599,7 +591,8 @@ Public Class ControlEntradas
                     compruebaEntradas = "3" 'SE COMPLETO EL CONTRATO CON SOBRANTE PARA LIBRE
                 End If
             End If
-
+        ElseIf row("aceptacontratolibre") = 2 Then
+            compruebaEntradas = "6" 'SE AGREGA DIRECTAMENTE A LIBRES
         End If
         Return compruebaEntradas
     End Function

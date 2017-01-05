@@ -41,6 +41,7 @@ Partial Class ContratosCompras
         Me.BtSeleccionarLotes = New System.Windows.Forms.Button()
         Me.DgSeleccionLotes = New System.Windows.Forms.DataGridView()
         Me.GbDatosLotes = New System.Windows.Forms.GroupBox()
+        Me.CbMoneda = New System.Windows.Forms.ComboBox()
         Me.TxPrecioTonelada = New System.Windows.Forms.TextBox()
         Me.DtTemporada = New System.Windows.Forms.DateTimePicker()
         Me.NuToneladas = New System.Windows.Forms.NumericUpDown()
@@ -99,7 +100,7 @@ Partial Class ContratosCompras
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.ImpContrato = New System.Windows.Forms.Button()
-        Me.CbMoneda = New System.Windows.Forms.ComboBox()
+        Me.RbSoloLibre = New System.Windows.Forms.RadioButton()
         Me.TabControl1.SuspendLayout()
         Me.TpCompraNormal.SuspendLayout()
         Me.GbContratoLibre.SuspendLayout()
@@ -146,6 +147,7 @@ Partial Class ContratosCompras
         '
         'GbContratoLibre
         '
+        Me.GbContratoLibre.Controls.Add(Me.RbSoloLibre)
         Me.GbContratoLibre.Controls.Add(Me.Label23)
         Me.GbContratoLibre.Controls.Add(Me.TxAcopio)
         Me.GbContratoLibre.Controls.Add(Me.TxApoderado)
@@ -206,7 +208,7 @@ Partial Class ContratosCompras
         '
         Me.RbNoLibre.AutoSize = True
         Me.RbNoLibre.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.RbNoLibre.Location = New System.Drawing.Point(308, 162)
+        Me.RbNoLibre.Location = New System.Drawing.Point(216, 162)
         Me.RbNoLibre.Name = "RbNoLibre"
         Me.RbNoLibre.Size = New System.Drawing.Size(189, 23)
         Me.RbNoLibre.TabIndex = 4
@@ -218,7 +220,7 @@ Partial Class ContratosCompras
         '
         Me.RbSiLibre.AutoSize = True
         Me.RbSiLibre.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RbSiLibre.Location = New System.Drawing.Point(49, 162)
+        Me.RbSiLibre.Location = New System.Drawing.Point(11, 162)
         Me.RbSiLibre.Name = "RbSiLibre"
         Me.RbSiLibre.Size = New System.Drawing.Size(182, 23)
         Me.RbSiLibre.TabIndex = 3
@@ -324,6 +326,14 @@ Partial Class ContratosCompras
         Me.GbDatosLotes.Size = New System.Drawing.Size(549, 171)
         Me.GbDatosLotes.TabIndex = 1
         Me.GbDatosLotes.TabStop = False
+        '
+        'CbMoneda
+        '
+        Me.CbMoneda.FormattingEnabled = True
+        Me.CbMoneda.Location = New System.Drawing.Point(252, 113)
+        Me.CbMoneda.Name = "CbMoneda"
+        Me.CbMoneda.Size = New System.Drawing.Size(62, 24)
+        Me.CbMoneda.TabIndex = 22
         '
         'TxPrecioTonelada
         '
@@ -938,13 +948,17 @@ Partial Class ContratosCompras
         Me.ImpContrato.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ImpContrato.UseVisualStyleBackColor = True
         '
-        'CbMoneda
+        'RbSoloLibre
         '
-        Me.CbMoneda.FormattingEnabled = True
-        Me.CbMoneda.Location = New System.Drawing.Point(252, 113)
-        Me.CbMoneda.Name = "CbMoneda"
-        Me.CbMoneda.Size = New System.Drawing.Size(62, 24)
-        Me.CbMoneda.TabIndex = 22
+        Me.RbSoloLibre.AutoSize = True
+        Me.RbSoloLibre.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.RbSoloLibre.Location = New System.Drawing.Point(430, 162)
+        Me.RbSoloLibre.Name = "RbSoloLibre"
+        Me.RbSoloLibre.Size = New System.Drawing.Size(109, 23)
+        Me.RbSoloLibre.TabIndex = 36
+        Me.RbSoloLibre.TabStop = True
+        Me.RbSoloLibre.Text = "Solo Libre."
+        Me.RbSoloLibre.UseVisualStyleBackColor = True
         '
         'ContratosCompras
         '
@@ -1068,4 +1082,5 @@ Partial Class ContratosCompras
     Friend WithEvents Label23 As Label
     Friend WithEvents TxAcopio As TextBox
     Friend WithEvents CbMoneda As ComboBox
+    Friend WithEvents RbSoloLibre As RadioButton
 End Class

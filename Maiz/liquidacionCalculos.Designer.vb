@@ -108,7 +108,7 @@ Partial Class liquidacionCalculosProd
         Me.DgLiquidacionesXTotal = New System.Windows.Forms.DataGridView()
         Me.DgLiquidacionesXBoleta = New System.Windows.Forms.DataGridView()
         Me.BtImprimir = New System.Windows.Forms.Button()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.NuToneladasRestante = New System.Windows.Forms.NumericUpDown()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxIDcontratoC = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -131,7 +131,7 @@ Partial Class liquidacionCalculosProd
         CType(Me.NuPrecioContratoLiquidado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgLiquidacionesXTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgLiquidacionesXBoleta, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NuToneladasRestante, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtGuardar
@@ -1047,18 +1047,18 @@ Partial Class liquidacionCalculosProd
         Me.BtImprimir.Text = "Imprimir"
         Me.BtImprimir.UseVisualStyleBackColor = True
         '
-        'NumericUpDown1
+        'NuToneladasRestante
         '
-        Me.NumericUpDown1.DecimalPlaces = 2
-        Me.NumericUpDown1.Enabled = False
-        Me.NumericUpDown1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NumericUpDown1.Location = New System.Drawing.Point(696, 83)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1316134911, 2328, 0, 0})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(124, 21)
-        Me.NumericUpDown1.TabIndex = 30
-        Me.NumericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.NumericUpDown1.ThousandsSeparator = True
+        Me.NuToneladasRestante.DecimalPlaces = 2
+        Me.NuToneladasRestante.Enabled = False
+        Me.NuToneladasRestante.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NuToneladasRestante.Location = New System.Drawing.Point(696, 83)
+        Me.NuToneladasRestante.Maximum = New Decimal(New Integer() {1316134911, 2328, 0, 0})
+        Me.NuToneladasRestante.Name = "NuToneladasRestante"
+        Me.NuToneladasRestante.Size = New System.Drawing.Size(124, 21)
+        Me.NuToneladasRestante.TabIndex = 30
+        Me.NuToneladasRestante.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.NuToneladasRestante.ThousandsSeparator = True
         '
         'Label8
         '
@@ -1143,7 +1143,7 @@ Partial Class liquidacionCalculosProd
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.NuLibre)
-        Me.Controls.Add(Me.NumericUpDown1)
+        Me.Controls.Add(Me.NuToneladasRestante)
         Me.Controls.Add(Me.NuContrato)
         Me.Controls.Add(Me.BtGuardar)
         Me.Controls.Add(Me.BtImprimir)
@@ -1171,7 +1171,7 @@ Partial Class liquidacionCalculosProd
         CType(Me.NuPrecioContratoLiquidado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgLiquidacionesXTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgLiquidacionesXBoleta, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NuToneladasRestante, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1201,7 +1201,7 @@ Partial Class liquidacionCalculosProd
     Friend WithEvents TpBoletasLiquidadas As TabPage
     Friend WithEvents DgLiquidacionesXBoleta As DataGridView
     Friend WithEvents BtImprimir As Button
-    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents NuToneladasRestante As NumericUpDown
     Friend WithEvents Label8 As Label
     Friend WithEvents TxIDcontratoC As TextBox
     Friend WithEvents Label16 As Label

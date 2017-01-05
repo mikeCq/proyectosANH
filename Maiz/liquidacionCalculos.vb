@@ -325,6 +325,7 @@ Public Class liquidacionCalculosProd
             PrecioContrato = CDbl(dt2.Tables(0).Rows(0)("precioXtonelada").ToString())
             NuContrato.Value = CDbl(dt2.Tables(0).Rows(0)("toneladascompras").ToString())
             NuLibre.Value = CDbl(dt2.Tables(0).Rows(0)("toneladaslibresentradas").ToString())
+            NuToneladasRestante.Value = CDbl(dt2.Tables(0).Rows(0)("ToneladasRestanteE").ToString())
             TxEstatusContrato.Text = IIf(dt2.Tables(0).Rows(0)("IdEstatusContrato").ToString() = 0, "INCOMPLETO", "COMPLETO")
             Moneda = dt2.Tables(0).Rows(0)("moneda").ToString()
             If dt2.Tables(0).Rows(0)("AceptaContratoLibre").ToString() = 1 Then

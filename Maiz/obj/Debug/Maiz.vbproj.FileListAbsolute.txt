@@ -281,3 +281,4 @@ C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.appl
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.exe
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.xml
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.pdb
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.vbprojResolveAssemblyReference.cache

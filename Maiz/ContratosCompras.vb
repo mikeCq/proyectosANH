@@ -186,7 +186,7 @@ Public Class ContratosCompras
             Dim opc As DialogResult = MessageBox.Show("¿Esta seguro de guardar los datos capturados?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If opc = DialogResult.Yes Then
                 Try
-
+                    Dim valor As Integer
                     Dim cmd As New SqlCommand("Sp_InsNueConCom", cnn)
 
                     cmd.CommandType = CommandType.StoredProcedure
@@ -202,7 +202,15 @@ Public Class ContratosCompras
                     cmd.Parameters.AddWithValue("@id_Temporada", DtTemporada.Value)
                     cmd.Parameters.AddWithValue("@fechaLiquidacion", DtFechaliquidacion.Value)
                     cmd.Parameters.AddWithValue("@lotesSeleccionados", TxLotesSembrar.Text)
-                    cmd.Parameters.AddWithValue("@AceptaLibre", IIf(RbNoLibre.Checked = False, 1, 0))
+                    Select Case valor
+                        Case RbNoLibre.Checked = True
+                            valor = 0
+                        Case RbSiLibre.Checked = True
+                            valor = 1
+                        Case RbSoloLibre.Checked = True
+                            valor = 2
+                    End Select
+                    cmd.Parameters.AddWithValue("@AceptaLibre", valor)
                     cmd.Parameters.AddWithValue("@Observaciones", TxObservaciones.Text)
                     cmd.Parameters.AddWithValue("@Empresa", TxEmpresa.Text)
                     cmd.Parameters.AddWithValue("@apoderado", TxApoderado.Text)
@@ -243,7 +251,6 @@ Public Class ContratosCompras
                     Catch ex As Exception
                         MsgBox(ex, MsgBoxStyle.Critical)
                     End Try
-
 
                 End If
             End If
@@ -318,9 +325,10 @@ Public Class ContratosCompras
             TxLotesSembrar.Text = CStr(row("lotesSeleccionados"))
             If row("AceptaContratoLibre") = 0 Then
                 RbNoLibre.Checked = True
-            Else
+            ElseIf row("AceptaContratoLibre") = 1 Then
                 RbSiLibre.Checked = True
-
+            Else
+                RbSoloLibre.Checked = True
             End If
             TxObservaciones.Text = CStr(row("Observaciones"))
             TxEmpresa.Text = CStr(row("Empresa"))
