@@ -317,7 +317,7 @@ Public Class ControlEntradas
         ds = New DataSet()
         da.Fill(ds)
         CbIdContrato.DataSource = ds.Tables(0)
-        'CbIdContrato.DisplayMember = "nombre_almacen"
+        CbIdContrato.DisplayMember = "Toneladas"
         CbIdContrato.ValueMember = "IdContrato"
         CbAlmacen.SelectedValue = 1
     End Sub
