@@ -306,6 +306,9 @@ Public Class ControlEntradas
         TxTotal.Text = FormatNumber(TxTotal.Text, 2)
     End Sub
     Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
+        VerificarContrato()
+    End Sub
+    Private Sub VerificarContrato()
         Dim da As SqlDataAdapter
         Dim ds As DataSet
         Dim cmd As New SqlCommand("Sp_LisConCli", cnn)
@@ -430,7 +433,7 @@ Public Class ControlEntradas
 
                     MessageBox.Show("Verifica campos vacios", "Aviso")
 
-                ElseIf val(TxNeto.Text) Then
+                ElseIf val(TxNeto.Text) = 0 Then
 
                 Else
                     CompruebaToneladasEntradas(compruebaEntradas)
@@ -511,7 +514,7 @@ Public Class ControlEntradas
         Dim cmd As New SqlCommand("sp_InsSumaEntradas", cnn)
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.AddWithValue("@idcliente", CbNombre.SelectedValue)
-        cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.Text)
+        cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.SelectedValue)
         cmd.Parameters.AddWithValue("@identrada", TxFolio.Text)
         cmd.Parameters.AddWithValue("@toneladasEntradas", valEntCon)
         cmd.Parameters.AddWithValue("@toneladasLibres", valEntLib)
@@ -879,6 +882,7 @@ Public Class ControlEntradas
             End Select
             CbLoteEntrada.Text = CStr(row("LoteEntrada"))
             BloqueoFases()
+            VerificarContrato()
             'TxImpurezas.Text = FormatNumber(TxImpurezas.Text, 1)
             'TxGranoDan.Text = FormatNumber(TxGranoDan.Text, 1)
             'TxHumedad.Text = FormatNumber(TxHumedad.Text, 1)
