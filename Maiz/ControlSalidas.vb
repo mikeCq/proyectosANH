@@ -6,6 +6,7 @@ Imports CrystalDecisions.CrystalReports
 Public Class ControlSalidas
     Dim resTon, valSalLib, valSalCon, deduccionGrandan, deduccionHumedad, deduccionImpurezas, deduccionPanzaB, deduccionPesoEsp, deduccionGranQ, calculoPanzaB, calculoHumedad, calculoPuntaNegra, calculaImpureza, calculaGranoDan, calculoGranQ, calculoPesoE As Double
     Dim compruebaSalidas As String
+    Dim IdEstado As Integer
     Private Sub Salidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxIdBoleta.Select()
         llenarCombos()
@@ -244,6 +245,20 @@ Public Class ControlSalidas
         End If
         _codigoSalida = TxFolio.Text
         ReporteBoletasSalidas.Show()
+    End Sub
+
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+        If IdEstado = 1 Then
+            MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")
+        Else
+            Dim cmd As New SqlCommand("Sp_EliminarBoletaSalidas", cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdBoleta", TxIdBoleta.Text))
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstado", IdEstado))
+            cmd.ExecuteNonQuery()
+            CargarData()
+            MessageBox.Show("Boleta eliminada con éxito", "Aviso")
+        End If
     End Sub
     Private Sub SoloNumerosTx(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxTara.KeyPress, TxNeto.KeyPress, TxHumedad.KeyPress, TxImpurezas.KeyPress, TxGranoDan.KeyPress, TxGranoQuebrado.KeyPress, TxIdBoleta.KeyPress
         If InStr(1, "0123456789." & Chr(8), e.KeyChar) = 0 Then
@@ -491,6 +506,7 @@ Public Class ControlSalidas
         DgBoletaSalidas.Columns("Neto").HeaderText = "Peso Neto"
         DgBoletaSalidas.Columns("Fecha_Pesaje").HeaderText = "Fecha"
         DgBoletaSalidas.Columns("Estado").HeaderText = "Estado"
+        DgBoletaSalidas.Columns("IdEstado").Visible = False
 
         DgBoletaSalidas.Columns("Bruto").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         DgBoletaSalidas.Columns("Tara").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
@@ -733,6 +749,7 @@ Public Class ControlSalidas
             CBConductor.Text = CStr(row("conductorCam"))
             CBAnalista.SelectedValue = row("usuarioAnalista")
             TxPlacas.Text = CStr(row("placasConductor"))
+            IdEstado = row("Estado")
             Select Case TipoGrano
                 Case "AMARILLO"
                     RBMamarillo.Checked = True
