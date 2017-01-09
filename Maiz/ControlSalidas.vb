@@ -322,6 +322,8 @@ Public Class ControlSalidas
             ElseIf TxFolio.Text <> "" And CbNombre.Text <> "" And Val(TxBruto.Text) > 0 And CbAcopio.Text <> "" And CbAlmacen.Text <> "" And Val(TxPesoEsp.Text) = 0 Then
                 If Val(TxBruto.Text) = 0 Or Val(TxNeto.Text) = 0 Or CbAcopio.Text = "" Or CbAlmacen.Text = "" Then
                     MessageBox.Show("Verifica campos en blanco", "Aviso")
+                ElseIf (PbSilos.Value - (val(TxNeto.Text) / 1000)) < 0 Then
+                    MessageBox.Show("La cantidad de salida es mayor a la disponible", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
                     Try
                         BloqueoFases()

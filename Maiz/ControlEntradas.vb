@@ -6,6 +6,7 @@ Imports CrystalDecisions.CrystalReports
 Public Class ControlEntradas
     Dim resTon, valEntLib, valEntCon, deduccionGrandan, deduccionHumedad, deduccionImpurezas, deduccionPanzaB, deduccionPesoEsp, deduccionGranQ, calculoPanzaB, calculoHumedad, calculoPuntaNegra, calculaImpureza, calculaGranoDan, calculoGranQ, calculoPesoE As Double
     Dim compruebaEntradas, idloteSeleccion As String
+    Dim IdEstado As Integer
     Private Sub Entradas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxIdBoleta.Select()
         llenarCombos()
@@ -323,6 +324,19 @@ Public Class ControlEntradas
         CbIdContrato.DisplayMember = "Toneladas"
         CbIdContrato.ValueMember = "IdContrato"
         CbAlmacen.SelectedValue = 1
+    End Sub
+    Private Sub BtEliminar_Click(sender As Object, e As EventArgs) Handles BtEliminar.Click
+        If IdEstado = 1 Then
+            MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")
+        Else
+            Dim cmd5 As New SqlCommand("Sp_EliminarBoleta", cnn)
+            cmd5.CommandType = CommandType.StoredProcedure
+            cmd5.Parameters.Add(New SqlClient.SqlParameter("IdBoleta", TxIdBoleta.Text))
+            cmd5.Parameters.Add(New SqlClient.SqlParameter("IdEstado", IdEstado))
+            cmd5.Connection = cnn
+            MessageBox.Show("Boleta eliminada con éxito", "Aviso")
+            CargarData()
+        End If
     End Sub
     Private Sub SoloNumerosTxCalidad(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxBruto.KeyPress, TxTara.KeyPress, TxNeto.KeyPress, TxHumedad.KeyPress, TxImpurezas.KeyPress, TxGranoDan.KeyPress, TxGranoQuebrado.KeyPress, TxIdBoleta.KeyPress, TxPesoEsp.KeyPress
         If InStr(1, "0123456789." & Chr(8), e.KeyChar) = 0 Then
@@ -881,6 +895,7 @@ Public Class ControlEntradas
                     RBMblanco.Checked = True
             End Select
             CbLoteEntrada.Text = CStr(row("LoteEntrada"))
+            IdEstado = row("Estado")
             BloqueoFases()
             VerificarContrato()
             'TxImpurezas.Text = FormatNumber(TxImpurezas.Text, 1)
