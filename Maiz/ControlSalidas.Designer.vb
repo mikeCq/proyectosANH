@@ -32,6 +32,7 @@ Partial Class ControlSalidas
         Me.GbBoletasSalidas = New System.Windows.Forms.GroupBox()
         Me.DgBoletaSalidas = New System.Windows.Forms.DataGridView()
         Me.GbDatoEntrada = New System.Windows.Forms.GroupBox()
+        Me.CbLugarExp = New System.Windows.Forms.ComboBox()
         Me.GbGrupoGrano = New System.Windows.Forms.GroupBox()
         Me.RBMamarillo = New System.Windows.Forms.RadioButton()
         Me.RBMblanco = New System.Windows.Forms.RadioButton()
@@ -85,7 +86,6 @@ Partial Class ControlSalidas
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtImprimir = New System.Windows.Forms.Button()
-        Me.CbLugarExp = New System.Windows.Forms.ComboBox()
         Me.GbBoletasSalidas.SuspendLayout()
         CType(Me.DgBoletaSalidas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GbDatoEntrada.SuspendLayout()
@@ -233,7 +233,15 @@ Partial Class ControlSalidas
         Me.GbDatoEntrada.Size = New System.Drawing.Size(636, 643)
         Me.GbDatoEntrada.TabIndex = 1
         Me.GbDatoEntrada.TabStop = False
-        Me.GbDatoEntrada.Text = "Datos de la Entrada de Trigo"
+        Me.GbDatoEntrada.Text = "Datos de la Salida de Maiz"
+        '
+        'CbLugarExp
+        '
+        Me.CbLugarExp.FormattingEnabled = True
+        Me.CbLugarExp.Location = New System.Drawing.Point(150, 154)
+        Me.CbLugarExp.Name = "CbLugarExp"
+        Me.CbLugarExp.Size = New System.Drawing.Size(477, 24)
+        Me.CbLugarExp.TabIndex = 3
         '
         'GbGrupoGrano
         '
@@ -755,14 +763,6 @@ Partial Class ControlSalidas
         Me.BtImprimir.TabIndex = 3
         Me.BtImprimir.Text = "Imprimir"
         Me.BtImprimir.UseVisualStyleBackColor = True
-        '
-        'CbLugarExp
-        '
-        Me.CbLugarExp.FormattingEnabled = True
-        Me.CbLugarExp.Location = New System.Drawing.Point(150, 154)
-        Me.CbLugarExp.Name = "CbLugarExp"
-        Me.CbLugarExp.Size = New System.Drawing.Size(477, 24)
-        Me.CbLugarExp.TabIndex = 3
         '
         'ControlSalidas
         '

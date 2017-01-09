@@ -318,7 +318,7 @@ Public Class ControlSalidas
                         MsgBox("Error", MsgBoxStyle.Critical)
                     End Try
                 End If
-            ElseIf TxFolio.Text <> "" And CbNombre.Text <> "" And VAL(TxBruto.Text) > 0 And CbAcopio.Text <> "" And CbAlmacen.Text <> "" And Val(TxPesoEsp.text) = 0 Then
+            ElseIf TxFolio.Text <> "" And CbNombre.Text <> "" And Val(TxBruto.Text) > 0 And CbAcopio.Text <> "" And CbAlmacen.Text <> "" And Val(TxPesoEsp.Text) = 0 Then
                 If Val(TxBruto.Text) = 0 Or Val(TxNeto.Text) = 0 Or CbAcopio.Text = "" Or CbAlmacen.Text = "" Then
                     MessageBox.Show("Verifica campos en blanco", "Aviso")
                 Else
@@ -342,7 +342,7 @@ Public Class ControlSalidas
                     End Try
 
                 End If
-            ElseIf TxFolio.Text <> "" And VAL(TxTotal.Text) > 0 And CBAnalista.Text <> "" And Val(TxPesoEsp.text) > 0 Then
+            ElseIf TxFolio.Text <> "" And Val(TxTotal.Text) > 0 And CBAnalista.Text <> "" And Val(TxPesoEsp.Text) > 0 Then
                 If TxImpurezas.Text = "" Or TxGranoDan.Text = "" Or TxGranoQuebrado.Text = "" Or TxHumedad.Text = "" Or Val(TxPesoEsp.Text) = 0 Or CBAnalista.Text = "" Then
                     MessageBox.Show("Verifica campos en blanco", "Aviso")
                 Else
