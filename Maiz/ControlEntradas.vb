@@ -6,6 +6,7 @@ Imports CrystalDecisions.CrystalReports
 Public Class ControlEntradas
     Dim resTon, valEntLib, valEntCon, deduccionGrandan, deduccionHumedad, deduccionImpurezas, deduccionPanzaB, deduccionPesoEsp, deduccionGranQ, calculoPanzaB, calculoHumedad, calculoPuntaNegra, calculaImpureza, calculaGranoDan, calculoGranQ, calculoPesoE As Double
     Dim compruebaEntradas, idloteSeleccion As String
+    Dim IdEstado As Integer
     Private Sub Entradas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxIdBoleta.Select()
         llenarCombos()
@@ -304,6 +305,19 @@ Public Class ControlEntradas
         TxDeducciones.Text = FormatNumber(TxDeducciones.Text, 2)
         TxTotal.Text = Val(TxNeto.Text - TxDeducciones.Text)
         TxTotal.Text = FormatNumber(TxTotal.Text, 2)
+    End Sub
+
+    Private Sub BtEliminar_Click(sender As Object, e As EventArgs) Handles BtEliminar.Click
+        If IdEstado = 1 Then
+            MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")
+        Else
+            Dim cmd As New SqlCommand("Sp_EliminarBoleta", cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdBoleta", TxIdBoleta.Text))
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstado", IdEstado))
+            CargarData()
+            MessageBox.Show("Boleta eliminada con éxito", "Aviso")
+        End If
     End Sub
     'Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
     '    Dim da As SqlDataAdapter
@@ -878,6 +892,7 @@ Public Class ControlEntradas
                     RBMblanco.Checked = True
             End Select
             CbLoteEntrada.Text = CStr(row("LoteEntrada"))
+            IdEstado = row("Estado")
             BloqueoFases()
             'TxImpurezas.Text = FormatNumber(TxImpurezas.Text, 1)
             'TxGranoDan.Text = FormatNumber(TxGranoDan.Text, 1)
