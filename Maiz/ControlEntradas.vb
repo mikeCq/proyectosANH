@@ -73,6 +73,7 @@ Public Class ControlEntradas
             TxPlacas.Enabled = True
             CBConductor.Enabled = True
             CbLoteEntrada.Enabled = True
+            CbIdContrato.Enabled = True
             TxTara.Enabled = False
             GbCalidad.Enabled = False
             CbAnalista.Enabled = False
@@ -82,7 +83,6 @@ Public Class ControlEntradas
             BtImprimir.Enabled = False
             RBMamarillo.Checked = False
             RBMblanco.Checked = False
-
         ElseIf Val(TxBruto.Text) > 0 And CbAnalista.Text = "" And CbAcopio.Text = "" Then
             GbCalidad.Enabled = True
             CbAnalista.Enabled = True
@@ -100,6 +100,7 @@ Public Class ControlEntradas
             CBConductor.Enabled = False
             BtImprimir.Enabled = False
             CbLoteEntrada.Enabled = False
+            CbIdContrato.Enabled = False
         ElseIf TxFolio.Text <> "" And CbAnalista.Text <> "" And VAL(TxTara.Text) = 0 Then
             TxTara.Enabled = True
             CbAcopio.Enabled = True
@@ -117,6 +118,7 @@ Public Class ControlEntradas
             CBConductor.Enabled = False
             BtImprimir.Enabled = False
             CbLoteEntrada.Enabled = False
+            CbIdContrato.Enabled = False
         ElseIf VAL(TxTara.Text) > 0 Then
             TxTara.Enabled = False
             TxIdBoleta.Enabled = False
@@ -134,6 +136,7 @@ Public Class ControlEntradas
             CBConductor.Enabled = False
             CbLoteEntrada.Enabled = False
             BtImprimir.Enabled = True
+            CbIdContrato.Enabled = False
         End If
     End Sub
     Private Sub BtImprimir_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
@@ -308,9 +311,9 @@ Public Class ControlEntradas
     End Sub
 
     Private Sub BtEliminar_Click(sender As Object, e As EventArgs) Handles BtEliminar.Click
-        If IdEstado = 1 Then
+        If IdEstado = 1 And TxFolio.Text <> "" Then
             MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")
-        Else
+        ElseIf IdEstado = 0 And TxFolio.Text <> "" Then
             Dim opc As DialogResult = MessageBox.Show("¿Desea eliminar la boleta " & TxIdBoleta.Text & "?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
             If opc = DialogResult.Yes Then
                 Dim cmd As New SqlCommand("Sp_EliminarBoleta", cnn)
@@ -326,22 +329,22 @@ Public Class ControlEntradas
             End If
         End If
     End Sub
-    'Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
-    '    Dim da As SqlDataAdapter
-    '    Dim ds As DataSet
-    '    Dim cmd As New SqlCommand("Sp_LisConCli", cnn)
-    '    cmd.CommandType = CommandType.StoredProcedure
-    '    cmd.Parameters.Add(New SqlClient.SqlParameter("IdCliente", CbNombre.SelectedValue))
-    '    cmd.Connection = cnn
+    Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
+        Dim da As SqlDataAdapter
+        Dim ds As DataSet
+        Dim cmd As New SqlCommand("Sp_LisConCli", cnn)
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add(New SqlClient.SqlParameter("IdCliente", CbNombre.SelectedValue))
+        cmd.Connection = cnn
 
-    '    da = New SqlDataAdapter(cmd)
-    '    ds = New DataSet()
-    '    da.Fill(ds)
-    '    CbIdContrato.DataSource = ds.Tables(0)
-    '    CbIdContrato.DisplayMember = "nombre_almacen"
-    '    CbIdContrato.ValueMember = "IdContrato"
-    '    CbAlmacen.SelectedValue = 1
-    'End Sub
+        da = New SqlDataAdapter(cmd)
+        ds = New DataSet()
+        da.Fill(ds)
+        CbIdContrato.DataSource = ds.Tables(0)
+        CbIdContrato.DisplayMember = "nombre_almacen"
+        CbIdContrato.ValueMember = "Toneladas"
+        CbAlmacen.SelectedValue = 1
+    End Sub
     Private Sub SoloNumerosTxCalidad(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxBruto.KeyPress, TxTara.KeyPress, TxNeto.KeyPress, TxHumedad.KeyPress, TxImpurezas.KeyPress, TxGranoDan.KeyPress, TxGranoQuebrado.KeyPress, TxIdBoleta.KeyPress, TxPesoEsp.KeyPress
         If InStr(1, "0123456789." & Chr(8), e.KeyChar) = 0 Then
             e.Handled = True
@@ -387,7 +390,7 @@ Public Class ControlEntradas
             MessageBox.Show("El numero de boleta " & TxIdBoleta.Text & " ya existe", "Aviso")
         ElseIf entradaRegistrada(TxFolio.Text, estadoEntrada) = True Then
             If TxFolio.Text = "" And CbNombre.Text <> "" Then
-                If Val(TxBruto.Text) = 0 Or CbLugarExp.Text = "" Or CBConductor.Text = "" Or TxPlacas.Text = "" Or CbLoteEntrada.SelectedValue = Nothing Or CbLoteEntrada.Text = "" Or TxIdBoleta.Text = "" Or (RBMblanco.Checked = False And RBMamarillo.Checked = False) Then
+                If Val(TxBruto.Text) = 0 Or CbLugarExp.Text = "" Or CBConductor.Text = "" Or TxPlacas.Text = "" Or CbLoteEntrada.SelectedValue = Nothing Or CbLoteEntrada.Text = "" Or TxIdBoleta.Text = "" Or (RBMblanco.Checked = False And RBMamarillo.Checked = False Or CbIdContrato.SelectedValue = Nothing) Then
                     MessageBox.Show("Verifica campos en blanco", "Aviso")
                 Else
                     Try
@@ -451,7 +454,7 @@ Public Class ControlEntradas
 
                     MessageBox.Show("Verifica campos vacios", "Aviso")
 
-                ElseIf (val(TxNeto.Text) + Val(LbCapacidad.text)) > Val(LbCapacidad.text) Then
+                ElseIf ((val(TxNeto.Text) / 1000) + Val(LbCapacidad.text)) > Val(LbCapacidad.text) Then
                     MessageBox.Show("La entrada excede las capacidades del Silo")
                 Else
                     CompruebaToneladasEntradas(compruebaEntradas)
@@ -532,7 +535,7 @@ Public Class ControlEntradas
         Dim cmd As New SqlCommand("sp_InsSumaEntradas", cnn)
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.AddWithValue("@idcliente", CbNombre.SelectedValue)
-        'cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.Text)
+        cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.Text)
         cmd.Parameters.AddWithValue("@identrada", TxFolio.Text)
         cmd.Parameters.AddWithValue("@toneladasEntradas", valEntCon)
         cmd.Parameters.AddWithValue("@toneladasLibres", valEntLib)
@@ -630,6 +633,8 @@ Public Class ControlEntradas
         TxDomicilio.Text = ""
         CbLugarExp.Text = ""
         CbLugarExp.SelectedIndex = -1
+        CbIdContrato.Text = ""
+        CbIdContrato.SelectedIndex = -1
         TxBruto.Text = "0.00"
         TxTara.Text = "0.00"
         TxNeto.Text = "0.00"
