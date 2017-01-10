@@ -7,6 +7,7 @@ Public Class ControlEmbarques
     Dim resTon, valEntLib, valEntCon, deduccionGrandan, deduccionHumedad, deduccionImpurezas, deduccionPanzaB, deduccionPesoEsp, deduccionGranQ, calculoPanzaB, calculoHumedad, calculoPuntaNegra, calculaImpureza, calculaGranoDan, calculoGranQ, calculoPesoE As Double
     Dim compruebaEntradas, idloteSeleccion As String
     Dim tipoContrato As Integer = 1
+    Dim IdEstado As Integer
     Private Sub Embarques_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TxIdBoleta.Select()
         BtNuevo_Click(sender, e)
@@ -143,6 +144,24 @@ Public Class ControlEmbarques
             CbLoteEmbarque.Enabled = False
         End If
     End Sub
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+        If IdEstado = 1 And TxFolio.Text <> "" Then
+            MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")
+        ElseIf IdEstado = 0 And TxFolio.Text <> "" Then
+            Dim opc As DialogResult = MessageBox.Show("¿Desea eliminar la boleta " & TxIdBoleta.Text & "?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+            If opc = DialogResult.Yes Then
+                Dim cmd As New SqlCommand("Sp_EliminarBoletaEmbarques", cnn)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add(New SqlClient.SqlParameter("@IdBoleta", TxIdBoleta.Text))
+                cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstado", IdEstado))
+                cmd.ExecuteNonQuery()
+                CargarData()
+                DataGridPropiedades()
+                MessageBox.Show("Boleta eliminada con éxito", "Aviso")
+            End If
+        End If
+    End Sub
+
     Private Sub TipoContratoEmbarque()
         Dim cmdllenaTipoContrato As SqlCommand
         Dim da As SqlDataAdapter
@@ -825,6 +844,7 @@ Public Class ControlEmbarques
             CBConductor.Text = CStr(row("conductorCam"))
             CBAnalista.SelectedValue = row("usuarioAnalista")
             TxPlacas.Text = CStr(row("placasConductor"))
+            IdEstado = row("Estado")
             Select Case TipoGrano
                 Case "AMARILLO"
                     RBMamarillo.Checked = True

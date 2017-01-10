@@ -248,7 +248,7 @@ Public Class ControlSalidas
     End Sub
 
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
-        If IdEstado = 1 Then
+        If IdEstado = 1 And TxFolio.Text <> "" Then
             MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")
         ElseIf IdEstado = 0 And TxFolio.Text <> "" Then
             Dim opc As DialogResult = MessageBox.Show("¿Desea eliminar la boleta " & TxIdBoleta.Text & "?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
