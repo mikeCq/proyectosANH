@@ -101,7 +101,7 @@ Public Class ControlEntradas
             BtImprimir.Enabled = False
             CbLoteEntrada.Enabled = False
             CbIdContrato.Enabled = False
-        ElseIf TxFolio.Text <> "" And CbAnalista.Text <> "" And VAL(TxTara.Text) = 0 Then
+        ElseIf TxFolio.Text <> "" And CbAnalista.Text <> "" And Val(TxTara.Text) = 0 Then
             TxTara.Enabled = True
             CbAcopio.Enabled = True
             CbAlmacen.Enabled = True
@@ -119,7 +119,7 @@ Public Class ControlEntradas
             BtImprimir.Enabled = False
             CbLoteEntrada.Enabled = False
             CbIdContrato.Enabled = False
-        ElseIf VAL(TxTara.Text) > 0 Then
+        ElseIf Val(TxTara.Text) > 0 Then
             TxTara.Enabled = False
             TxIdBoleta.Enabled = False
             GbCalidad.Enabled = False
@@ -422,7 +422,7 @@ Public Class ControlEntradas
                         MsgBox("Error", MsgBoxStyle.Critical)
                     End Try
                 End If
-            ElseIf TxFolio.Text <> "" And CbNombre.Text <> "" And Val(TxBruto.text) > 0 And TxPlacas.Text <> "" And Val(TxTara.text) = 0 And VAL(TxNeto.Text) = 0 Then
+            ElseIf TxFolio.Text <> "" And CbNombre.Text <> "" And Val(TxBruto.Text) > 0 And TxPlacas.Text <> "" And Val(TxTara.Text) = 0 And Val(TxNeto.Text) = 0 Then
                 If Val(TxImpurezas.Text) = 0 Or Val(TxGranoDan.Text) = 0 Or Val(TxGranoQuebrado.Text) = 0 Or Val(TxHumedad.Text) = 0 Or CbAnalista.Text = "" Or Val(TxPesoEsp.Text) = 0 Then
                     MessageBox.Show("Verifica campos en blanco", "Aviso")
                 Else
@@ -449,12 +449,12 @@ Public Class ControlEntradas
                         MsgBox("Error", MsgBoxStyle.Critical)
                     End Try
                 End If
-            ElseIf TxFolio.Text <> "" And val(TxTotal.Text) > 0 And CbAnalista.Text <> "" Then
+            ElseIf TxFolio.Text <> "" And Val(TxTotal.Text) > 0 And CbAnalista.Text <> "" Then
                 If Val(TxTara.Text) = 0 Or Val(TxTara.Text) = 0 Or CbAcopio.SelectedValue = "" Or CbAlmacen.SelectedValue = "" Then
 
                     MessageBox.Show("Verifica campos vacios", "Aviso")
 
-                ElseIf ((val(TxNeto.Text) / 1000) + Val(LbCapacidad.text)) > Val(LbCapacidad.text) Then
+                ElseIf ((Val(TxNeto.Text) / 1000) + Val(LbCapacidad.Text)) > Val(LbCapacidad.Text) Then
                     MessageBox.Show("La entrada excede las capacidades del Silo")
                 Else
                     CompruebaToneladasEntradas(compruebaEntradas)

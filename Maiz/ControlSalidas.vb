@@ -250,14 +250,17 @@ Public Class ControlSalidas
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         If IdEstado = 1 Then
             MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")
-        Else
-            Dim cmd As New SqlCommand("Sp_EliminarBoletaSalidas", cnn)
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdBoleta", TxIdBoleta.Text))
-            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstado", IdEstado))
-            cmd.ExecuteNonQuery()
-            CargarData()
-            MessageBox.Show("Boleta eliminada con éxito", "Aviso")
+        ElseIf IdEstado = 0 And TxFolio.Text <> "" Then
+            Dim opc As DialogResult = MessageBox.Show("¿Desea eliminar la boleta " & TxIdBoleta.Text & "?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+            If opc = DialogResult.Yes Then
+                Dim cmd As New SqlCommand("Sp_EliminarBoletaSalidas", cnn)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add(New SqlClient.SqlParameter("@IdBoleta", TxIdBoleta.Text))
+                cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstado", IdEstado))
+                cmd.ExecuteNonQuery()
+                CargarData()
+                MessageBox.Show("Boleta eliminada con éxito", "Aviso")
+            End If
         End If
     End Sub
     Private Sub SoloNumerosTx(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxTara.KeyPress, TxNeto.KeyPress, TxHumedad.KeyPress, TxImpurezas.KeyPress, TxGranoDan.KeyPress, TxGranoQuebrado.KeyPress, TxIdBoleta.KeyPress
