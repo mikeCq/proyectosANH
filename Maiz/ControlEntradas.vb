@@ -311,12 +311,19 @@ Public Class ControlEntradas
         If IdEstado = 1 Then
             MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")
         Else
-            Dim cmd As New SqlCommand("Sp_EliminarBoleta", cnn)
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdBoleta", TxIdBoleta.Text))
-            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstado", IdEstado))
-            CargarData()
-            MessageBox.Show("Boleta eliminada con éxito", "Aviso")
+            Dim opc As DialogResult = MessageBox.Show("¿Desea eliminar la boleta " & TxIdBoleta.Text & "?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+            If opc = DialogResult.Yes Then
+                Dim cmd As New SqlCommand("Sp_EliminarBoleta", cnn)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add(New SqlClient.SqlParameter("@IdBoleta", TxIdBoleta.Text))
+                cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstado", IdEstado))
+                cmd.ExecuteNonQuery()
+                nuevo()
+                CargarData()
+                DataGridPropiedades()
+
+                MessageBox.Show("Boleta eliminada con éxito", "Aviso")
+            End If
         End If
     End Sub
     'Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
@@ -611,6 +618,9 @@ Public Class ControlEntradas
         Return compruebaEntradas
     End Function
     Private Sub BtNuevo_Click(sender As Object, e As EventArgs) Handles BtNuevo.Click
+        nuevo()
+    End Sub
+    Private Sub nuevo()
         TxIdBoleta.Text = ""
         TxFolio.Text = ""
         DTPEntradas.Value = Now
@@ -619,7 +629,7 @@ Public Class ControlEntradas
         CbLoteEntrada.Text = ""
         TxDomicilio.Text = ""
         CbLugarExp.Text = ""
-        CbLugarExp .SelectedIndex = -1
+        CbLugarExp.SelectedIndex = -1
         TxBruto.Text = "0.00"
         TxTara.Text = "0.00"
         TxNeto.Text = "0.00"
