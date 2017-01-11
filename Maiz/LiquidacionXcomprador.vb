@@ -294,15 +294,13 @@ Public Class LiquidacionXcomprador
         ContarChecksMarcados()
     End Sub
     Private Sub ContarChecksMarcados()
-        Dim PuestosAcumulados As Double
+        Dim PuestosAcumulados As Double = 0
         For Each row As DataGridViewRow In DGVSalidas.Rows
             Dim isSelected As Boolean = Convert.ToBoolean(row.Cells("ChCol").Value)
             If isSelected = True Then
-                If PuestosAcumulados <= NUDToneladasRestantes.Value Then
-                    PuestosAcumulados = PuestosAcumulados + row.Cells("Total").Value.ToString()
-                    'If PuestosAcumulados > NUDToneladasRestantes.Value Then
-                    '    MsgBox("Se ha excedido la cantidad de toneladas restantes")
-                    'End If
+                PuestosAcumulados = PuestosAcumulados + row.Cells("Total").Value.ToString()
+                If (PuestosAcumulados / 1000) >= NUDToneladasRestantes.Value Then
+                    MsgBox("Test que se cumple porque ya se paso los acumulados a las restantes")
                 End If
             End If
         Next row
@@ -685,7 +683,7 @@ Public Class LiquidacionXcomprador
                     Exit For
                 End If
             Next Contador
-            If SumaTotal < NUDToneladasRestantes.Value Then
+            If SumaTotal < (NUDToneladasRestantes.Value * 1000) Then
                 For Contador1 = 0 To DGVSalidas.RowCount - 1
                     DGVSalidas.Rows(Contador1).Cells("ChCol").Value = False
                 Next
