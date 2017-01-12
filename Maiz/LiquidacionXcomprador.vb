@@ -278,6 +278,7 @@ Public Class LiquidacionXcomprador
             PuestosAcumulados = PuestosAcumulados + DGVSalidasSeleccionadas.Rows(Contador).Cells("Total").Value
         Next Contador
         NUDTotalLiquidar.Value = PuestosAcumulados
+        NUDToneladasSeleccionadas.Value = PuestosAcumulados
         PuestosAcumulados = 0
     End Sub
     Private Sub DGVSalidas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVSalidas.CellContentClick
@@ -295,16 +296,40 @@ Public Class LiquidacionXcomprador
     End Sub
     Private Sub ContarChecksMarcados()
         Dim PuestosAcumulados As Double = 0
+        Dim SumaTotal As Double = 0
+        Dim resultadoDiferencia As Double = 0
+        Dim Diferencia As Double = 0
         For Each row As DataGridViewRow In DGVSalidas.Rows
             Dim isSelected As Boolean = Convert.ToBoolean(row.Cells("ChCol").Value)
             If isSelected = True Then
                 PuestosAcumulados = PuestosAcumulados + row.Cells("Total").Value.ToString()
                 If (PuestosAcumulados / 1000) >= NUDToneladasRestantes.Value Then
-                    MsgBox("Test que se cumple porque ya se paso los acumulados a las restantes")
+                    MsgBox("Se ha llegado al limite del contrato")
+                    '--------------------------------------------------------------------------------------------------------------------------
+                    For Contador = 0 To DGVSalidas.RowCount - 1
+                        DGVSalidas.Rows(Contador).Cells("ChCol").Value = True
+                        SumaTotal = SumaTotal + DGVSalidas.Rows(Contador).Cells("Total").Value.ToString()
+                        If SumaTotal >= (NUDToneladasRestantes.Value * 1000) Then
+                            Diferencia = SumaTotal - (NUDToneladasRestantes.Value * 1000)
+                            Dim opc = MessageBox.Show("El comprador ha completado su contrato, ¿Desea liquidar el total del contrato?", "Aviso", MessageBoxButtons.YesNo)
+                            If opc = DialogResult.Yes Then
+                                resultadoDiferencia = DGVSalidas.Rows(Contador).Cells("Total").Value.ToString() - Diferencia
+                                DGVSalidas.Rows(Contador).Cells("Total").Value = resultadoDiferencia
+                                DGVSalidas.Columns(11).ReadOnly = True
+                                Agregar()
+                                'Else
+                                '    For Contador1 = 0 To DGVSalidas.RowCount - 1
+                                '        DGVSalidas.Rows(Contador1).Cells("ChCol").Value = False
+                                '    Next
+                            End If
+                            Exit For
+                        End If
+                    Next Contador
+                    '------------------------------------------------------------------------------------------------------------------------------
                 End If
             End If
         Next row
-        NUDToneladasSeleccionadas.Value = PuestosAcumulados
+        NUDToneladasSeleccionadas.Value = NUDTotalLiquidar.Value
         PuestosAcumulados = 0
     End Sub
     Private Sub DesmarcarChecks()
@@ -655,6 +680,8 @@ Public Class LiquidacionXcomprador
         DGVSalidas.Columns.Clear()
         DGVSalidasSeleccionadas.DataSource = Nothing
         DGVSalidasSeleccionadas.Columns.Clear()
+        DGVTotalLiquidado.Columns.Clear()
+        DGVTotalLiquidado.DataSource = Nothing
         DGVTotalLiquidadoDetalle.Columns.Clear()
         DGVTotalLiquidadoDetalle.DataSource = Nothing
     End Sub
