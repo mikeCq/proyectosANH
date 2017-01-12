@@ -25,12 +25,18 @@ Partial Class ContratosVentas
         Me.GbDatoContrato = New System.Windows.Forms.GroupBox()
         Me.CbNombreComprador = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.RbMaizLibre = New System.Windows.Forms.RadioButton()
-        Me.RbMaizContrato = New System.Windows.Forms.RadioButton()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.LBCodigoSAP = New System.Windows.Forms.Label()
+        Me.TBCodigoASERCA = New System.Windows.Forms.TextBox()
+        Me.LBCodigoSIAP = New System.Windows.Forms.Label()
+        Me.TBCodigoSAP = New System.Windows.Forms.TextBox()
         Me.CbMoneda = New System.Windows.Forms.ComboBox()
         Me.DtLiquidacion = New System.Windows.Forms.DateTimePicker()
+        Me.RbMaizLibre = New System.Windows.Forms.RadioButton()
+        Me.TBCodigoSIAP = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.CbTemporada = New System.Windows.Forms.ComboBox()
+        Me.RbMaizContrato = New System.Windows.Forms.RadioButton()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxPrecioXtonelada = New System.Windows.Forms.TextBox()
@@ -52,12 +58,6 @@ Partial Class ContratosVentas
         Me.BtnModificar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
-        Me.LBCodigoSIAP = New System.Windows.Forms.Label()
-        Me.LBCodigoSAP = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.TBCodigoSIAP = New System.Windows.Forms.TextBox()
-        Me.TBCodigoSAP = New System.Windows.Forms.TextBox()
-        Me.TBCodigoASERCA = New System.Windows.Forms.TextBox()
         Me.GbDatoContrato.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -115,27 +115,46 @@ Partial Class ContratosVentas
         Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         '
-        'RbMaizLibre
+        'Label11
         '
-        Me.RbMaizLibre.AutoSize = True
-        Me.RbMaizLibre.Location = New System.Drawing.Point(369, 46)
-        Me.RbMaizLibre.Name = "RbMaizLibre"
-        Me.RbMaizLibre.Size = New System.Drawing.Size(107, 20)
-        Me.RbMaizLibre.TabIndex = 7
-        Me.RbMaizLibre.TabStop = True
-        Me.RbMaizLibre.Text = "Contrato Libre"
-        Me.RbMaizLibre.UseVisualStyleBackColor = True
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(30, 191)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(114, 16)
+        Me.Label11.TabIndex = 24
+        Me.Label11.Text = "Contrato ASERCA"
         '
-        'RbMaizContrato
+        'LBCodigoSAP
         '
-        Me.RbMaizContrato.AutoSize = True
-        Me.RbMaizContrato.Location = New System.Drawing.Point(369, 18)
-        Me.RbMaizContrato.Name = "RbMaizContrato"
-        Me.RbMaizContrato.Size = New System.Drawing.Size(163, 20)
-        Me.RbMaizContrato.TabIndex = 0
-        Me.RbMaizContrato.TabStop = True
-        Me.RbMaizContrato.Text = "Agricultura por Contrato"
-        Me.RbMaizContrato.UseVisualStyleBackColor = True
+        Me.LBCodigoSAP.AutoSize = True
+        Me.LBCodigoSAP.Location = New System.Drawing.Point(62, 163)
+        Me.LBCodigoSAP.Name = "LBCodigoSAP"
+        Me.LBCodigoSAP.Size = New System.Drawing.Size(79, 16)
+        Me.LBCodigoSAP.TabIndex = 23
+        Me.LBCodigoSAP.Text = "Código SAP"
+        '
+        'TBCodigoASERCA
+        '
+        Me.TBCodigoASERCA.Location = New System.Drawing.Point(157, 188)
+        Me.TBCodigoASERCA.Name = "TBCodigoASERCA"
+        Me.TBCodigoASERCA.Size = New System.Drawing.Size(277, 22)
+        Me.TBCodigoASERCA.TabIndex = 25
+        '
+        'LBCodigoSIAP
+        '
+        Me.LBCodigoSIAP.AutoSize = True
+        Me.LBCodigoSIAP.Location = New System.Drawing.Point(62, 138)
+        Me.LBCodigoSIAP.Name = "LBCodigoSIAP"
+        Me.LBCodigoSIAP.Size = New System.Drawing.Size(82, 16)
+        Me.LBCodigoSIAP.TabIndex = 22
+        Me.LBCodigoSIAP.Text = "Código SIAP"
+        '
+        'TBCodigoSAP
+        '
+        Me.TBCodigoSAP.Location = New System.Drawing.Point(157, 160)
+        Me.TBCodigoSAP.Name = "TBCodigoSAP"
+        Me.TBCodigoSAP.Size = New System.Drawing.Size(277, 22)
+        Me.TBCodigoSAP.TabIndex = 25
         '
         'CbMoneda
         '
@@ -152,6 +171,24 @@ Partial Class ContratosVentas
         Me.DtLiquidacion.Name = "DtLiquidacion"
         Me.DtLiquidacion.Size = New System.Drawing.Size(123, 22)
         Me.DtLiquidacion.TabIndex = 5
+        '
+        'RbMaizLibre
+        '
+        Me.RbMaizLibre.AutoSize = True
+        Me.RbMaizLibre.Location = New System.Drawing.Point(369, 46)
+        Me.RbMaizLibre.Name = "RbMaizLibre"
+        Me.RbMaizLibre.Size = New System.Drawing.Size(107, 20)
+        Me.RbMaizLibre.TabIndex = 7
+        Me.RbMaizLibre.TabStop = True
+        Me.RbMaizLibre.Text = "Contrato Libre"
+        Me.RbMaizLibre.UseVisualStyleBackColor = True
+        '
+        'TBCodigoSIAP
+        '
+        Me.TBCodigoSIAP.Location = New System.Drawing.Point(157, 132)
+        Me.TBCodigoSIAP.Name = "TBCodigoSIAP"
+        Me.TBCodigoSIAP.Size = New System.Drawing.Size(277, 22)
+        Me.TBCodigoSIAP.TabIndex = 24
         '
         'Label10
         '
@@ -170,6 +207,17 @@ Partial Class ContratosVentas
         Me.CbTemporada.Name = "CbTemporada"
         Me.CbTemporada.Size = New System.Drawing.Size(123, 24)
         Me.CbTemporada.TabIndex = 4
+        '
+        'RbMaizContrato
+        '
+        Me.RbMaizContrato.AutoSize = True
+        Me.RbMaizContrato.Location = New System.Drawing.Point(369, 18)
+        Me.RbMaizContrato.Name = "RbMaizContrato"
+        Me.RbMaizContrato.Size = New System.Drawing.Size(163, 20)
+        Me.RbMaizContrato.TabIndex = 0
+        Me.RbMaizContrato.TabStop = True
+        Me.RbMaizContrato.Text = "Agricultura por Contrato"
+        Me.RbMaizContrato.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -387,54 +435,6 @@ Partial Class ContratosVentas
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnNuevo.UseVisualStyleBackColor = True
-        '
-        'LBCodigoSIAP
-        '
-        Me.LBCodigoSIAP.AutoSize = True
-        Me.LBCodigoSIAP.Location = New System.Drawing.Point(62, 138)
-        Me.LBCodigoSIAP.Name = "LBCodigoSIAP"
-        Me.LBCodigoSIAP.Size = New System.Drawing.Size(82, 16)
-        Me.LBCodigoSIAP.TabIndex = 22
-        Me.LBCodigoSIAP.Text = "Código SIAP"
-        '
-        'LBCodigoSAP
-        '
-        Me.LBCodigoSAP.AutoSize = True
-        Me.LBCodigoSAP.Location = New System.Drawing.Point(62, 163)
-        Me.LBCodigoSAP.Name = "LBCodigoSAP"
-        Me.LBCodigoSAP.Size = New System.Drawing.Size(79, 16)
-        Me.LBCodigoSAP.TabIndex = 23
-        Me.LBCodigoSAP.Text = "Código SAP"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(30, 191)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(114, 16)
-        Me.Label11.TabIndex = 24
-        Me.Label11.Text = "Contrato ASERCA"
-        '
-        'TBCodigoSIAP
-        '
-        Me.TBCodigoSIAP.Location = New System.Drawing.Point(157, 132)
-        Me.TBCodigoSIAP.Name = "TBCodigoSIAP"
-        Me.TBCodigoSIAP.Size = New System.Drawing.Size(123, 22)
-        Me.TBCodigoSIAP.TabIndex = 24
-        '
-        'TBCodigoSAP
-        '
-        Me.TBCodigoSAP.Location = New System.Drawing.Point(157, 160)
-        Me.TBCodigoSAP.Name = "TBCodigoSAP"
-        Me.TBCodigoSAP.Size = New System.Drawing.Size(123, 22)
-        Me.TBCodigoSAP.TabIndex = 25
-        '
-        'TBCodigoASERCA
-        '
-        Me.TBCodigoASERCA.Location = New System.Drawing.Point(157, 188)
-        Me.TBCodigoASERCA.Name = "TBCodigoASERCA"
-        Me.TBCodigoASERCA.Size = New System.Drawing.Size(277, 22)
-        Me.TBCodigoASERCA.TabIndex = 25
         '
         'ContratosVentas
         '

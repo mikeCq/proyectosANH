@@ -183,6 +183,9 @@ Public Class ContratosVentas
             CbMoneda.SelectedValue = row("moneda")
             CbTemporada.Text = CStr(row("temporada"))
             DtLiquidacion.Value = row("fechaLiquidacion")
+            TBCodigoSIAP.Text = row("CodigoSiap")
+            TBCodigoSAP.Text = row("CodigoSap")
+            TBCodigoASERCA.Text = row("CodigoAserca")
             If row("tipoContrato") = 0 Then
                 RbMaizContrato.Checked = True
             Else
