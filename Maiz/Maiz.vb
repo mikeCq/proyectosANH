@@ -131,10 +131,10 @@ Public Class Maiz
     Private Sub ComprasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ComprasToolStripMenuItem1.Click
         ReporteCompras.ShowDialog()
     End Sub
-    Private Sub ComprasDeTrigoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprasDeTrigoToolStripMenuItem.Click
+    Private Sub ComprasDeTrigoToolStripMenuItem_Click(sender As Object, e As EventArgs)
         compradoresMaiz.ShowDialog()
     End Sub
-    Private Sub VentasDeTrigoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasDeTrigoToolStripMenuItem.Click
+    Private Sub VentasDeTrigoToolStripMenuItem_Click(sender As Object, e As EventArgs)
         ventasMaiz.ShowDialog()
     End Sub
     Private Sub EmpresasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EmpresasToolStripMenuItem.Click

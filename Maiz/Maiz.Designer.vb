@@ -46,10 +46,8 @@ Partial Class Maiz
         Me.ComercializacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComprasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContratosDeTigoConCompradoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ComprasDeTrigoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContratosDeTrigoConCompradoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VentasDeTrigoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProcesosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CalculoDeLiquidaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CalculoDeLiquidaciónPorCompradorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -67,6 +65,7 @@ Partial Class Maiz
         Me.LiquidacionesCalculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComprasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EstatusDeContratosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UtileriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnlaceABaseDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AutorizacionDiariaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -80,7 +79,6 @@ Partial Class Maiz
         Me.SbNombreUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbIdUsuario = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.EstatusDeContratosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -230,41 +228,29 @@ Partial Class Maiz
         '
         'ComprasToolStripMenuItem
         '
-        Me.ComprasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContratosDeTigoConCompradoresToolStripMenuItem, Me.ComprasDeTrigoToolStripMenuItem})
+        Me.ComprasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContratosDeTigoConCompradoresToolStripMenuItem})
         Me.ComprasToolStripMenuItem.Name = "ComprasToolStripMenuItem"
-        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ComprasToolStripMenuItem.Text = "Compras"
         '
         'ContratosDeTigoConCompradoresToolStripMenuItem
         '
         Me.ContratosDeTigoConCompradoresToolStripMenuItem.Name = "ContratosDeTigoConCompradoresToolStripMenuItem"
-        Me.ContratosDeTigoConCompradoresToolStripMenuItem.Size = New System.Drawing.Size(284, 22)
-        Me.ContratosDeTigoConCompradoresToolStripMenuItem.Text = "Contratos de Maiz con Productores"
-        '
-        'ComprasDeTrigoToolStripMenuItem
-        '
-        Me.ComprasDeTrigoToolStripMenuItem.Name = "ComprasDeTrigoToolStripMenuItem"
-        Me.ComprasDeTrigoToolStripMenuItem.Size = New System.Drawing.Size(284, 22)
-        Me.ComprasDeTrigoToolStripMenuItem.Text = "Compras de Maiz con Compradores"
+        Me.ContratosDeTigoConCompradoresToolStripMenuItem.Size = New System.Drawing.Size(305, 22)
+        Me.ContratosDeTigoConCompradoresToolStripMenuItem.Text = "Contratos de Compras con Productores"
         '
         'VentasToolStripMenuItem
         '
-        Me.VentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContratosDeTrigoConCompradoresToolStripMenuItem, Me.VentasDeTrigoToolStripMenuItem})
+        Me.VentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContratosDeTrigoConCompradoresToolStripMenuItem})
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'ContratosDeTrigoConCompradoresToolStripMenuItem
         '
         Me.ContratosDeTrigoConCompradoresToolStripMenuItem.Name = "ContratosDeTrigoConCompradoresToolStripMenuItem"
-        Me.ContratosDeTrigoConCompradoresToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
-        Me.ContratosDeTrigoConCompradoresToolStripMenuItem.Text = "Contratos de Maiz con Compradores"
-        '
-        'VentasDeTrigoToolStripMenuItem
-        '
-        Me.VentasDeTrigoToolStripMenuItem.Name = "VentasDeTrigoToolStripMenuItem"
-        Me.VentasDeTrigoToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
-        Me.VentasDeTrigoToolStripMenuItem.Text = "Ventas de Maiz"
+        Me.ContratosDeTrigoConCompradoresToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.ContratosDeTrigoConCompradoresToolStripMenuItem.Text = "Contratos de Ventas con Compradores"
         '
         'ProcesosToolStripMenuItem
         '
@@ -368,6 +354,12 @@ Partial Class Maiz
         Me.ComprasToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.ComprasToolStripMenuItem1.Text = "Compras"
         '
+        'EstatusDeContratosToolStripMenuItem
+        '
+        Me.EstatusDeContratosToolStripMenuItem.Name = "EstatusDeContratosToolStripMenuItem"
+        Me.EstatusDeContratosToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.EstatusDeContratosToolStripMenuItem.Text = "Estatus de Contratos"
+        '
         'UtileriasToolStripMenuItem
         '
         Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem})
@@ -455,12 +447,6 @@ Partial Class Maiz
         Me.SbIdUsuario.Text = "idUsuario"
         Me.SbIdUsuario.Visible = False
         '
-        'EstatusDeContratosToolStripMenuItem
-        '
-        Me.EstatusDeContratosToolStripMenuItem.Name = "EstatusDeContratosToolStripMenuItem"
-        Me.EstatusDeContratosToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.EstatusDeContratosToolStripMenuItem.Text = "Estatus de Contratos"
-        '
         'Maiz
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -517,10 +503,8 @@ Partial Class Maiz
     Friend WithEvents EmbarquesDirectosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ComprasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContratosDeTigoConCompradoresToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ComprasDeTrigoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContratosDeTrigoConCompradoresToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents VentasDeTrigoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CalculoDeLiquidaciónToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EnlaceABaseDeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ManualDeUusarioToolStripMenuItem As ToolStripMenuItem
