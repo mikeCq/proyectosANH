@@ -341,9 +341,9 @@ Public Class ControlEntradas
         ds = New DataSet()
         da.Fill(ds)
         CbIdContrato.DataSource = ds.Tables(0)
-        CbIdContrato.DisplayMember = "nombre_almacen"
-        CbIdContrato.ValueMember = "Toneladas"
-        CbAlmacen.SelectedValue = 1
+        CbIdContrato.DisplayMember = "Toneladas"
+        CbIdContrato.ValueMember = "IdContrato"
+        CbIdContrato.SelectedItem = 1
     End Sub
     Private Sub SoloNumerosTxCalidad(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxBruto.KeyPress, TxTara.KeyPress, TxNeto.KeyPress, TxHumedad.KeyPress, TxImpurezas.KeyPress, TxGranoDan.KeyPress, TxGranoQuebrado.KeyPress, TxIdBoleta.KeyPress, TxPesoEsp.KeyPress
         If InStr(1, "0123456789." & Chr(8), e.KeyChar) = 0 Then
@@ -351,6 +351,7 @@ Public Class ControlEntradas
             e.KeyChar = CChar("")
         End If
     End Sub
+
     Private Sub capacidadSilo() Handles CbAlmacen.SelectionChangeCommitted
         Dim cmd As New SqlCommand("Sp_PbAlmacen", cnn)
         cmd.CommandType = CommandType.StoredProcedure
@@ -535,7 +536,7 @@ Public Class ControlEntradas
         Dim cmd As New SqlCommand("sp_InsSumaEntradas", cnn)
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.AddWithValue("@idcliente", CbNombre.SelectedValue)
-        cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.Text)
+        cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.SelectedValue)
         cmd.Parameters.AddWithValue("@identrada", TxFolio.Text)
         cmd.Parameters.AddWithValue("@toneladasEntradas", valEntCon)
         cmd.Parameters.AddWithValue("@toneladasLibres", valEntLib)

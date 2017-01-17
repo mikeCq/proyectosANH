@@ -32,6 +32,8 @@ Partial Class ControlEmbarques
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.DgBoletaEmbarque = New System.Windows.Forms.DataGridView()
         Me.GbDatoEntrada = New System.Windows.Forms.GroupBox()
+        Me.CbIdContrato = New System.Windows.Forms.ComboBox()
+        Me.LBContrato = New System.Windows.Forms.Label()
         Me.CbLugarExp = New System.Windows.Forms.ComboBox()
         Me.CbLoteEmbarque = New System.Windows.Forms.ComboBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -184,6 +186,8 @@ Partial Class ControlEmbarques
         '
         'GbDatoEntrada
         '
+        Me.GbDatoEntrada.Controls.Add(Me.CbIdContrato)
+        Me.GbDatoEntrada.Controls.Add(Me.LBContrato)
         Me.GbDatoEntrada.Controls.Add(Me.CbLugarExp)
         Me.GbDatoEntrada.Controls.Add(Me.CbLoteEmbarque)
         Me.GbDatoEntrada.Controls.Add(Me.Label23)
@@ -215,28 +219,45 @@ Partial Class ControlEmbarques
         Me.GbDatoEntrada.TabStop = False
         Me.GbDatoEntrada.Text = "Datos de Embarque Directo de Maiz"
         '
+        'CbIdContrato
+        '
+        Me.CbIdContrato.FormattingEnabled = True
+        Me.CbIdContrato.Location = New System.Drawing.Point(150, 91)
+        Me.CbIdContrato.Name = "CbIdContrato"
+        Me.CbIdContrato.Size = New System.Drawing.Size(230, 24)
+        Me.CbIdContrato.TabIndex = 2
+        '
+        'LBContrato
+        '
+        Me.LBContrato.AutoSize = True
+        Me.LBContrato.Location = New System.Drawing.Point(1, 91)
+        Me.LBContrato.Name = "LBContrato"
+        Me.LBContrato.Size = New System.Drawing.Size(64, 16)
+        Me.LBContrato.TabIndex = 32
+        Me.LBContrato.Text = "Contrato :"
+        '
         'CbLugarExp
         '
         Me.CbLugarExp.FormattingEnabled = True
         Me.CbLugarExp.Location = New System.Drawing.Point(150, 167)
         Me.CbLugarExp.Name = "CbLugarExp"
         Me.CbLugarExp.Size = New System.Drawing.Size(481, 24)
-        Me.CbLugarExp.TabIndex = 4
+        Me.CbLugarExp.TabIndex = 5
         '
         'CbLoteEmbarque
         '
         Me.CbLoteEmbarque.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.CbLoteEmbarque.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CbLoteEmbarque.FormattingEnabled = True
-        Me.CbLoteEmbarque.Location = New System.Drawing.Point(150, 88)
+        Me.CbLoteEmbarque.Location = New System.Drawing.Point(429, 91)
         Me.CbLoteEmbarque.Name = "CbLoteEmbarque"
-        Me.CbLoteEmbarque.Size = New System.Drawing.Size(247, 24)
-        Me.CbLoteEmbarque.TabIndex = 2
+        Me.CbLoteEmbarque.Size = New System.Drawing.Size(202, 24)
+        Me.CbLoteEmbarque.TabIndex = 3
         '
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(105, 91)
+        Me.Label23.Location = New System.Drawing.Point(386, 94)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(37, 16)
         Me.Label23.TabIndex = 26
@@ -259,7 +280,7 @@ Partial Class ControlEmbarques
         Me.GbGrupoGrano.Location = New System.Drawing.Point(0, 116)
         Me.GbGrupoGrano.Name = "GbGrupoGrano"
         Me.GbGrupoGrano.Size = New System.Drawing.Size(636, 45)
-        Me.GbGrupoGrano.TabIndex = 3
+        Me.GbGrupoGrano.TabIndex = 4
         Me.GbGrupoGrano.TabStop = False
         Me.GbGrupoGrano.Text = "Producto en Grano (Maiz)"
         '
@@ -304,7 +325,7 @@ Partial Class ControlEmbarques
         Me.CBAnalista.Location = New System.Drawing.Point(162, 613)
         Me.CBAnalista.Name = "CBAnalista"
         Me.CBAnalista.Size = New System.Drawing.Size(465, 24)
-        Me.CBAnalista.TabIndex = 10
+        Me.CBAnalista.TabIndex = 11
         '
         'Label21
         '
@@ -335,7 +356,7 @@ Partial Class ControlEmbarques
         Me.GbCalidad.Location = New System.Drawing.Point(276, 193)
         Me.GbCalidad.Name = "GbCalidad"
         Me.GbCalidad.Size = New System.Drawing.Size(360, 323)
-        Me.GbCalidad.TabIndex = 6
+        Me.GbCalidad.TabIndex = 7
         Me.GbCalidad.TabStop = False
         Me.GbCalidad.Text = "Certificado de Calidad"
         '
@@ -446,7 +467,7 @@ Partial Class ControlEmbarques
         Me.TxTotal.MaxLength = 9
         Me.TxTotal.Name = "TxTotal"
         Me.TxTotal.Size = New System.Drawing.Size(131, 35)
-        Me.TxTotal.TabIndex = 9
+        Me.TxTotal.TabIndex = 6
         Me.TxTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label15
@@ -468,7 +489,7 @@ Partial Class ControlEmbarques
         Me.TxDeducciones.MaxLength = 7
         Me.TxDeducciones.Name = "TxDeducciones"
         Me.TxDeducciones.Size = New System.Drawing.Size(131, 25)
-        Me.TxDeducciones.TabIndex = 8
+        Me.TxDeducciones.TabIndex = 5
         Me.TxDeducciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'TxImpurezas
@@ -492,7 +513,7 @@ Partial Class ControlEmbarques
         Me.GroupBox3.Location = New System.Drawing.Point(0, 193)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(276, 182)
-        Me.GroupBox3.TabIndex = 5
+        Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Peso del Grano"
         '
@@ -503,7 +524,7 @@ Partial Class ControlEmbarques
         Me.TxTara.MaxLength = 9
         Me.TxTara.Name = "TxTara"
         Me.TxTara.Size = New System.Drawing.Size(124, 35)
-        Me.TxTara.TabIndex = 76
+        Me.TxTara.TabIndex = 0
         Me.TxTara.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label12
@@ -543,7 +564,7 @@ Partial Class ControlEmbarques
         Me.TxBruto.MaxLength = 9
         Me.TxBruto.Name = "TxBruto"
         Me.TxBruto.Size = New System.Drawing.Size(124, 35)
-        Me.TxBruto.TabIndex = 0
+        Me.TxBruto.TabIndex = 1
         Me.TxBruto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'TxNeto
@@ -563,7 +584,7 @@ Partial Class ControlEmbarques
         Me.CBContrato.Location = New System.Drawing.Point(162, 522)
         Me.CBContrato.Name = "CBContrato"
         Me.CBContrato.Size = New System.Drawing.Size(465, 24)
-        Me.CBContrato.TabIndex = 7
+        Me.CBContrato.TabIndex = 8
         '
         'Label10
         '
@@ -580,7 +601,7 @@ Partial Class ControlEmbarques
         Me.TxPlacas.Location = New System.Drawing.Point(162, 584)
         Me.TxPlacas.Name = "TxPlacas"
         Me.TxPlacas.Size = New System.Drawing.Size(111, 22)
-        Me.TxPlacas.TabIndex = 9
+        Me.TxPlacas.TabIndex = 10
         '
         'Label9
         '
@@ -598,7 +619,7 @@ Partial Class ControlEmbarques
         Me.CBConductor.Location = New System.Drawing.Point(162, 552)
         Me.CBConductor.Name = "CBConductor"
         Me.CBConductor.Size = New System.Drawing.Size(465, 24)
-        Me.CBConductor.TabIndex = 8
+        Me.CBConductor.TabIndex = 9
         '
         'Label8
         '
@@ -702,7 +723,7 @@ Partial Class ControlEmbarques
         Me.BtImprimir.Location = New System.Drawing.Point(219, 0)
         Me.BtImprimir.Name = "BtImprimir"
         Me.BtImprimir.Size = New System.Drawing.Size(64, 59)
-        Me.BtImprimir.TabIndex = 4
+        Me.BtImprimir.TabIndex = 3
         Me.BtImprimir.Text = "Imprimir"
         Me.BtImprimir.UseVisualStyleBackColor = True
         '
@@ -800,4 +821,6 @@ Partial Class ControlEmbarques
     Friend WithEvents CbLugarExp As ComboBox
     Friend WithEvents TxTara As TextBox
     Friend WithEvents Label12 As Label
+    Friend WithEvents CbIdContrato As ComboBox
+    Friend WithEvents LBContrato As Label
 End Class

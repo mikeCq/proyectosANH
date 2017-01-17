@@ -80,6 +80,7 @@ Public Class ControlEmbarques
             TxIdBoleta.Enabled = True
             TxFolio.Enabled = True
             CbNombre.Enabled = True
+            CbIdContrato.Enabled = True
             CbLoteEmbarque.Enabled = False
             GbGrupoGrano.Enabled = False
             CbLugarExp.Enabled = True
@@ -98,6 +99,7 @@ Public Class ControlEmbarques
             TxIdBoleta.Enabled = False
             TxFolio.Enabled = False
             CbNombre.Enabled = False
+            CbIdContrato.Enabled = False
             CbLoteEmbarque.Enabled = True
             GbGrupoGrano.Enabled = True
             CbLugarExp.Enabled = False
@@ -112,6 +114,7 @@ Public Class ControlEmbarques
             BtImprimir.Enabled = False
         ElseIf TxFolio.Text <> "" And CBAnalista.Text = "" And Val(TxBruto.Text) > 0 Then
             TxIdBoleta.Enabled = False
+            CbIdContrato.Enabled = False
             TxBruto.Enabled = False
             TxFolio.Enabled = False
             GbCalidad.Enabled = True
@@ -129,6 +132,7 @@ Public Class ControlEmbarques
         ElseIf VAL(TxBruto.Text) > 0 Then
             TxIdBoleta.Enabled = False
             TxBruto.Enabled = False
+            CbIdContrato.Enabled = False
             TxFolio.Enabled = False
             GbCalidad.Enabled = False
             CBAnalista.Enabled = False
@@ -161,7 +165,22 @@ Public Class ControlEmbarques
             End If
         End If
     End Sub
+    Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
+        Dim da As SqlDataAdapter
+        Dim ds As DataSet
+        Dim cmd As New SqlCommand("Sp_LisConCli", cnn)
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add(New SqlClient.SqlParameter("IdCliente", CbNombre.SelectedValue))
+        cmd.Connection = cnn
 
+        da = New SqlDataAdapter(cmd)
+        ds = New DataSet()
+        da.Fill(ds)
+        CbIdContrato.DataSource = ds.Tables(0)
+        CbIdContrato.DisplayMember = "Toneladas"
+        CbIdContrato.ValueMember = "IdContrato"
+        CbIdContrato.SelectedItem = 1
+    End Sub
     Private Sub TipoContratoEmbarque()
         Dim cmdllenaTipoContrato As SqlCommand
         Dim da As SqlDataAdapter
@@ -396,7 +415,7 @@ Public Class ControlEmbarques
                         seleccionarLote()
                         TxBruto.Select()
                     Catch ex As Exception
-                        MsgBox("Error", MsgBoxStyle.Critical)
+                        MsgBox(ex, MsgBoxStyle.Critical)
                     End Try
 
                 End If
@@ -422,7 +441,7 @@ Public Class ControlEmbarques
                         DataGridPropiedades()
                         TxHumedad.Select()
                     Catch ex As Exception
-                        MsgBox("Error", MsgBoxStyle.Critical)
+                        MsgBox(ex, MsgBoxStyle.Critical)
                     End Try
 
                 End If
@@ -483,7 +502,7 @@ Public Class ControlEmbarques
                         CargarData()
                         DataGridPropiedades()
                     Catch ex As Exception
-                        MsgBox("Error", MsgBoxStyle.Critical)
+                        MsgBox(ex, MsgBoxStyle.Critical)
                     End Try
                 End If
 
@@ -500,6 +519,7 @@ Public Class ControlEmbarques
         Dim cmd As New SqlCommand("sp_InsSumaEntradas", cnn)
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.AddWithValue("@idcliente", CbNombre.SelectedValue)
+        cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.SelectedValue)
         cmd.Parameters.AddWithValue("@identrada", TxFolio.Text)
         cmd.Parameters.AddWithValue("@toneladasEntradas", valEntCon)
         cmd.Parameters.AddWithValue("@toneladasLibres", valEntLib)
@@ -615,6 +635,8 @@ Public Class ControlEmbarques
         CbNombre.Text = ""
         CbLoteEmbarque.SelectedIndex = -1
         CbLoteEmbarque.Text = ""
+        CbIdContrato.Text = ""
+        CbIdContrato.SelectedIndex = -1
         RBMamarillo.Checked = False
         RBMblanco.Checked = False
         CbLugarExp.Text = ""
