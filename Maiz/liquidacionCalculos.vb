@@ -762,7 +762,7 @@ Public Class liquidacionCalculosProd
             If NuTotalLiquidar.Value > 0 Then
                 If RbContrato.Checked = False And RbLibre.Checked = True Then
                     kilosAton = NuTotalLiquidar.Value / 1000
-                    TxImporte.Text = CDbl(TxPrecioXtonMn.Text) * kilosAton
+                    TxImporte.Text = CDbl(TxPrecioXtonMn.Text) * Math.Round(kilosAton, 3)
                     NuPrecioContrato.Value = CDbl(TxPrecioXtonMn.Text)
                     TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
                     TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
@@ -783,8 +783,8 @@ Public Class liquidacionCalculosProd
                     kilosAton = NuTotalLiquidar.Value / 1000
                     TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
                     variable = TxPrecioXtonMn.Text
-                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.###0")
-                    TxImporte.Text = TxPrecioXtonMn.Text * kilosAton
+                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
+                    TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
                 ElseIf CbMoneda.SelectedValue = 1 Then
                     Dim tipoCambio As Double = 0
                     Dim kilosAton As Double = 0
@@ -794,8 +794,8 @@ Public Class liquidacionCalculosProd
                     kilosAton = NuTotalLiquidar.Value / 1000
                     TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
                     variable = TxPrecioXtonMn.Text
-                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.###0")
-                    TxImporte.Text = TxPrecioXtonMn.Text * kilosAton
+                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
+                    TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
                 End If
             End If
         End If
