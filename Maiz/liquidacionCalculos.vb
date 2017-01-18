@@ -470,7 +470,6 @@ Public Class liquidacionCalculosProd
             cmd4.ExecuteNonQuery()
             EstatusContrato()
 
-
             Dim cmd5 As New SqlCommand("sp_llenaDgLiquidacionTotal", cnn)
 
             cmd5.CommandType = CommandType.StoredProcedure
@@ -489,21 +488,23 @@ Public Class liquidacionCalculosProd
         LimpiarGuardar()
     End Sub
     Private Sub EstatusContrato()
-        'Dim IdEstatusContrato As Integer
-        Dim cmd As New SqlCommand("sp_ActEstatusContrato", cnn)
-        cmd.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.Clear()
-        'cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstatusContrato", 0))
-        'cmd.Parameters.Add(New SqlClient.SqlParameter("@contrato", IdLiquidacionTotal))
-        'cmd.Parameters.Add(New SqlClient.SqlParameter("@sumapagado", NuTotalLiquidar.Value))
-        'cmd.Parameters("@IdEstatusContrato").Direction = ParameterDirection.InputOutput
-        cmd.ExecuteNonQuery()
-        'IdEstatusContrato = cmd.Parameters("@IdEstatusContrato").Value
-        'If IdEstatusContrato = 1 Then
-        '    TxEstatusContrato.Text = "COMPLETO"
-        'Else
-        '    TxEstatusContrato.Text = "INCOMPLETO"
-        'End If
+        If RbContrato.Checked = True Then
+            Dim IdEstatusContrato As Integer
+            Dim cmd As New SqlCommand("sp_ActEstatusContrato", cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Clear()
+            'cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstatusContrato", 0))
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@Contrato", TxIDcontratoC.Text))
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@TotalLiquidado", NuTotalLiquidar.Value))
+            cmd.Parameters("@IdEstatusContrato").Direction = ParameterDirection.InputOutput
+            cmd.ExecuteNonQuery()
+            IdEstatusContrato = cmd.Parameters("@IdEstatusContrato").Value
+            If IdEstatusContrato = 1 Then
+                TxEstatusContrato.Text = "COMPLETO"
+            Else
+                TxEstatusContrato.Text = "INCOMPLETO"
+            End If
+        End If
     End Sub
     Private Sub LimpiarGuardar()
         NuTonSeleccion.Value = 0.00
