@@ -384,6 +384,8 @@ Public Class liquidacionCalculosProd
     Private Sub BtGuardar_Click(sender As Object, e As EventArgs) Handles BtGuardar.Click
         If DgEntradasLiq.RowCount = 0 Then
             MessageBox.Show("No hay datos para guardar.")
+        ElseIf CbComprador.SelectedValue Is Nothing Or CbComprador.Text = "" Then
+            MessageBox.Show("Verifica campos en blanco.")
         ElseIf NuTonSeleccion.Value = NuTotalLiquidar.Value Then
             IdLiquidacionTotal = ""
             Dim Contador As Integer
@@ -481,11 +483,12 @@ Public Class liquidacionCalculosProd
 
             DgLiquidacionesXTotal.DataSource = dt5.Tables(0).DefaultView
             propiedadesDgLiquidacionTotal()
+            CbMonedaVerificar()
+            LimpiarGuardar()
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
-        CbMonedaVerificar()
-        LimpiarGuardar()
+
     End Sub
     Private Sub EstatusContrato()
         If RbContrato.Checked = True Then
@@ -496,13 +499,12 @@ Public Class liquidacionCalculosProd
             cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstatusContrato", 0))
             cmd.Parameters.Add(New SqlClient.SqlParameter("@Contrato", TxIDcontratoC.Text))
             cmd.Parameters.Add(New SqlClient.SqlParameter("@TotalLiquidado", (NuTotalLiquidar.Value / 1000)))
-            'cmd.Parameters("@IdEstatusContrato").Direction = ParameterDirection.InputOutput
             cmd.ExecuteNonQuery()
             Dim da5 As New SqlClient.SqlDataAdapter(cmd)
             Dim dt5 As New DataSet()
             da5.Fill(dt5)
             IdEstatusContrato = dt5.Tables(0).Rows(0)("IdEstatus")
-            NuToneladasRestante.Value = dt5.Tables(0).Rows(0)("ToneladasRestantes")
+            NuToneladasRestante.Value = (dt5.Tables(0).Rows(0)("ToneladasRestantes") * 1000)
             'IdEstatusContrato = cmd.Parameters("@IdEstatusContrato").Value
             If IdEstatusContrato = 1 Then
                 TxEstatusContrato.Text = "COMPLETO"
