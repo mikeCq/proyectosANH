@@ -493,12 +493,17 @@ Public Class liquidacionCalculosProd
             Dim cmd As New SqlCommand("sp_ActEstatusContrato", cnn)
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Clear()
-            'cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstatusContrato", 0))
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdEstatusContrato", 0))
             cmd.Parameters.Add(New SqlClient.SqlParameter("@Contrato", TxIDcontratoC.Text))
-            cmd.Parameters.Add(New SqlClient.SqlParameter("@TotalLiquidado", NuTotalLiquidar.Value))
-            cmd.Parameters("@IdEstatusContrato").Direction = ParameterDirection.InputOutput
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@TotalLiquidado", (NuTotalLiquidar.Value / 1000)))
+            'cmd.Parameters("@IdEstatusContrato").Direction = ParameterDirection.InputOutput
             cmd.ExecuteNonQuery()
-            IdEstatusContrato = cmd.Parameters("@IdEstatusContrato").Value
+            Dim da5 As New SqlClient.SqlDataAdapter(cmd)
+            Dim dt5 As New DataSet()
+            da5.Fill(dt5)
+            IdEstatusContrato = dt5.Tables(0).Rows(0)("IdEstatus")
+            NuToneladasRestante.Value = dt5.Tables(0).Rows(0)("ToneladasRestantes")
+            'IdEstatusContrato = cmd.Parameters("@IdEstatusContrato").Value
             If IdEstatusContrato = 1 Then
                 TxEstatusContrato.Text = "COMPLETO"
             Else
