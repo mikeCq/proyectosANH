@@ -120,7 +120,7 @@ Public Class Maiz
         ReporteLotes.ShowDialog()
     End Sub
     Private Sub LiquidacionesCalculosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LiquidacionesCalculosToolStripMenuItem.Click
-        liquidacionCalculosProd.ShowDialog()
+        'liquidacionCalculosProd.ShowDialog()
     End Sub
     Private Sub EmbarquesPorClienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EmbarquesPorClienteToolStripMenuItem.Click
         ReporteEmbarquesXcliente.ShowDialog()
@@ -146,6 +146,9 @@ Public Class Maiz
     Private Sub EntradasGlobalesPorProductorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EntradasGlobalesPorProductorToolStripMenuItem.Click
         ReporteEntradasGlobalXprod.ShowDialog()
     End Sub
+    Private Sub EstatusDeContratosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EstatusDeContratosToolStripMenuItem.Click
+        ReporteEstatusContrato.ShowDialog()
+    End Sub
     Private Sub AutorizacionDiariaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutorizacionDiariaToolStripMenuItem.Click
         VarGlob.idUsAutoriza = SbIdUsuario.Text
         AutorizacionDiaria.Show()
@@ -166,7 +169,4 @@ Public Class Maiz
         Me.Close()
     End Sub
 
-    Private Sub EstatusDeContratosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EstatusDeContratosToolStripMenuItem.Click
-        ReporteEstatusContrato.ShowDialog()
-    End Sub
 End Class
