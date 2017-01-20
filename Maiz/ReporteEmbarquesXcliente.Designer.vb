@@ -23,6 +23,8 @@ Partial Class ReporteEmbarquesXcliente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
+        Me.CbComprador = New System.Windows.Forms.ComboBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.CbProductor = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Btlimpiar = New System.Windows.Forms.Button()
@@ -67,6 +69,8 @@ Partial Class ReporteEmbarquesXcliente
         '
         'SplitContainer2.Panel1
         '
+        Me.SplitContainer2.Panel1.Controls.Add(Me.CbComprador)
+        Me.SplitContainer2.Panel1.Controls.Add(Me.Label13)
         Me.SplitContainer2.Panel1.Controls.Add(Me.CbProductor)
         Me.SplitContainer2.Panel1.Controls.Add(Me.Label12)
         Me.SplitContainer2.Panel1.Controls.Add(Me.Btlimpiar)
@@ -87,10 +91,27 @@ Partial Class ReporteEmbarquesXcliente
         Me.SplitContainer2.SplitterDistance = 366
         Me.SplitContainer2.TabIndex = 1
         '
+        'CbComprador
+        '
+        Me.CbComprador.FormattingEnabled = True
+        Me.CbComprador.Location = New System.Drawing.Point(77, 103)
+        Me.CbComprador.Name = "CbComprador"
+        Me.CbComprador.Size = New System.Drawing.Size(279, 21)
+        Me.CbComprador.TabIndex = 27
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(7, 106)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(64, 13)
+        Me.Label13.TabIndex = 28
+        Me.Label13.Text = "Comprador :"
+        '
         'CbProductor
         '
         Me.CbProductor.FormattingEnabled = True
-        Me.CbProductor.Location = New System.Drawing.Point(77, 86)
+        Me.CbProductor.Location = New System.Drawing.Point(77, 68)
         Me.CbProductor.Name = "CbProductor"
         Me.CbProductor.Size = New System.Drawing.Size(279, 21)
         Me.CbProductor.TabIndex = 25
@@ -98,7 +119,7 @@ Partial Class ReporteEmbarquesXcliente
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(12, 89)
+        Me.Label12.Location = New System.Drawing.Point(7, 71)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(59, 13)
         Me.Label12.TabIndex = 26
@@ -106,7 +127,7 @@ Partial Class ReporteEmbarquesXcliente
         '
         'Btlimpiar
         '
-        Me.Btlimpiar.Location = New System.Drawing.Point(15, 568)
+        Me.Btlimpiar.Location = New System.Drawing.Point(15, 550)
         Me.Btlimpiar.Name = "Btlimpiar"
         Me.Btlimpiar.Size = New System.Drawing.Size(75, 23)
         Me.Btlimpiar.TabIndex = 24
@@ -132,7 +153,7 @@ Partial Class ReporteEmbarquesXcliente
         Me.GbFiltros.Controls.Add(Me.Label5)
         Me.GbFiltros.Controls.Add(Me.Label4)
         Me.GbFiltros.Enabled = False
-        Me.GbFiltros.Location = New System.Drawing.Point(15, 219)
+        Me.GbFiltros.Location = New System.Drawing.Point(15, 201)
         Me.GbFiltros.Name = "GbFiltros"
         Me.GbFiltros.Size = New System.Drawing.Size(338, 241)
         Me.GbFiltros.TabIndex = 23
@@ -269,7 +290,7 @@ Partial Class ReporteEmbarquesXcliente
         'ChFiltros
         '
         Me.ChFiltros.AutoSize = True
-        Me.ChFiltros.Location = New System.Drawing.Point(15, 195)
+        Me.ChFiltros.Location = New System.Drawing.Point(15, 177)
         Me.ChFiltros.Name = "ChFiltros"
         Me.ChFiltros.Size = New System.Drawing.Size(110, 17)
         Me.ChFiltros.TabIndex = 22
@@ -279,7 +300,7 @@ Partial Class ReporteEmbarquesXcliente
         'DTFinal
         '
         Me.DTFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTFinal.Location = New System.Drawing.Point(201, 127)
+        Me.DTFinal.Location = New System.Drawing.Point(201, 138)
         Me.DTFinal.Name = "DTFinal"
         Me.DTFinal.Size = New System.Drawing.Size(97, 20)
         Me.DTFinal.TabIndex = 4
@@ -288,7 +309,7 @@ Partial Class ReporteEmbarquesXcliente
         'DTInicio
         '
         Me.DTInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTInicio.Location = New System.Drawing.Point(77, 127)
+        Me.DTInicio.Location = New System.Drawing.Point(77, 138)
         Me.DTInicio.Name = "DTInicio"
         Me.DTInicio.Size = New System.Drawing.Size(97, 20)
         Me.DTInicio.TabIndex = 3
@@ -297,7 +318,7 @@ Partial Class ReporteEmbarquesXcliente
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(180, 130)
+        Me.Label3.Location = New System.Drawing.Point(180, 141)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(15, 13)
         Me.Label3.TabIndex = 18
@@ -306,7 +327,7 @@ Partial Class ReporteEmbarquesXcliente
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(15, 130)
+        Me.Label2.Location = New System.Drawing.Point(15, 141)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(57, 13)
         Me.Label2.TabIndex = 19
@@ -314,7 +335,7 @@ Partial Class ReporteEmbarquesXcliente
         '
         'TxNumBoleta
         '
-        Me.TxNumBoleta.Location = New System.Drawing.Point(77, 47)
+        Me.TxNumBoleta.Location = New System.Drawing.Point(77, 29)
         Me.TxNumBoleta.Name = "TxNumBoleta"
         Me.TxNumBoleta.Size = New System.Drawing.Size(75, 20)
         Me.TxNumBoleta.TabIndex = 1
@@ -322,7 +343,7 @@ Partial Class ReporteEmbarquesXcliente
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 50)
+        Me.Label1.Location = New System.Drawing.Point(7, 32)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(60, 13)
         Me.Label1.TabIndex = 15
@@ -330,7 +351,7 @@ Partial Class ReporteEmbarquesXcliente
         '
         'BtGenerarReporte
         '
-        Me.BtGenerarReporte.Location = New System.Drawing.Point(253, 567)
+        Me.BtGenerarReporte.Location = New System.Drawing.Point(253, 549)
         Me.BtGenerarReporte.Name = "BtGenerarReporte"
         Me.BtGenerarReporte.Size = New System.Drawing.Size(100, 23)
         Me.BtGenerarReporte.TabIndex = 5
@@ -405,4 +426,6 @@ Partial Class ReporteEmbarquesXcliente
     Friend WithEvents Label1 As Label
     Friend WithEvents BtGenerarReporte As Button
     Friend WithEvents CREmbarques As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents CbComprador As ComboBox
+    Friend WithEvents Label13 As Label
 End Class

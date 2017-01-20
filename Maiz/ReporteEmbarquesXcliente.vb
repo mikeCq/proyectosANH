@@ -25,11 +25,26 @@ Public Class ReporteEmbarquesXcliente
         CbProductor.DisplayMember = "nombreProductor"
         CbProductor.ValueMember = "Id_cliente"
         CbProductor.SelectedIndex = -1
+
+        Dim cmdllenaCbCom As SqlCommand
+        cmdllenaCbCom = New SqlCommand("Sp_CbCompradores")
+        cmdllenaCbCom.CommandType = CommandType.StoredProcedure
+        cmdllenaCbCom.Connection = cnn
+
+        da = New SqlDataAdapter(cmdllenaCbCom)
+        ds = New DataSet()
+        da.Fill(ds)
+        CbComprador.DataSource = ds.Tables(0)
+        CbComprador.DisplayMember = "nombre_Comprador"
+        CbComprador.ValueMember = "Id_Comprador"
+        CbComprador.SelectedIndex = -1
     End Sub
     Private Sub limpiarCampos() Handles Btlimpiar.Click
         TxNumBoleta.Text = ""
         CbProductor.SelectedIndex = -1
         CbProductor.Text = ""
+        CbComprador.SelectedIndex = -1
+        CbComprador.Text = ""
         DTInicio.Value = "01/01/1900"
         DTFinal.Value = "01/01/1900"
         TxNumBoleta.Select()
@@ -41,6 +56,7 @@ Public Class ReporteEmbarquesXcliente
                 RptEmbarques.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
                 RptEmbarques.SetParameterValue("@numboleta", TxNumBoleta.Text)
                 RptEmbarques.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
+                RptEmbarques.SetParameterValue("@comprador", IIf(CbComprador.SelectedValue = Nothing, "", CbComprador.SelectedValue))
                 RptEmbarques.SetParameterValue("@fechaini", DTInicio.Value)
                 RptEmbarques.SetParameterValue("@fechafin", DTFinal.Value)
                 CREmbarques.ReportSource = RptEmbarques
@@ -60,6 +76,7 @@ Public Class ReporteEmbarquesXcliente
                     RptEmbarques.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
                     RptEmbarques.SetParameterValue("@numboleta", TxNumBoleta.Text)
                     RptEmbarques.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
+                    RptEmbarques.SetParameterValue("@comprador", IIf(CbComprador.SelectedValue = Nothing, "", CbComprador.SelectedValue))
                     RptEmbarques.SetParameterValue("@fechaini", DTInicio.Value)
                     RptEmbarques.SetParameterValue("@fechafin", DTFinal.Value)
                     CREmbarques.ReportSource = RptEmbarques
@@ -72,4 +89,5 @@ Public Class ReporteEmbarquesXcliente
             End Try
         End If
     End Sub
+
 End Class
