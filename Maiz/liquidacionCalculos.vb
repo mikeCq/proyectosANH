@@ -384,8 +384,13 @@ Public Class liquidacionCalculosProd
     Private Sub BtGuardar_Click(sender As Object, e As EventArgs) Handles BtGuardar.Click
         If DgEntradasLiq.RowCount = 0 Then
             MessageBox.Show("No hay datos para guardar.")
+            Exit Sub
         ElseIf CbComprador.SelectedValue Is Nothing Or CbComprador.Text = "" Then
             MessageBox.Show("Verifica campos en blanco.")
+            Exit Sub
+        ElseIf RbContrato.Checked = True And NuTotalLiquidar.Value > NuToneladasRestante.Value Then
+            MessageBox.Show("La cantidad a liquidar es mayor al restante del contrato.")
+            Exit Sub
         ElseIf NuTonSeleccion.Value = NuTotalLiquidar.Value Then
             IdLiquidacionTotal = ""
             Dim Contador As Integer
