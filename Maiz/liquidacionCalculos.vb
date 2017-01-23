@@ -14,6 +14,7 @@ Public Class liquidacionCalculosProd
         RbLibre.Checked = False
         llenarCombos()
         BtNuevo_Click(sender, e)
+        Buscar()
     End Sub
     Private _codigoLiquidacionTP As String
     Public Property codigoLiquidacionTP() As String
@@ -149,6 +150,7 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXBoleta.DataSource = Nothing
         DgLiquidacionesXTotal.Columns.Clear()
         DgLiquidacionesXTotal.DataSource = Nothing
+        NuToneladasRestante.Value = 0
     End Sub
     Private Sub propiedadesDataProdSelec()
 
@@ -294,6 +296,9 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXBoleta.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
     End Sub
     Private Sub TxBuscar_Click(sender As Object, e As EventArgs) Handles BtBuscar.Click
+        Buscar()
+    End Sub
+    Private Sub Buscar()
         PrecioContrato = 0
         Moneda = -1
         Dim BuscarEntradaLiq As New BuscarEntradaLiq
@@ -571,6 +576,9 @@ Public Class liquidacionCalculosProd
                 End If
             End If
         End If
+    End Sub
+    Private Sub Imprimir()
+
     End Sub
     Private Sub BtAgregar(sender As Object, e As EventArgs) Handles BtAgregarSeleccion.Click
         Agregar()
