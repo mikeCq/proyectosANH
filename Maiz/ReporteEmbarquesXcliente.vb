@@ -14,7 +14,7 @@ Public Class ReporteEmbarquesXcliente
         Dim ds As DataSet
         Dim cmdllenaCbPro As SqlCommand
 
-        cmdllenaCbPro = New SqlCommand("Sp_CbPropietarioEntradas")
+        cmdllenaCbPro = New SqlCommand("Sp_CbPropietarioEmbarques")
         cmdllenaCbPro.CommandType = CommandType.StoredProcedure
         cmdllenaCbPro.Connection = cnn
 
