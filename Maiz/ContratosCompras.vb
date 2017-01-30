@@ -482,6 +482,7 @@ Public Class ContratosCompras
         'DgSeleccionLotes.Columns("Hectareas_promRestante").ReadOnly = False
         'DgSeleccionLotes.Columns("rendimiento").ReadOnly = False
     End Sub
+
     Private Sub DataGridPropiedadeslotesSeleccionados()
 
         'If DgSeleccionLotes.Columns("ChCol") Is Nothing Then

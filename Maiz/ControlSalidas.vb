@@ -16,6 +16,15 @@ Public Class ControlSalidas
         ControlesSinTab()
 
     End Sub
+    Private _mensajeParametrosAnalisis As String
+    Public Property MensajeParametrosAnalisis As String
+        Get
+            Return _mensajeParametrosAnalisis
+        End Get
+        Set(value As String)
+            _mensajeParametrosAnalisis = value
+        End Set
+    End Property
     Private _codigoSalida As String
     Public Property codigoSalida() As String
         Get
@@ -122,6 +131,51 @@ Public Class ControlSalidas
             TxPlacas.Enabled = False
             CBConductor.Enabled = False
             BtImprimir.Enabled = True
+        End If
+    End Sub
+    Private Sub validacionParametros()
+        Dim msg As String = ""
+        Dim msgNo As String = ""
+
+        If Val(TxImpurezas.Text) > 6 And Val(TxImpurezas.Text) <= 8 Then
+            msg = msg & vbCrLf + "% Impurezas : " & Val(TxImpurezas.Text)
+        ElseIf Val(TxImpurezas.Text) > 8 Then
+            msgNo = msgNo & vbCrLf + "% Impurezas : " & Val(TxImpurezas.Text)
+        End If
+        If Val(TxHumedad.Text) > 15.1 And Val(TxHumedad.Text) <= 16 Then
+            msg = msg & vbCrLf + "% Humedad : " & Val(TxHumedad.Text)
+        ElseIf Val(TxHumedad.Text) > 16 Then
+            msgNo = msgNo & vbCrLf + "% Humedad : " & Val(TxHumedad.Text)
+        End If
+        If Val(TxGranoDan.Text) > 8 And Val(TxGranoDan.Text) <= 10 Then
+            msg = msg & vbCrLf + "% Grano Dañado : " & Val(TxGranoDan.Text)
+        ElseIf Val(TxGranoDan.Text) > 10 Then
+            msgNo = msgNo & vbCrLf + "% Grano Dañado : " & Val(TxGranoDan.Text)
+        End If
+        If Val(TxGranoQuebrado.Text) >= 7 And Val(TxGranoQuebrado.Text) <= 10 Then
+            msg = msg & vbCrLf + "% Grano Quebrado : " & Val(TxGranoQuebrado.Text)
+        ElseIf Val(TxGranoQuebrado.Text) > 10 Then
+            msgNo = msgNo & vbCrLf + "% Grano Quebrado : " & Val(TxGranoQuebrado.Text)
+        ElseIf Val(TxPesoEsp.Text) < 70 Then
+            msgNo = msgNo & vbCrLf + "% Peso Especifico : " & Val(TxPesoEsp.Text)
+        End If
+        If msgNo <> "" Then
+            MessageBox.Show("Se excedio el maximo o minimo permitido en los siguientes parametros, no se permitira el paso a esta salida: " & msgNo, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            BtnGuardar.Enabled = False
+            Exit Sub
+        ElseIf msg <> "" Then
+            Dim verificaPermiso As New VerificaPermiso
+            _mensajeParametrosAnalisis = "Los parametros de analisis no deben exceder el limite maximo o minimo, se excedio en los siguientes parametros:  " & msg
+            verificaPermiso.ShowDialog()
+            Dim AutorizacionCorrecta As Object = verificaPermiso.AutorizacionCorrecta
+            If AutorizacionCorrecta = True Then
+                BtnGuardar.Enabled = True
+                MessageBox.Show("Se autorizo la entrada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                CbAcopio.Select()
+            Else
+                BtnGuardar.Enabled = False
+            End If
+
         End If
     End Sub
     Private Sub calculos()
@@ -294,7 +348,8 @@ Public Class ControlSalidas
                 TxNeto.Text = Val(TxBruto.Text - TxTara.Text)
                 TxNeto.Text = FormatNumber(TxNeto.Text, 2)
             End If
-            If Val(TxBruto.Text) > 0 And Val(TxNeto.Text) > 0 And Val(TxNeto.Text) > 0 And Val(TxPesoEsp .text) > 0 Then calculos()
+            If Val(TxImpurezas.Text) > 0 And (TxHumedad.Text) > 0 And (TxGranoDan.Text) > 0 And Val(TxGranoQuebrado.Text) > 0 And Val(TxPesoEsp.Text) > 0 And Val(TxTara.Text) > 0 And Val(TxNeto.Text) > 0 And TxPlacas.Text <> "" Then validacionParametros()
+            If Val(TxBruto.Text) > 0 And Val(TxNeto.Text) > 0 And Val(TxNeto.Text) > 0 And Val(TxPesoEsp.Text) > 0 And BtnGuardar.Enabled = True Then calculos()
         End If
     End Sub
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click

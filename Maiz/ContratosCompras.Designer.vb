@@ -26,6 +26,7 @@ Partial Class ContratosCompras
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TpCompraNormal = New System.Windows.Forms.TabPage()
         Me.GbContratoLibre = New System.Windows.Forms.GroupBox()
+        Me.RbSoloLibre = New System.Windows.Forms.RadioButton()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.TxAcopio = New System.Windows.Forms.TextBox()
         Me.TxApoderado = New System.Windows.Forms.TextBox()
@@ -100,7 +101,6 @@ Partial Class ContratosCompras
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.ImpContrato = New System.Windows.Forms.Button()
-        Me.RbSoloLibre = New System.Windows.Forms.RadioButton()
         Me.TabControl1.SuspendLayout()
         Me.TpCompraNormal.SuspendLayout()
         Me.GbContratoLibre.SuspendLayout()
@@ -164,6 +164,18 @@ Partial Class ContratosCompras
         Me.GbContratoLibre.Size = New System.Drawing.Size(549, 307)
         Me.GbContratoLibre.TabIndex = 2
         Me.GbContratoLibre.TabStop = False
+        '
+        'RbSoloLibre
+        '
+        Me.RbSoloLibre.AutoSize = True
+        Me.RbSoloLibre.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.RbSoloLibre.Location = New System.Drawing.Point(430, 162)
+        Me.RbSoloLibre.Name = "RbSoloLibre"
+        Me.RbSoloLibre.Size = New System.Drawing.Size(109, 23)
+        Me.RbSoloLibre.TabIndex = 36
+        Me.RbSoloLibre.TabStop = True
+        Me.RbSoloLibre.Text = "Solo Libre."
+        Me.RbSoloLibre.UseVisualStyleBackColor = True
         '
         'Label23
         '
@@ -947,18 +959,6 @@ Partial Class ContratosCompras
         Me.ImpContrato.Text = "Imprimir"
         Me.ImpContrato.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ImpContrato.UseVisualStyleBackColor = True
-        '
-        'RbSoloLibre
-        '
-        Me.RbSoloLibre.AutoSize = True
-        Me.RbSoloLibre.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.RbSoloLibre.Location = New System.Drawing.Point(430, 162)
-        Me.RbSoloLibre.Name = "RbSoloLibre"
-        Me.RbSoloLibre.Size = New System.Drawing.Size(109, 23)
-        Me.RbSoloLibre.TabIndex = 36
-        Me.RbSoloLibre.TabStop = True
-        Me.RbSoloLibre.Text = "Solo Libre."
-        Me.RbSoloLibre.UseVisualStyleBackColor = True
         '
         'ContratosCompras
         '

@@ -195,6 +195,7 @@ Public Class ControlEntradas
 
         End If
     End Sub
+
     Private Sub calculos()
 
         deduccionGrandan = 0
@@ -455,7 +456,7 @@ Public Class ControlEntradas
 
                     MessageBox.Show("Verifica campos vacios", "Aviso")
 
-                ElseIf ((Val(TxNeto.Text) / 1000) + Val(LbCapacidad.Text)) > Val(LbCapacidad.Text) Then
+                ElseIf ((Val(TxNeto.Text) / 1000) + Val(LbToneladas.Text)) > Val(LbCapacidad.Text) Then
                     MessageBox.Show("La entrada excede las capacidades del Silo")
                 Else
                     CompruebaToneladasEntradas(compruebaEntradas)

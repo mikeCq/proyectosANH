@@ -4,8 +4,10 @@ Public Class liquidacionCalculosProd
     Dim IdLiquidacionTotal As String
     Dim PrecioContrato As Double
     Dim Moneda As Integer
+    Dim modifica As Integer = 0
     Private Sub liquidacionCalculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         propiedadesDataProdSelec()
+        DeshabilitaModificar()
         NuContrato.Controls(0).Visible = False
         NuLibre.Controls(0).Visible = False
         NuPrecioContrato.Controls(0).Visible = False
@@ -14,7 +16,34 @@ Public Class liquidacionCalculosProd
         RbLibre.Checked = False
         llenarCombos()
         BtNuevo_Click(sender, e)
+        'Buscar()
+    End Sub
+    Private Sub HabilitaModificar()
+        TxTipoCambioLiquidado.Enabled = True
+        CbMonedaLiquidado.Enabled = True
+    End Sub
+    Private Sub DeshabilitaModificar()
+        BtModificar.Enabled = False
+        TxTipoCambioLiquidado.Enabled = False
+        CbMonedaLiquidado.Enabled = False
+    End Sub
+    Private Sub BtNuevo_Click(sender As Object, e As EventArgs) Handles BtNuevo.Click
+        Nuevo()
+    End Sub
+    Private Sub BtGuardar_Click(sender As Object, e As EventArgs) Handles BtGuardar.Click
+        Guardar()
+    End Sub
+    Private Sub TxBuscar_Click(sender As Object, e As EventArgs) Handles BtBuscar.Click
         Buscar()
+    End Sub
+    Private Sub BtModificar_Click(sender As Object, e As EventArgs) Handles BtModificar.Click
+        Modificar()
+    End Sub
+    Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
+        Imprimir()
+    End Sub
+    Private Sub BtSalir_Click(sender As Object, e As EventArgs) Handles BtSalir.Click
+        Salir()
     End Sub
     Private _codigoLiquidacionTP As String
     Public Property codigoLiquidacionTP() As String
@@ -103,7 +132,7 @@ Public Class liquidacionCalculosProd
         CbCompradorLiquidado.ValueMember = "Id_Comprador"
         CbCompradorLiquidado.SelectedIndex = -1
     End Sub
-    Private Sub BtNuevo_Click(sender As Object, e As EventArgs) Handles BtNuevo.Click
+    Private Sub Nuevo()
         PrecioContrato = 0
         Moneda = -1
         RbContrato.Checked = False
@@ -151,6 +180,7 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXTotal.Columns.Clear()
         DgLiquidacionesXTotal.DataSource = Nothing
         NuToneladasRestante.Value = 0
+        DeshabilitaModificar()
     End Sub
     Private Sub propiedadesDataProdSelec()
 
@@ -295,9 +325,6 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXBoleta.Columns("deduccion").DefaultCellStyle.Format = "###,##0.00"
         DgLiquidacionesXBoleta.Columns("Total").DefaultCellStyle.Format = "###,##0.00"
     End Sub
-    Private Sub TxBuscar_Click(sender As Object, e As EventArgs) Handles BtBuscar.Click
-        Buscar()
-    End Sub
     Private Sub Buscar()
         PrecioContrato = 0
         Moneda = -1
@@ -386,7 +413,7 @@ Public Class liquidacionCalculosProd
             VerificarSiSePuedeLiquidar()
         End If
     End Sub
-    Private Sub BtGuardar_Click(sender As Object, e As EventArgs) Handles BtGuardar.Click
+    Private Sub Guardar()
         If DgEntradasLiq.RowCount = 0 Then
             MessageBox.Show("No hay datos para guardar.")
             Exit Sub
@@ -498,8 +525,8 @@ Public Class liquidacionCalculosProd
         Else
             MessageBox.Show("Las toneladas de boletas seleccionadas no coinciden con el total a liquidar, favor de verificar.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop)
         End If
-
     End Sub
+
     Private Sub EstatusContrato()
         If RbContrato.Checked = True Then
             Dim IdEstatusContrato As Integer
@@ -545,8 +572,14 @@ Public Class liquidacionCalculosProd
         TxUltimosDigitosLiquidado.Text = ""
         '-----------------------------------
     End Sub
-
-    Private Sub BtOperaciones_Click(sender As Object, e As EventArgs) Handles BtImprimir.Click
+    Private Sub Modificar()
+        Dim opc As DialogResult = MessageBox.Show("¿Esta seguro de modificar los datos del registro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If opc = DialogResult.Yes Then
+            modifica = 1
+            HabilitaModificar()
+        End If
+    End Sub
+    Private Sub Imprimir()
         If TpBoletasXliquidar.Focus = True Then
             If DgSeleccionLiquidaciones.RowCount = 0 Then
                 MessageBox.Show("No hay datos para imprimir.")
@@ -576,9 +609,6 @@ Public Class liquidacionCalculosProd
                 End If
             End If
         End If
-    End Sub
-    Private Sub Imprimir()
-
     End Sub
     Private Sub BtAgregar(sender As Object, e As EventArgs) Handles BtAgregarSeleccion.Click
         Agregar()
@@ -689,6 +719,12 @@ Public Class liquidacionCalculosProd
             TxMetodoPagoLiquidado.Text = CStr(row("metodopago"))
             TxBancoLiquidado.Text = CStr(row("banco"))
             TxUltimosDigitosLiquidado.Text = CStr(row("ultimosdigitos"))
+
+            TxPrecioXtonLiquidado.Text = FormatNumber(Val(TxPrecioXtonLiquidado.Text), 2)
+            TxImporteLiquidado.Text = FormatNumber(Val(TxImporteLiquidado.Text), 2)
+
+            BtModificar.Enabled = True
+
         End If
     End Sub
     Private Sub ContratoOlibre(sender As Object, e As EventArgs) Handles RbContrato.CheckedChanged ', RbLibre.CheckedChanged        
@@ -712,18 +748,36 @@ Public Class liquidacionCalculosProd
             NuPrecioContrato.Enabled = False
         End If
     End Sub
-    Private Sub CbMoneda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbMoneda.SelectionChangeCommitted
+    Private Sub CbMoneda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbMoneda.SelectionChangeCommitted, CbMonedaLiquidado.SelectionChangeCommitted
         CbMonedaVerificar()
     End Sub
     Private Sub CbMonedaVerificar()
-        If CbMoneda.SelectedValue = 1 Then
-            NuPrecioContrato.Value = PrecioContrato
-            TxTipoCambio.Enabled = True
-            TxPrecioXtonMn.Enabled = False
-        ElseIf CbMoneda.SelectedValue = 2 Then
-            TxTipoCambio.Enabled = False
-            TxPrecioXtonMn.Enabled = True
-            NuPrecioContrato.Value = 0.00
+        If TbLiquidacionXProd.SelectedIndex = 0 Then
+            If CbMoneda.SelectedValue = 1 Then
+                NuPrecioContrato.Value = PrecioContrato
+                TxTipoCambio.Enabled = True
+                TxPrecioXtonMn.Enabled = False
+            ElseIf CbMoneda.SelectedValue = 2 Then
+                TxTipoCambio.Enabled = False
+                TxPrecioXtonMn.Enabled = True
+                NuPrecioContrato.Value = 0.00
+            End If
+        ElseIf TbLiquidacionXProd.SelectedIndex = 1 Then
+            If CbMonedaLiquidado.SelectedValue = 1 Then
+                TxTipoCambioLiquidado.Text = ""
+                NuPrecioContratoLiquidado.Value = PrecioContrato
+                TxPrecioXtonLiquidado.Text = ""
+                TxImporteLiquidado.Text = ""
+                TxTipoCambioLiquidado.Enabled = True
+                TxPrecioXtonLiquidado.Enabled = False
+            ElseIf CbMonedaLiquidado.SelectedValue = 2 Then
+                TxTipoCambioLiquidado.Enabled = False
+                TxPrecioXtonLiquidado.Enabled = True
+                TxTipoCambioLiquidado.Text = ""
+                NuPrecioContratoLiquidado.Value = 0.00
+                TxPrecioXtonLiquidado.Text = ""
+                TxImporteLiquidado.Text = ""
+            End If
         End If
     End Sub
 
@@ -775,55 +829,76 @@ Public Class liquidacionCalculosProd
         End If
     End Sub
 
-    Private Sub TxPrecioXtonMn_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxPrecioXtonMn.PreviewKeyDown
+    Private Sub TxPrecioXtonMn_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxPrecioXtonMn.PreviewKeyDown, TxPrecioXtonLiquidado.PreviewKeyDown
         Dim tipoCambio As Double = 0
         Dim kilosAton As Double = 0
         Dim precioContrato As Double = 0
         If e.KeyCode = Keys.Enter Then
-            If NuTotalLiquidar.Value > 0 Then
-                If RbContrato.Checked = False And RbLibre.Checked = True Then
-                    kilosAton = NuTotalLiquidar.Value / 1000
-                    TxImporte.Text = CDbl(TxPrecioXtonMn.Text) * Math.Round(kilosAton, 3)
-                    NuPrecioContrato.Value = CDbl(TxPrecioXtonMn.Text)
-                    TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
-                    TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+            If TbLiquidacionXProd.SelectedIndex = 0 Then
+                If NuTotalLiquidar.Value > 0 Then
+                    If RbContrato.Checked = False And RbLibre.Checked = True Then
+                        kilosAton = NuTotalLiquidar.Value / 1000
+                        TxImporte.Text = CDbl(TxPrecioXtonMn.Text) * Math.Round(kilosAton, 3)
+                        NuPrecioContrato.Value = CDbl(TxPrecioXtonMn.Text)
+                        TxPrecioXtonMn.Text = FormatNumber(Val(TxPrecioXtonMn.Text), 2)
+                        TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+                    End If
                 End If
+            ElseIf TbLiquidacionXProd.SelectedIndex = 1 Then
+                kilosAton = NuTotalLiquidado.Value / 1000
+                TxImporteLiquidado.Text = CDbl(TxPrecioXtonLiquidado.Text) * Math.Round(kilosAton, 3)
+                NuPrecioContratoLiquidado.Value = CDbl(TxPrecioXtonLiquidado.Text)
+                TxPrecioXtonLiquidado.Text = FormatNumber(Val(TxPrecioXtonLiquidado.Text), 2)
+                TxImporteLiquidado.Text = FormatNumber(Val(TxImporteLiquidado.Text), 2)
             End If
         End If
     End Sub
-    Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown
+    Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown, TxTipoCambioLiquidado.PreviewKeyDown
         Dim variable As Decimal
+        Dim tipoCambio As Double = 0
+        Dim kilosAton As Double = 0
+        Dim precioContrato As Double = 0
         If e.KeyCode = Keys.Enter Then
-            If NuTotalLiquidar.Value > 0 Then
-                If RbContrato.Checked = True And RbLibre.Checked = False Then
-                    Dim tipoCambio As Double = 0
-                    Dim kilosAton As Double = 0
-                    Dim precioContrato As Double = 0
-                    tipoCambio = CDbl(TxTipoCambio.Text)
-                    precioContrato = NuPrecioContrato.Value
-                    kilosAton = NuTotalLiquidar.Value / 1000
-                    TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
-                    variable = TxPrecioXtonMn.Text
-                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
-                    TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
-                ElseIf CbMoneda.SelectedValue = 1 Then
-                    Dim tipoCambio As Double = 0
-                    Dim kilosAton As Double = 0
-                    Dim precioContrato As Double = 0
-                    tipoCambio = CDbl(TxTipoCambio.Text)
-                    precioContrato = NuPrecioContrato.Value
-                    kilosAton = NuTotalLiquidar.Value / 1000
-                    TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
-                    variable = TxPrecioXtonMn.Text
-                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
-                    TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
+            If TbLiquidacionXProd.SelectedIndex = 0 Then
+                If NuTotalLiquidar.Value > 0 Then
+                    If RbContrato.Checked = True And RbLibre.Checked = False Then
+                        tipoCambio = CDbl(TxTipoCambio.Text)
+                        precioContrato = NuPrecioContrato.Value
+                        kilosAton = NuTotalLiquidar.Value / 1000
+                        TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
+                        variable = TxPrecioXtonMn.Text
+                        TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
+                        TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
+                        TxPrecioXtonMn.Text = FormatNumber(Val(variable), 2)
+                        TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+                    ElseIf CbMoneda.SelectedValue = 1 Then
+                        tipoCambio = CDbl(TxTipoCambio.Text)
+                        PrecioContrato = NuPrecioContrato.Value
+                        kilosAton = NuTotalLiquidar.Value / 1000
+                        TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
+                        variable = TxPrecioXtonMn.Text
+                        TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
+                        TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
+                        TxPrecioXtonMn.Text = FormatNumber(Val(variable), 2)
+                        TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+                    End If
                 End If
+            ElseIf TbLiquidacionXProd.SelectedIndex = 1 Then
+                tipoCambio = CDbl(TxTipoCambioLiquidado.Text)
+                PrecioContrato = NuPrecioContratoLiquidado.Value
+                kilosAton = NuTotalLiquidado.Value / 1000
+                TxPrecioXtonLiquidado.Text = tipoCambio * NuPrecioContratoLiquidado.Value
+                variable = TxPrecioXtonLiquidado.Text
+                TxPrecioXtonLiquidado.Text = Format(CType(variable, Decimal), "###0.#0")
+                TxImporteLiquidado.Text = TxPrecioXtonLiquidado.Text * Math.Round(kilosAton, 3)
+                TxPrecioXtonLiquidado.Text = FormatNumber(Val(variable), 2)
+                TxImporteLiquidado.Text = FormatNumber(Val(TxImporteLiquidado.Text), 2)
             End If
         End If
-        TxPrecioXtonMn.Text = FormatNumber(Val(variable), 2)
-        TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+
     End Sub
-    Private Sub BtSalir_Click(sender As Object, e As EventArgs) Handles BtSalir.Click
+
+    Private Sub Salir()
         DgEntradasLiq.Columns.Clear()
         DgEntradasLiq.DataSource = Nothing
         Close()
@@ -863,4 +938,6 @@ Public Class liquidacionCalculosProd
             ContarChecksMarcados()
         End If
     End Sub
+
+
 End Class

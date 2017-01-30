@@ -116,6 +116,7 @@ Partial Class liquidacionCalculosProd
         Me.TxNombreProductor = New System.Windows.Forms.TextBox()
         Me.TxEstatusContrato = New System.Windows.Forms.TextBox()
         Me.Label30 = New System.Windows.Forms.Label()
+        Me.BtModificar = New System.Windows.Forms.Button()
         CType(Me.NuLibre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuContrato, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TbLiquidacionXProd.SuspendLayout()
@@ -137,7 +138,7 @@ Partial Class liquidacionCalculosProd
         'BtGuardar
         '
         Me.BtGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.BtGuardar.Location = New System.Drawing.Point(85, 12)
+        Me.BtGuardar.Location = New System.Drawing.Point(88, 12)
         Me.BtGuardar.Name = "BtGuardar"
         Me.BtGuardar.Size = New System.Drawing.Size(70, 30)
         Me.BtGuardar.TabIndex = 1
@@ -147,7 +148,7 @@ Partial Class liquidacionCalculosProd
         'BtSalir
         '
         Me.BtSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.BtSalir.Location = New System.Drawing.Point(304, 12)
+        Me.BtSalir.Location = New System.Drawing.Point(386, 12)
         Me.BtSalir.Name = "BtSalir"
         Me.BtSalir.Size = New System.Drawing.Size(70, 30)
         Me.BtSalir.TabIndex = 4
@@ -167,7 +168,7 @@ Partial Class liquidacionCalculosProd
         'BtBuscar
         '
         Me.BtBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.BtBuscar.Location = New System.Drawing.Point(158, 12)
+        Me.BtBuscar.Location = New System.Drawing.Point(240, 12)
         Me.BtBuscar.Name = "BtBuscar"
         Me.BtBuscar.Size = New System.Drawing.Size(70, 30)
         Me.BtBuscar.TabIndex = 2
@@ -1040,7 +1041,7 @@ Partial Class liquidacionCalculosProd
         'BtImprimir
         '
         Me.BtImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.BtImprimir.Location = New System.Drawing.Point(231, 12)
+        Me.BtImprimir.Location = New System.Drawing.Point(313, 12)
         Me.BtImprimir.Name = "BtImprimir"
         Me.BtImprimir.Size = New System.Drawing.Size(70, 30)
         Me.BtImprimir.TabIndex = 3
@@ -1125,6 +1126,16 @@ Partial Class liquidacionCalculosProd
         Me.Label30.TabIndex = 45
         Me.Label30.Text = "Estatus Contrato :"
         '
+        'BtModificar
+        '
+        Me.BtModificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.BtModificar.Location = New System.Drawing.Point(164, 12)
+        Me.BtModificar.Name = "BtModificar"
+        Me.BtModificar.Size = New System.Drawing.Size(70, 30)
+        Me.BtModificar.TabIndex = 2
+        Me.BtModificar.Text = "Modificar"
+        Me.BtModificar.UseVisualStyleBackColor = True
+        '
         'liquidacionCalculosProd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1149,6 +1160,7 @@ Partial Class liquidacionCalculosProd
         Me.Controls.Add(Me.BtImprimir)
         Me.Controls.Add(Me.BtSalir)
         Me.Controls.Add(Me.BtNuevo)
+        Me.Controls.Add(Me.BtModificar)
         Me.Controls.Add(Me.BtBuscar)
         Me.Name = "liquidacionCalculosProd"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -1257,4 +1269,5 @@ Partial Class liquidacionCalculosProd
     Friend WithEvents TxNombreProductor As TextBox
     Friend WithEvents TxEstatusContrato As TextBox
     Friend WithEvents Label30 As Label
+    Friend WithEvents BtModificar As Button
 End Class
