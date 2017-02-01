@@ -47,7 +47,7 @@ Public Class Maiz
     Private Sub CiudadesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CiudadesToolStripMenuItem.Click
         Ciudades.ShowDialog()
     End Sub
-    Private Sub TransportesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransportesToolStripMenuItem.Click
+    Private Sub TransportesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Transportes.ShowDialog()
     End Sub
     Private Sub ConductoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConductoresToolStripMenuItem.Click
@@ -164,7 +164,7 @@ Public Class Maiz
             e.Cancel = True
         End If
     End Sub
-    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click, MyBase.FormClosing
         SqlConnection.ClearAllPools()
         Me.Close()
     End Sub

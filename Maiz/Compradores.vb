@@ -54,6 +54,9 @@ Public Class Compradores
 
         End If
     End Sub
+
+
+
     Private Sub actualizaComprador()
         Dim cmd As New SqlCommand("Sp_InsNueCom", cnn)
 

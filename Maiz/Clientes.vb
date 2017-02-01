@@ -182,6 +182,7 @@ Public Class Clientes
     End Sub
     Private Sub BtActualizar_Click(sender As Object, e As EventArgs) Handles BtActualizar.Click
 
+
         Dim cmd As New SqlCommand("sp_seleccionActualizacion", cnn)
 
         cmd.Parameters.Add(New SqlClient.SqlParameter("@idcliente", IIf(TxIdFisica.Text <> "", TxIdFisica.Text, TxIdMoral.Text)))

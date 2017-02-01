@@ -27,9 +27,8 @@ Partial Class Usuarios
         Me.BtnModificar = New System.Windows.Forms.Button()
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
-        Me.BtnRestaurar = New System.Windows.Forms.Button()
         Me.BtnSalir = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GBUsuario = New System.Windows.Forms.GroupBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CBTipoUsuario = New System.Windows.Forms.ComboBox()
         Me.Txusuario = New System.Windows.Forms.TextBox()
@@ -40,7 +39,8 @@ Partial Class Usuarios
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox1.SuspendLayout()
+        Me.BtnActualizar = New System.Windows.Forms.Button()
+        Me.GBUsuario.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtnNuevo
@@ -88,42 +88,33 @@ Partial Class Usuarios
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
         '
-        'BtnRestaurar
-        '
-        Me.BtnRestaurar.Location = New System.Drawing.Point(417, 1)
-        Me.BtnRestaurar.Name = "BtnRestaurar"
-        Me.BtnRestaurar.Size = New System.Drawing.Size(75, 68)
-        Me.BtnRestaurar.TabIndex = 5
-        Me.BtnRestaurar.Text = "Restaurar"
-        Me.BtnRestaurar.UseVisualStyleBackColor = True
-        '
         'BtnSalir
         '
-        Me.BtnSalir.Location = New System.Drawing.Point(498, 1)
+        Me.BtnSalir.Location = New System.Drawing.Point(417, 1)
         Me.BtnSalir.Name = "BtnSalir"
         Me.BtnSalir.Size = New System.Drawing.Size(75, 68)
         Me.BtnSalir.TabIndex = 6
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'GBUsuario
         '
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.CBTipoUsuario)
-        Me.GroupBox1.Controls.Add(Me.Txusuario)
-        Me.GroupBox1.Controls.Add(Me.TxContraseña)
-        Me.GroupBox1.Controls.Add(Me.TxNombre)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.TxIdUsuario)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 87)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(621, 144)
-        Me.GroupBox1.TabIndex = 7
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Datos del Usuario"
+        Me.GBUsuario.Controls.Add(Me.Label4)
+        Me.GBUsuario.Controls.Add(Me.CBTipoUsuario)
+        Me.GBUsuario.Controls.Add(Me.Txusuario)
+        Me.GBUsuario.Controls.Add(Me.TxContraseña)
+        Me.GBUsuario.Controls.Add(Me.TxNombre)
+        Me.GBUsuario.Controls.Add(Me.Label5)
+        Me.GBUsuario.Controls.Add(Me.TxIdUsuario)
+        Me.GBUsuario.Controls.Add(Me.Label3)
+        Me.GBUsuario.Controls.Add(Me.Label2)
+        Me.GBUsuario.Controls.Add(Me.Label1)
+        Me.GBUsuario.Location = New System.Drawing.Point(12, 87)
+        Me.GBUsuario.Name = "GBUsuario"
+        Me.GBUsuario.Size = New System.Drawing.Size(621, 144)
+        Me.GBUsuario.TabIndex = 7
+        Me.GBUsuario.TabStop = False
+        Me.GBUsuario.Text = "Datos del Usuario"
         '
         'Label4
         '
@@ -214,14 +205,23 @@ Partial Class Usuarios
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Id Usuario:"
         '
+        'BtnActualizar
+        '
+        Me.BtnActualizar.Location = New System.Drawing.Point(93, 1)
+        Me.BtnActualizar.Name = "BtnActualizar"
+        Me.BtnActualizar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnActualizar.TabIndex = 8
+        Me.BtnActualizar.Text = "Guardar"
+        Me.BtnActualizar.UseVisualStyleBackColor = True
+        '
         'Usuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(642, 243)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.BtnActualizar)
+        Me.Controls.Add(Me.GBUsuario)
         Me.Controls.Add(Me.BtnSalir)
-        Me.Controls.Add(Me.BtnRestaurar)
         Me.Controls.Add(Me.BtnEliminar)
         Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnModificar)
@@ -232,8 +232,8 @@ Partial Class Usuarios
         Me.Name = "Usuarios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Usuarios"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.GBUsuario.ResumeLayout(False)
+        Me.GBUsuario.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -243,9 +243,8 @@ Partial Class Usuarios
     Friend WithEvents BtnModificar As Button
     Friend WithEvents BtnBuscar As Button
     Friend WithEvents BtnEliminar As Button
-    Friend WithEvents BtnRestaurar As Button
     Friend WithEvents BtnSalir As Button
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GBUsuario As GroupBox
     Friend WithEvents Label4 As Label
     Friend WithEvents CBTipoUsuario As ComboBox
     Friend WithEvents TxContraseña As TextBox
@@ -256,4 +255,5 @@ Partial Class Usuarios
     Friend WithEvents Label1 As Label
     Friend WithEvents Txusuario As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents BtnActualizar As Button
 End Class

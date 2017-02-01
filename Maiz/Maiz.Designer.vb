@@ -33,7 +33,6 @@ Partial Class Maiz
         Me.ColoniasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompradoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GruposToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TransportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TierrasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VariedadesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -97,7 +96,7 @@ Partial Class Maiz
         '
         'CatalagoToolStripMenuItem
         '
-        Me.CatalagoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AlmacenesToolStripMenuItem, Me.CertificadoDeCalidadToolStripMenuItem, Me.CiudadesToolStripMenuItem, Me.ConductoresToolStripMenuItem, Me.ToolStripMenuItem1, Me.ColoniasToolStripMenuItem, Me.CompradoresToolStripMenuItem, Me.GruposToolStripMenuItem, Me.TransportesToolStripMenuItem, Me.TierrasToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.VariedadesToolStripMenuItem, Me.ToolStripSeparator1, Me.EmpresasToolStripMenuItem})
+        Me.CatalagoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AlmacenesToolStripMenuItem, Me.CertificadoDeCalidadToolStripMenuItem, Me.CiudadesToolStripMenuItem, Me.ConductoresToolStripMenuItem, Me.ToolStripMenuItem1, Me.ColoniasToolStripMenuItem, Me.CompradoresToolStripMenuItem, Me.GruposToolStripMenuItem, Me.TierrasToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.VariedadesToolStripMenuItem, Me.ToolStripSeparator1, Me.EmpresasToolStripMenuItem})
         Me.CatalagoToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CatalagoToolStripMenuItem.Name = "CatalagoToolStripMenuItem"
         Me.CatalagoToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
@@ -107,91 +106,85 @@ Partial Class Maiz
         '
         Me.AlmacenesToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AlmacenesToolStripMenuItem.Name = "AlmacenesToolStripMenuItem"
-        Me.AlmacenesToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.AlmacenesToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.AlmacenesToolStripMenuItem.Text = "Centro de Acopio"
         '
         'CertificadoDeCalidadToolStripMenuItem
         '
         Me.CertificadoDeCalidadToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CertificadoDeCalidadToolStripMenuItem.Name = "CertificadoDeCalidadToolStripMenuItem"
-        Me.CertificadoDeCalidadToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.CertificadoDeCalidadToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.CertificadoDeCalidadToolStripMenuItem.Text = "Tablas de Calidad"
         '
         'CiudadesToolStripMenuItem
         '
         Me.CiudadesToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CiudadesToolStripMenuItem.Name = "CiudadesToolStripMenuItem"
-        Me.CiudadesToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.CiudadesToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.CiudadesToolStripMenuItem.Text = "Ciudades"
         '
         'ConductoresToolStripMenuItem
         '
         Me.ConductoresToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ConductoresToolStripMenuItem.Name = "ConductoresToolStripMenuItem"
-        Me.ConductoresToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.ConductoresToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.ConductoresToolStripMenuItem.Text = "Conductores"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(213, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
         Me.ToolStripMenuItem1.Text = "Productores"
         '
         'ColoniasToolStripMenuItem
         '
         Me.ColoniasToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ColoniasToolStripMenuItem.Name = "ColoniasToolStripMenuItem"
-        Me.ColoniasToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.ColoniasToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.ColoniasToolStripMenuItem.Text = "Colonias"
         '
         'CompradoresToolStripMenuItem
         '
         Me.CompradoresToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CompradoresToolStripMenuItem.Name = "CompradoresToolStripMenuItem"
-        Me.CompradoresToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.CompradoresToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.CompradoresToolStripMenuItem.Text = "Compradores"
         '
         'GruposToolStripMenuItem
         '
         Me.GruposToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GruposToolStripMenuItem.Name = "GruposToolStripMenuItem"
-        Me.GruposToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.GruposToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.GruposToolStripMenuItem.Text = "Grupos"
-        '
-        'TransportesToolStripMenuItem
-        '
-        Me.TransportesToolStripMenuItem.Name = "TransportesToolStripMenuItem"
-        Me.TransportesToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-        Me.TransportesToolStripMenuItem.Text = "Unidades de Transporte"
         '
         'TierrasToolStripMenuItem
         '
         Me.TierrasToolStripMenuItem.Name = "TierrasToolStripMenuItem"
-        Me.TierrasToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.TierrasToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.TierrasToolStripMenuItem.Text = "Tierras"
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'VariedadesToolStripMenuItem
         '
         Me.VariedadesToolStripMenuItem.Name = "VariedadesToolStripMenuItem"
-        Me.VariedadesToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.VariedadesToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.VariedadesToolStripMenuItem.Text = "Variedades"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(210, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(175, 6)
         '
         'EmpresasToolStripMenuItem
         '
         Me.EmpresasToolStripMenuItem.Name = "EmpresasToolStripMenuItem"
-        Me.EmpresasToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.EmpresasToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.EmpresasToolStripMenuItem.Text = "Empresas"
         '
         'AlmacenToolStripMenuItem
@@ -230,7 +223,7 @@ Partial Class Maiz
         '
         Me.ComprasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContratosDeTigoConCompradoresToolStripMenuItem})
         Me.ComprasToolStripMenuItem.Name = "ComprasToolStripMenuItem"
-        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.ComprasToolStripMenuItem.Text = "Compras"
         '
         'ContratosDeTigoConCompradoresToolStripMenuItem
@@ -243,7 +236,7 @@ Partial Class Maiz
         '
         Me.VentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContratosDeTrigoConCompradoresToolStripMenuItem})
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'ContratosDeTrigoConCompradoresToolStripMenuItem
@@ -495,7 +488,6 @@ Partial Class Maiz
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CiudadesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TransportesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConductoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AlmacenesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EntradasDeTrigoToolStripMenuItem As ToolStripMenuItem
