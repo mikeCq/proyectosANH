@@ -7,6 +7,7 @@ Public Class Usuarios
         LimpiarCampos()
         controlBloqueo()
         BtnActualizar.Visible = False
+        BtnModificar.Enabled = False
 
     End Sub
     Private Sub llenarCombos()
@@ -83,6 +84,7 @@ Public Class Usuarios
 
                 cmd.ExecuteNonQuery()
                 controlBloqueo()
+                LimpiarCampos()
             Catch ex As Exception
                 MsgBox("Error.", MsgBoxStyle.Critical)
             End Try
@@ -93,6 +95,7 @@ Public Class Usuarios
 
 
     Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
+        BtnModificar.Enabled = True
         Dim BuscarUsuario As New BuscarUsuario
         BuscarUsuario.ShowDialog()
         LimpiarCampos()
@@ -159,6 +162,8 @@ Public Class Usuarios
 
                 cmd5.ExecuteNonQuery()
                 controlBloqueo()
+                LimpiarCampos()
+                BtnModificar.Enabled = False
                 BtnActualizar.Visible = False
                 BtnGuardar.Visible = True
             End If
