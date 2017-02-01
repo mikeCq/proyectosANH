@@ -47,7 +47,7 @@ Partial Class Usuarios
         '
         Me.BtnNuevo.Location = New System.Drawing.Point(12, 1)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(75, 68)
+        Me.BtnNuevo.Size = New System.Drawing.Size(75, 35)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
@@ -56,7 +56,7 @@ Partial Class Usuarios
         '
         Me.BtnGuardar.Location = New System.Drawing.Point(93, 1)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnGuardar.Size = New System.Drawing.Size(75, 35)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
@@ -65,7 +65,7 @@ Partial Class Usuarios
         '
         Me.BtnModificar.Location = New System.Drawing.Point(174, 1)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnModificar.Size = New System.Drawing.Size(75, 35)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.UseVisualStyleBackColor = True
@@ -74,7 +74,7 @@ Partial Class Usuarios
         '
         Me.BtnBuscar.Location = New System.Drawing.Point(255, 1)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnBuscar.Size = New System.Drawing.Size(75, 35)
         Me.BtnBuscar.TabIndex = 3
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.UseVisualStyleBackColor = True
@@ -83,7 +83,7 @@ Partial Class Usuarios
         '
         Me.BtnEliminar.Location = New System.Drawing.Point(336, 1)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnEliminar.Size = New System.Drawing.Size(75, 35)
         Me.BtnEliminar.TabIndex = 4
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
@@ -92,7 +92,7 @@ Partial Class Usuarios
         '
         Me.BtnSalir.Location = New System.Drawing.Point(417, 1)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(75, 68)
+        Me.BtnSalir.Size = New System.Drawing.Size(75, 35)
         Me.BtnSalir.TabIndex = 6
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.UseVisualStyleBackColor = True
@@ -109,9 +109,9 @@ Partial Class Usuarios
         Me.GBUsuario.Controls.Add(Me.Label3)
         Me.GBUsuario.Controls.Add(Me.Label2)
         Me.GBUsuario.Controls.Add(Me.Label1)
-        Me.GBUsuario.Location = New System.Drawing.Point(12, 87)
+        Me.GBUsuario.Location = New System.Drawing.Point(12, 42)
         Me.GBUsuario.Name = "GBUsuario"
-        Me.GBUsuario.Size = New System.Drawing.Size(621, 144)
+        Me.GBUsuario.Size = New System.Drawing.Size(621, 161)
         Me.GBUsuario.TabIndex = 7
         Me.GBUsuario.TabStop = False
         Me.GBUsuario.Text = "Datos del Usuario"
@@ -209,7 +209,7 @@ Partial Class Usuarios
         '
         Me.BtnActualizar.Location = New System.Drawing.Point(93, 1)
         Me.BtnActualizar.Name = "BtnActualizar"
-        Me.BtnActualizar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnActualizar.Size = New System.Drawing.Size(75, 35)
         Me.BtnActualizar.TabIndex = 8
         Me.BtnActualizar.Text = "Guardar"
         Me.BtnActualizar.UseVisualStyleBackColor = True
@@ -218,7 +218,7 @@ Partial Class Usuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(642, 243)
+        Me.ClientSize = New System.Drawing.Size(642, 204)
         Me.Controls.Add(Me.BtnActualizar)
         Me.Controls.Add(Me.GBUsuario)
         Me.Controls.Add(Me.BtnSalir)
