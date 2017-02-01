@@ -27,7 +27,6 @@ Partial Class Compradores
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
-        Me.BtnRestaurar = New System.Windows.Forms.Button()
         Me.BtnSalir = New System.Windows.Forms.Button()
         Me.GBCompradores = New System.Windows.Forms.GroupBox()
         Me.GBContacto = New System.Windows.Forms.GroupBox()
@@ -68,67 +67,57 @@ Partial Class Compradores
         Me.BtnNuevo.Location = New System.Drawing.Point(12, 2)
         Me.BtnNuevo.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(87, 84)
+        Me.BtnNuevo.Size = New System.Drawing.Size(75, 35)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
         '
         'BtnModificar
         '
-        Me.BtnModificar.Location = New System.Drawing.Point(106, 2)
+        Me.BtnModificar.Location = New System.Drawing.Point(93, 2)
         Me.BtnModificar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnModificar.Size = New System.Drawing.Size(75, 35)
         Me.BtnModificar.TabIndex = 1
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.UseVisualStyleBackColor = True
         '
         'BtnGuardar
         '
-        Me.BtnGuardar.Location = New System.Drawing.Point(201, 2)
+        Me.BtnGuardar.Location = New System.Drawing.Point(93, 2)
         Me.BtnGuardar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnGuardar.Size = New System.Drawing.Size(75, 35)
         Me.BtnGuardar.TabIndex = 2
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
         'BtnBuscar
         '
-        Me.BtnBuscar.Location = New System.Drawing.Point(295, 2)
+        Me.BtnBuscar.Location = New System.Drawing.Point(174, 2)
         Me.BtnBuscar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnBuscar.Size = New System.Drawing.Size(75, 35)
         Me.BtnBuscar.TabIndex = 3
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.UseVisualStyleBackColor = True
         '
         'BtnEliminar
         '
-        Me.BtnEliminar.Location = New System.Drawing.Point(390, 2)
+        Me.BtnEliminar.Location = New System.Drawing.Point(255, 2)
         Me.BtnEliminar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnEliminar.Size = New System.Drawing.Size(75, 35)
         Me.BtnEliminar.TabIndex = 4
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
         '
-        'BtnRestaurar
-        '
-        Me.BtnRestaurar.Location = New System.Drawing.Point(484, 2)
-        Me.BtnRestaurar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.BtnRestaurar.Name = "BtnRestaurar"
-        Me.BtnRestaurar.Size = New System.Drawing.Size(87, 84)
-        Me.BtnRestaurar.TabIndex = 5
-        Me.BtnRestaurar.Text = "Restaurar"
-        Me.BtnRestaurar.UseVisualStyleBackColor = True
-        '
         'BtnSalir
         '
-        Me.BtnSalir.Location = New System.Drawing.Point(579, 2)
+        Me.BtnSalir.Location = New System.Drawing.Point(336, 2)
         Me.BtnSalir.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(87, 84)
+        Me.BtnSalir.Size = New System.Drawing.Size(75, 35)
         Me.BtnSalir.TabIndex = 6
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.UseVisualStyleBackColor = True
@@ -143,9 +132,9 @@ Partial Class Compradores
         Me.GBCompradores.Controls.Add(Me.Label2)
         Me.GBCompradores.Controls.Add(Me.TxIdComprador)
         Me.GBCompradores.Controls.Add(Me.Label1)
-        Me.GBCompradores.Location = New System.Drawing.Point(15, 97)
+        Me.GBCompradores.Location = New System.Drawing.Point(15, 44)
         Me.GBCompradores.Name = "GBCompradores"
-        Me.GBCompradores.Size = New System.Drawing.Size(739, 287)
+        Me.GBCompradores.Size = New System.Drawing.Size(739, 301)
         Me.GBCompradores.TabIndex = 7
         Me.GBCompradores.TabStop = False
         Me.GBCompradores.Text = "Datos del Comprador"
@@ -426,10 +415,9 @@ Partial Class Compradores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(766, 396)
+        Me.ClientSize = New System.Drawing.Size(766, 350)
         Me.Controls.Add(Me.GBCompradores)
         Me.Controls.Add(Me.BtnSalir)
-        Me.Controls.Add(Me.BtnRestaurar)
         Me.Controls.Add(Me.BtnEliminar)
         Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnGuardar)
@@ -455,7 +443,6 @@ Partial Class Compradores
     Friend WithEvents BtnGuardar As Button
     Friend WithEvents BtnBuscar As Button
     Friend WithEvents BtnEliminar As Button
-    Friend WithEvents BtnRestaurar As Button
     Friend WithEvents BtnSalir As Button
     Friend WithEvents GBCompradores As GroupBox
     Friend WithEvents Label1 As Label
