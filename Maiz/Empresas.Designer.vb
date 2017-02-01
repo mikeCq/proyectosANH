@@ -129,7 +129,6 @@ Partial Class Empresas
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Salir = New System.Windows.Forms.Button()
-        Me.BtnRestaurar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnGuardar = New System.Windows.Forms.Button()
@@ -155,7 +154,7 @@ Partial Class Empresas
         '
         Me.GroupBox4.Controls.Add(Me.RbRepresentante)
         Me.GroupBox4.Controls.Add(Me.RbEmpresa)
-        Me.GroupBox4.Location = New System.Drawing.Point(3, 93)
+        Me.GroupBox4.Location = New System.Drawing.Point(3, 44)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(272, 62)
         Me.GroupBox4.TabIndex = 17
@@ -187,10 +186,10 @@ Partial Class Empresas
         '
         Me.TCEmpresa.Controls.Add(Me.TPEmpresa)
         Me.TCEmpresa.Controls.Add(Me.TPRepresentante)
-        Me.TCEmpresa.Location = New System.Drawing.Point(3, 161)
+        Me.TCEmpresa.Location = New System.Drawing.Point(3, 112)
         Me.TCEmpresa.Name = "TCEmpresa"
         Me.TCEmpresa.SelectedIndex = 0
-        Me.TCEmpresa.Size = New System.Drawing.Size(1057, 572)
+        Me.TCEmpresa.Size = New System.Drawing.Size(1057, 621)
         Me.TCEmpresa.TabIndex = 16
         '
         'TPEmpresa
@@ -201,7 +200,7 @@ Partial Class Empresas
         Me.TPEmpresa.Location = New System.Drawing.Point(4, 22)
         Me.TPEmpresa.Name = "TPEmpresa"
         Me.TPEmpresa.Padding = New System.Windows.Forms.Padding(3)
-        Me.TPEmpresa.Size = New System.Drawing.Size(1049, 546)
+        Me.TPEmpresa.Size = New System.Drawing.Size(1049, 595)
         Me.TPEmpresa.TabIndex = 0
         Me.TPEmpresa.Text = "Empresa"
         '
@@ -845,7 +844,7 @@ Partial Class Empresas
         Me.TPRepresentante.Location = New System.Drawing.Point(4, 22)
         Me.TPRepresentante.Name = "TPRepresentante"
         Me.TPRepresentante.Padding = New System.Windows.Forms.Padding(3)
-        Me.TPRepresentante.Size = New System.Drawing.Size(1049, 546)
+        Me.TPRepresentante.Size = New System.Drawing.Size(1049, 549)
         Me.TPRepresentante.TabIndex = 1
         Me.TPRepresentante.Text = "Representante"
         '
@@ -1244,60 +1243,50 @@ Partial Class Empresas
         '
         'Salir
         '
-        Me.Salir.Location = New System.Drawing.Point(561, 2)
+        Me.Salir.Location = New System.Drawing.Point(366, 2)
         Me.Salir.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Salir.Name = "Salir"
-        Me.Salir.Size = New System.Drawing.Size(87, 84)
+        Me.Salir.Size = New System.Drawing.Size(85, 35)
         Me.Salir.TabIndex = 15
         Me.Salir.Text = "Salir"
         Me.Salir.UseVisualStyleBackColor = True
         '
-        'BtnRestaurar
-        '
-        Me.BtnRestaurar.Location = New System.Drawing.Point(468, 2)
-        Me.BtnRestaurar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.BtnRestaurar.Name = "BtnRestaurar"
-        Me.BtnRestaurar.Size = New System.Drawing.Size(87, 84)
-        Me.BtnRestaurar.TabIndex = 14
-        Me.BtnRestaurar.Text = "Restaurar"
-        Me.BtnRestaurar.UseVisualStyleBackColor = True
-        '
         'BtnEliminar
         '
-        Me.BtnEliminar.Location = New System.Drawing.Point(375, 2)
+        Me.BtnEliminar.Location = New System.Drawing.Point(275, 2)
         Me.BtnEliminar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnEliminar.Size = New System.Drawing.Size(85, 35)
         Me.BtnEliminar.TabIndex = 13
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
         '
         'BtnBuscar
         '
-        Me.BtnBuscar.Location = New System.Drawing.Point(282, 2)
+        Me.BtnBuscar.Location = New System.Drawing.Point(184, 2)
         Me.BtnBuscar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnBuscar.Size = New System.Drawing.Size(85, 35)
         Me.BtnBuscar.TabIndex = 12
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.UseVisualStyleBackColor = True
         '
         'BtnGuardar
         '
-        Me.BtnGuardar.Location = New System.Drawing.Point(96, 2)
+        Me.BtnGuardar.Location = New System.Drawing.Point(93, 2)
         Me.BtnGuardar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnGuardar.Size = New System.Drawing.Size(85, 35)
         Me.BtnGuardar.TabIndex = 10
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
         'BtnModificar
         '
-        Me.BtnModificar.Location = New System.Drawing.Point(189, 2)
+        Me.BtnModificar.Location = New System.Drawing.Point(93, 2)
         Me.BtnModificar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnModificar.Size = New System.Drawing.Size(85, 35)
         Me.BtnModificar.TabIndex = 11
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.UseVisualStyleBackColor = True
@@ -1307,7 +1296,7 @@ Partial Class Empresas
         Me.BtnNuevo.Location = New System.Drawing.Point(3, 2)
         Me.BtnNuevo.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(87, 84)
+        Me.BtnNuevo.Size = New System.Drawing.Size(85, 35)
         Me.BtnNuevo.TabIndex = 9
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
@@ -1320,7 +1309,6 @@ Partial Class Empresas
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.TCEmpresa)
         Me.Controls.Add(Me.Salir)
-        Me.Controls.Add(Me.BtnRestaurar)
         Me.Controls.Add(Me.BtnEliminar)
         Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnGuardar)
@@ -1365,7 +1353,6 @@ Partial Class Empresas
     Friend WithEvents TPEmpresa As TabPage
     Friend WithEvents TPRepresentante As TabPage
     Friend WithEvents Salir As Button
-    Friend WithEvents BtnRestaurar As Button
     Friend WithEvents BtnEliminar As Button
     Friend WithEvents BtnBuscar As Button
     Friend WithEvents BtnGuardar As Button

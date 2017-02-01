@@ -52,27 +52,30 @@ Partial Class BuscarAlmacen
         Me.BtSeleccion.TabIndex = 17
         Me.BtSeleccion.Text = "Seleccionar"
         Me.BtSeleccion.UseVisualStyleBackColor = True
+        Me.BtSeleccion.Visible = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 38)
+        Me.Label2.Location = New System.Drawing.Point(8, 15)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(80, 13)
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "Centro Acopio :"
+        Me.Label2.Visible = False
         '
         'TxAcopio
         '
         Me.TxAcopio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxAcopio.Location = New System.Drawing.Point(93, 35)
+        Me.TxAcopio.Location = New System.Drawing.Point(94, 12)
         Me.TxAcopio.Name = "TxAcopio"
-        Me.TxAcopio.Size = New System.Drawing.Size(266, 20)
+        Me.TxAcopio.Size = New System.Drawing.Size(92, 20)
         Me.TxAcopio.TabIndex = 15
+        Me.TxAcopio.Visible = False
         '
         'BtBuscar
         '
-        Me.BtBuscar.Location = New System.Drawing.Point(705, 51)
+        Me.BtBuscar.Location = New System.Drawing.Point(705, 9)
         Me.BtBuscar.Name = "BtBuscar"
         Me.BtBuscar.Size = New System.Drawing.Size(97, 38)
         Me.BtBuscar.TabIndex = 16
@@ -89,49 +92,53 @@ Partial Class BuscarAlmacen
         Me.DgBuscar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DgBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgBuscar.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.DgBuscar.Location = New System.Drawing.Point(12, 104)
+        Me.DgBuscar.Location = New System.Drawing.Point(12, 53)
         Me.DgBuscar.MultiSelect = False
         Me.DgBuscar.Name = "DgBuscar"
         Me.DgBuscar.ReadOnly = True
         Me.DgBuscar.RowHeadersVisible = False
         Me.DgBuscar.RowHeadersWidth = 40
         Me.DgBuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgBuscar.Size = New System.Drawing.Size(790, 302)
+        Me.DgBuscar.Size = New System.Drawing.Size(790, 353)
         Me.DgBuscar.TabIndex = 14
         '
         'TxAlmacen
         '
         Me.TxAlmacen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxAlmacen.Location = New System.Drawing.Point(93, 61)
+        Me.TxAlmacen.Location = New System.Drawing.Point(438, 6)
         Me.TxAlmacen.Name = "TxAlmacen"
         Me.TxAlmacen.Size = New System.Drawing.Size(190, 20)
         Me.TxAlmacen.TabIndex = 15
+        Me.TxAlmacen.Visible = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(33, 64)
+        Me.Label1.Location = New System.Drawing.Point(378, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(54, 13)
         Me.Label1.TabIndex = 13
         Me.Label1.Text = "Almacen :"
+        Me.Label1.Visible = False
         '
         'TxFolioAserca
         '
         Me.TxFolioAserca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxFolioAserca.Location = New System.Drawing.Point(93, 9)
+        Me.TxFolioAserca.Location = New System.Drawing.Point(279, 9)
         Me.TxFolioAserca.Name = "TxFolioAserca"
         Me.TxFolioAserca.Size = New System.Drawing.Size(93, 20)
         Me.TxFolioAserca.TabIndex = 15
+        Me.TxFolioAserca.Visible = False
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 12)
+        Me.Label3.Location = New System.Drawing.Point(192, 12)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(81, 13)
         Me.Label3.TabIndex = 13
         Me.Label3.Text = "Folio ASERCA :"
+        Me.Label3.Visible = False
         '
         'BuscarAlmacen
         '

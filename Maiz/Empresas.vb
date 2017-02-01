@@ -10,9 +10,14 @@ Public Class Empresas
         llenarCombos()
         limpiarcampos()
         'TPRepresentante.Parent = Nothing1111
-
+        BtnModificar.Enabled = False
+        BtnModificar.Visible = False
+        BtnGuardar.Visible = True
     End Sub
     Private Sub limpiarcampos()
+        BtnModificar.Enabled = False
+        BtnModificar.Visible = False
+        BtnGuardar.Visible = True
         'LIMPIAR VALORES DE PESTAÑA FISICA
         TxIdFisica.Text = ""
         TxNombre.Text = ""
@@ -131,6 +136,8 @@ Public Class Empresas
         If opc = DialogResult.Yes Then
             DesbloquearCampos()
             modifica = 1
+            BtnGuardar.Visible = True
+            BtnModificar.Visible = False
         End If
     End Sub
     Private Sub TextBox3_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxNumEmpresa.KeyPress, TxFolioAct.KeyPress, TxNumNotario.KeyPress, TxRegPublico.KeyPress, TxBajoNumero.KeyPress, TxFolioRpp.KeyPress, TxLibRpp.KeyPress, TxNumDomFisica.KeyPress
@@ -169,19 +176,13 @@ Public Class Empresas
             If TxNombre.Text = "" Or TxApellidos.Text = "" Or TxRfcFisico.Text = "" Or TxCurp.Text = "" Or TxNumIdenti.Text = "" Or TxCalleFisica.Text = "" Or TxNumDomFisica.Text = "" Or CbColoniaFisica.Text = "" Or TxCpFisica.Text = "" Or CbCiudadFisica.Text = "" Or TxEstadoFisica.Text = "" Or TxCorreoFisica.Text = "" Or TxTelfisica.Text = "" Or TxCelFisica.Text = "" Then
                 MessageBox.Show("Verifica campos en blanco", "Aviso")
             ElseIf clienteRegistrado(TxIdFisica.Text) = True And modifica = 0 Then
-
                 MessageBox.Show("Ya existe el cliente " + TxIdFisica.Text + ".")
             ElseIf clienteRegistrado(TxIdFisica.Text) = True And modifica = 1 Then
-
-
             Else
                 Try
                     Dim cmd As New SqlCommand("Sp_InsNueCliFis", cnn)
-
                     seleccionIdentificacionRepresentante()
-
                     cmd.CommandType = CommandType.StoredProcedure
-
                     cmd.Parameters.AddWithValue("@Consecutivo", generaCodigoCliente(TxIdFisica.Text))
                     cmd.Parameters.AddWithValue("@nomper", TxNombre.Text)
                     cmd.Parameters.AddWithValue("@apeper", TxApellidos.Text)
@@ -199,13 +200,11 @@ Public Class Empresas
                     cmd.Parameters.AddWithValue("@telcli", TxTelfisica.Text)
                     cmd.Parameters.AddWithValue("@celcli", TxCelFisica.Text)
                     cmd.Parameters.AddWithValue("@email", TxCorreoFisica.Text)
-
                     TxIdFisica.Text = cmd.Parameters("@Consecutivo").Value.ToString()
-
                     cmd.ExecuteNonQuery()
-
-                    bloquearCampos()
-
+                    'bloquearCampos()
+                    limpiarcampos()
+                    DesbloquearCampos()
                 Catch ex As Exception
                     MsgBox("Error", MsgBoxStyle.Critical)
                 End Try
@@ -250,11 +249,10 @@ Public Class Empresas
                     cmd.Parameters.AddWithValue("@celcli", TxCelMoral.Text)
                     cmd.Parameters.AddWithValue("@email", TxEmailMoral.Text)
                     cmd.Parameters.AddWithValue("@RepLeg", IIf(CbNomRep.SelectedValue = Nothing, TxIdFisica.Text, CbNomRep.SelectedValue))
-
                     TxIdEmpresa.Text = cmd.Parameters("@idEmpresa").Value.ToString()
-
                     cmd.ExecuteNonQuery()
-
+                    limpiarcampos()
+                    DesbloquearCampos()
                 Catch ex As Exception
                     MsgBox(ex, MsgBoxStyle.Critical)
                 End Try
@@ -342,7 +340,9 @@ Public Class Empresas
             cmd.Parameters.AddWithValue("@RepresentanteLegal",CbNomRep.SelectedValue)
             cmd.ExecuteNonQuery()
             modifica = 0
-            bloquearCampos()
+            'bloquearCampos()
+            limpiarcampos()
+            DesbloquearCampos()
         Catch ex As Exception
             MsgBox(ex, MsgBoxStyle.Critical)
         End Try
@@ -366,9 +366,7 @@ Public Class Empresas
 
             Dim row As DataRow = dt.Rows(0)
             If CStr(row("TipoPersona")) = "M" Then
-
                 RbEmpresa.Checked = True
-
                 TxIdEmpresa.Text = CStr(row("id_empresa"))
                 TxRazonSocial.Text = CStr(row("razonSocial"))
                 TxRfcMoral.Text = CStr(row("RFC"))
@@ -393,6 +391,10 @@ Public Class Empresas
                 TxEmailMoral.Text = CStr(row("CorreoElectronico"))
                 CbNomRep.SelectedValue = CStr(row("Representante_legal"))
                 CbNomRep_SelectedIndexChanged(sender, e)
+                '-----------------------------------------
+                BtnModificar.Enabled = True
+                BtnModificar.Visible = True
+                BtnGuardar.Visible = False
             End If
             bloquearCampos()
         ElseIf BuscarCliente.CodigoCliente = Nothing Then
@@ -482,23 +484,21 @@ Public Class Empresas
     End Sub
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         Dim resp As DialogResult
-
+        If TxIdEmpresa.Text = "" Then
+            MsgBox("No hay datos para eliminar")
+            Exit Sub
+        End If
         If TxIdFisica.Text <> "" And TxIdEmpresa.Text = "" Then
             resp = MessageBox.Show("Esta seguro de eliminar el cliente :" + TxIdFisica.Text + "?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
             If resp = DialogResult.Yes Then
                 Try
                     Dim eliminar As New SqlCommand("Sp_EliminarEmpresa", cnn)
-
                     eliminar.CommandType = CommandType.StoredProcedure
-
                     eliminar.Parameters.AddWithValue("@Idempresa", TxIdFisica.Text)
-
                     eliminar.ExecuteNonQuery()
-
                     limpiarcampos()
-
+                    DesbloquearCampos()
                 Catch ex As Exception
-
                 End Try
             End If
 
@@ -507,21 +507,16 @@ Public Class Empresas
             If resp = DialogResult.Yes Then
                 Try
                     Dim eliminar As New SqlCommand("Sp_EliminarEmpresa", cnn)
-
                     eliminar.CommandType = CommandType.StoredProcedure
-
                     eliminar.Parameters.AddWithValue("@Idempresa", TxIdEmpresa.Text)
-
                     eliminar.ExecuteNonQuery()
-
                     limpiarcampos()
-
+                    DesbloquearCampos()
                 Catch ex As Exception
 
                 End Try
             End If
         End If
-
     End Sub
     Private PRCorEle As New Regex("\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b")
     Private Sub TxCorreoFisica_TextChanged(sender As Object, e As EventArgs) Handles TxEmailMoral.Leave

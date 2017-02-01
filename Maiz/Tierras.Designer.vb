@@ -27,7 +27,6 @@ Partial Class Tierras
         Me.BtnModificar = New System.Windows.Forms.Button()
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
-        Me.BtnRestaurar = New System.Windows.Forms.Button()
         Me.BtnSalir = New System.Windows.Forms.Button()
         Me.GbDatos = New System.Windows.Forms.GroupBox()
         Me.TxVolumen = New System.Windows.Forms.TextBox()
@@ -85,7 +84,7 @@ Partial Class Tierras
         '
         Me.BtnNuevo.Location = New System.Drawing.Point(12, 2)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(75, 68)
+        Me.BtnNuevo.Size = New System.Drawing.Size(75, 35)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
@@ -94,7 +93,7 @@ Partial Class Tierras
         '
         Me.BtnGuardar.Location = New System.Drawing.Point(93, 2)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnGuardar.Size = New System.Drawing.Size(75, 35)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
@@ -103,7 +102,7 @@ Partial Class Tierras
         '
         Me.BtnModificar.Location = New System.Drawing.Point(174, 2)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnModificar.Size = New System.Drawing.Size(75, 35)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.UseVisualStyleBackColor = True
@@ -112,7 +111,7 @@ Partial Class Tierras
         '
         Me.BtnBuscar.Location = New System.Drawing.Point(255, 2)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnBuscar.Size = New System.Drawing.Size(75, 35)
         Me.BtnBuscar.TabIndex = 3
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.UseVisualStyleBackColor = True
@@ -121,25 +120,16 @@ Partial Class Tierras
         '
         Me.BtnEliminar.Location = New System.Drawing.Point(336, 2)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnEliminar.Size = New System.Drawing.Size(75, 35)
         Me.BtnEliminar.TabIndex = 4
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
         '
-        'BtnRestaurar
-        '
-        Me.BtnRestaurar.Location = New System.Drawing.Point(417, 2)
-        Me.BtnRestaurar.Name = "BtnRestaurar"
-        Me.BtnRestaurar.Size = New System.Drawing.Size(75, 68)
-        Me.BtnRestaurar.TabIndex = 5
-        Me.BtnRestaurar.Text = "Restaurar"
-        Me.BtnRestaurar.UseVisualStyleBackColor = True
-        '
         'BtnSalir
         '
-        Me.BtnSalir.Location = New System.Drawing.Point(498, 2)
+        Me.BtnSalir.Location = New System.Drawing.Point(416, 2)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(75, 68)
+        Me.BtnSalir.Size = New System.Drawing.Size(75, 35)
         Me.BtnSalir.TabIndex = 6
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.UseVisualStyleBackColor = True
@@ -174,9 +164,9 @@ Partial Class Tierras
         Me.GbDatos.Controls.Add(Me.Label3)
         Me.GbDatos.Controls.Add(Me.Label2)
         Me.GbDatos.Controls.Add(Me.Label1)
-        Me.GbDatos.Location = New System.Drawing.Point(12, 90)
+        Me.GbDatos.Location = New System.Drawing.Point(12, 43)
         Me.GbDatos.Name = "GbDatos"
-        Me.GbDatos.Size = New System.Drawing.Size(723, 417)
+        Me.GbDatos.Size = New System.Drawing.Size(723, 464)
         Me.GbDatos.TabIndex = 7
         Me.GbDatos.TabStop = False
         Me.GbDatos.Text = "Datos del Lote"
@@ -589,7 +579,6 @@ Partial Class Tierras
         Me.ClientSize = New System.Drawing.Size(743, 519)
         Me.Controls.Add(Me.GbDatos)
         Me.Controls.Add(Me.BtnSalir)
-        Me.Controls.Add(Me.BtnRestaurar)
         Me.Controls.Add(Me.BtnEliminar)
         Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnModificar)
@@ -598,7 +587,7 @@ Partial Class Tierras
         Me.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Tierras"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "                  "
         Me.GbDatos.ResumeLayout(False)
         Me.GbDatos.PerformLayout()
@@ -617,7 +606,6 @@ Partial Class Tierras
     Friend WithEvents BtnModificar As Button
     Friend WithEvents BtnBuscar As Button
     Friend WithEvents BtnEliminar As Button
-    Friend WithEvents BtnRestaurar As Button
     Friend WithEvents BtnSalir As Button
     Friend WithEvents GbDatos As GroupBox
     Friend WithEvents DtTitulo As DateTimePicker

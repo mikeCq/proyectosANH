@@ -38,7 +38,6 @@ Public Class Tierras
         NuSupCultivable.Enabled = True
         NuSupTotal.Enabled = True
         GbEscrituracion.Enabled = True
-
     End Sub
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
         If CBColonia.SelectedIndex = -1 Or CBPropietario.SelectedIndex = -1 Or NuSupTotal.Value = 0 Or NuSupCultivable.Value = 0 Or TxNGrados.Text = "" Or TxNHoras.Text = "" Or TxWGrados.Text = "" Or TxWHoras.Text = "" Or TxWMinutos.Text = "" Or TxNumeroRPP.Text = "" Or TxFolioRPP.Text = "" Or TxLibroRPP.Text = "" Or DTRpp.Value = "01/01/1900" Or DtTitulo.Value = "01/01/1900" Then
@@ -220,12 +219,9 @@ Public Class Tierras
         End If
     End Sub
     Private Sub ActualizaTierra()
-
         Try
             Dim cmd As New SqlCommand("sp_ActLotes", cnn)
-
             cmd.CommandType = CommandType.StoredProcedure
-
             cmd.Parameters.AddWithValue("@idtierra", TxIdLote.Text)
             cmd.Parameters.AddWithValue("@numlote", TxNoLote.Text)
             cmd.Parameters.AddWithValue("@idcolonia", CBColonia.SelectedValue)
@@ -245,7 +241,6 @@ Public Class Tierras
             cmd.Parameters.AddWithValue("@tituloagua", TxTitulo.Text)
             cmd.Parameters.AddWithValue("@RegimenHidrico", TxRegimen.Text)
             cmd.Parameters.AddWithValue("@fechatitulo", DtTitulo.Value)
-
             cmd.ExecuteNonQuery()
             modifica = 0
             bloqueaBotones()
@@ -255,10 +250,19 @@ Public Class Tierras
 
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
-
         Close()
-
     End Sub
 
-
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+        If TxIdLote.Text = "" Then
+            MessageBox.Show("No se ha seleccionado ningun registro", "Aviso")
+        Else
+            Dim cmd As New SqlCommand("Sp_EliminarLote", cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdLote", TxIdLote.Text))
+            cmd.ExecuteNonQuery()
+            BtnNuevo_Click(sender, e)
+            MessageBox.Show("Registro eliminado con éxito", "Aviso")
+        End If
+    End Sub
 End Class

@@ -50,9 +50,6 @@ Public Class Maiz
     Private Sub TransportesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Transportes.ShowDialog()
     End Sub
-    Private Sub ConductoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConductoresToolStripMenuItem.Click
-        Conductores.ShowDialog()
-    End Sub
     Private Sub AlmacenesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlmacenesToolStripMenuItem.Click
         Almacenes.ShowDialog()
     End Sub

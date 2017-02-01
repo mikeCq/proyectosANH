@@ -27,7 +27,6 @@ Partial Class Clientes
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
-        Me.BtnRestaurar = New System.Windows.Forms.Button()
         Me.Salir = New System.Windows.Forms.Button()
         Me.TCClientes = New System.Windows.Forms.TabControl()
         Me.TPFisicos = New System.Windows.Forms.TabPage()
@@ -157,67 +156,57 @@ Partial Class Clientes
         Me.BtnNuevo.Location = New System.Drawing.Point(9, 0)
         Me.BtnNuevo.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(87, 84)
+        Me.BtnNuevo.Size = New System.Drawing.Size(75, 35)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
         '
         'BtnModificar
         '
-        Me.BtnModificar.Location = New System.Drawing.Point(195, 0)
+        Me.BtnModificar.Location = New System.Drawing.Point(171, 0)
         Me.BtnModificar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnModificar.Size = New System.Drawing.Size(75, 35)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.UseVisualStyleBackColor = True
         '
         'BtnGuardar
         '
-        Me.BtnGuardar.Location = New System.Drawing.Point(102, 0)
+        Me.BtnGuardar.Location = New System.Drawing.Point(90, 0)
         Me.BtnGuardar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnGuardar.Size = New System.Drawing.Size(75, 35)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
         'BtnBuscar
         '
-        Me.BtnBuscar.Location = New System.Drawing.Point(288, 0)
+        Me.BtnBuscar.Location = New System.Drawing.Point(252, 0)
         Me.BtnBuscar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnBuscar.Size = New System.Drawing.Size(75, 35)
         Me.BtnBuscar.TabIndex = 3
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.UseVisualStyleBackColor = True
         '
         'BtnEliminar
         '
-        Me.BtnEliminar.Location = New System.Drawing.Point(381, 0)
+        Me.BtnEliminar.Location = New System.Drawing.Point(333, 0)
         Me.BtnEliminar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(87, 84)
+        Me.BtnEliminar.Size = New System.Drawing.Size(75, 35)
         Me.BtnEliminar.TabIndex = 4
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
         '
-        'BtnRestaurar
-        '
-        Me.BtnRestaurar.Location = New System.Drawing.Point(474, 0)
-        Me.BtnRestaurar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.BtnRestaurar.Name = "BtnRestaurar"
-        Me.BtnRestaurar.Size = New System.Drawing.Size(87, 84)
-        Me.BtnRestaurar.TabIndex = 5
-        Me.BtnRestaurar.Text = "Restaurar"
-        Me.BtnRestaurar.UseVisualStyleBackColor = True
-        '
         'Salir
         '
-        Me.Salir.Location = New System.Drawing.Point(567, 0)
+        Me.Salir.Location = New System.Drawing.Point(414, 0)
         Me.Salir.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Salir.Name = "Salir"
-        Me.Salir.Size = New System.Drawing.Size(87, 84)
+        Me.Salir.Size = New System.Drawing.Size(75, 35)
         Me.Salir.TabIndex = 6
         Me.Salir.Text = "Salir"
         Me.Salir.UseVisualStyleBackColor = True
@@ -226,10 +215,10 @@ Partial Class Clientes
         '
         Me.TCClientes.Controls.Add(Me.TPFisicos)
         Me.TCClientes.Controls.Add(Me.TPMorales)
-        Me.TCClientes.Location = New System.Drawing.Point(5, 159)
+        Me.TCClientes.Location = New System.Drawing.Point(5, 110)
         Me.TCClientes.Name = "TCClientes"
         Me.TCClientes.SelectedIndex = 0
-        Me.TCClientes.Size = New System.Drawing.Size(1071, 572)
+        Me.TCClientes.Size = New System.Drawing.Size(1071, 485)
         Me.TCClientes.TabIndex = 8
         '
         'TPFisicos
@@ -240,7 +229,7 @@ Partial Class Clientes
         Me.TPFisicos.Location = New System.Drawing.Point(4, 25)
         Me.TPFisicos.Name = "TPFisicos"
         Me.TPFisicos.Padding = New System.Windows.Forms.Padding(3)
-        Me.TPFisicos.Size = New System.Drawing.Size(1063, 543)
+        Me.TPFisicos.Size = New System.Drawing.Size(1063, 456)
         Me.TPFisicos.TabIndex = 0
         Me.TPFisicos.Text = "Fisicas"
         '
@@ -1281,7 +1270,7 @@ Partial Class Clientes
         '
         Me.GroupBox4.Controls.Add(Me.RbMoral)
         Me.GroupBox4.Controls.Add(Me.RbFisica)
-        Me.GroupBox4.Location = New System.Drawing.Point(9, 91)
+        Me.GroupBox4.Location = New System.Drawing.Point(9, 42)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(272, 62)
         Me.GroupBox4.TabIndex = 7
@@ -1324,12 +1313,11 @@ Partial Class Clientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1080, 733)
+        Me.ClientSize = New System.Drawing.Size(1080, 610)
         Me.Controls.Add(Me.BtActualizar)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.TCClientes)
         Me.Controls.Add(Me.Salir)
-        Me.Controls.Add(Me.BtnRestaurar)
         Me.Controls.Add(Me.BtnEliminar)
         Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnGuardar)
@@ -1374,7 +1362,6 @@ Partial Class Clientes
     Friend WithEvents BtnGuardar As Button
     Friend WithEvents BtnBuscar As Button
     Friend WithEvents BtnEliminar As Button
-    Friend WithEvents BtnRestaurar As Button
     Friend WithEvents Salir As Button
     Friend WithEvents TCClientes As TabControl
     Friend WithEvents TPFisicos As TabPage

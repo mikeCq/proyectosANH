@@ -756,7 +756,5 @@ Public Class Clientes
             Close()
 
         End If
-
-
     End Sub
 End Class
