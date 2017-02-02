@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class ReporteSilos
+Public Class RPTTotalContratado
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class ReporteSilos
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "ReporteSilos.rpt"
+            Return "RPTTotalContratado.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class ReporteSilos
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "Maiz.ReporteSilos.rpt"
+            Return "Maiz.RPTTotalContratado.rpt"
         End Get
         Set
             'Do nothing
@@ -86,7 +86,7 @@ Public Class ReporteSilos
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Section5() As CrystalDecisions.CrystalReports.Engine.Section
+    Public ReadOnly Property ReportFooterSection1() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(4)
         End Get
@@ -94,47 +94,15 @@ Public Class ReporteSilos
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_idAcopio() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Section5() As CrystalDecisions.CrystalReports.Engine.Section
         Get
-            Return Me.DataDefinition.ParameterFields(0)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_idAlmacen() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(1)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_IdTipo() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(2)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_FechaInicio() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(3)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_FechaFinal() As CrystalDecisions.[Shared].IParameterField
-        Get
-            Return Me.DataDefinition.ParameterFields(4)
+            Return Me.ReportDefinition.Sections(5)
         End Get
     End Property
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedReporteSilos
+Public Class CachedRPTTotalContratado
     Inherits Component
     Implements ICachedReport
     
@@ -176,7 +144,7 @@ Public Class CachedReporteSilos
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As ReporteSilos = New ReporteSilos()
+        Dim rpt As RPTTotalContratado = New RPTTotalContratado()
         rpt.Site = Me.Site
         Return rpt
     End Function

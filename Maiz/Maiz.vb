@@ -111,7 +111,7 @@ Public Class Maiz
         ReporteProductores.ShowDialog()
     End Sub
     Private Sub ContratosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContratosToolStripMenuItem.Click
-        ReporteContratos.ShowDialog()
+        ReporteTotalContratos.ShowDialog()
     End Sub
     Private Sub LotesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LotesToolStripMenuItem.Click
         ReporteLotes.ShowDialog()
@@ -143,12 +143,9 @@ Public Class Maiz
     Private Sub EntradasGlobalesPorProductorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EntradasGlobalesPorProductorToolStripMenuItem.Click
         ReporteEntradasGlobalXprod.ShowDialog()
     End Sub
-    Private Sub EstatusDeContratosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EstatusDeContratosToolStripMenuItem.Click
-        ReporteEstatusContrato.ShowDialog()
-    End Sub
-    Private Sub BoletasPorSilosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BoletasPorSilosToolStripMenuItem.Click
-        ReporteSilos.ShowDialog()
-    End Sub
+    'Private Sub BoletasPorSilosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BoletasPorSilosToolStripMenuItem.Click
+    '    ReporteSilos.ShowDialog()
+    'End Sub
     Private Sub AutorizacionDiariaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutorizacionDiariaToolStripMenuItem.Click
         VarGlob.idUsAutoriza = SbIdUsuario.Text
         AutorizacionDiaria.Show()
@@ -167,5 +164,12 @@ Public Class Maiz
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click, MyBase.FormClosing
         SqlConnection.ClearAllPools()
         Me.Close()
+    End Sub
+
+    Private Sub EstatusDeContratosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EstatusDeContratosToolStripMenuItem1.Click
+        ReporteEstatusContrato.ShowDialog()
+    End Sub
+    Private Sub TotalContratadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TotalContratadoToolStripMenuItem.Click
+        ReporteTotalContratos.ShowDialog()
     End Sub
 End Class

@@ -61,7 +61,9 @@ Partial Class Maiz
         Me.LiquidacionesCalculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComprasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EstatusDeContratosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContratosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TotalContratadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EstatusDeContratosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UtileriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnlaceABaseDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AutorizacionDiariaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -243,7 +245,7 @@ Partial Class Maiz
         '
         'ReportesToolStripMenuItem
         '
-        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductoresToolStripMenuItem, Me.ContratosToolStripMenuItem, Me.LotesToolStripMenuItem, Me.ToolStripSeparator2, Me.EntradasToolStripMenuItem, Me.EntradasGlobalesPorProductorToolStripMenuItem, Me.SalidasToolStripMenuItem, Me.EmbarquesToolStripMenuItem, Me.EmbarquesPorClienteToolStripMenuItem, Me.ToolStripSeparator3, Me.LiquidacionesCalculosToolStripMenuItem, Me.VentasToolStripMenuItem1, Me.ComprasToolStripMenuItem1, Me.EstatusDeContratosToolStripMenuItem})
+        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductoresToolStripMenuItem, Me.ContratosToolStripMenuItem, Me.LotesToolStripMenuItem, Me.ToolStripSeparator2, Me.EntradasToolStripMenuItem, Me.EntradasGlobalesPorProductorToolStripMenuItem, Me.SalidasToolStripMenuItem, Me.EmbarquesToolStripMenuItem, Me.EmbarquesPorClienteToolStripMenuItem, Me.ToolStripSeparator3, Me.LiquidacionesCalculosToolStripMenuItem, Me.VentasToolStripMenuItem1, Me.ComprasToolStripMenuItem1, Me.ContratosToolStripMenuItem1})
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
         Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
@@ -324,11 +326,24 @@ Partial Class Maiz
         Me.ComprasToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.ComprasToolStripMenuItem1.Text = "Compras"
         '
-        'EstatusDeContratosToolStripMenuItem
+        'ContratosToolStripMenuItem1
         '
-        Me.EstatusDeContratosToolStripMenuItem.Name = "EstatusDeContratosToolStripMenuItem"
-        Me.EstatusDeContratosToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.EstatusDeContratosToolStripMenuItem.Text = "Estatus de Contratos"
+        Me.ContratosToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TotalContratadoToolStripMenuItem, Me.EstatusDeContratosToolStripMenuItem1})
+        Me.ContratosToolStripMenuItem1.Name = "ContratosToolStripMenuItem1"
+        Me.ContratosToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
+        Me.ContratosToolStripMenuItem1.Text = "Contratos"
+        '
+        'TotalContratadoToolStripMenuItem
+        '
+        Me.TotalContratadoToolStripMenuItem.Name = "TotalContratadoToolStripMenuItem"
+        Me.TotalContratadoToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
+        Me.TotalContratadoToolStripMenuItem.Text = "Total Contratado"
+        '
+        'EstatusDeContratosToolStripMenuItem1
+        '
+        Me.EstatusDeContratosToolStripMenuItem1.Name = "EstatusDeContratosToolStripMenuItem1"
+        Me.EstatusDeContratosToolStripMenuItem1.Size = New System.Drawing.Size(199, 22)
+        Me.EstatusDeContratosToolStripMenuItem1.Text = "Estatus de Contratos"
         '
         'UtileriasToolStripMenuItem
         '
@@ -497,5 +512,7 @@ Partial Class Maiz
     Friend WithEvents SbIdUsuario As ToolStripStatusLabel
     Friend WithEvents CalculoDeLiquidaciónPorCompradorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EntradasGlobalesPorProductorToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EstatusDeContratosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ContratosToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents TotalContratadoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EstatusDeContratosToolStripMenuItem1 As ToolStripMenuItem
 End Class

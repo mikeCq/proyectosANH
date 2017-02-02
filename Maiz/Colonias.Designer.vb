@@ -25,9 +25,7 @@ Partial Class Colonias
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.BtnModificar = New System.Windows.Forms.Button()
-        Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
-        Me.BtnRestaurar = New System.Windows.Forms.Button()
         Me.BtnSalir = New System.Windows.Forms.Button()
         Me.GBColonias = New System.Windows.Forms.GroupBox()
         Me.NuMaxTon = New System.Windows.Forms.NumericUpDown()
@@ -50,7 +48,7 @@ Partial Class Colonias
         '
         Me.BtnNuevo.Location = New System.Drawing.Point(12, 2)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(75, 68)
+        Me.BtnNuevo.Size = New System.Drawing.Size(75, 35)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
@@ -59,7 +57,7 @@ Partial Class Colonias
         '
         Me.BtnGuardar.Location = New System.Drawing.Point(93, 2)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnGuardar.Size = New System.Drawing.Size(75, 35)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
@@ -68,43 +66,25 @@ Partial Class Colonias
         '
         Me.BtnModificar.Location = New System.Drawing.Point(174, 2)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnModificar.Size = New System.Drawing.Size(75, 35)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.UseVisualStyleBackColor = True
         '
-        'BtnBuscar
-        '
-        Me.BtnBuscar.Location = New System.Drawing.Point(255, 2)
-        Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(75, 68)
-        Me.BtnBuscar.TabIndex = 3
-        Me.BtnBuscar.Text = "Buscar"
-        Me.BtnBuscar.UseVisualStyleBackColor = True
-        '
         'BtnEliminar
         '
-        Me.BtnEliminar.Location = New System.Drawing.Point(336, 2)
+        Me.BtnEliminar.Location = New System.Drawing.Point(255, 2)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(75, 68)
+        Me.BtnEliminar.Size = New System.Drawing.Size(75, 35)
         Me.BtnEliminar.TabIndex = 4
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
         '
-        'BtnRestaurar
-        '
-        Me.BtnRestaurar.Location = New System.Drawing.Point(417, 2)
-        Me.BtnRestaurar.Name = "BtnRestaurar"
-        Me.BtnRestaurar.Size = New System.Drawing.Size(75, 68)
-        Me.BtnRestaurar.TabIndex = 5
-        Me.BtnRestaurar.Text = "Restaurar"
-        Me.BtnRestaurar.UseVisualStyleBackColor = True
-        '
         'BtnSalir
         '
-        Me.BtnSalir.Location = New System.Drawing.Point(498, 2)
+        Me.BtnSalir.Location = New System.Drawing.Point(336, 2)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(75, 68)
+        Me.BtnSalir.Size = New System.Drawing.Size(75, 35)
         Me.BtnSalir.TabIndex = 6
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.UseVisualStyleBackColor = True
@@ -121,9 +101,9 @@ Partial Class Colonias
         Me.GBColonias.Controls.Add(Me.Label3)
         Me.GBColonias.Controls.Add(Me.Label2)
         Me.GBColonias.Controls.Add(Me.Label1)
-        Me.GBColonias.Location = New System.Drawing.Point(12, 82)
+        Me.GBColonias.Location = New System.Drawing.Point(12, 43)
         Me.GBColonias.Name = "GBColonias"
-        Me.GBColonias.Size = New System.Drawing.Size(561, 148)
+        Me.GBColonias.Size = New System.Drawing.Size(561, 147)
         Me.GBColonias.TabIndex = 7
         Me.GBColonias.TabStop = False
         Me.GBColonias.Text = "Datos de la Colonia"
@@ -225,14 +205,14 @@ Partial Class Colonias
         Me.DgColonias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.DgColonias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgColonias.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.DgColonias.Location = New System.Drawing.Point(12, 236)
+        Me.DgColonias.Location = New System.Drawing.Point(12, 196)
         Me.DgColonias.MultiSelect = False
         Me.DgColonias.Name = "DgColonias"
         Me.DgColonias.ReadOnly = True
         Me.DgColonias.RowHeadersVisible = False
         Me.DgColonias.RowHeadersWidth = 40
         Me.DgColonias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgColonias.Size = New System.Drawing.Size(561, 154)
+        Me.DgColonias.Size = New System.Drawing.Size(561, 194)
         Me.DgColonias.TabIndex = 17
         '
         'Colonias
@@ -243,9 +223,7 @@ Partial Class Colonias
         Me.Controls.Add(Me.DgColonias)
         Me.Controls.Add(Me.GBColonias)
         Me.Controls.Add(Me.BtnSalir)
-        Me.Controls.Add(Me.BtnRestaurar)
         Me.Controls.Add(Me.BtnEliminar)
-        Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnModificar)
         Me.Controls.Add(Me.BtnGuardar)
         Me.Controls.Add(Me.BtnNuevo)
@@ -265,9 +243,7 @@ Partial Class Colonias
     Friend WithEvents BtnNuevo As Button
     Friend WithEvents BtnGuardar As Button
     Friend WithEvents BtnModificar As Button
-    Friend WithEvents BtnBuscar As Button
     Friend WithEvents BtnEliminar As Button
-    Friend WithEvents BtnRestaurar As Button
     Friend WithEvents BtnSalir As Button
     Friend WithEvents GBColonias As GroupBox
     Friend WithEvents TxDescripcion As TextBox

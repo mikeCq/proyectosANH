@@ -73,7 +73,7 @@ Public Class Compradores
                 cmd.Parameters.AddWithValue("@correo_electronico", TxCorreo.Text)
                 TxIdComprador.Text = cmd.Parameters("@Consecutivo").Value.ToString()
                 cmd.ExecuteNonQuery()
-                'controlBloqueo()
+                'controlBloqueo()               
             Catch ex As Exception
                 MsgBox("Error", MsgBoxStyle.Critical)
             End Try
@@ -212,6 +212,7 @@ Public Class Compradores
         TxCelular.Text = ""
         TxCorreo.Text = ""
         'controlBloqueo()
+        Desbloquear()
     End Sub
     Private Sub BtnModificar_Click(sender As Object, e As EventArgs) Handles BtnModificar.Click
         Dim opc As DialogResult = MessageBox.Show("¿Esta seguro de modificar los datos del registro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -224,5 +225,17 @@ Public Class Compradores
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
         Close()
+    End Sub
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+        If TxIdComprador.Text = "" Then
+            MessageBox.Show("No se ha seleccionado ningun registro", "Aviso")
+        Else
+            Dim cmd As New SqlCommand("Sp_EliminarComprador", cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add(New SqlClient.SqlParameter("@IdComprador", TxIdComprador.Text))
+            cmd.ExecuteNonQuery()
+            BtnNuevo_Click(sender, e)
+            MessageBox.Show("Registro eliminado con éxito", "Aviso")
+        End If
     End Sub
 End Class
