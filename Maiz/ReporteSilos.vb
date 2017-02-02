@@ -64,19 +64,19 @@ Public Class ReporteSilos
 
     Private Sub BtGenerarReporte_Click(sender As Object, e As EventArgs) Handles BtGenerarReporte.Click
         Try
-            Dim RptSilos As New RPTSilos
-            If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
-                RptSilos.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
-                RptSilos.SetParameterValue("@IdTipo", IIf(RbEntradas.Checked = True, "ENT", "SAL"))
-                RptSilos.SetParameterValue("@idAcopio", DTInicio.Value)
-                RptSilos.SetParameterValue("@idAlmacen", DTFinal.Value)
-                RptSilos.SetParameterValue("@FechaInicio", DTInicio.Value)
-                RptSilos.SetParameterValue("@FechaFinal", DTFinal.Value)
-                CrSilos.ReportSource = RptSilos
-            Else
-                MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final, ni la fecha final, menor que la fecha inicial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                limpiar()
-            End If
+            'Dim RptSilos As New RPTSilos
+            'If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
+            '    RptSilos.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
+            '    RptSilos.SetParameterValue("@IdTipo", IIf(RbEntradas.Checked = True, "ENT", "SAL"))
+            '    RptSilos.SetParameterValue("@idAcopio", DTInicio.Value)
+            '    RptSilos.SetParameterValue("@idAlmacen", DTFinal.Value)
+            '    RptSilos.SetParameterValue("@FechaInicio", DTInicio.Value)
+            '    RptSilos.SetParameterValue("@FechaFinal", DTFinal.Value)
+            '    CrSilos.ReportSource = RptSilos
+            'Else
+            '    MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final, ni la fecha final, menor que la fecha inicial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '    limpiar()
+            'End If
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

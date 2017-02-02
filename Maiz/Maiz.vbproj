@@ -27,7 +27,7 @@
     <PublisherName>Sistema De Control De Maiz</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>175</ApplicationRevision>
+    <ApplicationRevision>179</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -393,12 +393,6 @@
     <Compile Include="ReporteContratoIncompleto.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReporteTotalContratos.Designer.vb">
-      <DependentUpon>ReporteTotalContratos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ReporteTotalContratos.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ReporteEmbarquesXcliente.Designer.vb">
       <DependentUpon>ReporteEmbarquesXcliente.vb</DependentUpon>
     </Compile>
@@ -447,10 +441,22 @@
     <Compile Include="ReportesEntradas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteSilos.Designer.vb">
+      <DependentUpon>ReporteSilos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteSilos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReportesSalidas.Designer.vb">
       <DependentUpon>ReportesSalidas.vb</DependentUpon>
     </Compile>
     <Compile Include="ReportesSalidas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteTotalContratos.Designer.vb">
+      <DependentUpon>ReporteTotalContratos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteTotalContratos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReporteVentaResumen.Designer.vb">
@@ -549,16 +555,16 @@
       <DependentUpon>RptComprasXproductor.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="RPT\RPTTotalContratado.vb">
-      <DependentUpon>RPTTotalContratado.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="RPT\RPTEstatusContrato.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RPTEstatusContrato.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\RPTTotalContratado1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTTotalContratado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RPT\RptVentaResumen.vb">
@@ -762,9 +768,6 @@
     <EmbeddedResource Include="ReporteContratoIncompleto.resx">
       <DependentUpon>ReporteContratoIncompleto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteTotalContratos.resx">
-      <DependentUpon>ReporteTotalContratos.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReporteEmbarquesXcliente.resx">
       <DependentUpon>ReporteEmbarquesXcliente.vb</DependentUpon>
     </EmbeddedResource>
@@ -789,8 +792,14 @@
     <EmbeddedResource Include="ReportesEntradas.resx">
       <DependentUpon>ReportesEntradas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteSilos.resx">
+      <DependentUpon>ReporteSilos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportesSalidas.resx">
       <DependentUpon>ReportesSalidas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteTotalContratos.resx">
+      <DependentUpon>ReporteTotalContratos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteVentaResumen.resx">
       <DependentUpon>ReporteVentaResumen.vb</DependentUpon>
@@ -854,13 +863,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptComprasXproductor.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RPT\RPTTotalContratado.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPTTotalContratado.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="RPT\RPTEstatusContrato.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPTEstatusContrato.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RPTTotalContratado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPTTotalContratado1.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RPT\RptVentaResumen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
