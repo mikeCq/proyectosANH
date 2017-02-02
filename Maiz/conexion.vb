@@ -735,5 +735,23 @@ Module conexion
         End Try
         Return resultado
     End Function
+    Function generaCodigoColonia(ByVal codigoColonia As String) As String
+        Dim resultado As String = ""
+        Try
+            consulta = New SqlCommand("select max(substring(id_colonia,4,7)) as id_colonia from Colonias", cnn)
+            respuesta = consulta.ExecuteReader
+            If respuesta.Read Then
+                If respuesta.Item("id_colonia") Is DBNull.Value Then
+                    resultado = "COL" & Format(1, "000000#")
+                Else
+                    resultado = "COL" & (Format(respuesta.Item("id_colonia") + 1, "000000#"))
+                End If
+            End If
+            respuesta.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return resultado
+    End Function
 End Module
 
