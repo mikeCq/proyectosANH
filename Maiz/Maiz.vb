@@ -146,6 +146,9 @@ Public Class Maiz
     Private Sub EstatusDeContratosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EstatusDeContratosToolStripMenuItem.Click
         ReporteEstatusContrato.ShowDialog()
     End Sub
+    Private Sub BoletasPorSilosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BoletasPorSilosToolStripMenuItem.Click
+        ReporteSilos.ShowDialog()
+    End Sub
     Private Sub AutorizacionDiariaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutorizacionDiariaToolStripMenuItem.Click
         VarGlob.idUsAutoriza = SbIdUsuario.Text
         AutorizacionDiaria.Show()
@@ -165,5 +168,4 @@ Public Class Maiz
         SqlConnection.ClearAllPools()
         Me.Close()
     End Sub
-
 End Class

@@ -27,7 +27,7 @@
     <PublisherName>Sistema De Control De Maiz</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>162</ApplicationRevision>
+    <ApplicationRevision>175</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -447,6 +447,12 @@
     <Compile Include="ReportesEntradas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteSilos.Designer.vb">
+      <DependentUpon>ReporteSilos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteSilos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReportesSalidas.Designer.vb">
       <DependentUpon>ReportesSalidas.vb</DependentUpon>
     </Compile>
@@ -542,6 +548,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteSalidas.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RPT\ReporteSilos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteSilos.rpt</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="RPT\RptComprasXproductor.vb">
       <AutoGen>True</AutoGen>
@@ -783,6 +795,9 @@
     <EmbeddedResource Include="ReportesEntradas.resx">
       <DependentUpon>ReportesEntradas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteSilos.resx">
+      <DependentUpon>ReporteSilos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportesSalidas.resx">
       <DependentUpon>ReportesSalidas.vb</DependentUpon>
     </EmbeddedResource>
@@ -843,6 +858,10 @@
     <EmbeddedResource Include="RPT\ReporteSalidas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteSalidas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\ReporteSilos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteSilos.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RPT\RptComprasXproductor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -929,12 +948,12 @@
   <ItemGroup>
     <PublishFile Include="log4net">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
