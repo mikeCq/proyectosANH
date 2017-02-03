@@ -11,7 +11,7 @@ Public Class ReporteEstatusContrato
             MessageBox.Show("Seleccione un estatus.", "Aviso")
         Else
             RPTEstatusContrato.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
-            'RPTEstatusContrato.SetParameterValue("@IdCliente", IIf(CBComprador.SelectedValue = Nothing, "", CBEstatusContrato.SelectedValue))
+            'RPTEstatusContrato.SetParameterValue("@IdCliente", IIf(CBEstatusContrato.SelectedValue = Nothing, "", CBEstatusContrato.SelectedValue))
             RPTEstatusContrato.SetParameterValue("@IdEstatus", CBEstatusContrato.SelectedValue)
             CREstatusContrato.ReportSource = RPTEstatusContrato
         End If
