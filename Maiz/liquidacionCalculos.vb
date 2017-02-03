@@ -21,11 +21,13 @@ Public Class liquidacionCalculosProd
     Private Sub HabilitaModificar()
         TxTipoCambioLiquidado.Enabled = True
         CbMonedaLiquidado.Enabled = True
+        CbCompradorLiquidado.Enabled = True
     End Sub
     Private Sub DeshabilitaModificar()
         BtModificar.Enabled = False
         TxTipoCambioLiquidado.Enabled = False
         CbMonedaLiquidado.Enabled = False
+        CbCompradorLiquidado.Enabled = False
     End Sub
     Private Sub BtNuevo_Click(sender As Object, e As EventArgs) Handles BtNuevo.Click
         Nuevo()
@@ -310,6 +312,15 @@ Public Class liquidacionCalculosProd
         DgLiquidacionesXTotal.Columns("Nombre_Comprador").HeaderText = "Comprador"
         DgLiquidacionesXTotal.Columns("totalliquidacionContrato").DefaultCellStyle.Format = "###,##0.000"
         DgLiquidacionesXTotal.Columns("importeTotal").DefaultCellStyle.Format = "###,##0.00"
+
+        DgLiquidacionesXTotal.Columns("grupoGrano").ReadOnly = True
+        DgLiquidacionesXTotal.Columns("fechaliquidacion").ReadOnly = True
+        DgLiquidacionesXTotal.Columns("totalliquidacionContrato").ReadOnly = True
+        DgLiquidacionesXTotal.Columns("importeTotal").ReadOnly = True
+        DgLiquidacionesXTotal.Columns("contrato").ReadOnly = True
+        DgLiquidacionesXTotal.Columns("Nombre_Comprador").ReadOnly = True
+        DgLiquidacionesXTotal.Columns("totalliquidacionContrato").ReadOnly = True
+        DgLiquidacionesXTotal.Columns("importeTotal").ReadOnly = True
     End Sub
     Private Sub propiedadesDgLiquidacionesXBoleta()
         DgLiquidacionesXBoleta.Columns("idLiquidacionP").Visible = False
@@ -417,13 +428,16 @@ Public Class liquidacionCalculosProd
         If DgEntradasLiq.RowCount = 0 Then
             MessageBox.Show("No hay datos para guardar.")
             Exit Sub
-        ElseIf CbComprador.SelectedValue Is Nothing Or CbComprador.Text = "" Then
+        ElseIf (CbComprador.SelectedValue Is Nothing Or CbComprador.Text = "") And TbLiquidacionXProd.SelectedIndex = 0 Then
             MessageBox.Show("Verifica campos en blanco.")
             Exit Sub
+        ElseIf TbLiquidacionXProd.SelectedIndex = 1 And modifica = 1 Then
+            ActualizaLiquidacion()
+            CargaBoletasliquidadas()
         ElseIf RbContrato.Checked = True And NuTotalLiquidar.Value > NuToneladasRestante.Value Then
             MessageBox.Show("La cantidad a liquidar es mayor al restante del contrato.")
             Exit Sub
-        ElseIf NuTonSeleccion.Value = NuTotalLiquidar.Value Then
+        ElseIf NuTonSeleccion.Value = NuTotalLiquidar.Value And modifica = 0 Then
             IdLiquidacionTotal = ""
             Dim Contador As Integer
             IdLiquidacionTotal = generaCodigoLiquidacionT(IdLiquidacionTotal)
@@ -579,6 +593,29 @@ Public Class liquidacionCalculosProd
             HabilitaModificar()
         End If
     End Sub
+    Private Sub ActualizaLiquidacion()
+        Dim TipoCambio, precioXTonMn, ImporteMn As Double
+        TipoCambio = CDbl(IIf(TxTipoCambioLiquidado.Text = "", 0, TxTipoCambioLiquidado.Text))
+        precioXTonMn = TxPrecioXtonLiquidado.Text
+        ImporteMn = CDbl(TxImporteLiquidado.Text)
+        Dim cmd As New SqlCommand("sp_ActLiquidacionPorProductor", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+
+        cmd.Parameters.AddWithValue("@idliquidacionT", CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value))
+        cmd.Parameters.AddWithValue("@totalliquidacion", NuTotalLiquidado.Value / 1000)
+        cmd.Parameters.AddWithValue("@tipodecambio", TipoCambio)
+        cmd.Parameters.AddWithValue("@precioContrato", NuPrecioContratoLiquidado.Value)
+        cmd.Parameters.AddWithValue("@moneda", CbMonedaLiquidado.SelectedValue)
+        cmd.Parameters.AddWithValue("@precioPorToneladaMxn", precioXTonMn)
+        cmd.Parameters.AddWithValue("@importeTotal", ImporteMn)
+        cmd.Parameters.AddWithValue("@importeLetra", UCase(letras(ImporteMn)))
+        cmd.Parameters.AddWithValue("@idComprador", CbCompradorLiquidado.SelectedValue)
+        cmd.ExecuteNonQuery()
+
+        DeshabilitaModificar()
+        modifica = 0
+    End Sub
     Private Sub Imprimir()
         If TpBoletasXliquidar.Focus = True Then
             If DgSeleccionLiquidaciones.RowCount = 0 Then
@@ -673,6 +710,9 @@ Public Class liquidacionCalculosProd
         PuestosAcumulados = 0
     End Sub
     Private Sub BoletasLiquidadas(sender As Object, e As EventArgs) Handles DgLiquidacionesXTotal.DoubleClick
+        CargaBoletasliquidadas()
+    End Sub
+    Private Sub CargaBoletasliquidadas()
         DgLiquidacionesXBoleta.Columns.Clear()
         DgLiquidacionesXBoleta.DataSource = Nothing
 
@@ -727,6 +767,7 @@ Public Class liquidacionCalculosProd
 
         End If
     End Sub
+
     Private Sub ContratoOlibre(sender As Object, e As EventArgs) Handles RbContrato.CheckedChanged ', RbLibre.CheckedChanged        
         If RbLibre.Checked = True Then
             TxTipoCambio.Enabled = False
