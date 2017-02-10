@@ -161,7 +161,7 @@ Public Class Maiz
             e.Cancel = True
         End If
     End Sub
-    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click, MyBase.FormClosing
         SqlConnection.ClearAllPools()
         Me.Close()
     End Sub
@@ -171,5 +171,9 @@ Public Class Maiz
     End Sub
     Private Sub TotalContratadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TotalContratadoToolStripMenuItem.Click
         ReporteTotalContratos.ShowDialog()
+    End Sub
+
+    Private Sub ReporteSilosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReporteSilosToolStripMenuItem.Click
+        ReporteSilos.ShowDialog()
     End Sub
 End Class

@@ -561,6 +561,12 @@
       <DependentUpon>RPTEstatusContrato.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RPT\RPTSilos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTSilos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RPT\RPTTotalContratado1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -866,6 +872,10 @@
     <EmbeddedResource Include="RPT\RPTEstatusContrato.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPTEstatusContrato.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RPTSilos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPTSilos.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RPT\RPTTotalContratado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -77,6 +77,7 @@ Partial Class Maiz
         Me.SbNombreUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbIdUsuario = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ReporteSilosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -245,7 +246,7 @@ Partial Class Maiz
         '
         'ReportesToolStripMenuItem
         '
-        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductoresToolStripMenuItem, Me.ContratosToolStripMenuItem, Me.LotesToolStripMenuItem, Me.ToolStripSeparator2, Me.EntradasToolStripMenuItem, Me.EntradasGlobalesPorProductorToolStripMenuItem, Me.SalidasToolStripMenuItem, Me.EmbarquesToolStripMenuItem, Me.EmbarquesPorClienteToolStripMenuItem, Me.ToolStripSeparator3, Me.LiquidacionesCalculosToolStripMenuItem, Me.VentasToolStripMenuItem1, Me.ComprasToolStripMenuItem1, Me.ContratosToolStripMenuItem1})
+        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductoresToolStripMenuItem, Me.ContratosToolStripMenuItem, Me.LotesToolStripMenuItem, Me.ToolStripSeparator2, Me.EntradasToolStripMenuItem, Me.EntradasGlobalesPorProductorToolStripMenuItem, Me.SalidasToolStripMenuItem, Me.EmbarquesToolStripMenuItem, Me.EmbarquesPorClienteToolStripMenuItem, Me.ReporteSilosToolStripMenuItem, Me.ToolStripSeparator3, Me.LiquidacionesCalculosToolStripMenuItem, Me.VentasToolStripMenuItem1, Me.ComprasToolStripMenuItem1, Me.ContratosToolStripMenuItem1})
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
         Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
@@ -432,6 +433,12 @@ Partial Class Maiz
         Me.SbIdUsuario.Text = "idUsuario"
         Me.SbIdUsuario.Visible = False
         '
+        'ReporteSilosToolStripMenuItem
+        '
+        Me.ReporteSilosToolStripMenuItem.Name = "ReporteSilosToolStripMenuItem"
+        Me.ReporteSilosToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.ReporteSilosToolStripMenuItem.Text = "Reporte Silos"
+        '
         'Maiz
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -515,4 +522,5 @@ Partial Class Maiz
     Friend WithEvents ContratosToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents TotalContratadoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EstatusDeContratosToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ReporteSilosToolStripMenuItem As ToolStripMenuItem
 End Class
