@@ -97,6 +97,7 @@ Partial Class ReporteSilos
         'CbAlmacen
         '
         Me.CbAlmacen.FormattingEnabled = True
+        Me.CbAlmacen.Items.AddRange(New Object() {"ALM00004"})
         Me.CbAlmacen.Location = New System.Drawing.Point(115, 127)
         Me.CbAlmacen.Name = "CbAlmacen"
         Me.CbAlmacen.Size = New System.Drawing.Size(239, 21)
@@ -115,6 +116,7 @@ Partial Class ReporteSilos
         'CbAcopio
         '
         Me.CbAcopio.FormattingEnabled = True
+        Me.CbAcopio.Items.AddRange(New Object() {"ACO00001"})
         Me.CbAcopio.Location = New System.Drawing.Point(115, 95)
         Me.CbAcopio.Name = "CbAcopio"
         Me.CbAcopio.Size = New System.Drawing.Size(239, 21)
@@ -136,7 +138,7 @@ Partial Class ReporteSilos
         Me.DTFinal.Name = "DTFinal"
         Me.DTFinal.Size = New System.Drawing.Size(97, 20)
         Me.DTFinal.TabIndex = 3
-        Me.DTFinal.Value = New Date(2000, 1, 1, 0, 0, 0, 0)
+        Me.DTFinal.Value = New Date(2016, 1, 1, 0, 0, 0, 0)
         '
         'DTInicio
         '
@@ -145,7 +147,7 @@ Partial Class ReporteSilos
         Me.DTInicio.Name = "DTInicio"
         Me.DTInicio.Size = New System.Drawing.Size(97, 20)
         Me.DTInicio.TabIndex = 2
-        Me.DTInicio.Value = New Date(2000, 1, 1, 0, 0, 0, 0)
+        Me.DTInicio.Value = New Date(2016, 1, 1, 0, 0, 0, 0)
         '
         'Label3
         '
