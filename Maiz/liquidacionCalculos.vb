@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data.Sql
+Imports System.IO.Directory
 Public Class liquidacionCalculosProd
     Dim IdLiquidacionTotal As String
     Dim PrecioContrato As Double

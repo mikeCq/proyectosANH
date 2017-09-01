@@ -27,7 +27,7 @@
     <PublisherName>Sistema De Control De Maiz</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>181</ApplicationRevision>
+    <ApplicationRevision>184</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -77,13 +77,16 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Maiz.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
@@ -276,6 +279,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="conexion.vb" />
+    <Compile Include="ConexionBDD.Designer.vb">
+      <DependentUpon>ConexionBDD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConexionBDD.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ContratosCompras.Designer.vb">
       <DependentUpon>ContratosCompras.vb</DependentUpon>
     </Compile>
@@ -305,6 +314,14 @@
     </Compile>
     <Compile Include="ControlSalidas.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DSReportes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSReportes.vb">
+      <DependentUpon>DSReportes.xsd</DependentUpon>
     </Compile>
     <Compile Include="Empresas.Designer.vb">
       <DependentUpon>Empresas.vb</DependentUpon>
@@ -415,6 +432,12 @@
       <DependentUpon>ReporteLotes.vb</DependentUpon>
     </Compile>
     <Compile Include="ReporteLotes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteORI.Designer.vb">
+      <DependentUpon>ReporteORI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteORI.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReporteProductores.Designer.vb">
@@ -717,6 +740,9 @@
     <EmbeddedResource Include="Conductores.resx">
       <DependentUpon>Conductores.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConexionBDD.resx">
+      <DependentUpon>ConexionBDD.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContratosCompras.resx">
       <DependentUpon>ContratosCompras.vb</DependentUpon>
     </EmbeddedResource>
@@ -785,6 +811,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteLotes.resx">
       <DependentUpon>ReporteLotes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteORI.resx">
+      <DependentUpon>ReporteORI.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteProductores.resx">
       <DependentUpon>ReporteProductores.vb</DependentUpon>
@@ -921,6 +950,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DSReportes.xsc">
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </None>
+    <None Include="DSReportes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReportes.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DSReportes.xss">
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </None>
     <None Include="Maiz_ClaveTemporal.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
@@ -981,6 +1021,15 @@
       <Guid>{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}</Guid>
       <VersionMajor>12</VersionMajor>
       <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>

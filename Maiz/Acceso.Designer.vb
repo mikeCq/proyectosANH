@@ -34,13 +34,15 @@ Partial Class Acceso
         Me.BtnAceptar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.CbBaseDatos = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxContraseña
         '
         Me.TxContraseña.CausesValidation = False
-        Me.TxContraseña.Location = New System.Drawing.Point(364, 142)
+        Me.TxContraseña.Location = New System.Drawing.Point(364, 124)
         Me.TxContraseña.MaxLength = 10
         Me.TxContraseña.Name = "TxContraseña"
         Me.TxContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -59,7 +61,7 @@ Partial Class Acceso
         'LbContraseña
         '
         Me.LbContraseña.AutoSize = True
-        Me.LbContraseña.Location = New System.Drawing.Point(213, 145)
+        Me.LbContraseña.Location = New System.Drawing.Point(213, 127)
         Me.LbContraseña.Name = "LbContraseña"
         Me.LbContraseña.Size = New System.Drawing.Size(82, 16)
         Me.LbContraseña.TabIndex = 4
@@ -145,11 +147,30 @@ Partial Class Acceso
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "Cambiar Contraseña"
         '
+        'CbBaseDatos
+        '
+        Me.CbBaseDatos.FormattingEnabled = True
+        Me.CbBaseDatos.Location = New System.Drawing.Point(364, 156)
+        Me.CbBaseDatos.Name = "CbBaseDatos"
+        Me.CbBaseDatos.Size = New System.Drawing.Size(220, 24)
+        Me.CbBaseDatos.TabIndex = 12
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(212, 159)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(102, 16)
+        Me.Label3.TabIndex = 13
+        Me.Label3.Text = "Base de Datos :"
+        '
         'Acceso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(618, 325)
+        Me.Controls.Add(Me.CbBaseDatos)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BtnCancelar)
@@ -183,4 +204,6 @@ Partial Class Acceso
     Friend WithEvents TxUsuario As TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents CbBaseDatos As ComboBox
+    Friend WithEvents Label3 As Label
 End Class

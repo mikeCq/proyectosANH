@@ -64,9 +64,12 @@ Partial Class Maiz
         Me.ContratosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TotalContratadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EstatusDeContratosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UtileriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnlaceABaseDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AutorizacionDiariaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualDeUusarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -77,7 +80,10 @@ Partial Class Maiz
         Me.SbNombreUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbIdUsuario = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ReporteSilosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CrearNuevaBDDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TsBdd = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -246,7 +252,7 @@ Partial Class Maiz
         '
         'ReportesToolStripMenuItem
         '
-        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductoresToolStripMenuItem, Me.ContratosToolStripMenuItem, Me.LotesToolStripMenuItem, Me.ToolStripSeparator2, Me.EntradasToolStripMenuItem, Me.EntradasGlobalesPorProductorToolStripMenuItem, Me.SalidasToolStripMenuItem, Me.EmbarquesToolStripMenuItem, Me.EmbarquesPorClienteToolStripMenuItem, Me.ReporteSilosToolStripMenuItem, Me.ToolStripSeparator3, Me.LiquidacionesCalculosToolStripMenuItem, Me.VentasToolStripMenuItem1, Me.ComprasToolStripMenuItem1, Me.ContratosToolStripMenuItem1})
+        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductoresToolStripMenuItem, Me.ContratosToolStripMenuItem, Me.LotesToolStripMenuItem, Me.ToolStripSeparator2, Me.EntradasToolStripMenuItem, Me.EntradasGlobalesPorProductorToolStripMenuItem, Me.SalidasToolStripMenuItem, Me.EmbarquesToolStripMenuItem, Me.EmbarquesPorClienteToolStripMenuItem, Me.ToolStripSeparator3, Me.LiquidacionesCalculosToolStripMenuItem, Me.VentasToolStripMenuItem1, Me.ComprasToolStripMenuItem1, Me.ContratosToolStripMenuItem1, Me.ToolStripSeparator4, Me.ToolStripMenuItem2})
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
         Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
@@ -346,9 +352,20 @@ Partial Class Maiz
         Me.EstatusDeContratosToolStripMenuItem1.Size = New System.Drawing.Size(199, 22)
         Me.EstatusDeContratosToolStripMenuItem1.Text = "Estatus de Contratos"
         '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(262, 6)
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(265, 22)
+        Me.ToolStripMenuItem2.Text = "Reporte ORI"
+        '
         'UtileriasToolStripMenuItem
         '
-        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem})
+        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem})
         Me.UtileriasToolStripMenuItem.Name = "UtileriasToolStripMenuItem"
         Me.UtileriasToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
         Me.UtileriasToolStripMenuItem.Text = "Utilerias"
@@ -364,6 +381,12 @@ Partial Class Maiz
         Me.AutorizacionDiariaToolStripMenuItem.Name = "AutorizacionDiariaToolStripMenuItem"
         Me.AutorizacionDiariaToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
         Me.AutorizacionDiariaToolStripMenuItem.Text = "Autorizacion Diaria"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(185, 22)
+        Me.ToolStripMenuItem3.Text = "Conexion BDD"
         '
         'AyudaToolStripMenuItem
         '
@@ -393,7 +416,7 @@ Partial Class Maiz
         'SsUsuario
         '
         Me.SsUsuario.BackColor = System.Drawing.Color.Gray
-        Me.SsUsuario.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SbTipoUsuario, Me.TsSeparador, Me.SbNombreUsuario, Me.SbUsuario, Me.SbIdUsuario})
+        Me.SsUsuario.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TsBdd, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel1, Me.SbTipoUsuario, Me.TsSeparador, Me.SbNombreUsuario, Me.SbUsuario, Me.SbIdUsuario})
         Me.SsUsuario.Location = New System.Drawing.Point(0, 728)
         Me.SsUsuario.Name = "SsUsuario"
         Me.SsUsuario.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -433,11 +456,29 @@ Partial Class Maiz
         Me.SbIdUsuario.Text = "idUsuario"
         Me.SbIdUsuario.Visible = False
         '
-        'ReporteSilosToolStripMenuItem
+        'CrearNuevaBDDToolStripMenuItem
         '
-        Me.ReporteSilosToolStripMenuItem.Name = "ReporteSilosToolStripMenuItem"
-        Me.ReporteSilosToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.ReporteSilosToolStripMenuItem.Text = "Reporte Silos"
+        Me.CrearNuevaBDDToolStripMenuItem.Name = "CrearNuevaBDDToolStripMenuItem"
+        Me.CrearNuevaBDDToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
+        Me.CrearNuevaBDDToolStripMenuItem.Text = "Crear nueva BDD"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(94, 17)
+        Me.ToolStripStatusLabel1.Text = "|                           |"
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(96, 17)
+        Me.ToolStripStatusLabel2.Text = ": BASE DE DATOS"
+        '
+        'TsBdd
+        '
+        Me.TsBdd.Name = "TsBdd"
+        Me.TsBdd.Size = New System.Drawing.Size(28, 17)
+        Me.TsBdd.Text = "Bdd"
         '
         'Maiz
         '
@@ -522,5 +563,11 @@ Partial Class Maiz
     Friend WithEvents ContratosToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents TotalContratadoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EstatusDeContratosToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents ReporteSilosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
+    Friend WithEvents CrearNuevaBDDToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TsBdd As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
 End Class

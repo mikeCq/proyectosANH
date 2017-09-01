@@ -32,6 +32,7 @@ Public Class Maiz
         SbNombreUsuario.Text = CStr(row("Nombre"))
         SbTipoUsuario.Text = CStr(row("Nombre_TipoUsuario"))
         SbIdUsuario.Text = CStr(row("id_usuario"))
+        TsBdd.Text = Acceso.BaseDatos
 
         If CStr(row("id_tipoUsuario")) = 2 Or CStr(row("id_tipoUsuario")) = 3 Then
             UsuariosToolStripMenuItem.Enabled = False
@@ -146,9 +147,23 @@ Public Class Maiz
     'Private Sub BoletasPorSilosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BoletasPorSilosToolStripMenuItem.Click
     '    ReporteSilos.ShowDialog()
     'End Sub
+    Private Sub EstatusDeContratosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EstatusDeContratosToolStripMenuItem1.Click
+        ReporteEstatusContrato.ShowDialog()
+    End Sub
+    Private Sub TotalContratadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TotalContratadoToolStripMenuItem.Click
+        ReporteTotalContratos.ShowDialog()
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        ReporteORI.Show()
+    End Sub
     Private Sub AutorizacionDiariaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutorizacionDiariaToolStripMenuItem.Click
         VarGlob.idUsAutoriza = SbIdUsuario.Text
         AutorizacionDiaria.Show()
+    End Sub
+    Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
+        ConexionBDD.ShowDialog()
+        TsBdd.Text = ConexionBDD.BaseDatos
     End Sub
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
@@ -166,14 +181,5 @@ Public Class Maiz
         Me.Close()
     End Sub
 
-    Private Sub EstatusDeContratosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EstatusDeContratosToolStripMenuItem1.Click
-        ReporteEstatusContrato.ShowDialog()
-    End Sub
-    Private Sub TotalContratadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TotalContratadoToolStripMenuItem.Click
-        ReporteTotalContratos.ShowDialog()
-    End Sub
 
-    Private Sub ReporteSilosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReporteSilosToolStripMenuItem.Click
-        ReporteSilos.ShowDialog()
-    End Sub
 End Class

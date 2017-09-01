@@ -331,6 +331,9 @@ Public Class ControlEntradas
         End If
     End Sub
     Private Sub CbNombre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbNombre.SelectionChangeCommitted
+        CargaComboContratos()
+    End Sub
+    Private Sub CargaComboContratos()
         Dim da As SqlDataAdapter
         Dim ds As DataSet
         Dim cmd As New SqlCommand("Sp_LisConCli", cnn)
@@ -411,6 +414,7 @@ Public Class ControlEntradas
                         Fase1.Parameters.AddWithValue("@fechaPesaje", DTPEntradas.Text)
                         Fase1.Parameters.AddWithValue("@bruto", (CDbl(TxBruto.Text) / 1000))
                         Fase1.Parameters.AddWithValue("@conductorCam", UCase(CBConductor.Text))
+                        Fase1.Parameters.AddWithValue("@IdContrato", CbIdContrato.SelectedValue)
                         Fase1.Parameters.AddWithValue("@placasConductor", UCase(TxPlacas.Text))
                         Fase1.Parameters.AddWithValue("@Estado", 0)
 
@@ -452,11 +456,12 @@ Public Class ControlEntradas
                     End Try
                 End If
             ElseIf TxFolio.Text <> "" And Val(TxTotal.Text) > 0 And CbAnalista.Text <> "" Then
+                Dim NetoAton As Double = CDbl(TxNeto.Text) / 1000
                 If Val(TxTara.Text) = 0 Or Val(TxTara.Text) = 0 Or CbAcopio.SelectedValue = "" Or CbAlmacen.SelectedValue = "" Then
 
                     MessageBox.Show("Verifica campos vacios", "Aviso")
 
-                ElseIf ((Val(TxNeto.Text) / 1000) + Val(LbToneladas.Text)) > Val(LbCapacidad.Text) Then
+                ElseIf (NetoAton + CDbl(LbToneladas.Text)) > CDbl(LbCapacidad.Text) Then
                     MessageBox.Show("La entrada excede las capacidades del Silo")
                 Else
                     CompruebaToneladasEntradas(compruebaEntradas)
@@ -680,6 +685,7 @@ Public Class ControlEntradas
         DgBoletaIngresada.Columns("Bruto").DefaultCellStyle.Format = "#,###,##0.00"
         DgBoletaIngresada.Columns("Tara").DefaultCellStyle.Format = "#,###,##0.00"
         DgBoletaIngresada.Columns("Neto").DefaultCellStyle.Format = "#,###,##0.00"
+        DgBoletaIngresada.Columns("Fecha_Pesaje").DefaultCellStyle.Format = "dd/MM/yyyy"
     End Sub
     Private Sub seleccionarAlmacenXacopio() Handles CbAcopio.SelectionChangeCommitted
 
@@ -876,6 +882,7 @@ Public Class ControlEntradas
             CbLugarExp.Text = CStr(row("LugarExpedicion"))
             TipoGrano = CStr(row("GRUPOGRANO"))
             DTPEntradas.Value = row("Fecha_Pesaje")
+            CargaComboContratos()
             TxBruto.Text = FormatNumber(CStr((row("Bruto") * 1000)), 0)
             TxTara.Text = FormatNumber(CStr((row("Tara") * 1000)), 0)
             TxNeto.Text = FormatNumber(CStr((row("Neto") * 1000)), 0)

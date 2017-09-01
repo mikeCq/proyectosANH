@@ -1,9 +1,18 @@
 ﻿Imports System.Data.SqlClient
 Public Class Acceso
     Private Sub Acceso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        abrir()
-
+        abrirmaster()
+        llenaComboBDD()
     End Sub
+    Private _conUsu As String
+    Public Property ConUsu() As String
+        Get
+            Return _conUsu
+        End Get
+        Set(value As String)
+            _conUsu = value
+        End Set
+    End Property
 
     Private _codUsuario As String
     Public Property CodUsuario() As String
@@ -14,7 +23,20 @@ Public Class Acceso
             _codUsuario = value
         End Set
     End Property
+    Private _baseDatos As String
+    Public Property BaseDatos() As String
+        Get
+            Return _baseDatos
+        End Get
+        Set(value As String)
+            _baseDatos = value
+        End Set
+    End Property
     Private Sub BtnAceptar_Click(sender As Object, e As EventArgs) Handles BtnAceptar.Click
+        cerrarMaster()
+        _conUsu = CbBaseDatos.Text
+        _baseDatos = CbBaseDatos.Text
+        abrirPrincipal()
         Try
             If usuarioRegistrado(TxUsuario.Text) = True Then
                 Dim contra As String = clave(TxUsuario.Text)
@@ -37,6 +59,10 @@ Public Class Acceso
     End Sub
     Private Sub TxContraseña_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxContraseña.KeyDown
         If e.KeyCode = Keys.Enter Then
+            cerrarMaster()
+            _conUsu = CbBaseDatos.Text
+            _baseDatos = CbBaseDatos.Text
+            abrirPrincipal()
             Try
                 If usuarioRegistrado(TxUsuario.Text) = True Then
                     Dim contra As String = clave(TxUsuario.Text)
@@ -57,6 +83,18 @@ Public Class Acceso
                 MsgBox(ex.ToString)
             End Try
         End If
+    End Sub
+    Private Sub llenaComboBDD()
+        Dim cmd As String = "SELECT name, database_id FROM sys.databases where name like '%'+'MAIZ'+'%'"
+        Dim da As New SqlDataAdapter(cmd, cnnMaster)
+        Dim ds As New DataSet
+        da.Fill(ds)
+        With Me.CbBaseDatos
+            Me.CbBaseDatos.DataSource = ds.Tables(0)
+            Me.CbBaseDatos.DisplayMember = "name"
+            Me.CbBaseDatos.ValueMember = "database_id"
+            Me.CbBaseDatos.SelectedIndex = CbBaseDatos.Items.Count - 1
+        End With
     End Sub
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         CambiarContraseña.ShowDialog()

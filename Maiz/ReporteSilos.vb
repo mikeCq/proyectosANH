@@ -54,8 +54,8 @@ Public Class ReporteSilos
         CbAcopio.Text = ""
         CbAlmacen.SelectedIndex = -1
         CbAlmacen.Text = ""
-        DTInicio.Value = "01/01/2016"
-        DTFinal.Value = "01/01/2016"
+        DTInicio.Value = "01/01/2000"
+        DTFinal.Value = "01/01/2000"
     End Sub
 
     Private Sub Btlimpiar_Click(sender As Object, e As EventArgs) Handles Btlimpiar.Click
