@@ -54,6 +54,7 @@ Partial Class ReporteBoletasEmbarque
         Me.Controls.Add(Me.CrBoletaEmbarque)
         Me.Name = "ReporteBoletasEmbarque"
         Me.Text = "ReporteBoletasEmbarque"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

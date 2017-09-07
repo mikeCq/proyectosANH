@@ -53,7 +53,7 @@ Partial Class ReportesEntradas
         Me.Txpro = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtGenerarReporte = New System.Windows.Forms.Button()
-        Me.CbLote = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.CrEntradas = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer2.Panel1.SuspendLayout()
         Me.SplitContainer2.Panel2.SuspendLayout()
@@ -86,7 +86,7 @@ Partial Class ReportesEntradas
         '
         'SplitContainer2.Panel2
         '
-        Me.SplitContainer2.Panel2.Controls.Add(Me.CbLote)
+        Me.SplitContainer2.Panel2.Controls.Add(Me.CrEntradas)
         Me.SplitContainer2.Size = New System.Drawing.Size(1527, 863)
         Me.SplitContainer2.SplitterDistance = 404
         Me.SplitContainer2.TabIndex = 1
@@ -361,22 +361,22 @@ Partial Class ReportesEntradas
         Me.BtGenerarReporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.BtGenerarReporte.UseVisualStyleBackColor = True
         '
-        'CbLote
+        'CrEntradas
         '
-        Me.CbLote.ActiveViewIndex = -1
-        Me.CbLote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CbLote.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CbLote.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CbLote.Location = New System.Drawing.Point(0, 0)
-        Me.CbLote.Name = "CbLote"
-        Me.CbLote.ShowCloseButton = False
-        Me.CbLote.ShowGroupTreeButton = False
-        Me.CbLote.ShowLogo = False
-        Me.CbLote.ShowParameterPanelButton = False
-        Me.CbLote.ShowRefreshButton = False
-        Me.CbLote.Size = New System.Drawing.Size(1119, 863)
-        Me.CbLote.TabIndex = 0
-        Me.CbLote.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.CrEntradas.ActiveViewIndex = -1
+        Me.CrEntradas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CrEntradas.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CrEntradas.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrEntradas.Location = New System.Drawing.Point(0, 0)
+        Me.CrEntradas.Name = "CrEntradas"
+        Me.CrEntradas.ShowCloseButton = False
+        Me.CrEntradas.ShowGroupTreeButton = False
+        Me.CrEntradas.ShowLogo = False
+        Me.CrEntradas.ShowParameterPanelButton = False
+        Me.CrEntradas.ShowRefreshButton = False
+        Me.CrEntradas.Size = New System.Drawing.Size(1119, 863)
+        Me.CrEntradas.TabIndex = 0
+        Me.CrEntradas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'ReportesEntradas
         '
@@ -402,7 +402,7 @@ Partial Class ReportesEntradas
     Friend WithEvents SplitContainer2 As SplitContainer
     Friend WithEvents BtGenerarReporte As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents CbLote As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents CrEntradas As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents TxNumBoleta As TextBox
     Friend WithEvents Txpro As Label
     Friend WithEvents Label2 As Label

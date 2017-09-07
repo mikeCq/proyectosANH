@@ -54,6 +54,7 @@ Partial Class ReporteBoletasSalidas
         Me.Controls.Add(Me.CrBoletaSalida)
         Me.Name = "ReporteBoletasSalidas"
         Me.Text = "ReporteBoletasSalidas"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

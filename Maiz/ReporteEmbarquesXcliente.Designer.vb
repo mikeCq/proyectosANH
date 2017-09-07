@@ -385,6 +385,7 @@ Partial Class ReporteEmbarquesXcliente
         Me.Name = "ReporteEmbarquesXcliente"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "ReporteEmbarquesXcliente"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.SplitContainer2.Panel1.ResumeLayout(False)
         Me.SplitContainer2.Panel1.PerformLayout()
         Me.SplitContainer2.Panel2.ResumeLayout(False)

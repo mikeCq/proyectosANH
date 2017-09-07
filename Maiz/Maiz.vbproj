@@ -27,7 +27,7 @@
     <PublisherName>Sistema De Control De Maiz</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>184</ApplicationRevision>
+    <ApplicationRevision>187</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -961,7 +961,6 @@
     <None Include="DSReportes.xss">
       <DependentUpon>DSReportes.xsd</DependentUpon>
     </None>
-    <None Include="Maiz_ClaveTemporal.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

@@ -53,13 +53,52 @@ Public Class ReporteEmbarquesXcliente
         Try
             Dim RptEmbarques As New ReporteEmbarques
             If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
-                RptEmbarques.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
-                RptEmbarques.SetParameterValue("@numboleta", TxNumBoleta.Text)
-                RptEmbarques.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
-                RptEmbarques.SetParameterValue("@comprador", IIf(CbComprador.SelectedValue = Nothing, "", CbComprador.SelectedValue))
-                RptEmbarques.SetParameterValue("@fechaini", DTInicio.Value)
-                RptEmbarques.SetParameterValue("@fechafin", DTFinal.Value)
-                CREmbarques.ReportSource = RptEmbarques
+                Dim CrReport As ReporteEmbarques = New ReporteEmbarques
+
+                Dim da As New SqlCommand("sp_reporteEmbarques", cnn)
+                Dim Ruta As String = "\\192.168.10.30\docs_sistemas\RPT_MAIZ\ReporteEmbarques.rpt"
+                da.CommandType = CommandType.StoredProcedure
+                Dim NumBoleta As New SqlClient.SqlParameter()
+                NumBoleta.ParameterName = "@NumBoleta"
+                NumBoleta.SqlDbType = SqlDbType.NVarChar
+                NumBoleta.Value = TxNumBoleta.Text
+
+                Dim Productor As New SqlClient.SqlParameter()
+                Productor.ParameterName = "@Productor"
+                Productor.SqlDbType = SqlDbType.NVarChar
+                Productor.Value = IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue)
+
+                Dim comprador As New SqlClient.SqlParameter()
+                comprador.ParameterName = "@comprador"
+                comprador.SqlDbType = SqlDbType.NVarChar
+                comprador.Value = IIf(CbComprador.SelectedValue = Nothing, "", CbComprador.SelectedValue)
+
+                Dim FechaIni As New SqlClient.SqlParameter()
+                FechaIni.ParameterName = "@Fechaini"
+                FechaIni.SqlDbType = SqlDbType.Date
+                FechaIni.Value = DTInicio.Value
+
+                Dim FechaFin As New SqlClient.SqlParameter()
+                FechaFin.ParameterName = "@FechaFin"
+                FechaFin.SqlDbType = SqlDbType.Date
+                FechaFin.Value = DTFinal.Value
+
+                da.Parameters.Add(NumBoleta)
+                da.Parameters.Add(Productor)
+                da.Parameters.Add(comprador)
+                da.Parameters.Add(FechaIni)
+                da.Parameters.Add(FechaFin)
+
+                Dim dasp_ReporteBoletaEmbarque As New SqlClient.SqlDataAdapter()
+                dasp_ReporteBoletaEmbarque.SelectCommand = da
+                Dim ds As New DataTable
+                dasp_ReporteBoletaEmbarque.Fill(ds)
+
+                CrReport.Load(Ruta)
+
+                CrReport.SetDataSource(ds)
+
+                CREmbarques.ReportSource = CrReport
             Else
                 MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final, ni la fecha final, menor que la fecha inicial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 limpiarCampos()
@@ -73,13 +112,53 @@ Public Class ReporteEmbarquesXcliente
             Try
                 Dim RptEmbarques As New ReporteEmbarques
                 If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
-                    RptEmbarques.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
-                    RptEmbarques.SetParameterValue("@numboleta", TxNumBoleta.Text)
-                    RptEmbarques.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
-                    RptEmbarques.SetParameterValue("@comprador", IIf(CbComprador.SelectedValue = Nothing, "", CbComprador.SelectedValue))
-                    RptEmbarques.SetParameterValue("@fechaini", DTInicio.Value)
-                    RptEmbarques.SetParameterValue("@fechafin", DTFinal.Value)
-                    CREmbarques.ReportSource = RptEmbarques
+
+                    Dim CrReport As ReporteEmbarques = New ReporteEmbarques
+
+                    Dim da As New SqlCommand("sp_reporteEmbarques", cnn)
+                    Dim Ruta As String = "\\192.168.10.30\docs_sistemas\RPT_MAIZ\ReporteEmbarques.rpt"
+                    da.CommandType = CommandType.StoredProcedure
+                    Dim NumBoleta As New SqlClient.SqlParameter()
+                    NumBoleta.ParameterName = "@NumBoleta"
+                    NumBoleta.SqlDbType = SqlDbType.NVarChar
+                    NumBoleta.Value = TxNumBoleta.Text
+
+                    Dim Productor As New SqlClient.SqlParameter()
+                    Productor.ParameterName = "@Productor"
+                    Productor.SqlDbType = SqlDbType.NVarChar
+                    Productor.Value = IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue)
+
+                    Dim comprador As New SqlClient.SqlParameter()
+                    comprador.ParameterName = "@comprador"
+                    comprador.SqlDbType = SqlDbType.NVarChar
+                    comprador.Value = IIf(CbComprador.SelectedValue = Nothing, "", CbComprador.SelectedValue)
+
+                    Dim FechaIni As New SqlClient.SqlParameter()
+                    FechaIni.ParameterName = "@Fechaini"
+                    FechaIni.SqlDbType = SqlDbType.Date
+                    FechaIni.Value = DTInicio.Value
+
+                    Dim FechaFin As New SqlClient.SqlParameter()
+                    FechaFin.ParameterName = "@FechaFin"
+                    FechaFin.SqlDbType = SqlDbType.Date
+                    FechaFin.Value = DTFinal.Value
+
+                    da.Parameters.Add(NumBoleta)
+                    da.Parameters.Add(Productor)
+                    da.Parameters.Add(comprador)
+                    da.Parameters.Add(FechaIni)
+                    da.Parameters.Add(FechaFin)
+
+                    Dim dasp_ReporteBoletaEmbarque As New SqlClient.SqlDataAdapter()
+                    dasp_ReporteBoletaEmbarque.SelectCommand = da
+                    Dim ds As New DataTable
+                    dasp_ReporteBoletaEmbarque.Fill(ds)
+
+                    CrReport.Load(Ruta)
+
+                    CrReport.SetDataSource(ds)
+
+                    CREmbarques.ReportSource = CrReport
                 Else
                     MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final, ni la fecha final, menor que la fecha inicial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     limpiarCampos()

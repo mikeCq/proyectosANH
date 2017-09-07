@@ -5,8 +5,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.CrystalReports
 Public Class ReportesEntradas
     Private Sub ReportesEntradas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CbLote.ReportSource = Nothing
-        CbLote.Refresh()
+        CrEntradas.ReportSource = Nothing
+        CrEntradas.Refresh()
         TxNumBoleta.Select()
         limpiarCampos()
         llenarCombos()
@@ -36,22 +36,49 @@ Public Class ReportesEntradas
         DTFinal.Value = "01/01/1900"
     End Sub
     Private Sub generaReporte(sender As Object, e As EventArgs) Handles BtGenerarReporte.Click
-        'Dim lote As String = ""
-        'If ComboBox1.SelectedValue = Nothing Then
-        '    lote = " "
-        'Else
-        '    lote = ComboBox1.Text
-        'End If
         Try
             Dim RptEntradas As New ReporteEntradas
             If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
-                RptEntradas.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
-                RptEntradas.SetParameterValue("@numboleta", TxNumBoleta.Text)
-                RptEntradas.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue))
-                'RptEntradas.SetParameterValue("@lote", lote)
-                RptEntradas.SetParameterValue("@fechaini", DTInicio.Value)
-                RptEntradas.SetParameterValue("@fechafin", DTFinal.Value)
-                CbLote.ReportSource = RptEntradas
+                Dim CrReport As ReporteEntradas = New ReporteEntradas
+
+                Dim da As New SqlCommand("sp_reporteEntradas", cnn)
+                Dim Ruta As String = "\\192.168.10.30\docs_sistemas\RPT_MAIZ\ReporteEntradas.rpt"
+                da.CommandType = CommandType.StoredProcedure
+                Dim NumBoleta As New SqlClient.SqlParameter()
+                NumBoleta.ParameterName = "@NumBoleta"
+                NumBoleta.SqlDbType = SqlDbType.NVarChar
+                NumBoleta.Value = TxNumBoleta.Text
+
+                Dim Productor As New SqlClient.SqlParameter()
+                Productor.ParameterName = "@Productor"
+                Productor.SqlDbType = SqlDbType.NVarChar
+                Productor.Value = IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue)
+
+                Dim FechaIni As New SqlClient.SqlParameter()
+                FechaIni.ParameterName = "@Fechaini"
+                FechaIni.SqlDbType = SqlDbType.Date
+                FechaIni.Value = DTInicio.Value
+
+                Dim FechaFin As New SqlClient.SqlParameter()
+                FechaFin.ParameterName = "@FechaFin"
+                FechaFin.SqlDbType = SqlDbType.Date
+                FechaFin.Value = DTFinal.Value
+
+                da.Parameters.Add(NumBoleta)
+                da.Parameters.Add(Productor)
+                da.Parameters.Add(FechaIni)
+                da.Parameters.Add(FechaFin)
+
+                Dim dasp_ReporteBoletaEmbarque As New SqlClient.SqlDataAdapter()
+                dasp_ReporteBoletaEmbarque.SelectCommand = da
+                Dim ds As New DataTable
+                dasp_ReporteBoletaEmbarque.Fill(ds)
+
+                CrReport.Load(Ruta)
+
+                CrReport.SetDataSource(ds)
+
+                CrEntradas.ReportSource = CrReport
             Else
                 MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final, ni la fecha final, menor que la fecha inicial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 limpiarCampos()
@@ -65,12 +92,46 @@ Public Class ReportesEntradas
             Try
                 Dim RptEntradas As New ReporteEntradas
                 If DTInicio.Value <= DTFinal.Value And DTFinal.Value >= DTInicio.Value Then
-                    RptEntradas.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
-                    RptEntradas.SetParameterValue("@numboleta", TxNumBoleta.Text)
-                    RptEntradas.SetParameterValue("@productor", IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedText))
-                    RptEntradas.SetParameterValue("@fechaini", DTInicio.Value)
-                    RptEntradas.SetParameterValue("@fechafin", DTFinal.Value)
-                    CbLote.ReportSource = RptEntradas
+                    Dim CrReport As ReporteEntradas = New ReporteEntradas
+
+                    Dim da As New SqlCommand("sp_reporteEntradas", cnn)
+                    Dim Ruta As String = "\\192.168.10.30\docs_sistemas\RPT_MAIZ\ReporteEntradas.rpt"
+                    da.CommandType = CommandType.StoredProcedure
+                    Dim NumBoleta As New SqlClient.SqlParameter()
+                    NumBoleta.ParameterName = "@NumBoleta"
+                    NumBoleta.SqlDbType = SqlDbType.NVarChar
+                    NumBoleta.Value = TxNumBoleta.Text
+
+                    Dim Productor As New SqlClient.SqlParameter()
+                    Productor.ParameterName = "@Productor"
+                    Productor.SqlDbType = SqlDbType.NVarChar
+                    Productor.Value = IIf(CbProductor.SelectedValue = Nothing, "", CbProductor.SelectedValue)
+
+                    Dim FechaIni As New SqlClient.SqlParameter()
+                    FechaIni.ParameterName = "@Fechaini"
+                    FechaIni.SqlDbType = SqlDbType.Date
+                    FechaIni.Value = DTInicio.Value
+
+                    Dim FechaFin As New SqlClient.SqlParameter()
+                    FechaFin.ParameterName = "@FechaFin"
+                    FechaFin.SqlDbType = SqlDbType.Date
+                    FechaFin.Value = DTFinal.Value
+
+                    da.Parameters.Add(NumBoleta)
+                    da.Parameters.Add(Productor)
+                    da.Parameters.Add(FechaIni)
+                    da.Parameters.Add(FechaFin)
+
+                    Dim dasp_ReporteBoletaEmbarque As New SqlClient.SqlDataAdapter()
+                    dasp_ReporteBoletaEmbarque.SelectCommand = da
+                    Dim ds As New DataTable
+                    dasp_ReporteBoletaEmbarque.Fill(ds)
+
+                    CrReport.Load(Ruta)
+
+                    CrReport.SetDataSource(ds)
+
+                    CrEntradas.ReportSource = CrReport
                 Else
                     MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final, ni la fecha final, menor que la fecha inicial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     limpiarCampos()
@@ -98,8 +159,6 @@ Public Class ReportesEntradas
         ComboBox1.DisplayMember = "LoteColonia"
         ComboBox1.ValueMember = "idproductor"
         ComboBox1.SelectedIndex = -1
-        'idloteSeleccion = ds.Tables(0).Rows(0)("idSeleccionados").ToString()
-        'CbLoteEntrada.SelectedIndex = -1
-        'CbLoteEntrada.Text = ""
+
     End Sub
 End Class
