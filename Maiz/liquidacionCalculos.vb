@@ -624,13 +624,7 @@ Public Class liquidacionCalculosProd
             Else
                 _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
                 _tipoContrato = IIf(RbContrato.Checked = True, 0, 1)
-                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
-                If opc = DialogResult.Yes Then
-                    ReporteLiquidacionesXprod.ShowDialog()
-                    ReporteResumenBoletasLiquidadas.ShowDialog()
-                Else
-                    ReporteLiquidacionesXprod.ShowDialog()
-                End If
+                ReporteLiquidacionesXprod.ShowDialog()
             End If
         ElseIf TpBoletasLiquidadas.Focus = True Then
             If DgLiquidacionesXBoleta.RowCount = 0 Then
@@ -638,13 +632,7 @@ Public Class liquidacionCalculosProd
             Else
                 _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
                 _tipoContrato = IIf(RbContratoLiquidado.Checked = True, 0, 1)
-                Dim opc = MessageBox.Show("¿Desea imprimir el resumen de boletas?", "", MessageBoxButtons.YesNo)
-                If opc = DialogResult.Yes Then
-                    ReporteLiquidacionesXprod.ShowDialog()
-                    ReporteResumenBoletasLiquidadas.ShowDialog()
-                Else
-                    ReporteLiquidacionesXprod.ShowDialog()
-                End If
+                ReporteLiquidacionesXprod.ShowDialog()
             End If
         End If
     End Sub

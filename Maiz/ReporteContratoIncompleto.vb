@@ -10,27 +10,36 @@ Public Class ReporteEstatusContrato
         If CBEstatusContrato.Text = "" Then
             MessageBox.Show("Seleccione un estatus.", "Aviso")
         Else
-            RPTEstatusContrato.SetDatabaseLogon(VarGlob.UserDB, VarGlob.PasswordDB, VarGlob.ServerDB, VarGlob.DataBase)
-            'RPTEstatusContrato.SetParameterValue("@IdCliente", IIf(CBEstatusContrato.SelectedValue = Nothing, "", CBEstatusContrato.SelectedValue))
-            RPTEstatusContrato.SetParameterValue("@IdEstatus", CBEstatusContrato.SelectedValue)
-            CREstatusContrato.ReportSource = RPTEstatusContrato
+
+            Dim CrReport As RPTEstatusContrato = New RPTEstatusContrato
+
+            Dim da As New SqlCommand("sp_ReporteEstatusContrato", cnn)
+            Dim Ruta As String = "\\192.168.10.30\docs_sistemas\RPT_MAIZ\RPTEstatusContrato.rpt"
+            'Dim Ruta As String = Application.StartupPath & "\RPT\ReporteBoletaEntrada.rpt"
+            da.CommandType = CommandType.StoredProcedure
+            Dim Estatus As New SqlClient.SqlParameter()
+            Estatus.ParameterName = "@IdEstatus"
+            Estatus.SqlDbType = SqlDbType.Int
+            Estatus.Value = CBEstatusContrato.SelectedValue
+
+
+            da.Parameters.Add(Estatus)
+            Dim dasp_ReporteBoletaEmbarque As New SqlClient.SqlDataAdapter()
+            dasp_ReporteBoletaEmbarque.SelectCommand = da
+            Dim ds As New DataTable
+            dasp_ReporteBoletaEmbarque.Fill(ds)
+
+            CrReport.Load(Ruta)
+
+            CrReport.SetDataSource(ds)
+
+            CREstatusContrato.ReportSource = CrReport
         End If
 
     End Sub
     Private Sub llenarCombos()
         Dim da As SqlDataAdapter
         Dim ds As DataSet
-        'Dim cmdllenaCbPro As SqlCommand
-        'cmdllenaCbPro = New SqlCommand("sp_NombreClientes")
-        'cmdllenaCbPro.CommandType = CommandType.StoredProcedure
-        'cmdllenaCbPro.Connection = cnn
-        'da = New SqlDataAdapter(cmdllenaCbPro)
-        'ds = New DataSet()
-        'da.Fill(ds)
-        'CBComprador.DataSource = ds.Tables(0)
-        'CBComprador.DisplayMember = "Nombre"
-        'CBComprador.ValueMember = "Id_Cliente"
-        'CBComprador.SelectedIndex = -1
 
         Dim cmdllenaEstatus As SqlCommand
         cmdllenaEstatus = New SqlCommand("SP_CBESTATUS")

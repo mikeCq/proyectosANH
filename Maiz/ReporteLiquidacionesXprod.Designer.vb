@@ -49,7 +49,8 @@ Partial Class ReporteLiquidacionesXprod
         Me.ClientSize = New System.Drawing.Size(1022, 689)
         Me.Controls.Add(Me.CrLiquidacionProd)
         Me.Name = "ReporteLiquidacionesXprod"
-        Me.Text = "ReporteLiquidacionesXprod"
+        Me.Text = "Reporte de Liquidaciones"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

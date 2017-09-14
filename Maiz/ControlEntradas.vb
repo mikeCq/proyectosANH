@@ -377,9 +377,12 @@ Public Class ControlEntradas
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
-            If Val(TxTara.Text) > 0 Then
+            If Val(TxTara.Text) > 0 And CDbl(TxBruto.Text) > CDbl(TxTara.Text) Then
                 TxNeto.Text = Val(TxBruto.Text - TxTara.Text)
                 TxNeto.Text = FormatNumber(TxNeto.Text, 2)
+            ElseIf Not Val(TxBruto.Text) > Val(TxTara.Text) Then
+                MessageBox.Show("El campo Tara no puede ser mayor al campo Peso Bruto", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                TxTara.Text = "0"
             End If
 
             If Val(TxImpurezas.Text) > 0 And (TxHumedad.Text) > 0 And (TxGranoDan.Text) > 0 And Val(TxGranoQuebrado.Text) > 0 And Val(TxPesoEsp.Text) > 0 And Val(TxTara.Text) = 0 And Val(TxNeto.Text) = 0 And CbAcopio.SelectedValue = "" Then validacionParametros()
@@ -411,7 +414,7 @@ Public Class ControlEntradas
                         Fase1.Parameters.AddWithValue("@domicilioProductor", "")
                         Fase1.Parameters.AddWithValue("@grupoGrano", IIf(RBMamarillo.Checked = True, "AMARILLO", "BLANCO"))
                         Fase1.Parameters.AddWithValue("@lugarExpedicion", CbLugarExp.Text)
-                        Fase1.Parameters.AddWithValue("@fechaPesaje", DTPEntradas.Text)
+                        Fase1.Parameters.AddWithValue("@fechaPesaje", DTPEntradas.Value)
                         Fase1.Parameters.AddWithValue("@bruto", (CDbl(TxBruto.Text) / 1000))
                         Fase1.Parameters.AddWithValue("@conductorCam", UCase(CBConductor.Text))
                         Fase1.Parameters.AddWithValue("@IdContrato", CbIdContrato.SelectedValue)
