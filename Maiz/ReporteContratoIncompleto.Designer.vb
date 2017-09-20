@@ -114,7 +114,7 @@ Partial Class ReporteEstatusContrato
         Me.ClientSize = New System.Drawing.Size(1312, 745)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Name = "ReporteEstatusContrato"
-        Me.Text = "ReporteContratoIncompleto"
+        Me.Text = "Reporte de Estatus de Contratos"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)

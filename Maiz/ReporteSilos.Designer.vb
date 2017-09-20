@@ -209,7 +209,7 @@ Partial Class ReporteSilos
         Me.Controls.Add(Me.SplitContainer2)
         Me.Name = "ReporteSilos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "ReporteSilos"
+        Me.Text = "Reporte de Silos"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.SplitContainer2.Panel1.ResumeLayout(False)
         Me.SplitContainer2.Panel1.PerformLayout()

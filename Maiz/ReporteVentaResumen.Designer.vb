@@ -49,7 +49,8 @@ Partial Class ReporteVentaResumen
         Me.ClientSize = New System.Drawing.Size(1014, 629)
         Me.Controls.Add(Me.CrLiquidacionVentaResumen)
         Me.Name = "ReporteVentaResumen"
-        Me.Text = "ReporteVentaResumen"
+        Me.Text = "Reporte de Ventas Resumen"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

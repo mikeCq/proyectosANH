@@ -50,7 +50,8 @@ Partial Class ReporteVentas
         Me.Controls.Add(Me.CrLiquidacionVenta)
         Me.Name = "ReporteVentas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "ReporteVentas"
+        Me.Text = "Reporte de Ventas"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

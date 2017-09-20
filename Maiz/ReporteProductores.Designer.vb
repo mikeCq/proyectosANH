@@ -364,6 +364,7 @@ Partial Class ReporteProductores
         Me.Name = "ReporteProductores"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Reporte de Productores"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.SplitContainer2.Panel1.ResumeLayout(False)
         Me.SplitContainer2.Panel1.PerformLayout()
         Me.SplitContainer2.Panel2.ResumeLayout(False)

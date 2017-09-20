@@ -52,7 +52,8 @@ Partial Class ReporteORI
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BTGeneraReporte)
         Me.Name = "ReporteORI"
-        Me.Text = "ReporteORI"
+        Me.Text = "Reporte ORI"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

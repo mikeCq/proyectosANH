@@ -401,7 +401,7 @@ Public Class ControlEmbarques
                         Fase1.Parameters.AddWithValue("@numeroBoleta", TxIdBoleta.Text)
                         Fase1.Parameters.AddWithValue("@NomProd", CbNombre.SelectedValue)
                         Fase1.Parameters.AddWithValue("@lugarExpedicion", CbLugarExp.Text)
-                        Fase1.Parameters.AddWithValue("@fechaPesaje", DTPEmbarques.Text)
+                        Fase1.Parameters.AddWithValue("@fechaPesaje", DTPEmbarques.Value)
                         Fase1.Parameters.AddWithValue("@tara", CDbl(TxTara.Text) / 1000)
                         Fase1.Parameters.AddWithValue("@conductorCam", UCase(CBConductor.Text))
                         Fase1.Parameters.AddWithValue("@placasConductor", UCase(TxPlacas.Text))

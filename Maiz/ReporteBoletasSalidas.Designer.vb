@@ -53,7 +53,7 @@ Partial Class ReporteBoletasSalidas
         Me.ClientSize = New System.Drawing.Size(1188, 675)
         Me.Controls.Add(Me.CrBoletaSalida)
         Me.Name = "ReporteBoletasSalidas"
-        Me.Text = "ReporteBoletasSalidas"
+        Me.Text = "Reporte de Salidas por Boletas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 

@@ -31,7 +31,8 @@ Partial Class ReporteLotes
         Me.ClientSize = New System.Drawing.Size(722, 439)
         Me.Name = "ReporteLotes"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "ReporteLotes"
+        Me.Text = "Reporte de Lotes"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

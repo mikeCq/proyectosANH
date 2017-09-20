@@ -384,7 +384,7 @@ Partial Class ReporteEmbarquesXcliente
         Me.Controls.Add(Me.SplitContainer2)
         Me.Name = "ReporteEmbarquesXcliente"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "ReporteEmbarquesXcliente"
+        Me.Text = "Reporte de Embarques por Cliente"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.SplitContainer2.Panel1.ResumeLayout(False)
         Me.SplitContainer2.Panel1.PerformLayout()

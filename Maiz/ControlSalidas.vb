@@ -374,7 +374,7 @@ Public Class ControlSalidas
                         Fase1.Parameters.AddWithValue("@domicilioProductor", "")
                         Fase1.Parameters.AddWithValue("@grupoGrano", IIf(RBMamarillo.Checked = True, "AMARILLO", "BLANCO"))
                         Fase1.Parameters.AddWithValue("@lugarExpedicion", CbLugarExp.Text)
-                        Fase1.Parameters.AddWithValue("@fechaPesaje", DTPSalidas.Text)
+                        Fase1.Parameters.AddWithValue("@fechaPesaje", DTPSalidas.Value)
                         Fase1.Parameters.AddWithValue("@tara", (CDbl(TxTara.Text)) / 1000)
                         Fase1.Parameters.AddWithValue("@contratoComprador", CBContrato.SelectedValue)
                         Fase1.Parameters.AddWithValue("@conductorCam", UCase(CBConductor.Text))
