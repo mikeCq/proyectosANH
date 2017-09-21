@@ -4,6 +4,15 @@ Imports System.Data
 Public Class ContratosCompras
     Private codigoTierra As String
     Private supRestante, supRestanteIndi, rendimiento, hectareasprometidas, resRendimiento, sumatoneladas As Double
+    Private _codigoCompras As String
+    Public Property codigoCompras() As String
+        Get
+            Return _codigoCompras
+        End Get
+        Set(value As String)
+            _codigoCompras = value
+        End Set
+    End Property
     Private Sub ContratosCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BtnNuevo_Click(sender, e)
         DtTemporada.CustomFormat = "yyyy"
@@ -86,6 +95,19 @@ Public Class ContratosCompras
         CbMoneda.ValueMember = "idmoneda"
         CbMoneda.SelectedIndex = -1
 
+        Dim cmdllenaCbSil As SqlCommand
+
+        cmdllenaCbSil = New SqlCommand("Sp_CbAcopio")
+        cmdllenaCbSil.CommandType = CommandType.StoredProcedure
+        cmdllenaCbSil.Connection = cnn
+
+        da = New SqlDataAdapter(cmdllenaCbSil)
+        ds = New DataSet()
+        da.Fill(ds)
+        CbAcopio.DataSource = ds.Tables(0)
+        CbAcopio.DisplayMember = "NombreCentro"
+        CbAcopio.ValueMember = "Id_CentroAcopio"
+        CbAcopio.SelectedIndex = -1
     End Sub
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
         TxFolioContrato.Text = ""
@@ -93,7 +115,7 @@ Public Class ContratosCompras
         TxLotesSembrar.Text = ""
         TxEmpresa.Text = ""
         TxApoderado.Text = ""
-        TxAcopio.Text = ""
+        CbAcopio.Text = ""
         TxObservaciones.Text = ""
         DtFechaAlta.Value = Now
         CbNombreProductor.SelectedIndex = -1
@@ -214,7 +236,7 @@ Public Class ContratosCompras
                     cmd.Parameters.AddWithValue("@Observaciones", TxObservaciones.Text)
                     cmd.Parameters.AddWithValue("@Empresa", TxEmpresa.Text)
                     cmd.Parameters.AddWithValue("@apoderado", TxApoderado.Text)
-                    cmd.Parameters.AddWithValue("@acopio", TxAcopio.Text)
+                    cmd.Parameters.AddWithValue("@acopio", CbAcopio.Text)
                     cmd.Parameters.AddWithValue("@estatusContrato", 0)
 
                     TxFolioContrato.Text = cmd.Parameters("@idcontratocompra").Value.ToString()
@@ -333,7 +355,7 @@ Public Class ContratosCompras
             TxObservaciones.Text = CStr(row("Observaciones"))
             TxEmpresa.Text = CStr(row("Empresa"))
             TxApoderado.Text = CStr(row("ApoderadoLegal"))
-            TxAcopio.Text = CStr(row("CentroAcopio"))
+            CbAcopio.Text = CStr(row("CentroAcopio"))
             DgSeleccionLotes.Columns.Clear()
             DgSeleccionLotes.Refresh()
             Dim cmd2 As New SqlCommand("sp_llenarDg_SeleccionLotes_x_productor", cnn)
@@ -419,7 +441,8 @@ Public Class ContratosCompras
         End If
     End Sub
     Private Sub ImpContrato_Click(sender As Object, e As EventArgs) Handles ImpContrato.Click
-        GeneraContrato1(TxFolioContrato.Text)
+        _codigoCompras = TxFolioContrato.Text
+        ReporteContratoProductor.ShowDialog()
     End Sub
     'Private Sub BtnBuscarLote_Click(sender As Object, e As EventArgs) Handles BtnBuscarLote.Click
     '    If CbNombreProductor.SelectedValue = "" Then
@@ -543,8 +566,6 @@ Public Class ContratosCompras
         AddHandler e.Control.KeyPress, AddressOf Valid
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
-
         Close()
-
     End Sub
 End Class

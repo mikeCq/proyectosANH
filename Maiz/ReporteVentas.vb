@@ -27,7 +27,6 @@ Public Class ReporteVentas
             Dim ds As New DataTable
             dasp_ReporteBoletaEmbarque.Fill(ds)
 
-
             Dim daResumen As New SqlCommand("sp_resumenVentasLiquidadas", cnn)
             daResumen.CommandType = CommandType.StoredProcedure
             Dim IdLiquidacionR As New SqlClient.SqlParameter()

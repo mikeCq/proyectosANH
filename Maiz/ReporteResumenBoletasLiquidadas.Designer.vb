@@ -49,7 +49,9 @@ Partial Class ReporteResumenBoletasLiquidadas
         Me.ClientSize = New System.Drawing.Size(921, 622)
         Me.Controls.Add(Me.CrResumenBoletas)
         Me.Name = "ReporteResumenBoletasLiquidadas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Resumen de Boletas Liquidadas"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

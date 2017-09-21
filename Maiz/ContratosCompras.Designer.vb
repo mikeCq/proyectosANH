@@ -28,7 +28,6 @@ Partial Class ContratosCompras
         Me.GbContratoLibre = New System.Windows.Forms.GroupBox()
         Me.RbSoloLibre = New System.Windows.Forms.RadioButton()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.TxAcopio = New System.Windows.Forms.TextBox()
         Me.TxApoderado = New System.Windows.Forms.TextBox()
         Me.TxEmpresa = New System.Windows.Forms.TextBox()
         Me.TxObservaciones = New System.Windows.Forms.TextBox()
@@ -101,6 +100,7 @@ Partial Class ContratosCompras
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.ImpContrato = New System.Windows.Forms.Button()
+        Me.CbAcopio = New System.Windows.Forms.ComboBox()
         Me.TabControl1.SuspendLayout()
         Me.TpCompraNormal.SuspendLayout()
         Me.GbContratoLibre.SuspendLayout()
@@ -147,9 +147,9 @@ Partial Class ContratosCompras
         '
         'GbContratoLibre
         '
+        Me.GbContratoLibre.Controls.Add(Me.CbAcopio)
         Me.GbContratoLibre.Controls.Add(Me.RbSoloLibre)
         Me.GbContratoLibre.Controls.Add(Me.Label23)
-        Me.GbContratoLibre.Controls.Add(Me.TxAcopio)
         Me.GbContratoLibre.Controls.Add(Me.TxApoderado)
         Me.GbContratoLibre.Controls.Add(Me.TxEmpresa)
         Me.GbContratoLibre.Controls.Add(Me.TxObservaciones)
@@ -185,13 +185,6 @@ Partial Class ContratosCompras
         Me.Label23.Size = New System.Drawing.Size(111, 16)
         Me.Label23.TabIndex = 35
         Me.Label23.Text = "Centro de Acopio:"
-        '
-        'TxAcopio
-        '
-        Me.TxAcopio.Location = New System.Drawing.Point(150, 77)
-        Me.TxAcopio.Name = "TxAcopio"
-        Me.TxAcopio.Size = New System.Drawing.Size(386, 22)
-        Me.TxAcopio.TabIndex = 2
         '
         'TxApoderado
         '
@@ -870,7 +863,7 @@ Partial Class ContratosCompras
         Me.BtnSalir.Location = New System.Drawing.Point(654, 1)
         Me.BtnSalir.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(87, 81)
+        Me.BtnSalir.Size = New System.Drawing.Size(87, 82)
         Me.BtnSalir.TabIndex = 7
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -882,7 +875,7 @@ Partial Class ContratosCompras
         Me.BtnGuardar.Location = New System.Drawing.Point(96, 1)
         Me.BtnGuardar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(87, 81)
+        Me.BtnGuardar.Size = New System.Drawing.Size(87, 82)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -894,7 +887,7 @@ Partial Class ContratosCompras
         Me.BtnRestaurar.Location = New System.Drawing.Point(561, 1)
         Me.BtnRestaurar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnRestaurar.Name = "BtnRestaurar"
-        Me.BtnRestaurar.Size = New System.Drawing.Size(87, 81)
+        Me.BtnRestaurar.Size = New System.Drawing.Size(87, 82)
         Me.BtnRestaurar.TabIndex = 6
         Me.BtnRestaurar.Text = "Restaurar"
         Me.BtnRestaurar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -906,7 +899,7 @@ Partial Class ContratosCompras
         Me.BtnBuscar.Location = New System.Drawing.Point(282, 1)
         Me.BtnBuscar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(87, 81)
+        Me.BtnBuscar.Size = New System.Drawing.Size(87, 82)
         Me.BtnBuscar.TabIndex = 3
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -918,7 +911,7 @@ Partial Class ContratosCompras
         Me.BtnModificar.Location = New System.Drawing.Point(189, 1)
         Me.BtnModificar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(87, 81)
+        Me.BtnModificar.Size = New System.Drawing.Size(87, 82)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -927,7 +920,7 @@ Partial Class ContratosCompras
         'BtnEliminar
         '
         Me.BtnEliminar.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEliminar.Location = New System.Drawing.Point(468, 0)
+        Me.BtnEliminar.Location = New System.Drawing.Point(468, 1)
         Me.BtnEliminar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnEliminar.Name = "BtnEliminar"
         Me.BtnEliminar.Size = New System.Drawing.Size(87, 82)
@@ -942,7 +935,7 @@ Partial Class ContratosCompras
         Me.BtnNuevo.Location = New System.Drawing.Point(3, 1)
         Me.BtnNuevo.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(87, 81)
+        Me.BtnNuevo.Size = New System.Drawing.Size(87, 82)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -959,6 +952,14 @@ Partial Class ContratosCompras
         Me.ImpContrato.Text = "Imprimir"
         Me.ImpContrato.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ImpContrato.UseVisualStyleBackColor = True
+        '
+        'CbAcopio
+        '
+        Me.CbAcopio.FormattingEnabled = True
+        Me.CbAcopio.Location = New System.Drawing.Point(150, 77)
+        Me.CbAcopio.Name = "CbAcopio"
+        Me.CbAcopio.Size = New System.Drawing.Size(386, 24)
+        Me.CbAcopio.TabIndex = 2
         '
         'ContratosCompras
         '
@@ -1080,7 +1081,7 @@ Partial Class ContratosCompras
     Friend WithEvents Label21 As Label
     Friend WithEvents TxApoderado As TextBox
     Friend WithEvents Label23 As Label
-    Friend WithEvents TxAcopio As TextBox
     Friend WithEvents CbMoneda As ComboBox
     Friend WithEvents RbSoloLibre As RadioButton
+    Friend WithEvents CbAcopio As ComboBox
 End Class
