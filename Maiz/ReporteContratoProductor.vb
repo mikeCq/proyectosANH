@@ -4,6 +4,7 @@ Imports System.Data
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.CrystalReports
 Public Class ReporteContratoProductor
+
     Private Sub CrContratoProductor_Load(sender As Object, e As EventArgs) Handles CrContratoProductor.Load
         Try
             Dim CrReport As RPTContratoProductor = New RPTContratoProductor

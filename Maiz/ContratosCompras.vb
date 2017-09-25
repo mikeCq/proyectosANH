@@ -441,8 +441,13 @@ Public Class ContratosCompras
         End If
     End Sub
     Private Sub ImpContrato_Click(sender As Object, e As EventArgs) Handles ImpContrato.Click
-        _codigoCompras = TxFolioContrato.Text
-        ReporteContratoProductor.ShowDialog()
+        If TxFolioContrato.Text = "" Then
+            MessageBox.Show("Selecciona un contrato para imprimir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            _codigoCompras = TxFolioContrato.Text
+            ReporteContratoProductor.ShowDialog()
+        End If
+
     End Sub
     'Private Sub BtnBuscarLote_Click(sender As Object, e As EventArgs) Handles BtnBuscarLote.Click
     '    If CbNombreProductor.SelectedValue = "" Then

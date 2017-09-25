@@ -5706,6 +5706,10 @@ Partial Public Class DSReportes
         
         Private columnCentroAcopio As Global.System.Data.DataColumn
         
+        Private columnSiAcepta As Global.System.Data.DataColumn
+        
+        Private columnNoAcepta As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -5814,6 +5818,22 @@ Partial Public Class DSReportes
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SiAceptaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSiAcepta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property NoAceptaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNoAcepta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5850,9 +5870,9 @@ Partial Public Class DSReportes
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddContratoProductorRow(ByVal NombreProductor As String, ByVal Predio As String, ByVal FolioPredio As String, ByVal Superficie As Decimal, ByVal RFC As String, ByVal CURP As String, ByVal Empresa As String, ByVal ApoderadoLegal As String, ByVal CentroAcopio As String) As ContratoProductorRow
+        Public Overloads Function AddContratoProductorRow(ByVal NombreProductor As String, ByVal Predio As String, ByVal FolioPredio As String, ByVal Superficie As Decimal, ByVal RFC As String, ByVal CURP As String, ByVal Empresa As String, ByVal ApoderadoLegal As String, ByVal CentroAcopio As String, ByVal SiAcepta As String, ByVal NoAcepta As String) As ContratoProductorRow
             Dim rowContratoProductorRow As ContratoProductorRow = CType(Me.NewRow,ContratoProductorRow)
-            Dim columnValuesArray() As Object = New Object() {NombreProductor, Predio, FolioPredio, Superficie, RFC, CURP, Empresa, ApoderadoLegal, CentroAcopio}
+            Dim columnValuesArray() As Object = New Object() {NombreProductor, Predio, FolioPredio, Superficie, RFC, CURP, Empresa, ApoderadoLegal, CentroAcopio, SiAcepta, NoAcepta}
             rowContratoProductorRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowContratoProductorRow)
             Return rowContratoProductorRow
@@ -5884,6 +5904,8 @@ Partial Public Class DSReportes
             Me.columnEmpresa = MyBase.Columns("Empresa")
             Me.columnApoderadoLegal = MyBase.Columns("ApoderadoLegal")
             Me.columnCentroAcopio = MyBase.Columns("CentroAcopio")
+            Me.columnSiAcepta = MyBase.Columns("SiAcepta")
+            Me.columnNoAcepta = MyBase.Columns("NoAcepta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5907,6 +5929,10 @@ Partial Public Class DSReportes
             MyBase.Columns.Add(Me.columnApoderadoLegal)
             Me.columnCentroAcopio = New Global.System.Data.DataColumn("CentroAcopio", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCentroAcopio)
+            Me.columnSiAcepta = New Global.System.Data.DataColumn("SiAcepta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSiAcepta)
+            Me.columnNoAcepta = New Global.System.Data.DataColumn("NoAcepta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNoAcepta)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11598,6 +11624,36 @@ Partial Public Class DSReportes
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SiAcepta() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableContratoProductor.SiAceptaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SiAcepta' de la tabla 'ContratoProductor' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableContratoProductor.SiAceptaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property NoAcepta() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableContratoProductor.NoAceptaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NoAcepta' de la tabla 'ContratoProductor' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableContratoProductor.NoAceptaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNombreProductorNull() As Boolean
             Return Me.IsNull(Me.tableContratoProductor.NombreProductorColumn)
         End Function
@@ -11702,6 +11758,30 @@ Partial Public Class DSReportes
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCentroAcopioNull()
             Me(Me.tableContratoProductor.CentroAcopioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSiAceptaNull() As Boolean
+            Return Me.IsNull(Me.tableContratoProductor.SiAceptaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSiAceptaNull()
+            Me(Me.tableContratoProductor.SiAceptaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsNoAceptaNull() As Boolean
+            Return Me.IsNull(Me.tableContratoProductor.NoAceptaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetNoAceptaNull()
+            Me(Me.tableContratoProductor.NoAceptaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
