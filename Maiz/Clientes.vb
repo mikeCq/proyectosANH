@@ -757,4 +757,12 @@ Public Class Clientes
 
         End If
     End Sub
+
+    Private Sub BtCarpeta_Click(sender As Object, e As EventArgs) Handles BtCarpeta.Click
+        If TxIdFisica.Text = "" And TxIdMoral.Text = "" Then
+            MessageBox.Show("No hay un Productor seleccionado.", "Aviso")
+        Else
+
+        End If
+    End Sub
 End Class

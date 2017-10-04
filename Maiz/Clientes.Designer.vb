@@ -135,6 +135,7 @@ Partial Class Clientes
         Me.RbMoral = New System.Windows.Forms.RadioButton()
         Me.RbFisica = New System.Windows.Forms.RadioButton()
         Me.BtActualizar = New System.Windows.Forms.Button()
+        Me.BtCarpeta = New System.Windows.Forms.Button()
         Me.TCClientes.SuspendLayout()
         Me.TPFisicos.SuspendLayout()
         Me.GBFisicos.SuspendLayout()
@@ -156,57 +157,57 @@ Partial Class Clientes
         Me.BtnNuevo.Location = New System.Drawing.Point(9, 0)
         Me.BtnNuevo.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(75, 35)
+        Me.BtnNuevo.Size = New System.Drawing.Size(102, 35)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
         '
         'BtnModificar
         '
-        Me.BtnModificar.Location = New System.Drawing.Point(171, 0)
+        Me.BtnModificar.Location = New System.Drawing.Point(333, 0)
         Me.BtnModificar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(75, 35)
+        Me.BtnModificar.Size = New System.Drawing.Size(102, 35)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.UseVisualStyleBackColor = True
         '
         'BtnGuardar
         '
-        Me.BtnGuardar.Location = New System.Drawing.Point(90, 0)
+        Me.BtnGuardar.Location = New System.Drawing.Point(117, 0)
         Me.BtnGuardar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(75, 35)
+        Me.BtnGuardar.Size = New System.Drawing.Size(102, 35)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
         'BtnBuscar
         '
-        Me.BtnBuscar.Location = New System.Drawing.Point(252, 0)
+        Me.BtnBuscar.Location = New System.Drawing.Point(441, 0)
         Me.BtnBuscar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(75, 35)
+        Me.BtnBuscar.Size = New System.Drawing.Size(102, 35)
         Me.BtnBuscar.TabIndex = 3
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.UseVisualStyleBackColor = True
         '
         'BtnEliminar
         '
-        Me.BtnEliminar.Location = New System.Drawing.Point(333, 0)
+        Me.BtnEliminar.Location = New System.Drawing.Point(549, 0)
         Me.BtnEliminar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(75, 35)
+        Me.BtnEliminar.Size = New System.Drawing.Size(102, 35)
         Me.BtnEliminar.TabIndex = 4
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
         '
         'Salir
         '
-        Me.Salir.Location = New System.Drawing.Point(414, 0)
+        Me.Salir.Location = New System.Drawing.Point(657, 0)
         Me.Salir.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Salir.Name = "Salir"
-        Me.Salir.Size = New System.Drawing.Size(75, 35)
+        Me.Salir.Size = New System.Drawing.Size(102, 35)
         Me.Salir.TabIndex = 6
         Me.Salir.Text = "Salir"
         Me.Salir.UseVisualStyleBackColor = True
@@ -218,7 +219,7 @@ Partial Class Clientes
         Me.TCClientes.Location = New System.Drawing.Point(5, 110)
         Me.TCClientes.Name = "TCClientes"
         Me.TCClientes.SelectedIndex = 0
-        Me.TCClientes.Size = New System.Drawing.Size(1071, 485)
+        Me.TCClientes.Size = New System.Drawing.Size(1071, 585)
         Me.TCClientes.TabIndex = 8
         '
         'TPFisicos
@@ -635,7 +636,7 @@ Partial Class Clientes
         Me.TPMorales.Location = New System.Drawing.Point(4, 25)
         Me.TPMorales.Name = "TPMorales"
         Me.TPMorales.Padding = New System.Windows.Forms.Padding(3)
-        Me.TPMorales.Size = New System.Drawing.Size(1063, 543)
+        Me.TPMorales.Size = New System.Drawing.Size(1063, 556)
         Me.TPMorales.TabIndex = 1
         Me.TPMorales.Text = "Morales"
         '
@@ -1309,11 +1310,22 @@ Partial Class Clientes
         Me.BtActualizar.Text = "Actualizar"
         Me.BtActualizar.UseVisualStyleBackColor = True
         '
+        'BtCarpeta
+        '
+        Me.BtCarpeta.Location = New System.Drawing.Point(225, 0)
+        Me.BtCarpeta.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.BtCarpeta.Name = "BtCarpeta"
+        Me.BtCarpeta.Size = New System.Drawing.Size(102, 35)
+        Me.BtCarpeta.TabIndex = 10
+        Me.BtCarpeta.Text = "Documentos"
+        Me.BtCarpeta.UseVisualStyleBackColor = True
+        '
         'Clientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1080, 610)
+        Me.ClientSize = New System.Drawing.Size(1080, 701)
+        Me.Controls.Add(Me.BtCarpeta)
         Me.Controls.Add(Me.BtActualizar)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.TCClientes)
@@ -1470,4 +1482,5 @@ Partial Class Clientes
     Friend WithEvents TxBajoNumero As TextBox
     Friend WithEvents TxRegPublico As TextBox
     Friend WithEvents TxFolioRpp As TextBox
+    Friend WithEvents BtCarpeta As Button
 End Class

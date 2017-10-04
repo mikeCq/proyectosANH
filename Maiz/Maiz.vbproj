@@ -27,7 +27,7 @@
     <PublisherName>Sistema De Control De Maiz</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>193</ApplicationRevision>
+    <ApplicationRevision>194</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -620,6 +620,12 @@
       <DependentUpon>RptVentaXcomprador.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RutasDocumentos.Designer.vb">
+      <DependentUpon>RutasDocumentos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RutasDocumentos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SeleccionCentroAcopio.Designer.vb">
       <DependentUpon>SeleccionCentroAcopio.vb</DependentUpon>
     </Compile>
@@ -936,6 +942,9 @@
     <EmbeddedResource Include="RPT\RptVentaXcomprador.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptVentaXcomprador.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RutasDocumentos.resx">
+      <DependentUpon>RutasDocumentos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionCentroAcopio.resx">
       <DependentUpon>SeleccionCentroAcopio.vb</DependentUpon>

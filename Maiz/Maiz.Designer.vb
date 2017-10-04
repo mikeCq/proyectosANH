@@ -84,6 +84,7 @@ Partial Class Maiz
         Me.SbNombreUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbIdUsuario = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.RutasDeDocumentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -366,7 +367,7 @@ Partial Class Maiz
         '
         'UtileriasToolStripMenuItem
         '
-        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem})
+        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem})
         Me.UtileriasToolStripMenuItem.Name = "UtileriasToolStripMenuItem"
         Me.UtileriasToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
         Me.UtileriasToolStripMenuItem.Text = "Utilerias"
@@ -374,25 +375,25 @@ Partial Class Maiz
         'EnlaceABaseDeToolStripMenuItem
         '
         Me.EnlaceABaseDeToolStripMenuItem.Name = "EnlaceABaseDeToolStripMenuItem"
-        Me.EnlaceABaseDeToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
+        Me.EnlaceABaseDeToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
         Me.EnlaceABaseDeToolStripMenuItem.Text = "Folios"
         '
         'AutorizacionDiariaToolStripMenuItem
         '
         Me.AutorizacionDiariaToolStripMenuItem.Name = "AutorizacionDiariaToolStripMenuItem"
-        Me.AutorizacionDiariaToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
+        Me.AutorizacionDiariaToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
         Me.AutorizacionDiariaToolStripMenuItem.Text = "Autorizacion Diaria"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(185, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(205, 22)
         Me.ToolStripMenuItem3.Text = "Conexion BDD"
         '
         'CrearNuevaBDDToolStripMenuItem
         '
         Me.CrearNuevaBDDToolStripMenuItem.Name = "CrearNuevaBDDToolStripMenuItem"
-        Me.CrearNuevaBDDToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
+        Me.CrearNuevaBDDToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
         Me.CrearNuevaBDDToolStripMenuItem.Text = "Crear nueva BDD"
         '
         'AyudaToolStripMenuItem
@@ -480,6 +481,12 @@ Partial Class Maiz
         Me.SbIdUsuario.Size = New System.Drawing.Size(57, 17)
         Me.SbIdUsuario.Text = "idUsuario"
         Me.SbIdUsuario.Visible = False
+        '
+        'RutasDeDocumentosToolStripMenuItem
+        '
+        Me.RutasDeDocumentosToolStripMenuItem.Name = "RutasDeDocumentosToolStripMenuItem"
+        Me.RutasDeDocumentosToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.RutasDeDocumentosToolStripMenuItem.Text = "Rutas de Documentos"
         '
         'Maiz
         '
@@ -571,4 +578,5 @@ Partial Class Maiz
     Friend WithEvents TsBdd As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents RutasDeDocumentosToolStripMenuItem As ToolStripMenuItem
 End Class

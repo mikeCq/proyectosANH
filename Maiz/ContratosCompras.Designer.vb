@@ -26,6 +26,7 @@ Partial Class ContratosCompras
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TpCompraNormal = New System.Windows.Forms.TabPage()
         Me.GbContratoLibre = New System.Windows.Forms.GroupBox()
+        Me.CbAcopio = New System.Windows.Forms.ComboBox()
         Me.RbSoloLibre = New System.Windows.Forms.RadioButton()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.TxApoderado = New System.Windows.Forms.TextBox()
@@ -100,7 +101,6 @@ Partial Class ContratosCompras
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.ImpContrato = New System.Windows.Forms.Button()
-        Me.CbAcopio = New System.Windows.Forms.ComboBox()
         Me.TabControl1.SuspendLayout()
         Me.TpCompraNormal.SuspendLayout()
         Me.GbContratoLibre.SuspendLayout()
@@ -164,6 +164,14 @@ Partial Class ContratosCompras
         Me.GbContratoLibre.Size = New System.Drawing.Size(549, 307)
         Me.GbContratoLibre.TabIndex = 2
         Me.GbContratoLibre.TabStop = False
+        '
+        'CbAcopio
+        '
+        Me.CbAcopio.FormattingEnabled = True
+        Me.CbAcopio.Location = New System.Drawing.Point(150, 77)
+        Me.CbAcopio.Name = "CbAcopio"
+        Me.CbAcopio.Size = New System.Drawing.Size(386, 24)
+        Me.CbAcopio.TabIndex = 2
         '
         'RbSoloLibre
         '
@@ -952,14 +960,6 @@ Partial Class ContratosCompras
         Me.ImpContrato.Text = "Imprimir"
         Me.ImpContrato.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ImpContrato.UseVisualStyleBackColor = True
-        '
-        'CbAcopio
-        '
-        Me.CbAcopio.FormattingEnabled = True
-        Me.CbAcopio.Location = New System.Drawing.Point(150, 77)
-        Me.CbAcopio.Name = "CbAcopio"
-        Me.CbAcopio.Size = New System.Drawing.Size(386, 24)
-        Me.CbAcopio.TabIndex = 2
         '
         'ContratosCompras
         '

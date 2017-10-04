@@ -165,6 +165,9 @@ Public Class Maiz
         ConexionBDD.ShowDialog()
         TsBdd.Text = ConexionBDD.BaseDatos
     End Sub
+    Private Sub RutasDeDocumentosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RutasDeDocumentosToolStripMenuItem.Click
+        RutasDocumentos.ShowDialog()
+    End Sub
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
         Dim opc As DialogResult = MsgBox("¿Desea salir de esta aplicación?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Salir")
@@ -180,6 +183,4 @@ Public Class Maiz
         SqlConnection.ClearAllPools()
         Me.Close()
     End Sub
-
-
 End Class
