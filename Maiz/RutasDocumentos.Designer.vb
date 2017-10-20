@@ -56,10 +56,16 @@ Partial Class RutasDocumentos
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GbUbicacionDocumentos = New System.Windows.Forms.GroupBox()
         Me.ModificarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GbPrincipalTemporadas = New System.Windows.Forms.GroupBox()
+        Me.GbPrincipalDocumentos = New System.Windows.Forms.GroupBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TbDocumentacionPersonal = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GbTemporadas.SuspendLayout()
         Me.GbUbicacionDocumentos.SuspendLayout()
+        Me.GbPrincipalTemporadas.SuspendLayout()
+        Me.GbPrincipalDocumentos.SuspendLayout()
         Me.SuspendLayout()
         '
         'TBIdUbicacion
@@ -68,20 +74,20 @@ Partial Class RutasDocumentos
         Me.TBIdUbicacion.Location = New System.Drawing.Point(130, 13)
         Me.TBIdUbicacion.Name = "TBIdUbicacion"
         Me.TBIdUbicacion.Size = New System.Drawing.Size(104, 20)
-        Me.TBIdUbicacion.TabIndex = 15
+        Me.TBIdUbicacion.TabIndex = 0
         Me.TBIdUbicacion.Visible = False
         '
         'GroupBox1
         '
         Me.GroupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.GroupBox1.Controls.Add(Me.TbDocumentacionPersonal)
+        Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.TBLotes)
-        Me.GroupBox1.Controls.Add(Me.TBPersonas)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 160)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 49)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(938, 161)
+        Me.GroupBox1.Size = New System.Drawing.Size(938, 93)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Documentacion Personal"
@@ -90,27 +96,27 @@ Partial Class RutasDocumentos
         '
         Me.TBLotes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TBLotes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TBLotes.Location = New System.Drawing.Point(264, 92)
+        Me.TBLotes.Location = New System.Drawing.Point(264, 55)
         Me.TBLotes.MaxLength = 50
         Me.TBLotes.Name = "TBLotes"
         Me.TBLotes.Size = New System.Drawing.Size(281, 20)
-        Me.TBLotes.TabIndex = 2
+        Me.TBLotes.TabIndex = 1
         '
         'TBPersonas
         '
         Me.TBPersonas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TBPersonas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TBPersonas.Location = New System.Drawing.Point(264, 66)
+        Me.TBPersonas.Location = New System.Drawing.Point(270, 13)
         Me.TBPersonas.MaxLength = 50
         Me.TBPersonas.Name = "TBPersonas"
         Me.TBPersonas.Size = New System.Drawing.Size(281, 20)
-        Me.TBPersonas.TabIndex = 1
+        Me.TBPersonas.TabIndex = 0
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(37, 95)
+        Me.Label3.Location = New System.Drawing.Point(21, 58)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(200, 13)
         Me.Label3.TabIndex = 1
@@ -120,11 +126,11 @@ Partial Class RutasDocumentos
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(37, 69)
+        Me.Label2.Location = New System.Drawing.Point(6, 16)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(221, 13)
+        Me.Label2.Size = New System.Drawing.Size(237, 13)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Carpeta de Documentos de Personas:"
+        Me.Label2.Text = "Carpeta de Documentos de Productores:"
         '
         'Label5
         '
@@ -153,14 +159,14 @@ Partial Class RutasDocumentos
         Me.TBRuta.Location = New System.Drawing.Point(130, 39)
         Me.TBRuta.Name = "TBRuta"
         Me.TBRuta.Size = New System.Drawing.Size(570, 20)
-        Me.TBRuta.TabIndex = 0
+        Me.TBRuta.TabIndex = 1
         '
         'MenuStrip1
         '
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GuardarActualizarToolStripMenuItem, Me.ModificarToolStripMenuItem, Me.SalirToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(982, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(985, 24)
         Me.MenuStrip1.TabIndex = 14
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -183,7 +189,7 @@ Partial Class RutasDocumentos
         Me.BTUbicacion.Location = New System.Drawing.Point(706, 39)
         Me.BTUbicacion.Name = "BTUbicacion"
         Me.BTUbicacion.Size = New System.Drawing.Size(46, 20)
-        Me.BTUbicacion.TabIndex = 12
+        Me.BTUbicacion.TabIndex = 2
         Me.BTUbicacion.UseVisualStyleBackColor = True
         '
         'GbTemporadas
@@ -200,7 +206,7 @@ Partial Class RutasDocumentos
         Me.GbTemporadas.Controls.Add(Me.Label7)
         Me.GbTemporadas.Controls.Add(Me.Label6)
         Me.GbTemporadas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GbTemporadas.Location = New System.Drawing.Point(6, 327)
+        Me.GbTemporadas.Location = New System.Drawing.Point(6, 39)
         Me.GbTemporadas.Name = "GbTemporadas"
         Me.GbTemporadas.Size = New System.Drawing.Size(938, 177)
         Me.GbTemporadas.TabIndex = 2
@@ -313,8 +319,8 @@ Partial Class RutasDocumentos
         Me.TbTemporadas.Location = New System.Drawing.Point(130, 91)
         Me.TbTemporadas.MaxLength = 50
         Me.TbTemporadas.Name = "TbTemporadas"
-        Me.TbTemporadas.Size = New System.Drawing.Size(113, 20)
-        Me.TbTemporadas.TabIndex = 0
+        Me.TbTemporadas.Size = New System.Drawing.Size(183, 20)
+        Me.TbTemporadas.TabIndex = 4
         '
         'Label11
         '
@@ -329,17 +335,17 @@ Partial Class RutasDocumentos
         'TbNombreAnual
         '
         Me.TbNombreAnual.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TbNombreAnual.Location = New System.Drawing.Point(130, 117)
+        Me.TbNombreAnual.Location = New System.Drawing.Point(270, 13)
         Me.TbNombreAnual.MaxLength = 7
         Me.TbNombreAnual.Name = "TbNombreAnual"
-        Me.TbNombreAnual.Size = New System.Drawing.Size(113, 20)
+        Me.TbNombreAnual.Size = New System.Drawing.Size(135, 20)
         Me.TbNombreAnual.TabIndex = 0
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(6, 120)
+        Me.Label12.Location = New System.Drawing.Point(6, 16)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(118, 13)
         Me.Label12.TabIndex = 10
@@ -349,10 +355,10 @@ Partial Class RutasDocumentos
         '
         Me.BtCarpetaTemporada.BackgroundImage = CType(resources.GetObject("BtCarpetaTemporada.BackgroundImage"), System.Drawing.Image)
         Me.BtCarpetaTemporada.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.BtCarpetaTemporada.Location = New System.Drawing.Point(249, 117)
+        Me.BtCarpetaTemporada.Location = New System.Drawing.Point(411, 13)
         Me.BtCarpetaTemporada.Name = "BtCarpetaTemporada"
         Me.BtCarpetaTemporada.Size = New System.Drawing.Size(46, 20)
-        Me.BtCarpetaTemporada.TabIndex = 12
+        Me.BtCarpetaTemporada.TabIndex = 1
         Me.BtCarpetaTemporada.UseVisualStyleBackColor = True
         '
         'TBNombreRaiz
@@ -363,7 +369,7 @@ Partial Class RutasDocumentos
         Me.TBNombreRaiz.MaxLength = 50
         Me.TBNombreRaiz.Name = "TBNombreRaiz"
         Me.TBNombreRaiz.Size = New System.Drawing.Size(281, 20)
-        Me.TBNombreRaiz.TabIndex = 16
+        Me.TBNombreRaiz.TabIndex = 3
         '
         'Label4
         '
@@ -377,24 +383,21 @@ Partial Class RutasDocumentos
         '
         'GbUbicacionDocumentos
         '
+        Me.GbUbicacionDocumentos.Controls.Add(Me.Label11)
+        Me.GbUbicacionDocumentos.Controls.Add(Me.GbPrincipalDocumentos)
+        Me.GbUbicacionDocumentos.Controls.Add(Me.TbTemporadas)
+        Me.GbUbicacionDocumentos.Controls.Add(Me.GbPrincipalTemporadas)
         Me.GbUbicacionDocumentos.Controls.Add(Me.Label5)
         Me.GbUbicacionDocumentos.Controls.Add(Me.TBNombreRaiz)
         Me.GbUbicacionDocumentos.Controls.Add(Me.TBRuta)
         Me.GbUbicacionDocumentos.Controls.Add(Me.Label4)
-        Me.GbUbicacionDocumentos.Controls.Add(Me.TbTemporadas)
         Me.GbUbicacionDocumentos.Controls.Add(Me.TBIdUbicacion)
-        Me.GbUbicacionDocumentos.Controls.Add(Me.TbNombreAnual)
-        Me.GbUbicacionDocumentos.Controls.Add(Me.GbTemporadas)
         Me.GbUbicacionDocumentos.Controls.Add(Me.Label1)
-        Me.GbUbicacionDocumentos.Controls.Add(Me.GroupBox1)
-        Me.GbUbicacionDocumentos.Controls.Add(Me.Label11)
-        Me.GbUbicacionDocumentos.Controls.Add(Me.BtCarpetaTemporada)
-        Me.GbUbicacionDocumentos.Controls.Add(Me.Label12)
         Me.GbUbicacionDocumentos.Controls.Add(Me.BTUbicacion)
         Me.GbUbicacionDocumentos.Location = New System.Drawing.Point(12, 27)
         Me.GbUbicacionDocumentos.Name = "GbUbicacionDocumentos"
-        Me.GbUbicacionDocumentos.Size = New System.Drawing.Size(953, 512)
-        Me.GbUbicacionDocumentos.TabIndex = 18
+        Me.GbUbicacionDocumentos.Size = New System.Drawing.Size(961, 517)
+        Me.GbUbicacionDocumentos.TabIndex = 0
         Me.GbUbicacionDocumentos.TabStop = False
         '
         'ModificarToolStripMenuItem
@@ -403,11 +406,54 @@ Partial Class RutasDocumentos
         Me.ModificarToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
         Me.ModificarToolStripMenuItem.Text = "Modificar"
         '
+        'GbPrincipalTemporadas
+        '
+        Me.GbPrincipalTemporadas.Controls.Add(Me.GbTemporadas)
+        Me.GbPrincipalTemporadas.Controls.Add(Me.Label12)
+        Me.GbPrincipalTemporadas.Controls.Add(Me.BtCarpetaTemporada)
+        Me.GbPrincipalTemporadas.Controls.Add(Me.TbNombreAnual)
+        Me.GbPrincipalTemporadas.Location = New System.Drawing.Point(6, 284)
+        Me.GbPrincipalTemporadas.Name = "GbPrincipalTemporadas"
+        Me.GbPrincipalTemporadas.Size = New System.Drawing.Size(955, 226)
+        Me.GbPrincipalTemporadas.TabIndex = 6
+        Me.GbPrincipalTemporadas.TabStop = False
+        '
+        'GbPrincipalDocumentos
+        '
+        Me.GbPrincipalDocumentos.Controls.Add(Me.GroupBox1)
+        Me.GbPrincipalDocumentos.Controls.Add(Me.TBPersonas)
+        Me.GbPrincipalDocumentos.Controls.Add(Me.Label2)
+        Me.GbPrincipalDocumentos.Location = New System.Drawing.Point(6, 123)
+        Me.GbPrincipalDocumentos.Name = "GbPrincipalDocumentos"
+        Me.GbPrincipalDocumentos.Size = New System.Drawing.Size(955, 155)
+        Me.GbPrincipalDocumentos.TabIndex = 5
+        Me.GbPrincipalDocumentos.TabStop = False
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(21, 32)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(213, 13)
+        Me.Label13.TabIndex = 1
+        Me.Label13.Text = "Carpeta de Documentos Personales:"
+        '
+        'TbDocumentacionPersonal
+        '
+        Me.TbDocumentacionPersonal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TbDocumentacionPersonal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TbDocumentacionPersonal.Location = New System.Drawing.Point(264, 29)
+        Me.TbDocumentacionPersonal.MaxLength = 50
+        Me.TbDocumentacionPersonal.Name = "TbDocumentacionPersonal"
+        Me.TbDocumentacionPersonal.Size = New System.Drawing.Size(281, 20)
+        Me.TbDocumentacionPersonal.TabIndex = 0
+        '
         'RutasDocumentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(982, 559)
+        Me.ClientSize = New System.Drawing.Size(985, 565)
         Me.Controls.Add(Me.GbUbicacionDocumentos)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "RutasDocumentos"
@@ -422,6 +468,10 @@ Partial Class RutasDocumentos
         Me.GbTemporadas.PerformLayout()
         Me.GbUbicacionDocumentos.ResumeLayout(False)
         Me.GbUbicacionDocumentos.PerformLayout()
+        Me.GbPrincipalTemporadas.ResumeLayout(False)
+        Me.GbPrincipalTemporadas.PerformLayout()
+        Me.GbPrincipalDocumentos.ResumeLayout(False)
+        Me.GbPrincipalDocumentos.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -460,4 +510,8 @@ Partial Class RutasDocumentos
     Friend WithEvents Label4 As Label
     Friend WithEvents GbUbicacionDocumentos As GroupBox
     Friend WithEvents ModificarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TbDocumentacionPersonal As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents GbPrincipalDocumentos As GroupBox
+    Friend WithEvents GbPrincipalTemporadas As GroupBox
 End Class

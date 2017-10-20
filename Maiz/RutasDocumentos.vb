@@ -18,10 +18,10 @@ Public Class RutasDocumentos
 
         Dim row As DataRow = dt.Rows(0)
 
-
         TBRuta.Text = CStr(row("RutaPrincipal"))
         TBNombreRaiz.Text = CStr(row("NombreCarpetaRaiz"))
         TBPersonas.Text = CStr(row("DocumentosProductores"))
+        TbDocumentacionPersonal.Text = CStr(row("DocumentosPersonales"))
         TBLotes.Text = CStr(row("DocumentosLotes"))
         TbContratosProductores.Text = CStr(row("ContratosProductores"))
         TbContratosCompradores.Text = CStr(row("ContratosCompradores"))
@@ -89,42 +89,30 @@ Public Class RutasDocumentos
         Try
             ' Configuración del FolderBrowserDialog
             With folderBrowserDialog1
-
                 .Reset() ' resetea
-
                 ' leyenda
                 .Description = " Seleccionar una carpeta "
                 ' Path " Mis documentos "
                 .SelectedPath = Ruta
-
                 ' deshabilita el botón " crear nueva carpeta "
                 .ShowNewFolderButton = True
-
                 '.RootFolder = Environment.SpecialFolder.Desktop
                 '.RootFolder = Environment.SpecialFolder.StartMenu
-
                 Dim ret As DialogResult = .ShowDialog ' abre el diálogo
-
                 ' si se presionó el botón aceptar ...
                 If ret = DialogResult.OK Then
-
                     'Dim nFiles As ObjectModel.ReadOnlyCollection(Of String)
-
                     'nFiles = My.Computer.FileSystem.GetFiles(.SelectedPath)
-
                     'MsgBox("Total de archivos: " & CStr(nFiles.Count),
                     '                        MsgBoxStyle.Information)
                     'Ruta = folderBrowserDialog1.SelectedPath
                     TbNombreAnual.Text = LTrim(RTrim(Strings.Right(folderBrowserDialog1.SelectedPath, 7)))
                 End If
-
                 .Dispose()
             End With
-
         Catch oe As Exception
             MsgBox(oe.Message, MsgBoxStyle.Critical)
         End Try
-
     End Sub
     Private Sub CrearCarpetas()
         Dim NuevaTemporada As String = TBRuta.Text & "\" & TBNombreRaiz.Text & "\" & TbTemporadas.Text & "\" & TbNombreAnual.Text
@@ -143,19 +131,20 @@ Public Class RutasDocumentos
         cnn.Open()
         cmdGuardar = New SqlCommand("sp_InsDocumentos", cnn)
         cmdGuardar.CommandType = CommandType.StoredProcedure
-            cmdGuardar.Parameters.Add(New SqlParameter("@IdUbicacion", 1))
-            cmdGuardar.Parameters.Add(New SqlParameter("@RutaPrincipal", TBRuta.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@NombreCarpetaRaiz", TBNombreRaiz.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@DocumentosProductores", TBPersonas.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@DocumentosLotes", TBLotes.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@ContratosProductores", TbContratosProductores.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@ContratosCompradores", TbContratosCompradores.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@Anexos", TbAnexo.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@PreRegistro", TbPreregistro.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@ActaParticipacion", TbActaParticipacion.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@Temporadas", TbTemporadas.Text))
-            cmdGuardar.Parameters.Add(New SqlParameter("@NombreAnual", TbNombreAnual.Text))
-            cmdGuardar.ExecuteNonQuery()
+        cmdGuardar.Parameters.Add(New SqlParameter("@IdUbicacion", 1))
+        cmdGuardar.Parameters.Add(New SqlParameter("@RutaPrincipal", TBRuta.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@NombreCarpetaRaiz", TBNombreRaiz.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@DocumentosProductores", TBPersonas.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@DocumentosPersonales", TbDocumentacionPersonal.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@DocumentosLotes", TBLotes.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@ContratosProductores", TbContratosProductores.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@ContratosCompradores", TbContratosCompradores.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@Anexos", TbAnexo.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@PreRegistro", TbPreregistro.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@ActaParticipacion", TbActaParticipacion.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@Temporadas", TbTemporadas.Text))
+        cmdGuardar.Parameters.Add(New SqlParameter("@NombreAnual", TbNombreAnual.Text))
+        cmdGuardar.ExecuteNonQuery()
         cnn.Close()
         CrearCarpetas()
         GbUbicacionDocumentos.Enabled = False
@@ -169,6 +158,16 @@ Public Class RutasDocumentos
     End Sub
 
     Private Sub ModificarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ModificarToolStripMenuItem.Click
+        Dim opc As DialogResult = MsgBox("¿Desea modificar campos al registro?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Salir")
 
+        If opc = DialogResult.Yes Then
+
+            GbUbicacionDocumentos.Enabled = True
+
+        ElseIf opc = DialogResult.No Then
+
+            GbUbicacionDocumentos.Enabled = False
+
+        End If
     End Sub
 End Class

@@ -2,7 +2,14 @@
 Imports System.Data.Sql
 Imports System.Data
 Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
+Imports CrystalDecisions.Web
+Imports CrystalDecisions.ReportSource
 Imports CrystalDecisions.CrystalReports
+Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.IO
 Public Class ReporteContratoProductor
 
     Private Sub CrContratoProductor_Load(sender As Object, e As EventArgs) Handles CrContratoProductor.Load
@@ -28,6 +35,21 @@ Public Class ReporteContratoProductor
             CrReport.SetDataSource(ds)
 
             CrContratoProductor.ReportSource = CrReport
+
+
+            Dim CrExportOptions As ExportOptions
+            Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions
+            Dim CrFormatType As New PdfRtfWordFormatOptions
+            Dim RutaPDF As String = ContratosCompras.CadenaDocumento & ".pdf"
+            CrDiskFileDestinationOptions.DiskFileName = RutaPDF
+            CrExportOptions = CrReport.ExportOptions
+            With CrExportOptions
+                .ExportDestinationType = ExportDestinationType.DiskFile
+                .ExportFormatType = ExportFormatType.PortableDocFormat
+                .ExportDestinationOptions = CrDiskFileDestinationOptions
+                .ExportFormatOptions = CrFormatType
+            End With
+            CrReport.Export()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

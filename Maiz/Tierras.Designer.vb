@@ -73,6 +73,7 @@ Partial Class Tierras
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.BtDocumentos = New System.Windows.Forms.Button()
         Me.GbDatos.SuspendLayout()
         CType(Me.NuSupCultivable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NuSupTotal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,52 +85,52 @@ Partial Class Tierras
         '
         Me.BtnNuevo.Location = New System.Drawing.Point(12, 2)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(75, 35)
+        Me.BtnNuevo.Size = New System.Drawing.Size(104, 35)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
         '
         'BtnGuardar
         '
-        Me.BtnGuardar.Location = New System.Drawing.Point(93, 2)
+        Me.BtnGuardar.Location = New System.Drawing.Point(122, 2)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(75, 35)
+        Me.BtnGuardar.Size = New System.Drawing.Size(104, 35)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
         'BtnModificar
         '
-        Me.BtnModificar.Location = New System.Drawing.Point(174, 2)
+        Me.BtnModificar.Location = New System.Drawing.Point(342, 2)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(75, 35)
+        Me.BtnModificar.Size = New System.Drawing.Size(104, 35)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.UseVisualStyleBackColor = True
         '
         'BtnBuscar
         '
-        Me.BtnBuscar.Location = New System.Drawing.Point(255, 2)
+        Me.BtnBuscar.Location = New System.Drawing.Point(452, 2)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(75, 35)
+        Me.BtnBuscar.Size = New System.Drawing.Size(104, 35)
         Me.BtnBuscar.TabIndex = 3
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.UseVisualStyleBackColor = True
         '
         'BtnEliminar
         '
-        Me.BtnEliminar.Location = New System.Drawing.Point(336, 2)
+        Me.BtnEliminar.Location = New System.Drawing.Point(562, 2)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(75, 35)
+        Me.BtnEliminar.Size = New System.Drawing.Size(104, 35)
         Me.BtnEliminar.TabIndex = 4
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.UseVisualStyleBackColor = True
         '
         'BtnSalir
         '
-        Me.BtnSalir.Location = New System.Drawing.Point(416, 2)
+        Me.BtnSalir.Location = New System.Drawing.Point(672, 2)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(75, 35)
+        Me.BtnSalir.Size = New System.Drawing.Size(104, 35)
         Me.BtnSalir.TabIndex = 6
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.UseVisualStyleBackColor = True
@@ -572,15 +573,25 @@ Partial Class Tierras
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "ID Tierra:"
         '
+        'BtDocumentos
+        '
+        Me.BtDocumentos.Location = New System.Drawing.Point(232, 2)
+        Me.BtDocumentos.Name = "BtDocumentos"
+        Me.BtDocumentos.Size = New System.Drawing.Size(104, 35)
+        Me.BtDocumentos.TabIndex = 2
+        Me.BtDocumentos.Text = "Documentos"
+        Me.BtDocumentos.UseVisualStyleBackColor = True
+        '
         'Tierras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(743, 519)
+        Me.ClientSize = New System.Drawing.Size(844, 519)
         Me.Controls.Add(Me.GbDatos)
         Me.Controls.Add(Me.BtnSalir)
         Me.Controls.Add(Me.BtnEliminar)
         Me.Controls.Add(Me.BtnBuscar)
+        Me.Controls.Add(Me.BtDocumentos)
         Me.Controls.Add(Me.BtnModificar)
         Me.Controls.Add(Me.BtnGuardar)
         Me.Controls.Add(Me.BtnNuevo)
@@ -652,4 +663,5 @@ Partial Class Tierras
     Friend WithEvents NuSupCultivable As NumericUpDown
     Friend WithEvents TxVolumen As TextBox
     Friend WithEvents Label19 As Label
+    Friend WithEvents BtDocumentos As Button
 End Class

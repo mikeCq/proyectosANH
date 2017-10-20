@@ -1,4 +1,8 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.IO
+Imports System.Data.SqlClient
 Imports System.Data.Sql
 Imports System.Text.RegularExpressions
 Public Class Clientes
@@ -162,6 +166,7 @@ Public Class Clientes
             End If
 
         End If
+        CrearCarpetas()
     End Sub
     Private Sub Modificar(sender As Object, e As EventArgs) Handles BtnModificar.Click
         If TxIdFisica.Text <> "" Or TxIdMoral.Text <> "" Then
@@ -318,6 +323,62 @@ Public Class Clientes
             End If
 
         End If
+    End Sub
+    Private Sub CrearCarpetas()
+        Dim cmd As New SqlCommand("sp_ObtUbicacionDocumentos", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+
+        Dim da As New SqlClient.SqlDataAdapter(cmd)
+        Dim dt As New DataTable
+
+        da.Fill(dt)
+
+        Dim row As DataRow = dt.Rows(0)
+        Dim RutaDocPer As String = CStr(row("RutaPrincipal")) & "\" & CStr(row("NombreCarpetaRaiz")) & "\" & CStr(row("DocumentosProductores"))
+
+        If RbFisica.Checked = True And TxIdFisica.Text <> "" Then
+
+            Dim CarpetaClienteFisica As String = TxNombre.Text & " " & TxApellidos.Text & " " & TxIdFisica.Text
+
+            If Not Directory.Exists(RutaDocPer & "\" & CarpetaClienteFisica) Then
+                Directory.CreateDirectory(RutaDocPer & "\" & CarpetaClienteFisica & "\" & CStr(row("DocumentosPersonales")))
+
+                Process.Start("explorer.exe", RutaDocPer & "\" & CarpetaClienteFisica & "\" & CStr(row("DocumentosPersonales")))
+
+            Else
+                Process.Start("explorer.exe", RutaDocPer & "\" & CarpetaClienteFisica & "\" & CStr(row("DocumentosPersonales")))
+
+            End If
+            CarpetaClienteFisica = ""
+
+            ElseIf RbMoral.Checked = True And TxIdMoral.Text <> "" Then
+
+            Dim CarpetaClienteMoral As String = TxRazonSocial.Text & " " & TxIdMoral.Text
+            If Not Directory.Exists(RutaDocPer & "\" & CarpetaClienteMoral) Then
+                Directory.CreateDirectory(RutaDocPer & "\" & CarpetaClienteMoral)
+                Directory.CreateDirectory(RutaDocPer & "\" & CarpetaClienteMoral & "\" & CbNomRep.Text & " " & CbNomRep.SelectedValue & "\" & CStr(row("DocumentosPersonales")))
+                Process.Start("explorer.exe", RutaDocPer & "\" & CarpetaClienteMoral)
+            Else
+                Process.Start("explorer.exe", RutaDocPer & "\" & CarpetaClienteMoral)
+
+            End If
+
+                CarpetaClienteMoral = ""
+
+        End If
+
+        'TBRuta.Text = CStr(row("RutaPrincipal"))
+        'TBNombreRaiz.Text = CStr(row("NombreCarpetaRaiz"))
+        'TBPersonas.Text = CStr(row("DocumentosProductores"))
+        'TBLotes.Text = CStr(row("DocumentosLotes"))
+        'TbContratosProductores.Text = CStr(row("ContratosProductores"))
+        'TbContratosCompradores.Text = CStr(row("ContratosCompradores"))
+        'TbAnexo.Text = CStr(row("Anexos"))
+        'TbPreregistro.Text = CStr(row("PreRegistro"))
+        'TbActaParticipacion.Text = CStr(row("ActaParticipacion"))
+        'TbTemporadas.Text = CStr(row("Temporadas"))
+        'TbNombreAnual.Text = CStr(row("NombreAnual"))
     End Sub
     Private Sub Llenatextid()
         If RbFisica.Checked = True And RbMoral.Checked = False Then
@@ -762,7 +823,7 @@ Public Class Clientes
         If TxIdFisica.Text = "" And TxIdMoral.Text = "" Then
             MessageBox.Show("No hay un Productor seleccionado.", "Aviso")
         Else
-
+            CrearCarpetas()
         End If
     End Sub
 End Class

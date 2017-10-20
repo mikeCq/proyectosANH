@@ -101,6 +101,7 @@ Partial Class ContratosCompras
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.ImpContrato = New System.Windows.Forms.Button()
+        Me.BtnDocumentos = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TpCompraNormal.SuspendLayout()
         Me.GbContratoLibre.SuspendLayout()
@@ -868,10 +869,10 @@ Partial Class ContratosCompras
         'BtnSalir
         '
         Me.BtnSalir.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnSalir.Location = New System.Drawing.Point(654, 1)
+        Me.BtnSalir.Location = New System.Drawing.Point(747, 1)
         Me.BtnSalir.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(87, 82)
+        Me.BtnSalir.Size = New System.Drawing.Size(90, 82)
         Me.BtnSalir.TabIndex = 7
         Me.BtnSalir.Text = "Salir"
         Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -883,7 +884,7 @@ Partial Class ContratosCompras
         Me.BtnGuardar.Location = New System.Drawing.Point(96, 1)
         Me.BtnGuardar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(87, 82)
+        Me.BtnGuardar.Size = New System.Drawing.Size(90, 82)
         Me.BtnGuardar.TabIndex = 1
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -892,10 +893,10 @@ Partial Class ContratosCompras
         'BtnRestaurar
         '
         Me.BtnRestaurar.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnRestaurar.Location = New System.Drawing.Point(561, 1)
+        Me.BtnRestaurar.Location = New System.Drawing.Point(654, 1)
         Me.BtnRestaurar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnRestaurar.Name = "BtnRestaurar"
-        Me.BtnRestaurar.Size = New System.Drawing.Size(87, 82)
+        Me.BtnRestaurar.Size = New System.Drawing.Size(90, 82)
         Me.BtnRestaurar.TabIndex = 6
         Me.BtnRestaurar.Text = "Restaurar"
         Me.BtnRestaurar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -904,10 +905,10 @@ Partial Class ContratosCompras
         'BtnBuscar
         '
         Me.BtnBuscar.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnBuscar.Location = New System.Drawing.Point(282, 1)
+        Me.BtnBuscar.Location = New System.Drawing.Point(375, 1)
         Me.BtnBuscar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(87, 82)
+        Me.BtnBuscar.Size = New System.Drawing.Size(90, 82)
         Me.BtnBuscar.TabIndex = 3
         Me.BtnBuscar.Text = "Buscar"
         Me.BtnBuscar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -919,7 +920,7 @@ Partial Class ContratosCompras
         Me.BtnModificar.Location = New System.Drawing.Point(189, 1)
         Me.BtnModificar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnModificar.Name = "BtnModificar"
-        Me.BtnModificar.Size = New System.Drawing.Size(87, 82)
+        Me.BtnModificar.Size = New System.Drawing.Size(90, 82)
         Me.BtnModificar.TabIndex = 2
         Me.BtnModificar.Text = "Modificar"
         Me.BtnModificar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -928,10 +929,10 @@ Partial Class ContratosCompras
         'BtnEliminar
         '
         Me.BtnEliminar.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEliminar.Location = New System.Drawing.Point(468, 1)
+        Me.BtnEliminar.Location = New System.Drawing.Point(561, 1)
         Me.BtnEliminar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(87, 82)
+        Me.BtnEliminar.Size = New System.Drawing.Size(90, 82)
         Me.BtnEliminar.TabIndex = 5
         Me.BtnEliminar.Text = "Eliminar"
         Me.BtnEliminar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -943,7 +944,7 @@ Partial Class ContratosCompras
         Me.BtnNuevo.Location = New System.Drawing.Point(3, 1)
         Me.BtnNuevo.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(87, 82)
+        Me.BtnNuevo.Size = New System.Drawing.Size(90, 82)
         Me.BtnNuevo.TabIndex = 0
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -952,14 +953,26 @@ Partial Class ContratosCompras
         'ImpContrato
         '
         Me.ImpContrato.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ImpContrato.Location = New System.Drawing.Point(375, 1)
+        Me.ImpContrato.Location = New System.Drawing.Point(468, 1)
         Me.ImpContrato.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ImpContrato.Name = "ImpContrato"
-        Me.ImpContrato.Size = New System.Drawing.Size(87, 82)
+        Me.ImpContrato.Size = New System.Drawing.Size(90, 82)
         Me.ImpContrato.TabIndex = 4
         Me.ImpContrato.Text = "Imprimir"
         Me.ImpContrato.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ImpContrato.UseVisualStyleBackColor = True
+        '
+        'BtnDocumentos
+        '
+        Me.BtnDocumentos.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnDocumentos.Location = New System.Drawing.Point(282, 1)
+        Me.BtnDocumentos.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.BtnDocumentos.Name = "BtnDocumentos"
+        Me.BtnDocumentos.Size = New System.Drawing.Size(90, 82)
+        Me.BtnDocumentos.TabIndex = 3
+        Me.BtnDocumentos.Text = "Documentos"
+        Me.BtnDocumentos.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnDocumentos.UseVisualStyleBackColor = True
         '
         'ContratosCompras
         '
@@ -971,6 +984,7 @@ Partial Class ContratosCompras
         Me.Controls.Add(Me.BtnSalir)
         Me.Controls.Add(Me.BtnGuardar)
         Me.Controls.Add(Me.BtnRestaurar)
+        Me.Controls.Add(Me.BtnDocumentos)
         Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnModificar)
         Me.Controls.Add(Me.BtnEliminar)
@@ -1084,4 +1098,5 @@ Partial Class ContratosCompras
     Friend WithEvents CbMoneda As ComboBox
     Friend WithEvents RbSoloLibre As RadioButton
     Friend WithEvents CbAcopio As ComboBox
+    Friend WithEvents BtnDocumentos As Button
 End Class

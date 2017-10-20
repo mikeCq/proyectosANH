@@ -230,7 +230,7 @@ Partial Class Clientes
         Me.TPFisicos.Location = New System.Drawing.Point(4, 25)
         Me.TPFisicos.Name = "TPFisicos"
         Me.TPFisicos.Padding = New System.Windows.Forms.Padding(3)
-        Me.TPFisicos.Size = New System.Drawing.Size(1063, 456)
+        Me.TPFisicos.Size = New System.Drawing.Size(1063, 556)
         Me.TPFisicos.TabIndex = 0
         Me.TPFisicos.Text = "Fisicas"
         '
@@ -1338,7 +1338,7 @@ Partial Class Clientes
         Me.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Clientes"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Productores"
         Me.TCClientes.ResumeLayout(False)
         Me.TPFisicos.ResumeLayout(False)

@@ -1,4 +1,8 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.IO
+Imports System.Data.SqlClient
 Imports System.Data.Sql
 Imports System.Data
 Public Class ContratosCompras
@@ -11,6 +15,24 @@ Public Class ContratosCompras
         End Get
         Set(value As String)
             _codigoCompras = value
+        End Set
+    End Property
+    Private _cadenaDocumento As String
+    Public Property CadenaDocumento() As String
+        Get
+            Return _cadenaDocumento
+        End Get
+        Set(value As String)
+            _cadenaDocumento = value
+        End Set
+    End Property
+    Private _codigoPropietario As String
+    Public Property CodigoPropietario() As String
+        Get
+            Return _codigoPropietario
+        End Get
+        Set(ByVal value As String)
+            _codigoPropietario = value
         End Set
     End Property
     Private Sub ContratosCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -47,15 +69,6 @@ Public Class ContratosCompras
             GbSeleccion.Enabled = True
         End If
     End Sub
-    Private _codigoPropietario As String
-    Public Property CodigoPropietario() As String
-        Get
-            Return _codigoPropietario
-        End Get
-        Set(ByVal value As String)
-            _codigoPropietario = value
-        End Set
-    End Property
     Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message, ByVal keyData As System.Windows.Forms.Keys) As Boolean
         If keyData = Keys.Enter Then
             TxFolioProductor.Text = CbNombreProductor.SelectedValue
@@ -277,10 +290,8 @@ Public Class ContratosCompras
                 End If
             End If
         Next
-
     End Sub
     Private Sub ActualizaTierras()
-
         For Each row As DataGridViewRow In DgSeleccionLotes.Rows
             Dim isSelected As Boolean = Convert.ToBoolean(row.Cells("ChCol").Value)
             If isSelected = True Then
@@ -301,7 +312,6 @@ Public Class ContratosCompras
                     End Try
 
                 End If
-
             End If
         Next
 
@@ -309,7 +319,6 @@ Public Class ContratosCompras
         supRestante = 0
         rendimiento = 0
         hectareasprometidas = 0
-
     End Sub
     Private Sub SeleccionLote(sender As Object, e As EventArgs) Handles DgContatoVenta.DoubleClick
         If DgContatoVenta.RowCount = 0 Then
@@ -444,7 +453,9 @@ Public Class ContratosCompras
         If TxFolioContrato.Text = "" Then
             MessageBox.Show("Selecciona un contrato para imprimir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
+            Dim Cadena As String = ObtenerRutaDocumento(Cadena)
             _codigoCompras = TxFolioContrato.Text
+            _cadenaDocumento = Cadena & "\" & CbNombreProductor.Text & " " & CbNombreProductor.SelectedValue
             ReporteContratoProductor.ShowDialog()
         End If
 
@@ -510,6 +521,66 @@ Public Class ContratosCompras
         'DgSeleccionLotes.Columns("Hectareas_promRestante").ReadOnly = False
         'DgSeleccionLotes.Columns("rendimiento").ReadOnly = False
     End Sub
+
+    Private Sub BtnDocumentos_Click(sender As Object, e As EventArgs) Handles BtnDocumentos.Click
+        If TxFolioContrato.Text = "" Then
+            MessageBox.Show("No hay un Contrato seleccionado.", "Aviso")
+        Else
+            Dim Cadena As String = ObtenerRutaDocumento(Cadena)
+            If Not Directory.Exists(Cadena) Then
+                Directory.CreateDirectory(Cadena)
+                Process.Start("explorer.exe", Cadena)
+            Else
+                Process.Start("explorer.exe", Cadena)
+            End If
+
+        End If
+    End Sub
+    Private Function ObtenerRutaDocumento(ByVal CadenaRuta As String) As String
+        Dim Resultado As String = ""
+
+        Dim cmd As New SqlCommand("sp_ObtUbicacionDocumentos", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+
+        Dim da As New SqlClient.SqlDataAdapter(cmd)
+        Dim dt As New DataTable
+
+        da.Fill(dt)
+
+        Dim row As DataRow = dt.Rows(0)
+        Dim RutaDocTemporadas As String = CStr(row("RutaPrincipal")) & "\" & CStr(row("NombreCarpetaRaiz")) & "\" & CStr(row("Temporadas")) & "\" & CStr(row("NombreAnual")) & "\" & CStr(row("ContratosProductores"))
+
+        'If TipoPersona(IdPersona) = "F" Then
+
+        'Dim NombreDocumento As String = 
+
+        'If Not File.Exists(RutaDocTemporadas) Then
+
+
+        '    Process.Start("explorer.exe", RutaDocTemporadas)
+
+        'Else
+        '    Process.Start("explorer.exe", RutaDocTemporadas)
+
+        'End If
+        Resultado = RutaDocTemporadas
+        RutaDocTemporadas = ""
+        Return Resultado
+
+
+        'TBRuta.Text = CStr(row("RutaPrincipal"))
+        'TBNombreRaiz.Text = CStr(row("NombreCarpetaRaiz"))
+        'TBPersonas.Text = CStr(row("DocumentosProductores"))
+        'TBLotes.Text = CStr(row("DocumentosLotes"))
+        'TbContratosProductores.Text = CStr(row("ContratosProductores"))
+        'TbContratosCompradores.Text = CStr(row("ContratosCompradores"))
+        'TbAnexo.Text = CStr(row("Anexos"))
+        'TbPreregistro.Text = CStr(row("PreRegistro"))
+        'TbActaParticipacion.Text = CStr(row("ActaParticipacion"))
+        'TbTemporadas.Text = CStr(row("Temporadas"))
+        'TbNombreAnual.Text = CStr(row("NombreAnual"))
+    End Function
     Private Sub DataGridPropiedadeslotesSeleccionados()
 
         'If DgSeleccionLotes.Columns("ChCol") Is Nothing Then
@@ -558,7 +629,6 @@ Public Class ContratosCompras
             DgSeleccionLotes.CurrentRow.Cells("ChCol").Value = False
         End If
     End Sub
-
     Private Sub Valid(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxPrecioTonelada.KeyPress
         If InStr(1, "0123456789." & Chr(8), e.KeyChar) = 0 Then
             e.Handled = True

@@ -1,4 +1,7 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.IO
+Imports System.Data.SqlClient
 Imports System.Data.Sql
 Public Class Tierras
     Dim modifica As Integer = 0
@@ -150,6 +153,28 @@ Public Class Tierras
         End If
 
     End Sub
+    Private Function TipoPersona(ByVal IdPersona As String) As String
+        Dim Resultado As String = ""
+        Dim cmd As New SqlCommand("sp_SeleccionaDatos_productor", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+
+        cmd.Parameters.AddWithValue("@IdProductor", IdPersona)
+
+        cmd.ExecuteNonQuery()
+
+        Dim da As New SqlDataAdapter(cmd)
+
+        Dim dt As New DataTable
+
+        da.Fill(dt)
+
+        Dim row As DataRow = dt.Rows(0)
+
+        Resultado = CStr(row("Tipo_Persona"))
+
+        Return Resultado
+    End Function
     Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
         Dim BuscarTierras As New BuscarTierras
         BuscarTierras.ShowDialog()
@@ -263,6 +288,96 @@ Public Class Tierras
             cmd.ExecuteNonQuery()
             BtnNuevo_Click(sender, e)
             MessageBox.Show("Registro eliminado con éxito", "Aviso")
+        End If
+    End Sub
+    Private Sub CrearCarpetas()
+        Dim IdPersona As String = ""
+
+        IdPersona = CBPropietario.SelectedValue
+        Dim cmd As New SqlCommand("sp_ObtUbicacionDocumentos", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+
+        Dim da As New SqlClient.SqlDataAdapter(cmd)
+        Dim dt As New DataTable
+
+        da.Fill(dt)
+
+        Dim row As DataRow = dt.Rows(0)
+        Dim RutaDocPer As String = CStr(row("RutaPrincipal")) & "\" & CStr(row("NombreCarpetaRaiz")) & "\" & CStr(row("DocumentosProductores"))
+
+        If TipoPersona(IdPersona) = "F" Then
+
+            Dim CarpetaClienteFisica As String = CBPropietario.Text & " " & CBPropietario.SelectedValue
+
+            If Not Directory.Exists(RutaDocPer & "\" & CarpetaClienteFisica & "\" & CStr(row("DocumentosLotes"))) Then
+                Directory.CreateDirectory(RutaDocPer & "\" & CarpetaClienteFisica & "\" & CStr(row("DocumentosLotes")))
+
+                Process.Start("explorer.exe", RutaDocPer & "\" & CarpetaClienteFisica & "\" & CStr(row("DocumentosLotes")))
+
+            Else
+                Process.Start("explorer.exe", RutaDocPer & "\" & CarpetaClienteFisica & "\" & CStr(row("DocumentosLotes")))
+
+            End If
+            CarpetaClienteFisica = ""
+
+        Else
+            Dim CadenaRepresentante As String = ObtenerDatosRepresentante(CBPropietario.SelectedValue)
+            Dim CarpetaClienteMoral As String = CBPropietario.Text & " " & CBPropietario.SelectedValue
+            If Not Directory.Exists(RutaDocPer & "\" & CarpetaClienteMoral & "\" & CadenaRepresentante) Then
+                Directory.CreateDirectory(RutaDocPer & "\" & CarpetaClienteMoral & "\" & CadenaRepresentante)
+                Directory.CreateDirectory(RutaDocPer & "\" & CarpetaClienteMoral & "\" & CadenaRepresentante & "\" & CStr(row("DocumentosLotes")))
+                Process.Start("explorer.exe", RutaDocPer & "\" & CarpetaClienteMoral & "\" & CadenaRepresentante & "\" & CStr(row("DocumentosLotes")))
+            Else
+                Process.Start("explorer.exe", RutaDocPer & "\" & CarpetaClienteMoral & "\" & CadenaRepresentante & "\" & CStr(row("DocumentosLotes")))
+
+            End If
+
+            CarpetaClienteMoral = ""
+            CadenaRepresentante = ""
+        End If
+
+        'TBRuta.Text = CStr(row("RutaPrincipal"))
+        'TBNombreRaiz.Text = CStr(row("NombreCarpetaRaiz"))
+        'TBPersonas.Text = CStr(row("DocumentosProductores"))
+        'TBLotes.Text = CStr(row("DocumentosLotes"))
+        'TbContratosProductores.Text = CStr(row("ContratosProductores"))
+        'TbContratosCompradores.Text = CStr(row("ContratosCompradores"))
+        'TbAnexo.Text = CStr(row("Anexos"))
+        'TbPreregistro.Text = CStr(row("PreRegistro"))
+        'TbActaParticipacion.Text = CStr(row("ActaParticipacion"))
+        'TbTemporadas.Text = CStr(row("Temporadas"))
+        'TbNombreAnual.Text = CStr(row("NombreAnual"))
+    End Sub
+    Private Function ObtenerDatosRepresentante(ByVal Cadena As String) As String
+        Dim Resultado As String = ""
+
+        Dim cmd As New SqlCommand("sp_ObtDatosRepresentante", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+
+        cmd.Parameters.AddWithValue("@idCliente", Cadena)
+
+        cmd.ExecuteNonQuery()
+
+        Dim da As New SqlDataAdapter(cmd)
+
+        Dim dt As New DataTable
+
+        da.Fill(dt)
+
+        Dim row As DataRow = dt.Rows(0)
+
+        Resultado = CStr(row("Nombre"))
+
+        Return Resultado
+
+    End Function
+    Private Sub BtDocumentos_Click(sender As Object, e As EventArgs) Handles BtDocumentos.Click
+        If TxIdLote.Text = "" Then
+            MessageBox.Show("No hay un Lote seleccionado.", "Aviso")
+        Else
+            CrearCarpetas()
         End If
     End Sub
 End Class
