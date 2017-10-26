@@ -71,6 +71,9 @@ Partial Class Maiz
         Me.AutorizacionDiariaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CrearNuevaBDDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RutasDeDocumentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PuertoSerialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualDeUusarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -84,7 +87,6 @@ Partial Class Maiz
         Me.SbNombreUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbIdUsuario = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.RutasDeDocumentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -367,7 +369,7 @@ Partial Class Maiz
         '
         'UtileriasToolStripMenuItem
         '
-        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem})
+        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem, Me.PuertoSerialToolStripMenuItem, Me.ToolStripMenuItem4})
         Me.UtileriasToolStripMenuItem.Name = "UtileriasToolStripMenuItem"
         Me.UtileriasToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
         Me.UtileriasToolStripMenuItem.Text = "Utilerias"
@@ -395,6 +397,24 @@ Partial Class Maiz
         Me.CrearNuevaBDDToolStripMenuItem.Name = "CrearNuevaBDDToolStripMenuItem"
         Me.CrearNuevaBDDToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
         Me.CrearNuevaBDDToolStripMenuItem.Text = "Crear nueva BDD"
+        '
+        'RutasDeDocumentosToolStripMenuItem
+        '
+        Me.RutasDeDocumentosToolStripMenuItem.Name = "RutasDeDocumentosToolStripMenuItem"
+        Me.RutasDeDocumentosToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.RutasDeDocumentosToolStripMenuItem.Text = "Rutas de Documentos"
+        '
+        'PuertoSerialToolStripMenuItem
+        '
+        Me.PuertoSerialToolStripMenuItem.Name = "PuertoSerialToolStripMenuItem"
+        Me.PuertoSerialToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.PuertoSerialToolStripMenuItem.Text = "Puerto Serial"
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(205, 22)
+        Me.ToolStripMenuItem4.Text = "Puerto Serial 2"
         '
         'AyudaToolStripMenuItem
         '
@@ -481,12 +501,6 @@ Partial Class Maiz
         Me.SbIdUsuario.Size = New System.Drawing.Size(57, 17)
         Me.SbIdUsuario.Text = "idUsuario"
         Me.SbIdUsuario.Visible = False
-        '
-        'RutasDeDocumentosToolStripMenuItem
-        '
-        Me.RutasDeDocumentosToolStripMenuItem.Name = "RutasDeDocumentosToolStripMenuItem"
-        Me.RutasDeDocumentosToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
-        Me.RutasDeDocumentosToolStripMenuItem.Text = "Rutas de Documentos"
         '
         'Maiz
         '
@@ -579,4 +593,6 @@ Partial Class Maiz
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents RutasDeDocumentosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PuertoSerialToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
 End Class

@@ -170,6 +170,18 @@
     <Compile Include="AyudaSistema.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Bascula.Designer.vb">
+      <DependentUpon>Bascula.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Bascula.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bascula2.Designer.vb">
+      <DependentUpon>Bascula2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Bascula2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BuscarAlmacen.Designer.vb">
       <DependentUpon>BuscarAlmacen.vb</DependentUpon>
     </Compile>
@@ -446,6 +458,12 @@
     <Compile Include="ReporteORI.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReportePDFtest.Designer.vb">
+      <DependentUpon>ReportePDFtest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePDFtest.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReporteProductores.Designer.vb">
       <DependentUpon>ReporteProductores.vb</DependentUpon>
     </Compile>
@@ -704,6 +722,12 @@
     <EmbeddedResource Include="AyudaSistema.resx">
       <DependentUpon>AyudaSistema.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bascula.resx">
+      <DependentUpon>Bascula.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bascula2.resx">
+      <DependentUpon>Bascula2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuscarAlmacen.resx">
       <DependentUpon>BuscarAlmacen.vb</DependentUpon>
     </EmbeddedResource>
@@ -835,6 +859,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteORI.resx">
       <DependentUpon>ReporteORI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportePDFtest.resx">
+      <DependentUpon>ReportePDFtest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteProductores.resx">
       <DependentUpon>ReporteProductores.vb</DependentUpon>

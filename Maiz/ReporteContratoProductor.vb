@@ -36,7 +36,6 @@ Public Class ReporteContratoProductor
 
             CrContratoProductor.ReportSource = CrReport
 
-
             Dim CrExportOptions As ExportOptions
             Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions
             Dim CrFormatType As New PdfRtfWordFormatOptions

@@ -17,6 +17,7 @@ Public Class ContratosCompras
             _codigoCompras = value
         End Set
     End Property
+
     Private _cadenaDocumento As String
     Public Property CadenaDocumento() As String
         Get
@@ -455,7 +456,7 @@ Public Class ContratosCompras
         Else
             Dim Cadena As String = ObtenerRutaDocumento(Cadena)
             _codigoCompras = TxFolioContrato.Text
-            _cadenaDocumento = Cadena & "\" & CbNombreProductor.Text & " " & CbNombreProductor.SelectedValue
+            _cadenaDocumento = Cadena & "\" & CbNombreProductor.Text & " " & TxFolioContrato.Text
             ReporteContratoProductor.ShowDialog()
         End If
 

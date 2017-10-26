@@ -179,8 +179,16 @@ Public Class Maiz
             e.Cancel = True
         End If
     End Sub
-    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click, MyBase.FormClosing
         SqlConnection.ClearAllPools()
         Me.Close()
+    End Sub
+
+    Private Sub PuertoSerialToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PuertoSerialToolStripMenuItem.Click
+        Bascula.ShowDialog()
+    End Sub
+
+    Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
+        Bascula2.ShowDialog()
     End Sub
 End Class
