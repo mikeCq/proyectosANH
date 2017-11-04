@@ -15,18 +15,54 @@ Public Class Maiz
             _idUsuarioAutorizacion = value
         End Set
     End Property
-    Private Function ObtenerPrecioDolar()
-        Dim myProxy As New WebProxy("Proxy", 80)
-        myProxy.Credentials = New NetworkCredential("Usuario", "contraseña")
+    Private Function ActualizaPrecioDolarBanxico() As Boolean
+        Try
+            Dim myProxy As New WebProxy("Proxy", 80)
+            Dim UrlBanxico As String = "8.8.8.8"
+            myProxy.Credentials = New NetworkCredential("Usuario", "contraseña")
+            If VerificarConexionURL(UrlBanxico) = True Then
+                Dim httpBanxico As HttpWebRequest = CType(WebRequest.Create("http://www.banxico.org.mx/DgieWSWeb/DgieWS?WSDL"), HttpWebRequest)
+                'httpBanxico.Proxy = myProxy
+                'httpBanxico.Credentials = myProxy.Credentials
+                WebRequest.DefaultWebProxy = httpBanxico.Proxy
+                Dim TipoCambio As New WebServiceBanxico.DgieWS
+                Dim strTipoCambio As String
+                strTipoCambio = TipoCambio.tiposDeCambioBanxico
 
-        Dim httpBanxico As HttpWebRequest = CType(WebRequest.Create("http://www.banxico.org.mx/DgieWSWeb/DgieWS?WSDL"), HttpWebRequest)
-        'httpBanxico.Proxy = myProxy
-        'httpBanxico.Credentials = myProxy.Credentials
-        WebRequest.DefaultWebProxy = httpBanxico.Proxy
-        Dim TipoCambio As New WebServiceBanxico.DgieWS()
-        Dim strTipoCambio As String
-        strTipoCambio = TipoCambio.tiposDeCambioBanxico()
-        Return strTipoCambio.Substring(1487, 7)
+
+                Dim cmd As New SqlCommand("sp_ActFechaCambio", cnn)
+
+                cmd.CommandType = CommandType.StoredProcedure
+
+                cmd.Parameters.AddWithValue("@PrecioDolar", strTipoCambio.Substring(1487, 7))
+                cmd.Parameters.AddWithValue("@FechaCambio", Now)
+                cmd.ExecuteNonQuery()
+
+                TsPrecioDolar.Text = strTipoCambio.Substring(1487, 7)
+                Return True
+            Else
+                TsPrecioDolar.Text = 0
+                Return False
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString)
+            TsPrecioDolar.Text = 0
+            Return False
+        End Try
+    End Function
+    Private Function VerificarConexionURL(ByVal mURL As String) As Boolean
+        Try
+            If My.Computer.Network.Ping(mURL, 2000) Then
+                Return True
+            Else
+                Return False
+            End If
+        Catch ex As System.Net.WebException
+            If ex.Status = Net.WebExceptionStatus.NameResolutionFailure Then
+                Return False
+            End If
+            Return False
+        End Try
     End Function
     Private Sub tipoUsuario()
         Dim infoUsuario As New Acceso
@@ -48,8 +84,6 @@ Public Class Maiz
         SbTipoUsuario.Text = CStr(row("Nombre_TipoUsuario"))
         SbIdUsuario.Text = CStr(row("id_usuario"))
         TsBdd.Text = Acceso.BaseDatos
-        TsPrecioDolar.Text = ObtenerPrecioDolar()
-
         If CStr(row("id_tipoUsuario")) = 2 Or CStr(row("id_tipoUsuario")) = 3 Then
             UsuariosToolStripMenuItem.Enabled = False
             CertificadoDeCalidadToolStripMenuItem.Enabled = False
@@ -57,12 +91,17 @@ Public Class Maiz
             CalculoDeLiquidaciónToolStripMenuItem.Enabled = False
             CalculoDeLiquidaciónPorCompradorToolStripMenuItem.Enabled = False
         Else
-            TipoCambio()
+            TipoCambioDls()
         End If
     End Sub
-    Private Sub TipoCambio()
-        If VerificaFechaTipoCambio() = 1 Then
+    Private Sub TipoCambioDls()
+        If ActualizaPrecioDolarBanxico() = False Then
+            MessageBox.Show("No se obtuvo respuesta de Internet, captura el precio manualmente!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
             TipoCambioDiario.ShowDialog()
+            TsPrecioDolar.Text = TipoCambioDiario.PrecioDolar
+        ElseIf VerificaFechaTipoCambio() = 1 Then
+            TipoCambioDiario.ShowDialog()
+            TsPrecioDolar.Text = TipoCambioDiario.PrecioDolar
         End If
     End Sub
     Private Function VerificaFechaTipoCambio()

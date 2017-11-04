@@ -1,8 +1,16 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data.Sql
-
 Public Class TipoCambioDiario
     Dim valor As Double
+    Private _precioDolar As String
+    Public Property PrecioDolar() As String
+        Get
+            Return _precioDolar
+        End Get
+        Set(value As String)
+            _precioDolar = value
+        End Set
+    End Property
     Private Sub TipoCambio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ControlBox = False
         CargaTipoCambio()
@@ -31,6 +39,7 @@ Public Class TipoCambioDiario
         cmd.Parameters.AddWithValue("@PrecioDolar", NuTipoCambio.Value)
         cmd.Parameters.AddWithValue("@FechaCambio", Now)
         cmd.ExecuteNonQuery()
+        PrecioDolar = NuTipoCambio.Value
     End Sub
     Private Sub BtAceptar_Click() Handles BtAceptar.Click
         Dim opcDialog As DialogResult = MsgBox("¿Es el tipo de cambio correcto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo)
