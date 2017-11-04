@@ -1,5 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data.Sql
+Imports Maiz.WebServiceBanxico
+Imports System.Net
 Public Class Maiz
     Private Sub Trigo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         tipoUsuario()
@@ -13,6 +15,19 @@ Public Class Maiz
             _idUsuarioAutorizacion = value
         End Set
     End Property
+    Private Function ObtenerPrecioDolar()
+        Dim myProxy As New WebProxy("Proxy", 80)
+        myProxy.Credentials = New NetworkCredential("Usuario", "contraseña")
+
+        Dim httpBanxico As HttpWebRequest = CType(WebRequest.Create("http://www.banxico.org.mx/DgieWSWeb/DgieWS?WSDL"), HttpWebRequest)
+        'httpBanxico.Proxy = myProxy
+        'httpBanxico.Credentials = myProxy.Credentials
+        WebRequest.DefaultWebProxy = httpBanxico.Proxy
+        Dim TipoCambio As New WebServiceBanxico.DgieWS()
+        Dim strTipoCambio As String
+        strTipoCambio = TipoCambio.tiposDeCambioBanxico()
+        Return strTipoCambio.Substring(1487, 7)
+    End Function
     Private Sub tipoUsuario()
         Dim infoUsuario As New Acceso
         Dim tipoUsuario As Object = Acceso.CodUsuario
@@ -33,6 +48,7 @@ Public Class Maiz
         SbTipoUsuario.Text = CStr(row("Nombre_TipoUsuario"))
         SbIdUsuario.Text = CStr(row("id_usuario"))
         TsBdd.Text = Acceso.BaseDatos
+        TsPrecioDolar.Text = ObtenerPrecioDolar()
 
         If CStr(row("id_tipoUsuario")) = 2 Or CStr(row("id_tipoUsuario")) = 3 Then
             UsuariosToolStripMenuItem.Enabled = False
@@ -40,8 +56,28 @@ Public Class Maiz
             AutorizacionDiariaToolStripMenuItem.Enabled = False
             CalculoDeLiquidaciónToolStripMenuItem.Enabled = False
             CalculoDeLiquidaciónPorCompradorToolStripMenuItem.Enabled = False
+        Else
+            TipoCambio()
         End If
     End Sub
+    Private Sub TipoCambio()
+        If VerificaFechaTipoCambio() = 1 Then
+            TipoCambioDiario.ShowDialog()
+        End If
+    End Sub
+    Private Function VerificaFechaTipoCambio()
+        Dim resultado As Integer = 0
+        Dim cmd As New SqlCommand("sp_VerificaFechaCambio", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add(New SqlClient.SqlParameter("@respuesta", resultado))
+        cmd.Parameters("@respuesta").Direction = ParameterDirection.InputOutput
+        cmd.ExecuteNonQuery()
+
+        resultado = cmd.Parameters("@respuesta").Value
+
+        Return resultado
+    End Function
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
         Clientes.Show()
     End Sub
@@ -168,6 +204,14 @@ Public Class Maiz
     Private Sub RutasDeDocumentosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RutasDeDocumentosToolStripMenuItem.Click
         RutasDocumentos.ShowDialog()
     End Sub
+
+    Private Sub PuertoSerialToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PuertoSerialToolStripMenuItem.Click
+        Bascula.ShowDialog()
+    End Sub
+
+    Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
+        Bascula2.ShowDialog()
+    End Sub
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
         Dim opc As DialogResult = MsgBox("¿Desea salir de esta aplicación?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Salir")
@@ -184,11 +228,4 @@ Public Class Maiz
         Me.Close()
     End Sub
 
-    Private Sub PuertoSerialToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PuertoSerialToolStripMenuItem.Click
-        Bascula.ShowDialog()
-    End Sub
-
-    Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
-        Bascula2.ShowDialog()
-    End Sub
 End Class

@@ -426,7 +426,7 @@ Public Class liquidacionCalculosProd
         End If
     End Sub
     Private Sub Guardar()
-        If DgEntradasLiq.RowCount = 0 Then
+        If DgEntradasLiq.RowCount = 0 And modifica = 0 Then
             MessageBox.Show("No hay datos para guardar.")
             Exit Sub
         ElseIf (CbComprador.SelectedValue Is Nothing Or CbComprador.Text = "") And TbLiquidacionXProd.SelectedIndex = 0 Then
@@ -441,7 +441,7 @@ Public Class liquidacionCalculosProd
         ElseIf NuTonSeleccion.Value = NuTotalLiquidar.Value And modifica = 0 Then
             IdLiquidacionTotal = ""
             Dim Contador As Integer
-            IdLiquidacionTotal = generaCodigoLiquidacionT(IdLiquidacionTotal)
+            IdLiquidacionTotal = generaCodigoLiquidacionT()
             For Contador = 0 To DgSeleccionLiquidaciones.RowCount - 1
                 Dim CodigoLiquidacion As String = ""
                 Dim cmd1 As New SqlCommand("sp_InsLiquidacionXproductor", cnn)
@@ -604,6 +604,7 @@ Public Class liquidacionCalculosProd
         cmd.CommandType = CommandType.StoredProcedure
 
         cmd.Parameters.AddWithValue("@idliquidacionT", CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value))
+        cmd.Parameters.AddWithValue("@fechaliquidacion", Now)
         cmd.Parameters.AddWithValue("@totalliquidacion", NuTotalLiquidado.Value / 1000)
         cmd.Parameters.AddWithValue("@tipodecambio", TipoCambio)
         cmd.Parameters.AddWithValue("@precioContrato", NuPrecioContratoLiquidado.Value)
@@ -633,8 +634,10 @@ Public Class liquidacionCalculosProd
                 _codigoLiquidacionTP = IIf(IdLiquidacionTotal = Nothing, CStr(DgLiquidacionesXTotal.CurrentRow.Cells(0).Value), IdLiquidacionTotal)
                 _tipoContrato = IIf(RbContratoLiquidado.Checked = True, 0, 1)
                 ReporteLiquidacionesXprod.ShowDialog()
+
             End If
         End If
+        IdLiquidacionTotal = ""
     End Sub
     Private Sub BtAgregar(sender As Object, e As EventArgs) Handles BtAgregarSeleccion.Click
         Agregar()

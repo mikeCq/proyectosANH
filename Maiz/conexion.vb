@@ -663,7 +663,7 @@ Module conexion
         End Try
         Return resultado
     End Function
-    Function generaCodigoLiquidacionT(ByVal codigoLiquidacion As String) As String
+    Function generaCodigoLiquidacionT() As String
         Dim resultado As String = ""
         Try
             consulta = New SqlCommand("select max(substring(idLiquidacionT,4,7)) as idLiquidacionT from LiquidacionTotalXprod", cnn)

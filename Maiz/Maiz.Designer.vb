@@ -87,6 +87,9 @@ Partial Class Maiz
         Me.SbNombreUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SbIdUsuario = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TsPrecioDolar = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -444,7 +447,7 @@ Partial Class Maiz
         'SsUsuario
         '
         Me.SsUsuario.BackColor = System.Drawing.Color.Gray
-        Me.SsUsuario.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TsBdd, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel1, Me.SbTipoUsuario, Me.TsSeparador, Me.SbNombreUsuario, Me.SbUsuario, Me.SbIdUsuario})
+        Me.SsUsuario.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TsBdd, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel1, Me.SbTipoUsuario, Me.TsSeparador, Me.SbNombreUsuario, Me.SbUsuario, Me.SbIdUsuario, Me.ToolStripStatusLabel3, Me.TsPrecioDolar, Me.ToolStripStatusLabel5})
         Me.SsUsuario.Location = New System.Drawing.Point(0, 728)
         Me.SsUsuario.Name = "SsUsuario"
         Me.SsUsuario.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -501,6 +504,25 @@ Partial Class Maiz
         Me.SbIdUsuario.Size = New System.Drawing.Size(57, 17)
         Me.SbIdUsuario.Text = "idUsuario"
         Me.SbIdUsuario.Visible = False
+        '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(301, 17)
+        Me.ToolStripStatusLabel3.Text = "|                                                                                " &
+    "                |"
+        '
+        'TsPrecioDolar
+        '
+        Me.TsPrecioDolar.Name = "TsPrecioDolar"
+        Me.TsPrecioDolar.Size = New System.Drawing.Size(68, 17)
+        Me.TsPrecioDolar.Text = "PrecioDolar"
+        '
+        'ToolStripStatusLabel5
+        '
+        Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(117, 17)
+        Me.ToolStripStatusLabel5.Text = ": PRECIO DEL DOLAR"
         '
         'Maiz
         '
@@ -595,4 +617,7 @@ Partial Class Maiz
     Friend WithEvents RutasDeDocumentosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PuertoSerialToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents TsPrecioDolar As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
 End Class

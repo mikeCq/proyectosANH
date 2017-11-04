@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=SERVER2008\SERVER12;Initial Catalog=MAIZ;Persist Security Info=True;User ID=sa;Password=Usuario01</Value>
     </Setting>
+    <Setting Name="Maiz_WebServiceBanxico_DgieWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.banxico.org.mx/DgieWSWeb/DgieWS</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
