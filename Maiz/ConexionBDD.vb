@@ -24,29 +24,20 @@ Public Class ConexionBDD
         abrirmaster()
         llenaComboBDD()
     End Sub
-    Private Sub BtNuevo_Click(sender As Object, e As EventArgs) Handles BtNuevo.Click
-
-    End Sub
-    Private Sub BtGuardar_Click(sender As Object, e As EventArgs) Handles BtGuardar.Click
-        cerrarMaster()
-        _conUsu = CbBaseDatos.Text
-        _baseDatos = CbBaseDatos.Text
-        abrirPrincipal()
-        MsgBox("Se ha cambiado la base de datos " & CbBaseDatos.Text & " con éxito!")
-        Me.Close()
-        'Try
-        '    Using cmd As New SqlCommand("SELECT dbo.Fn_ObtBaseDeDatos(@USUARIO)", cnn)
-        '        cmd.Parameters.AddWithValue("@USUARIO", "")
-
-        '        TxNombreBDD.Text = CStr(cmd.ExecuteScalar())
-
-        '    End Using
-        'Catch ex As Exception
-        '    MsgBox(ex.Message)
-        'End Try
+    Private Sub BtGuardar_Click(sender As Object, e As EventArgs) Handles GuardarToolStripMenuItem.Click
+        Try
+            cerrarMaster()
+            _conUsu = CbBaseDatos.Text
+            _baseDatos = CbBaseDatos.Text
+            abrirPrincipal()
+            MsgBox("Se ha cambiado la base de datos " & CbBaseDatos.Text & " con éxito!")
+            Me.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Private Sub llenaComboBDD()
-        Dim cmd As String = "SELECT name, database_id FROM sys.databases where name like '%'+'TRIGO'+'%'"
+        Dim cmd As String = "SELECT name, database_id FROM sys.databases where name like '%'+'MAIZ'+'%'"
         Dim da As New SqlDataAdapter(cmd, cnnMaster)
         Dim ds As New DataSet
         da.Fill(ds)
@@ -57,7 +48,7 @@ Public Class ConexionBDD
             Me.CbBaseDatos.SelectedIndex = CbBaseDatos.Items.Count - 1
         End With
     End Sub
-    Private Sub BtSalir_Click(sender As Object, e As EventArgs) Handles BtSalir.Click
+    Private Sub BtSalir_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         Close()
     End Sub
 End Class

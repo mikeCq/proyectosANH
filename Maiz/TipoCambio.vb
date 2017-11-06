@@ -42,8 +42,13 @@ Public Class TipoCambioDiario
         PrecioDolar = NuTipoCambio.Value
     End Sub
     Private Sub BtAceptar_Click() Handles BtAceptar.Click
+        ' MsgBox(WeekdayName(Weekday(DtFechaActualizacion.Value)))
         Dim opcDialog As DialogResult = MsgBox("¿Es el tipo de cambio correcto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo)
-        If opcDialog = DialogResult.Yes And NuTipoCambio.Value <> valor Then
+        If opcDialog = DialogResult.Yes And NuTipoCambio.Value = valor And (Weekday(Now) = 7 Or Weekday(Now) = 1 Or Weekday(Now) = 2) Then
+            ActualizaTipoCambio()
+            valor = 0
+            Me.Close()
+        ElseIf opcDialog = DialogResult.Yes And NuTipoCambio.Value <> valor Then
             ActualizaTipoCambio()
             valor = 0
             Me.Close()
@@ -53,4 +58,5 @@ Public Class TipoCambioDiario
             NuTipoCambio.Focus()
         End If
     End Sub
+
 End Class

@@ -90,6 +90,7 @@ Partial Class Maiz
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TsPrecioDolar = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.TipoDeCambioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -372,7 +373,7 @@ Partial Class Maiz
         '
         'UtileriasToolStripMenuItem
         '
-        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem, Me.PuertoSerialToolStripMenuItem, Me.ToolStripMenuItem4})
+        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.TipoDeCambioToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem, Me.PuertoSerialToolStripMenuItem, Me.ToolStripMenuItem4})
         Me.UtileriasToolStripMenuItem.Name = "UtileriasToolStripMenuItem"
         Me.UtileriasToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
         Me.UtileriasToolStripMenuItem.Text = "Utilerias"
@@ -515,14 +516,20 @@ Partial Class Maiz
         'TsPrecioDolar
         '
         Me.TsPrecioDolar.Name = "TsPrecioDolar"
-        Me.TsPrecioDolar.Size = New System.Drawing.Size(68, 17)
-        Me.TsPrecioDolar.Text = "PrecioDolar"
+        Me.TsPrecioDolar.Size = New System.Drawing.Size(22, 17)
+        Me.TsPrecioDolar.Text = "0.0"
         '
         'ToolStripStatusLabel5
         '
         Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
-        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(117, 17)
-        Me.ToolStripStatusLabel5.Text = ": PRECIO DEL DOLAR"
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(126, 17)
+        Me.ToolStripStatusLabel5.Text = "$ : PRECIO DEL DOLAR"
+        '
+        'TipoDeCambioToolStripMenuItem
+        '
+        Me.TipoDeCambioToolStripMenuItem.Name = "TipoDeCambioToolStripMenuItem"
+        Me.TipoDeCambioToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.TipoDeCambioToolStripMenuItem.Text = "Tipo de Cambio"
         '
         'Maiz
         '
@@ -620,4 +627,5 @@ Partial Class Maiz
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
     Friend WithEvents TsPrecioDolar As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
+    Friend WithEvents TipoDeCambioToolStripMenuItem As ToolStripMenuItem
 End Class

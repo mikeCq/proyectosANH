@@ -90,6 +90,7 @@ Public Class Maiz
             AutorizacionDiariaToolStripMenuItem.Enabled = False
             CalculoDeLiquidaciónToolStripMenuItem.Enabled = False
             CalculoDeLiquidaciónPorCompradorToolStripMenuItem.Enabled = False
+            TipoDeCambioToolStripMenuItem.Enabled = False
         Else
             TipoCambioDls()
         End If
@@ -238,12 +239,15 @@ Public Class Maiz
     End Sub
     Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
         ConexionBDD.ShowDialog()
-        TsBdd.Text = ConexionBDD.BaseDatos
+        Dim bdd As String = ConexionBDD.BaseDatos
+        If bdd <> "" Then TsBdd.Text = bdd
     End Sub
     Private Sub RutasDeDocumentosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RutasDeDocumentosToolStripMenuItem.Click
         RutasDocumentos.ShowDialog()
     End Sub
-
+    Private Sub TipoDeCambioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoDeCambioToolStripMenuItem.Click
+        TipoCambioDiario.ShowDialog()
+    End Sub
     Private Sub PuertoSerialToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PuertoSerialToolStripMenuItem.Click
         Bascula.ShowDialog()
     End Sub
@@ -266,5 +270,4 @@ Public Class Maiz
         SqlConnection.ClearAllPools()
         Me.Close()
     End Sub
-
 End Class

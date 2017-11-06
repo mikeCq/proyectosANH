@@ -592,6 +592,8 @@ Public Class liquidacionCalculosProd
         If opc = DialogResult.Yes Then
             modifica = 1
             HabilitaModificar()
+            TxTipoCambioLiquidado.Text = CargaTipoCambio()
+            CalculaLiquidacion()
         End If
     End Sub
     Private Sub ActualizaLiquidacion()
@@ -641,7 +643,22 @@ Public Class liquidacionCalculosProd
     End Sub
     Private Sub BtAgregar(sender As Object, e As EventArgs) Handles BtAgregarSeleccion.Click
         Agregar()
+        TxTipoCambio.Text = CargaTipoCambio()
+        CalculaLiquidacion()
     End Sub
+    Private Function CargaTipoCambio()
+        Dim cmd As New SqlCommand("sp_ConsultaTipoCambio", cnn)
+
+        cmd.CommandType = CommandType.StoredProcedure
+
+        Dim da As New SqlClient.SqlDataAdapter(cmd)
+        Dim dt As New DataTable()
+        da.Fill(dt)
+        Dim row As DataRow = dt.Rows(0)
+        'DtFechaActualizacion.Value = row("FechaDeCambio")
+        Return CStr(row("ValorMxn"))
+        ' valor = row("ValorMxn")
+    End Function
     Private Sub Agregar()
         DgSeleccionLiquidaciones.Columns.Clear()
         DgSeleccionLiquidaciones.DataSource = Nothing
@@ -886,51 +903,52 @@ Public Class liquidacionCalculosProd
             End If
         End If
     End Sub
-    Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown, TxTipoCambioLiquidado.PreviewKeyDown
+    'Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown, TxTipoCambioLiquidado.PreviewKeyDown, TxTipoCambio.TextChanged
+    '    If e.KeyCode = Keys.Enter Then
+    '        CalculaLiquidacion()
+    '    End If
+    'End Sub
+    Private Sub CalculaLiquidacion()
         Dim variable As Decimal
         Dim tipoCambio As Double = 0
         Dim kilosAton As Double = 0
         Dim precioContrato As Double = 0
-        If e.KeyCode = Keys.Enter Then
-            If TbLiquidacionXProd.SelectedIndex = 0 Then
-                If NuTotalLiquidar.Value > 0 Then
-                    If RbContrato.Checked = True And RbLibre.Checked = False Then
-                        tipoCambio = CDbl(TxTipoCambio.Text)
-                        precioContrato = NuPrecioContrato.Value
-                        kilosAton = NuTotalLiquidar.Value / 1000
-                        TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
-                        variable = TxPrecioXtonMn.Text
-                        TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
-                        TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
-                        TxPrecioXtonMn.Text = FormatNumber(Val(variable), 2)
-                        TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
-                    ElseIf CbMoneda.SelectedValue = 1 Then
-                        tipoCambio = CDbl(TxTipoCambio.Text)
-                        PrecioContrato = NuPrecioContrato.Value
-                        kilosAton = NuTotalLiquidar.Value / 1000
-                        TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
-                        variable = TxPrecioXtonMn.Text
-                        TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
-                        TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
-                        TxPrecioXtonMn.Text = FormatNumber(Val(variable), 2)
-                        TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
-                    End If
+        If TbLiquidacionXProd.SelectedIndex = 0 Then
+            If NuTotalLiquidar.Value > 0 Then
+                If RbContrato.Checked = True And RbLibre.Checked = False Then
+                    tipoCambio = CDbl(TxTipoCambio.Text)
+                    precioContrato = NuPrecioContrato.Value
+                    kilosAton = NuTotalLiquidar.Value / 1000
+                    TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
+                    variable = TxPrecioXtonMn.Text
+                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
+                    TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
+                    TxPrecioXtonMn.Text = FormatNumber(Val(variable), 2)
+                    TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
+                ElseIf CbMoneda.SelectedValue = 1 Then
+                    tipoCambio = CDbl(TxTipoCambio.Text)
+                    precioContrato = NuPrecioContrato.Value
+                    kilosAton = NuTotalLiquidar.Value / 1000
+                    TxPrecioXtonMn.Text = tipoCambio * NuPrecioContrato.Value
+                    variable = TxPrecioXtonMn.Text
+                    TxPrecioXtonMn.Text = Format(CType(variable, Decimal), "###0.#0")
+                    TxImporte.Text = TxPrecioXtonMn.Text * Math.Round(kilosAton, 3)
+                    TxPrecioXtonMn.Text = FormatNumber(Val(variable), 2)
+                    TxImporte.Text = FormatNumber(Val(TxImporte.Text), 2)
                 End If
-            ElseIf TbLiquidacionXProd.SelectedIndex = 1 Then
-                tipoCambio = CDbl(TxTipoCambioLiquidado.Text)
-                PrecioContrato = NuPrecioContratoLiquidado.Value
-                kilosAton = NuTotalLiquidado.Value / 1000
-                TxPrecioXtonLiquidado.Text = tipoCambio * NuPrecioContratoLiquidado.Value
-                variable = TxPrecioXtonLiquidado.Text
-                TxPrecioXtonLiquidado.Text = Format(CType(variable, Decimal), "###0.#0")
-                TxImporteLiquidado.Text = TxPrecioXtonLiquidado.Text * Math.Round(kilosAton, 3)
-                TxPrecioXtonLiquidado.Text = FormatNumber(Val(variable), 2)
-                TxImporteLiquidado.Text = FormatNumber(Val(TxImporteLiquidado.Text), 2)
             End If
+        ElseIf TbLiquidacionXProd.SelectedIndex = 1 Then
+            tipoCambio = CDbl(TxTipoCambioLiquidado.Text)
+            precioContrato = NuPrecioContratoLiquidado.Value
+            kilosAton = NuTotalLiquidado.Value / 1000
+            TxPrecioXtonLiquidado.Text = tipoCambio * NuPrecioContratoLiquidado.Value
+            variable = TxPrecioXtonLiquidado.Text
+            TxPrecioXtonLiquidado.Text = Format(CType(variable, Decimal), "###0.#0")
+            TxImporteLiquidado.Text = TxPrecioXtonLiquidado.Text * Math.Round(kilosAton, 3)
+            TxPrecioXtonLiquidado.Text = FormatNumber(Val(variable), 2)
+            TxImporteLiquidado.Text = FormatNumber(Val(TxImporteLiquidado.Text), 2)
         End If
-
     End Sub
-
     Private Sub Salir()
         DgEntradasLiq.Columns.Clear()
         DgEntradasLiq.DataSource = Nothing
@@ -971,6 +989,4 @@ Public Class liquidacionCalculosProd
             ContarChecksMarcados()
         End If
     End Sub
-
-
 End Class
