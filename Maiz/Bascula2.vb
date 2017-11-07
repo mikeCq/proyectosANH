@@ -1,4 +1,5 @@
 ﻿Imports System.IO.Ports
+Imports System.Net.NetworkInformation
 Imports System.Threading
 
 Public Class Bascula2
@@ -125,4 +126,15 @@ fallo:
         GetSerialPortNames()
         CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        For Each ni As NetworkInterface In NetworkInterface.GetAllNetworkInterfaces()
+            If ni.OperationalStatus = OperationalStatus.Up Then
+                For Each direccion As GatewayIPAddressInformation In ni.GetIPProperties().GatewayAddresses
+                    MessageBox.Show(direccion.Address.ToString())
+                Next
+            End If
+        Next
+    End Sub
+
 End Class

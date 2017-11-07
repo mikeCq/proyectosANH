@@ -33,6 +33,7 @@ Partial Class Bascula2
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -111,6 +112,15 @@ Partial Class Bascula2
         Me.DataGridView1.Size = New System.Drawing.Size(648, 150)
         Me.DataGridView1.TabIndex = 14
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(585, 120)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 10
+        Me.Button2.Text = "Button3"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Bascula2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -120,6 +130,7 @@ Partial Class Bascula2
         Me.Controls.Add(Me.TxDatoRecibido)
         Me.Controls.Add(Me.LbDatoEnviar)
         Me.Controls.Add(Me.LbDatoRecibido)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.BtnEnviar)
         Me.Controls.Add(Me.TxDatoEnviado)
         Me.Controls.Add(Me.CbPuertosSeriales)
@@ -143,4 +154,5 @@ Partial Class Bascula2
     Friend WithEvents Button1 As Button
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents SerialPort1 As IO.Ports.SerialPort
+    Friend WithEvents Button2 As Button
 End Class

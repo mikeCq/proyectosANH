@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Data.Sql
+
 Public Class TablasCalidad
     Private Sub TablasCalidad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Nuevo(sender, e)
