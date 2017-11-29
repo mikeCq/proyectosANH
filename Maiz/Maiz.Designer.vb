@@ -68,12 +68,14 @@ Partial Class Maiz
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UtileriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnlaceABaseDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TipoDeCambioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AutorizacionDiariaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CrearNuevaBDDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RutasDeDocumentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PuertoSerialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TransToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualDeUusarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -90,7 +92,6 @@ Partial Class Maiz
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TsPrecioDolar = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.TipoDeCambioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SsUsuario.SuspendLayout()
         Me.SuspendLayout()
@@ -373,7 +374,7 @@ Partial Class Maiz
         '
         'UtileriasToolStripMenuItem
         '
-        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.TipoDeCambioToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem, Me.PuertoSerialToolStripMenuItem, Me.ToolStripMenuItem4})
+        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.TipoDeCambioToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem, Me.PuertoSerialToolStripMenuItem, Me.ToolStripMenuItem4, Me.TransToolStripMenuItem})
         Me.UtileriasToolStripMenuItem.Name = "UtileriasToolStripMenuItem"
         Me.UtileriasToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
         Me.UtileriasToolStripMenuItem.Text = "Utilerias"
@@ -383,6 +384,12 @@ Partial Class Maiz
         Me.EnlaceABaseDeToolStripMenuItem.Name = "EnlaceABaseDeToolStripMenuItem"
         Me.EnlaceABaseDeToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
         Me.EnlaceABaseDeToolStripMenuItem.Text = "Folios"
+        '
+        'TipoDeCambioToolStripMenuItem
+        '
+        Me.TipoDeCambioToolStripMenuItem.Name = "TipoDeCambioToolStripMenuItem"
+        Me.TipoDeCambioToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.TipoDeCambioToolStripMenuItem.Text = "Tipo de Cambio"
         '
         'AutorizacionDiariaToolStripMenuItem
         '
@@ -413,12 +420,20 @@ Partial Class Maiz
         Me.PuertoSerialToolStripMenuItem.Name = "PuertoSerialToolStripMenuItem"
         Me.PuertoSerialToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
         Me.PuertoSerialToolStripMenuItem.Text = "Puerto Serial"
+        Me.PuertoSerialToolStripMenuItem.Visible = False
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
         Me.ToolStripMenuItem4.Size = New System.Drawing.Size(205, 22)
         Me.ToolStripMenuItem4.Text = "Puerto Serial 2"
+        Me.ToolStripMenuItem4.Visible = False
+        '
+        'TransToolStripMenuItem
+        '
+        Me.TransToolStripMenuItem.Name = "TransToolStripMenuItem"
+        Me.TransToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.TransToolStripMenuItem.Text = "Transferencia de Silos"
         '
         'AyudaToolStripMenuItem
         '
@@ -525,12 +540,6 @@ Partial Class Maiz
         Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(126, 17)
         Me.ToolStripStatusLabel5.Text = "$ : PRECIO DEL DOLAR"
         '
-        'TipoDeCambioToolStripMenuItem
-        '
-        Me.TipoDeCambioToolStripMenuItem.Name = "TipoDeCambioToolStripMenuItem"
-        Me.TipoDeCambioToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
-        Me.TipoDeCambioToolStripMenuItem.Text = "Tipo de Cambio"
-        '
         'Maiz
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -628,4 +637,5 @@ Partial Class Maiz
     Friend WithEvents TsPrecioDolar As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
     Friend WithEvents TipoDeCambioToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TransToolStripMenuItem As ToolStripMenuItem
 End Class

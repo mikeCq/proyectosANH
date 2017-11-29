@@ -27,7 +27,7 @@
     <PublisherName>Sistema De Control De Maiz</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>199</ApplicationRevision>
+    <ApplicationRevision>201</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -675,6 +675,12 @@
     <Compile Include="TipoCambio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TransferenciasSilos.Designer.vb">
+      <DependentUpon>TransferenciasSilos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TransferenciasSilos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Transportes.Designer.vb">
       <DependentUpon>Transportes.vb</DependentUpon>
     </Compile>
@@ -1000,6 +1006,9 @@
     <EmbeddedResource Include="TipoCambio.resx">
       <DependentUpon>TipoCambio.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TransferenciasSilos.resx">
+      <DependentUpon>TransferenciasSilos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transportes.resx">
       <DependentUpon>Transportes.vb</DependentUpon>
     </EmbeddedResource>
@@ -1070,6 +1079,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maiz.ico" />
+    <None Include="Resources\arrow_right.png" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="log4net">

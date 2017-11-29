@@ -270,4 +270,8 @@ Public Class Maiz
         SqlConnection.ClearAllPools()
         Me.Close()
     End Sub
+
+    Private Sub TransToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransToolStripMenuItem.Click
+        TransferenciasSilos.ShowDialog()
+    End Sub
 End Class
