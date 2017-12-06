@@ -7,7 +7,6 @@ Public Class liquidacionCalculosProd
     Dim Moneda As Integer
     Dim modifica As Integer = 0
     Private Sub liquidacionCalculos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        propiedadesDataProdSelec()
         DeshabilitaModificar()
         NuContrato.Controls(0).Visible = False
         NuLibre.Controls(0).Visible = False
@@ -136,6 +135,7 @@ Public Class liquidacionCalculosProd
         CbCompradorLiquidado.SelectedIndex = -1
     End Sub
     Private Sub Nuevo()
+        modifica = 0
         PrecioContrato = 0
         Moneda = -1
         RbContrato.Checked = False
@@ -177,7 +177,6 @@ Public Class liquidacionCalculosProd
         DgEntradasLiq.DataSource = Nothing
         DgSeleccionLiquidaciones.Columns.Clear()
         DgSeleccionLiquidaciones.DataSource = Nothing
-        propiedadesDataProdSelec()
         DgLiquidacionesXBoleta.Columns.Clear()
         DgLiquidacionesXBoleta.DataSource = Nothing
         DgLiquidacionesXTotal.Columns.Clear()

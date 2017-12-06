@@ -92,15 +92,27 @@ Public Class Maiz
             CalculoDeLiquidaciónPorCompradorToolStripMenuItem.Enabled = False
             TipoDeCambioToolStripMenuItem.Enabled = False
         Else
-            TipoCambioDls()
+            If VerificaFechaTipoCambio() = 0 Then
+                TipoCambioDls()
+            Else
+                Dim cmddls As New SqlCommand("Sp_ObtieneTipoCambio", cnn)
+
+                cmddls.CommandType = CommandType.StoredProcedure
+
+                Dim dadls As New SqlClient.SqlDataAdapter(cmddls)
+                Dim dtdls As New DataTable
+
+                dadls.Fill(dtdls)
+
+                Dim rowdls As DataRow = dtdls.Rows(0)
+
+                TsPrecioDolar.Text = CStr(rowdls("ValorMxn"))
+            End If
         End If
     End Sub
     Private Sub TipoCambioDls()
         If ActualizaPrecioDolarBanxico() = False Then
             MessageBox.Show("No se obtuvo respuesta de Internet, captura el precio manualmente!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            TipoCambioDiario.ShowDialog()
-            TsPrecioDolar.Text = TipoCambioDiario.PrecioDolar
-        ElseIf VerificaFechaTipoCambio() = 1 Then
             TipoCambioDiario.ShowDialog()
             TsPrecioDolar.Text = TipoCambioDiario.PrecioDolar
         End If
@@ -266,7 +278,7 @@ Public Class Maiz
             e.Cancel = True
         End If
     End Sub
-    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click, MyBase.FormClosing
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         SqlConnection.ClearAllPools()
         Me.Close()
     End Sub

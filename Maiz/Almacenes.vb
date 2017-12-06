@@ -6,12 +6,9 @@ Public Class Almacenes
         NuCapacidadCentro.Controls(0).Visible = False
         llenarCombos()
         ControlBotones()
-        abrirPrincipal()
         CargarData()
         LimpiarControles()
-
         DataGridPropiedades()
-
     End Sub
     Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
         Dim BuscarAlmacen As New BuscarAlmacen
@@ -189,7 +186,7 @@ Public Class Almacenes
         DesbloquearCampos()
     End Sub
     Private Sub CargarData()
-        Dim cmd As New SqlCommand("Sp_LlenarDgAcopio", cnn)
+        Dim cmd As New SqlCommand("Sp_llenaDgAcopio", cnn)
 
         cmd.CommandType = CommandType.StoredProcedure
 
