@@ -420,14 +420,12 @@ Partial Class Maiz
         Me.PuertoSerialToolStripMenuItem.Name = "PuertoSerialToolStripMenuItem"
         Me.PuertoSerialToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
         Me.PuertoSerialToolStripMenuItem.Text = "Puerto Serial"
-        Me.PuertoSerialToolStripMenuItem.Visible = False
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
         Me.ToolStripMenuItem4.Size = New System.Drawing.Size(205, 22)
         Me.ToolStripMenuItem4.Text = "Puerto Serial 2"
-        Me.ToolStripMenuItem4.Visible = False
         '
         'TransToolStripMenuItem
         '

@@ -971,6 +971,8 @@ Public Class liquidacionCalculosProd
                         DgEntradasLiq.Rows(Contador).Cells("ChCol").Value = True
                         DgEntradasLiq.ReadOnly = True
                         Agregar()
+                        TxTipoCambio.Text = CargaTipoCambio()
+                        CalculaLiquidacion()
                     Else
                         For Contador1 = 0 To DgEntradasLiq.RowCount - 1
                             DgEntradasLiq.Rows(Contador1).Cells("ChCol").Value = False
