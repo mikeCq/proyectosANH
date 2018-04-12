@@ -380,7 +380,7 @@ Public Class ControlEntradas
             If Val(TxTara.Text) > 0 And CDbl(TxBruto.Text) > CDbl(TxTara.Text) Then
                 TxNeto.Text = Val(TxBruto.Text - TxTara.Text)
                 TxNeto.Text = FormatNumber(TxNeto.Text, 2)
-            ElseIf Not Val(TxBruto.Text) > Val(TxTara.Text) Then
+            ElseIf Not Val(TxBruto.Text) > Val(TxTara.Text) And CBContrato.Text <> "" Then
                 MessageBox.Show("El campo Tara no puede ser mayor al campo Peso Bruto", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 TxTara.Text = "0"
             End If
@@ -538,7 +538,7 @@ Public Class ControlEntradas
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.AddWithValue("@idacopio", CbAcopio.SelectedValue)
         cmd.Parameters.AddWithValue("@idalmacen", CbAlmacen.SelectedValue)
-        cmd.Parameters.AddWithValue("@toneladasEnt", PesoNeto)
+        cmd.Parameters.AddWithValue("@toneladasEnt", FormatNumber(PesoNeto, 5))
         cmd.ExecuteNonQuery()
     End Sub
     Private Sub SumaToneladasContrato()
@@ -547,8 +547,8 @@ Public Class ControlEntradas
         cmd.Parameters.AddWithValue("@idcliente", CbNombre.SelectedValue)
         cmd.Parameters.AddWithValue("@IdContrato", CbIdContrato.SelectedValue)
         cmd.Parameters.AddWithValue("@identrada", TxFolio.Text)
-        cmd.Parameters.AddWithValue("@toneladasEntradas", valEntCon)
-        cmd.Parameters.AddWithValue("@toneladasLibres", valEntLib)
+        cmd.Parameters.AddWithValue("@toneladasEntradas", FormatNumber(valEntCon, 5))
+        cmd.Parameters.AddWithValue("@toneladasLibres", FormatNumber(valEntLib, 5))
         cmd.Parameters.AddWithValue("@Caso", compruebaEntradas)
         cmd.ExecuteNonQuery()
 
@@ -573,7 +573,6 @@ Public Class ControlEntradas
         valEntLib = 0
         valEntCon = 0
         If row("aceptacontratolibre") = 0 Then
-
             If (row("toneladasentradas") + (CDbl(TxNeto.Text) / 1000)) < row("toneladascompras") Then
                 resTon = row("toneladascompras") - (row("toneladasentradas") + (CDbl(TxNeto.Text) / 1000))
                 If resTon <= 60 Then
@@ -593,7 +592,7 @@ Public Class ControlEntradas
                     compruebaEntradas = "4" 'SE COMPLETO EL CONTRATO SIN SOBRANTE 
                 ElseIf resTon > 0 Then
                     valEntCon = (CDbl(TxNeto.Text) / 1000)
-                    valEntLib = 0
+                    valEntLib = resTon
                     compruebaEntradas = "5" 'SE COMPLETO EL CONTRATO CON SOBRANTE SIN CONTRATO LIBRE
                 End If
             End If
@@ -620,7 +619,7 @@ Public Class ControlEntradas
                     valEntLib = 0
                     compruebaEntradas = "2" 'SE COMPLETO EL CONTRATO
                 ElseIf resTon > 0 Then
-                    valEntCon = (CDbl(TxNeto.Text) / 1000) + row("toneladasentradas") - resTon
+                    valEntCon = (CDbl(TxNeto.Text) / 1000) - resTon
                     valEntLib = resTon
                     compruebaEntradas = "3" 'SE COMPLETO EL CONTRATO CON SOBRANTE PARA LIBRE
                 End If

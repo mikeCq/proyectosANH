@@ -902,11 +902,11 @@ Public Class liquidacionCalculosProd
             End If
         End If
     End Sub
-    'Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown, TxTipoCambioLiquidado.PreviewKeyDown, TxTipoCambio.TextChanged
-    '    If e.KeyCode = Keys.Enter Then
-    '        CalculaLiquidacion()
-    '    End If
-    'End Sub
+    Private Sub TxTipoCambio_TextChanged(sender As Object, e As PreviewKeyDownEventArgs) Handles TxTipoCambio.PreviewKeyDown, TxTipoCambioLiquidado.PreviewKeyDown ', TxTipoCambio.TextChanged
+        If e.KeyCode = Keys.Enter Then
+            CalculaLiquidacion()
+        End If
+    End Sub
     Private Sub CalculaLiquidacion()
         Dim variable As Decimal
         Dim tipoCambio As Double = 0

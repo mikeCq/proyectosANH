@@ -109,23 +109,21 @@ Partial Class Acceso
         '
         'BtnCancelar
         '
-        Me.BtnCancelar.Location = New System.Drawing.Point(470, 204)
+        Me.BtnCancelar.Location = New System.Drawing.Point(483, 236)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.BtnCancelar.Size = New System.Drawing.Size(114, 57)
+        Me.BtnCancelar.Size = New System.Drawing.Size(101, 26)
         Me.BtnCancelar.TabIndex = 9
         Me.BtnCancelar.Text = "Cancelar"
-        Me.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnCancelar.UseVisualStyleBackColor = True
         '
         'BtnAceptar
         '
-        Me.BtnAceptar.Location = New System.Drawing.Point(300, 204)
+        Me.BtnAceptar.Location = New System.Drawing.Point(313, 236)
         Me.BtnAceptar.Name = "BtnAceptar"
-        Me.BtnAceptar.Size = New System.Drawing.Size(114, 57)
+        Me.BtnAceptar.Size = New System.Drawing.Size(101, 26)
         Me.BtnAceptar.TabIndex = 8
         Me.BtnAceptar.Text = "Aceptar"
-        Me.BtnAceptar.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnAceptar.UseVisualStyleBackColor = True
         '
         'PictureBox1

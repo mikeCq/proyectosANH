@@ -300,7 +300,6 @@ Public Class ControlSalidas
         _codigoSalida = TxFolio.Text
         ReporteBoletasSalidas.Show()
     End Sub
-
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
         If IdEstado = 1 And TxFolio.Text <> "" Then
             MessageBox.Show("Contacta al administrador para eliminar esta boleta", "Aviso")

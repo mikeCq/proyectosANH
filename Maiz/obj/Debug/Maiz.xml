@@ -22,6 +22,11 @@ Maiz
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="P:Maiz.My.Resources.Resources.arrow_right">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Maiz.My.Resources.Resources.LogoAnh">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -42,12 +47,52 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:Maiz.DSReportes.DataTable2DataTable">
+<member name="T:Maiz.DSReportes.EntradasDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:Maiz.DSReportes.DataTable3DataTable">
+<member name="T:Maiz.DSReportes.SalidasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ComprasXproductorDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.InventariosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.EstatusContratosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.LiquidacionPorProductorDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ResumenBoletasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.VentasLiquidacionDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ResumenVentasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ContratoProductorDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -57,12 +102,52 @@ Represents the strongly named DataTable class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:Maiz.DSReportes.DataTable2Row">
+<member name="T:Maiz.DSReportes.EntradasRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:Maiz.DSReportes.DataTable3Row">
+<member name="T:Maiz.DSReportes.SalidasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ComprasXproductorRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.InventariosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.EstatusContratosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.LiquidacionPorProductorRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ResumenBoletasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.VentasLiquidacionRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ResumenVentasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ContratoProductorRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -72,15 +157,151 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
-<member name="T:Maiz.DSReportes.DataTable2RowChangeEvent">
+<member name="T:Maiz.DSReportes.EntradasRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:Maiz.DSReportes.DataTable3RowChangeEvent">
+<member name="T:Maiz.DSReportes.SalidasRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
+</member>
+<member name="T:Maiz.DSReportes.ComprasXproductorRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.InventariosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.EstatusContratosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.LiquidacionPorProductorRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ResumenBoletasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.VentasLiquidacionRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ResumenVentasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Maiz.DSReportes.ContratoProductorRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="F:Maiz.VarGlob.UserDB">
+####### PARAMETROS DE CONEXION A BDD DE PRODUCCION
+</member>
+<member name="T:Maiz.WebServiceBanxico.DgieWS">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.#ctor">
+<remarks/>
+</member>
+<member name="E:Maiz.WebServiceBanxico.DgieWS.reservasInternacionalesBanxicoCompleted">
+<remarks/>
+</member>
+<member name="E:Maiz.WebServiceBanxico.DgieWS.tasasDeInteresBanxicoCompleted">
+<remarks/>
+</member>
+<member name="E:Maiz.WebServiceBanxico.DgieWS.tiposDeCambioBanxicoCompleted">
+<remarks/>
+</member>
+<member name="E:Maiz.WebServiceBanxico.DgieWS.udisBanxicoCompleted">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.reservasInternacionalesBanxico">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.reservasInternacionalesBanxicoAsync">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.reservasInternacionalesBanxicoAsync(System.Object)">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.tasasDeInteresBanxico">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.tasasDeInteresBanxicoAsync">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.tasasDeInteresBanxicoAsync(System.Object)">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.tiposDeCambioBanxico">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.tiposDeCambioBanxicoAsync">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.tiposDeCambioBanxicoAsync(System.Object)">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.udisBanxico">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.udisBanxicoAsync">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.udisBanxicoAsync(System.Object)">
+<remarks/>
+</member>
+<member name="M:Maiz.WebServiceBanxico.DgieWS.CancelAsync(System.Object)">
+<remarks/>
+</member>
+<member name="T:Maiz.WebServiceBanxico.reservasInternacionalesBanxicoCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:Maiz.WebServiceBanxico.reservasInternacionalesBanxicoCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:Maiz.WebServiceBanxico.reservasInternacionalesBanxicoCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:Maiz.WebServiceBanxico.tasasDeInteresBanxicoCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:Maiz.WebServiceBanxico.tasasDeInteresBanxicoCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:Maiz.WebServiceBanxico.tasasDeInteresBanxicoCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:Maiz.WebServiceBanxico.tiposDeCambioBanxicoCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:Maiz.WebServiceBanxico.tiposDeCambioBanxicoCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:Maiz.WebServiceBanxico.tiposDeCambioBanxicoCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:Maiz.WebServiceBanxico.udisBanxicoCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:Maiz.WebServiceBanxico.udisBanxicoCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:Maiz.WebServiceBanxico.udisBanxicoCompletedEventArgs.Result">
+<remarks/>
 </member>
 </members>
 </doc>

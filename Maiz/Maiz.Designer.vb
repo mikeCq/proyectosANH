@@ -76,6 +76,7 @@ Partial Class Maiz
         Me.PuertoSerialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TransToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExistenciaDeSilosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualDeUusarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -217,7 +218,7 @@ Partial Class Maiz
         '
         Me.ComprasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContratosDeTigoConCompradoresToolStripMenuItem})
         Me.ComprasToolStripMenuItem.Name = "ComprasToolStripMenuItem"
-        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ComprasToolStripMenuItem.Text = "Compras"
         '
         'ContratosDeTigoConCompradoresToolStripMenuItem
@@ -230,7 +231,7 @@ Partial Class Maiz
         '
         Me.VentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContratosDeTrigoConCompradoresToolStripMenuItem})
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'ContratosDeTrigoConCompradoresToolStripMenuItem
@@ -374,7 +375,7 @@ Partial Class Maiz
         '
         'UtileriasToolStripMenuItem
         '
-        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.TipoDeCambioToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem, Me.PuertoSerialToolStripMenuItem, Me.ToolStripMenuItem4, Me.TransToolStripMenuItem})
+        Me.UtileriasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnlaceABaseDeToolStripMenuItem, Me.TipoDeCambioToolStripMenuItem, Me.AutorizacionDiariaToolStripMenuItem, Me.ToolStripMenuItem3, Me.CrearNuevaBDDToolStripMenuItem, Me.RutasDeDocumentosToolStripMenuItem, Me.PuertoSerialToolStripMenuItem, Me.ToolStripMenuItem4, Me.TransToolStripMenuItem, Me.ExistenciaDeSilosToolStripMenuItem})
         Me.UtileriasToolStripMenuItem.Name = "UtileriasToolStripMenuItem"
         Me.UtileriasToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
         Me.UtileriasToolStripMenuItem.Text = "Utilerias"
@@ -432,6 +433,12 @@ Partial Class Maiz
         Me.TransToolStripMenuItem.Name = "TransToolStripMenuItem"
         Me.TransToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
         Me.TransToolStripMenuItem.Text = "Transferencia de Silos"
+        '
+        'ExistenciaDeSilosToolStripMenuItem
+        '
+        Me.ExistenciaDeSilosToolStripMenuItem.Name = "ExistenciaDeSilosToolStripMenuItem"
+        Me.ExistenciaDeSilosToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.ExistenciaDeSilosToolStripMenuItem.Text = "Existencias en Silos"
         '
         'AyudaToolStripMenuItem
         '
@@ -636,4 +643,5 @@ Partial Class Maiz
     Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
     Friend WithEvents TipoDeCambioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TransToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExistenciaDeSilosToolStripMenuItem As ToolStripMenuItem
 End Class

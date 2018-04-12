@@ -598,7 +598,7 @@ Public Class ControlEmbarques
                         compruebaEntradas = "2" 'SE COMPLETO EL CONTRATO
                     ElseIf resTon > 0 Then
                         valEntLib = resTon
-                        valEntCon = (CDbl(TxNeto.Text) / 1000) + row("toneladasentradas") - resTon
+                        valEntCon = (CDbl(TxNeto.Text) / 1000) - resTon
                         compruebaEntradas = "3" 'SE COMPLETO EL CONTRATO CON SOBRANTE PARA LIBRE
                     End If
                 End If

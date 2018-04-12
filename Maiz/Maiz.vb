@@ -34,11 +34,11 @@ Public Class Maiz
 
                 cmd.CommandType = CommandType.StoredProcedure
 
-                cmd.Parameters.AddWithValue("@PrecioDolar", strTipoCambio.Substring(1487, 7))
+                cmd.Parameters.AddWithValue("@PrecioDolar", Replace(strTipoCambio.Substring(1487, 7), Chr(34), ""))
                 cmd.Parameters.AddWithValue("@FechaCambio", Now)
                 cmd.ExecuteNonQuery()
 
-                TsPrecioDolar.Text = strTipoCambio.Substring(1487, 7)
+                TsPrecioDolar.Text = Replace(strTipoCambio.Substring(1487, 7), Chr(34), "")
                 Return True
             Else
                 TsPrecioDolar.Text = 0
@@ -91,6 +91,7 @@ Public Class Maiz
             CalculoDeLiquidaciónToolStripMenuItem.Enabled = False
             CalculoDeLiquidaciónPorCompradorToolStripMenuItem.Enabled = False
             TipoDeCambioToolStripMenuItem.Enabled = False
+            TransToolStripMenuItem.Enabled = False
         Else
             If VerificaFechaTipoCambio() = 0 Then
                 TipoCambioDls()
@@ -285,5 +286,9 @@ Public Class Maiz
 
     Private Sub TransToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransToolStripMenuItem.Click
         TransferenciasSilos.ShowDialog()
+    End Sub
+
+    Private Sub ExistenciaDeSilosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExistenciaDeSilosToolStripMenuItem.Click
+        ExistenciaSilos.ShowDialog()
     End Sub
 End Class

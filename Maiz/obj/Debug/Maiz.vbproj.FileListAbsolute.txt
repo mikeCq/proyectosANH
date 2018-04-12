@@ -283,14 +283,11 @@ C:\Users\SISTEMAS_\Desktop\Maiz\proyectosANH\Maiz\obj\Debug\Maiz.vbproj.Generate
 C:\Users\SISTEMAS_\Desktop\Maiz\proyectosANH\Maiz\obj\Debug\Maiz.exe.manifest
 C:\Users\SISTEMAS_\Desktop\Maiz\proyectosANH\Maiz\obj\Debug\Maiz.application
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.exe.config
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.exe.manifest
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.application
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.exe
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.pdb
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.xml
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.ReportSource.dll
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.Shared.dll
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.Windows.Forms.dll
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\FlashControlV71.dll
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
@@ -310,6 +307,8 @@ C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Acer
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Almacenes.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.AutorizacionDiaria.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.AyudaSistema.resources
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Bascula.resources
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Bascula2.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.BuscarAlmacen.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.BuscarCliente.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.BuscarComprador.resources
@@ -335,6 +334,7 @@ C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Cont
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ControlEntradas.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ControlSalidas.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Empresas.resources
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ExistenciaSilos.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.FMSGPROv3.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.GeneraFolios.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.GeneraSolicitud.resources
@@ -347,11 +347,13 @@ C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Repo
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteBoletasSalidas.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteCompras.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteEstatusContrato.resources
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteContratoProductor.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteEmbarquesXcliente.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteEntradasGlobalXprod.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteLiquidacionesXprod.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteLotes.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteORI.resources
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReportePDFtest.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteProductores.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteResumenBoletasLiquidadas.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReportesEmbarquesXcomprador.resources
@@ -361,10 +363,13 @@ C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Repo
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteTotalContratos.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteVentaResumen.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ReporteVentas.resources
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.RutasDocumentos.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.SeleccionCentroAcopio.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Silos.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.TablasCalidad.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Tierras.resources
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.TipoCambioDiario.resources
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.TransferenciasSilos.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Transportes.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Maiz.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Usuarios.resources
@@ -372,12 +377,15 @@ C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.Vari
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.ventasMaiz.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.VerificaPermiso.resources
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.vbproj.GenerateResource.Cache
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.exe
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.xml
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.pdb
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.exe.manifest
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\Maiz.application
-C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.vbprojResolveAssemblyReference.cache
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.TrustInfo.xml
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.exe.manifest
 C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.application
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.exe
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.xml
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.pdb
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\bin\Debug\FlashControlV71.dll
+C:\Users\MSISTEMAS\Desktop\MAIZ A SERVER12\proyectosANH\Maiz\obj\Debug\Maiz.vbprojResolveAssemblyReference.cache

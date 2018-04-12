@@ -16,8 +16,8 @@ Public Class ReporteLiquidacionesXprod
             Dim CrReport As ReporteLiquidacionesXproductor = New ReporteLiquidacionesXproductor
 
             Dim da As New SqlCommand("sp_reporteLiquidacionXproductor1", cnn)
-            Dim Ruta As String = "\\192.168.10.30\docs_sistemas\RPT_MAIZ\ReporteLiquidacionesXproductor.rpt"
-            'Dim Ruta As String = Application.StartupPath & "\RPT\ReporteBoletaEntrada.rpt"
+            'Dim Ruta As String = "\\192.168.10.30\docs_sistemas\RPT_MAIZ\ReporteLiquidacionesXproductor.rpt"
+            Dim Ruta As String = Application.StartupPath & "\RPT\ReporteLiquidacionesXproductor.rpt"
             da.CommandType = CommandType.StoredProcedure
             Dim IdLiquidacion As New SqlClient.SqlParameter()
             IdLiquidacion.ParameterName = "@idliquidaciont"
